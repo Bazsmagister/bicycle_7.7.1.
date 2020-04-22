@@ -104,7 +104,7 @@ create database bicycle;
 
         factory(App\Bicycle::class, 10)->create();
 
-## UsersSeeder.php
+## UserSeeder.php
 
 php artisan make:seeder UserSeeder;
 
