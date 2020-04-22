@@ -28,3 +28,21 @@ Character Map. find : caret (in desciption also)
 shift+ctrl+6 = comment/uncomment html great!!!
 
 ## Make auth in laravel 7 with php artisan
+
+php artisan ui vue --auth
+
+npm install && npm run dev
+
+npm run watch
+or
+npm run watch-poll
+
+## Make a Model
+
+php artisam make:model Bicycle -a
+it creates:
+Model created successfully.
+Factory created successfully.
+Created Migration: 2020_04_22_075710_create_bicycles_table
+Seeder created successfully.
+Controller created successfully.
