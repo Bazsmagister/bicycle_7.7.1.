@@ -46,3 +46,58 @@ Factory created successfully.
 Created Migration: 2020_04_22_075710_create_bicycles_table
 Seeder created successfully.
 Controller created successfully.
+
+I don't want to use timestamps:
+public \$timestamps = false;
+
+## Migration:
+
+migration:
+$table->string('name');
+            $table->timestamp('bicycle_broughtIn_at')->nullable();
+$table->timestamp('bicycle_startedToServiceIt_at')->nullable();
+            $table->timestamp('bicycle_readyToTakeItHome_at')->nullable();
+
+## Factory BicycleFactory.php
+
+$factory->define(Bicycle::class, function (Faker $faker) {
+return [
+'name' => $faker->unique()->word,
+'bicycle_broughtIn_at' => $faker->dateTimeBetween('yesterday', '-25 hours'),
+'bicycle_startedToServiceIt_at' => $faker->dateTimeBetween('yesterday', '-1 hours'),
+'bicycle_readyToTakeItHome_at' => now(),
+];
+});
+
+## .env
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=bicycle
+DB_USERNAME=u  
+DB_PASSWORD=u
+
+## .env
+
+sudo mysql
+create database bicycle;
+
+## DatabaseSeeder.php
+
+        $this->call(UserSeeder::class);
+        $this->call(BicycleSeeder::class);
+
+## BicycleSeeder.php
+
+        factory(App\Bicycle::class, 10)->create();
+
+## UsersSeeder.php
+
+php artisan make:seeder UserSeeder;
+
+        factory(App\User::class, 10)->create();
+
+## Composer dump-autoload
+
+        composer dump-autoload

@@ -15,7 +15,12 @@ class CreateBicyclesTable extends Migration
     {
         Schema::create('bicycles', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('name');
+            $table->timestamp('bicycle_broughtIn_at')->nullable();
+            $table->timestamp('bicycle_startedToServiceIt_at')->nullable();
+            $table->timestamp('bicycle_readyToTakeItHome_at')->nullable();
+
+            //$table->timestamps();
         });
     }
 
@@ -29,3 +34,4 @@ class CreateBicyclesTable extends Migration
         Schema::dropIfExists('bicycles');
     }
 }
+
