@@ -15,12 +15,15 @@ class CreateBicyclesTable extends Migration
     {
         Schema::create('bicycles', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->string('name');
             $table->timestamp('bicycle_broughtIn_at')->nullable();
             $table->timestamp('bicycle_startedToServiceIt_at')->nullable();
             $table->timestamp('bicycle_readyToTakeItHome_at')->nullable();
+            $table->unsignedInteger('price')->nullable();
+            $table->timestamps();
 
-            //$table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

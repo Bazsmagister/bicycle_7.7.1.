@@ -31,14 +31,23 @@ $factory->define(Bicycle::class, function (Faker $faker) {
 */
 $factory->define(Bicycle::class, function (Faker $faker) {
     return [
-        'name' => $faker->unique()->word,
+        //'name' => [[$colorName] [$faker->unique()->word]],
+        'name' => "$faker->colorName $faker->word",
+
+        'user_id'=> $faker->numberBetween(1,10),
+        //'user_id' => factory(App\User::class),
         'bicycle_broughtIn_at' => $faker->dateTimeBetween('yesterday', '-25 hours'),
         'bicycle_startedToServiceIt_at' => $faker->dateTimeBetween('yesterday', '-1 hours'),
         'bicycle_readyToTakeItHome_at' => now(),
+        'price' => $faker->numberBetween(1000, 10000),
+        'created_at' => $faker->dateTimeBetween('yesterday', '-30 hours'),
+        'updated_at' => now(),
     ];
 });
 
 /*
+relative path to faker:
+vendor/fzaninotto/faker/src/Faker/Generator.php
 @property int       $unixTime
  * @property \DateTime $dateTime
  * @property \DateTime $dateTimeAD

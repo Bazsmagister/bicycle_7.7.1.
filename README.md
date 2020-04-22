@@ -49,6 +49,15 @@ Controller created successfully.
 
 I don't want to use timestamps:
 public \$timestamps = false;
+otherwise in factory:
+'created_at' => now(),
+'updated_at' => now(),
+
+and in migrations use:
+\$table->timestamps();
+
+I don't want to protect against mass assiggnement (for a while...)
+protected \$guarded = [];
 
 ## Migration:
 
@@ -59,6 +68,9 @@ $table->timestamp('bicycle_startedToServiceIt_at')->nullable();
             $table->timestamp('bicycle_readyToTakeItHome_at')->nullable();
 
 ## Factory BicycleFactory.php
+
+relative path to faker:
+vendor/fzaninotto/faker/src/Faker/Generator.php
 
 $factory->define(Bicycle::class, function (Faker $faker) {
 return [
