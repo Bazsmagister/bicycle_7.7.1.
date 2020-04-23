@@ -1,3 +1,4 @@
+
 <?php
 
 use Illuminate\Support\Facades\Route;
@@ -16,6 +17,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('service', 'BicycleController@index');
+Route::get('rentabike', 'BicycleController@rent');
+Route::get('newbikes', 'BicycleController@buy');
+
+
 
 Auth::routes();
 

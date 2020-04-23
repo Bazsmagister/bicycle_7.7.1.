@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class BicycleController extends Controller
 {
+    //I want to only serviceworkers to get this page
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +19,8 @@ class BicycleController extends Controller
      */
     public function index()
     {
-        //
+        $bicycles = Bicycle::all();
+        return view('bicyclestoservice', compact('bicycles'));
     }
 
     /**
