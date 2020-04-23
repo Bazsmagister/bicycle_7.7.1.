@@ -41,7 +41,14 @@ $factory->define(Bicycle::class, function (Faker $faker) {
         'bicycle_readyToTakeItHome_at' => now(),
         'price' => $faker->numberBetween(1000, 10000),
         'description' => $faker->paragraph,
-        'isrentable' => $faker->boolean,
+        'is_rentable' => $faker->boolean,
+        'is_sellable' => $faker->boolean,
+        // 'image' => $faker->image(/home/bazs/code/bicycle_7.7.1/storage/app/public/bic.png),
+        // 'image' => $faker->image(/home/bazs/code/bicycle_7.7.1/storage/app/public/bic.png),
+
+        // 'image' => $faker->imageUrl('/home/bazs/code/bicycle_7.7.1/storage/app/public/bic.png'),
+
+
         'created_at' => $faker->dateTimeBetween('yesterday', '-30 hours'),
         'updated_at' => now(),
     ];

@@ -114,4 +114,7 @@ php artisan make:seeder UserSeeder;
 
         composer dump-autoload
 
-##
+## php artisan storage:link
+
+The [/home/bazs/code/bicycle_7.7.1/public/storage] link has been connected to [/home/bazs/code/bicycle_7.7.1/storage/app/public].
+The links have been created.

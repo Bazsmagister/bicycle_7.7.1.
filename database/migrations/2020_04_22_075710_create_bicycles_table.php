@@ -21,8 +21,18 @@ class CreateBicyclesTable extends Migration
             $table->timestamp('bicycle_startedToServiceIt_at')->nullable();
             $table->timestamp('bicycle_readyToTakeItHome_at')->nullable();
             $table->unsignedInteger('price')->nullable();
-            $table->string('description')->nullable();
-            $table->boolean('isrentable')->nullable();
+            $table->string('description', 300)->nullable();
+            $table->boolean('is_rentable')->nullable();
+            $table->boolean('is_sellable')->nullable();
+            // $table->string('image',255)->nullable();
+            $table->string('image',2000)->default('bic.png')->nullable();
+            // $table->string('image',255)->default('/home/bazs/code/bicycle_7.7.1/public/storage/bi.jpg');
+            // $table->string('image',255)->default('bic.png');
+
+
+
+
+
 
             $table->timestamps();
 

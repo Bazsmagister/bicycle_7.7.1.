@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Bicycle;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class BicycleController extends Controller
 {
@@ -88,4 +89,17 @@ class BicycleController extends Controller
     {
         //
     }
+
+    public function rent(Bicycle $bicycle)
+    {
+        $rentablebicycles = DB::select('select * from bicycles where is_rentable = ?', [1]);
+        return view('bicyclestorent', compact('rentablebicycles'));
+    }
+
+    public function buy(Bicycle $bicycle)
+    {
+         $sellablebicycles = DB::select('select * from bicycles where is_sellable = ?', [1]);
+        return view('bicyclestosell', compact('sellablebicycles'));
+    }
+
 }
