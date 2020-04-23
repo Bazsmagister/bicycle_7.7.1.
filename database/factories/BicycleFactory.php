@@ -40,6 +40,8 @@ $factory->define(Bicycle::class, function (Faker $faker) {
         'bicycle_startedToServiceIt_at' => $faker->dateTimeBetween('yesterday', '-1 hours'),
         'bicycle_readyToTakeItHome_at' => now(),
         'price' => $faker->numberBetween(1000, 10000),
+        'description' => $faker->paragraph,
+        'isrentable' => $faker->boolean,
         'created_at' => $faker->dateTimeBetween('yesterday', '-30 hours'),
         'updated_at' => now(),
     ];

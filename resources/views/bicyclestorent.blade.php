@@ -1,4 +1,4 @@
-All the bicycles to service / under service
+All the bicycles to rent
 
 <hr>
 

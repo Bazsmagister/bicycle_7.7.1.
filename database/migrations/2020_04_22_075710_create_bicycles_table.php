@@ -21,6 +21,9 @@ class CreateBicyclesTable extends Migration
             $table->timestamp('bicycle_startedToServiceIt_at')->nullable();
             $table->timestamp('bicycle_readyToTakeItHome_at')->nullable();
             $table->unsignedInteger('price')->nullable();
+            $table->string('description')->nullable();
+            $table->boolean('isrentable')->nullable();
+
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');
