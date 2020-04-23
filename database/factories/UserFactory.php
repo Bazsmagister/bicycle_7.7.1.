@@ -21,9 +21,19 @@ $factory->define(User::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
-        'email_verified_at' => now(),
-        'phone' => $faker->phoneNumber,
+        // 'email_verified_at' => now(),
+        // 'phone' => $faker->phoneNumber,
+        'phone' => $faker->e164PhoneNumber,
+
         'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-        'remember_token' => Str::random(10),
+        // 'remember_token' => Str::random(10),
     ];
 });
+
+/*
+ * @property string $phoneNumber
+ * @property string $e164PhoneNumber
+ * E.164 is an international standard (ITU-T Recommendation), titled The international public telecommunication numbering plan, that defines a numbering plan for the worldwide public switched telephone network (PSTN) and some other data networks.
+*/
+
+
