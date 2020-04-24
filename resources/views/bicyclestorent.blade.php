@@ -12,8 +12,10 @@ All the bicycles to rent
 
         <img src="/storage/bic.png" alt="a bicycle png">
         <img src="/storage/bi.jpg" alt="quarter jpg" width="182" height="109">
-        <img src="{{$bicycle->image}}">
+        <img src="{{$bicycle->image}}" alt="interesting" width="182" height="109">
 
+        {{-- <img src="{{$bicycle->image}}" alt="originalsize"> --}}
+        {{-- <img src="$bicycle->image"> --}}
         {{-- <img src="/storage/images/{{$bicycle->image}}"> --}}
         {{-- <img src="/storage/bi.jpg" alt="a bicycle"> --}}
         {{-- <img src="/storage/bic.xcf" alt="a bicycle"> --}}

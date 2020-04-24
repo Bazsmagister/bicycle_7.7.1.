@@ -45,6 +45,10 @@ $factory->define(Bicycle::class, function (Faker $faker) {
         'description' => $faker->paragraph,
         'is_rentable' => $faker->boolean,
         'is_sellable' => $faker->boolean,
+        // 'image' => '/storage/app/public/6e0cbb8c6ae4ed7c406ce4830ba11481.jpg',
+        'image' => '/storage/6e0cbb8c6ae4ed7c406ce4830ba11481.jpg',
+
+
 
         //This uses lorempixel, which is very slow...
         //'image' => $faker->imageUrl(40, 30),

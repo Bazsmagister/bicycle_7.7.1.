@@ -13,7 +13,9 @@ All the bicycles to sell
 
         <img src="/storage/bic.png" alt="a bicycle png">
         <img src="/storage/bi.jpg" alt="quarter jpg" width="182" height="109">
-        <img src="{{$bicycle->image}}">
+        <img src="{{$bicycle->image}}" alt="interesting" width="182" height="109">
+
+        {{-- <img src="{{$bicycle->image}}"> --}}
 
         {{-- <li>{{$bicycle -> image  }} </li> --}}
         {{-- <img src="{{$bicycle->image}}"> --}}
