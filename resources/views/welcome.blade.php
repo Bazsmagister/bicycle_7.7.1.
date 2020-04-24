@@ -15,7 +15,8 @@
     <style>
         html,
         body {
-            background-color: grey;
+            background-color: #d3b9b7;
+
             /* color: #636b6f; */
             font-family: sans-serif, 'Nunito';
             font-weight: 200;
@@ -87,6 +88,7 @@
         @endif
 
         <div class="content">
+            <img src="/storage/bic.png" alt="a bic png" sizes="" srcset="">
             <div class="title m-b-md">
                 Bicycle
             </div>
@@ -101,7 +103,8 @@
             <br>
             <hr>
             <div class="links">
-                <a href="https://laravel.com/docs">Laravel docs</a>
+                <p>Please login or register to use the side!</p>
+                {{-- <a href="https://laravel.com/docs">Laravel docs</a> --}}
 
             </div>
         </div>

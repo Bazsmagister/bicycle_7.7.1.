@@ -26,8 +26,18 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Bicycle_7.1.1') }}
+                    {{ 'Welcome' }}
                 </a>
+
+                <div class="flex-container">
+
+                    <div><a href="/service">Service</a></div>
+                    <div><a href="/rentabike">Rent-a-bicycle</a></div>
+                    <div><a href="/newbikes">New bicycles</a></div>
+
+                </div>
+
+
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="{{ __('Toggle navigation') }}">
@@ -79,14 +89,17 @@
 
         <main class="py-4">
             @yield('content')
-
-        </main>
-        <div>
-
             @yield('contentservice')
 
-        </div>
+            @yield('contentsell')
+
+            @yield('contentrent')
+        </main>
+
+
+
     </div>
+
 </body>
 
 </html>

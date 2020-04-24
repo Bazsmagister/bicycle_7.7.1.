@@ -1,3 +1,7 @@
+@extends('layouts.app')
+
+@section('contentsell')
+
 All the bicycles to sell
 
 <hr>
@@ -36,3 +40,5 @@ All the bicycles to sell
 </div>
 
 @endforeach
+
+@endsection

@@ -1,3 +1,6 @@
+@extends('layouts.app')
+
+@section('contentservice')
 All the bicycles to service / under service
 
 <hr>
@@ -14,3 +17,5 @@ All the bicycles to service / under service
 </div>
 
 @endforeach
+
+@endsection
