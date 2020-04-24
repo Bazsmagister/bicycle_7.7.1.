@@ -34,7 +34,9 @@ $factory->define(Bicycle::class, function (Faker $faker) {
         //'name' => [[$colorName] [$faker->unique()->word]],
         'name' => "$faker->colorName $faker->word",
 
-        'user_id'=> $faker->numberBetween(1,10),
+        //'user_id'=> $faker->numberBetween(1,10),
+        'user_id' => function () {
+            return factory(App\User::class)->create()->id;},
         //'user_id' => factory(App\User::class),
         'bicycle_broughtIn_at' => $faker->dateTimeBetween('yesterday', '-25 hours'),
         'bicycle_startedToServiceIt_at' => $faker->dateTimeBetween('yesterday', '-1 hours'),
@@ -43,10 +45,31 @@ $factory->define(Bicycle::class, function (Faker $faker) {
         'description' => $faker->paragraph,
         'is_rentable' => $faker->boolean,
         'is_sellable' => $faker->boolean,
-        // 'image' => $faker->image(/home/bazs/code/bicycle_7.7.1/storage/app/public/bic.png),
+
+        //This uses lorempixel, which is very slow...
+        //'image' => $faker->imageUrl(40, 30),
+
+        // 'image' => $faker->image('public/storage/images',640,480, null, false),
+        // 'image' => $faker->image('/storage/app/public/images',64,48, null, false),
+        // 'image' => $faker->image('/home/bazs/code/bicycle_7.7.1/storage/app/public/images/',640,480, null, true, true, null,false),
+
+
+
+
+        // 'image' => $faker->image('/home/bazs/code/bicycle_7.7.1/storage/app/public',640,480, null, true, true, null),
+
+        // 'image' => $faker->image('public/storage/images',64,48, null, false),
+        // 'image' => $faker->image('/storage/app/public',640,480, null, false, true),
+
+        // 'image' => $faker->image('/home/bazs/code/bicycle_7.7.1/public/storage/bic.png'),
+        // 'image' => $faker->image('/home/bazs/code/bicycle_7.7.1/public/storage/'),
+        // 'image' => $faker->image('/home/bazs/code/bicycle_7.7.1/storage/app/public/'),
+
+
         // 'image' => $faker->image(/home/bazs/code/bicycle_7.7.1/storage/app/public/bic.png),
 
         // 'image' => $faker->imageUrl('/home/bazs/code/bicycle_7.7.1/storage/app/public/bic.png'),
+
 
 
         'created_at' => $faker->dateTimeBetween('yesterday', '-30 hours'),
