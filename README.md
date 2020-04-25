@@ -139,3 +139,31 @@ public function render()
 // </div>
 // blade;
 }
+
+## User Role Permission
+
+spatie/laravel permission
+
+or:
+php artisan make:model Permission -m
+php artisan make:model Role -m
+
+php artisan make:migration create_permission_user_table --create=permission_user
+
+php artisan make:migration create_role_user_table --create=role_user
+
+php artisan make:seeder RolesTableSeeder
+
+php artisan make:seeder PermissionTableSeeder
+
+php artisan make:migration create_permission_role_table --create=permission_role
+
+app/Role and app/Permission make the methods. belongsToMany
+
+trait:
+app/Permissions/HasPermissionsTrait.php
+
+User.php
+use App\Permissions\HasPermissionsTrait;
+
+composer dump-autoload
