@@ -28,6 +28,13 @@
             height: 100vh;
         }
 
+        .alert {
+            color: red;
+            text-decoration: underline;
+
+            fill: beige;
+        }
+
         .flex-center {
             align-items: center;
             display: flex;
@@ -72,6 +79,7 @@
 </head>
 
 <body>
+
     <div class="flex-center position-ref full-height">
         @if (Route::has('login'))
         <div class="top-right links">
@@ -109,6 +117,9 @@
             </div>
         </div>
     </div>
+    <x-alert>
+        <strong>Whoops!</strong> Something went wrong!
+    </x-alert>
 </body>
 
 </html>

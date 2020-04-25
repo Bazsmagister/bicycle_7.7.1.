@@ -118,3 +118,24 @@ php artisan make:seeder UserSeeder;
 
 The [/home/bazs/code/bicycle_7.7.1/public/storage] link has been connected to [/home/bazs/code/bicycle_7.7.1/storage/app/public].
 The links have been created.
+
+## php artisan ui:controllers
+
+Scaffold the authentication controllers
+
+## https://laravel.com/docs/7.x/blade#components
+
+php artisan make:component Alert
+
+The make:component command will place the component in the App\View\Components directory.
+The make:component command will also create a view template for the component. The view will be placed in the resources/views/components directory.
+
+php artisan make:component Alert --inline
+public function render()
+{
+// return <<<'blade'
+// <div class="alert alert-danger">
+// {{ $slot }}
+// </div>
+// blade;
+}
