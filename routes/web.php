@@ -2,8 +2,12 @@
 <?php
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Request;
+
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -43,7 +47,20 @@ Route::get('/home', function() {
     // dd($user->name, $user->email, $user->phone) ;
     // dd($user->name);
 
-    dd($user->hasRole('admin', 'editor'));
+    //it works
+    // dd($user->hasRole('admin', 'editor'));
 });
 
+
+
+// Route::get('/roles', 'PermissionController@Permission');
+
+
+//it works
+Route::get('/roles', function() {
+$user = Auth::user();
+// dd($user->hasRole('developer')); //will return true, if user has role
+// dd($user->givePermissionsTo('create-tasks'));// will return permission, if not null
+dd($user->can('create-tasks')); // will return true, if user has permission
+});
 
