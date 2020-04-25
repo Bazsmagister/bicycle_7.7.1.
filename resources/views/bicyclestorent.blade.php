@@ -4,11 +4,7 @@
 
 <div class="id">
 
-
-
-
     All the bicycles to rent
-
 
     <hr>
 
@@ -40,7 +36,6 @@
     </div>
 
     @endforeach
-
 
     @endsection
 
