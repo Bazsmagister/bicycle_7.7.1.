@@ -43,7 +43,7 @@ Route::get('/home', function() {
     // dd($user->name, $user->email, $user->phone) ;
     // dd($user->name);
 
-    dd($user->hasRole('admin','customer')); // and so on
+    dd($user->hasRole('admin', 'editor'));
 });
 
 
