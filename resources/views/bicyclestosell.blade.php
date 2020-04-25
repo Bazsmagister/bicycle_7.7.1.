@@ -14,10 +14,11 @@ All the bicycles to sell
         <li>{{$bicycle -> name }} </li>
         <li>{{$bicycle -> description }} </li>
         <li>{{$bicycle -> price }} Ft</li>
+        <img src="{{$bicycle->image}}" alt="interesting" width="" height="">
 
-        <img src="/storage/bic.png" alt="a bicycle png">
+        {{-- <img src="/storage/bic.png" alt="a bicycle png"> --}}
         <img src="/storage/bi.jpg" alt="quarter jpg" width="182" height="109">
-        <img src="{{$bicycle->image}}" alt="interesting" width="182" height="109">
+
 
         {{-- <img src="{{$bicycle->image}}"> --}}
 

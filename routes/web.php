@@ -22,8 +22,11 @@ Route::get('service', 'BicycleController@index');
 Route::get('rentabike', 'BicycleController@rent');
 Route::get('newbikes', 'BicycleController@buy');
 
+Route::resource('bicycle', 'BicycleController');
+
 
 
 Auth::routes();
 
+/*named route */
 Route::get('/home', 'HomeController@index')->name('home');
