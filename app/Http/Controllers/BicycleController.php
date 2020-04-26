@@ -11,7 +11,8 @@ class BicycleController extends Controller
     //I want to only serviceworkers to get this page
     public function __construct()
     {
-        $this->middleware('auth');
+        // if you want an auth middleware in this controller just turn it on:
+        // $this->middleware('auth');
     }
     /**
      * Display a listing of the resource.
@@ -21,7 +22,7 @@ class BicycleController extends Controller
     public function index()
     {
         $bicycles = Bicycle::all();
-        return view('bicyclestoservice', compact('bicycles'));
+        return view('bicyclestosell', compact('bicycles'));
     }
 
     /**
@@ -31,7 +32,7 @@ class BicycleController extends Controller
      */
     public function create()
     {
-        //
+        return view('bicycles_to_create');
     }
 
     /**
@@ -92,13 +93,13 @@ class BicycleController extends Controller
 
     public function rent(Bicycle $bicycle)
     {
-        $rentablebicycles = DB::select('select * from bicycles where is_rentable = ?', [1]);
+        $rentable_bicycles = DB::select('select * from bicycles where is_rentable = ?', [1]);
         return view('bicyclestorent', compact('rentablebicycles'));
     }
 
     public function buy(Bicycle $bicycle)
     {
-         $sellablebicycles = DB::select('select * from bicycles where is_sellable = ?', [1]);
+         $sellable_bicycles = DB::select('select * from bicycles where is_sellable = ?', [1]);
         return view('bicyclestosell', compact('sellablebicycles'));
     }
 

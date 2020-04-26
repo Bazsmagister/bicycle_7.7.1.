@@ -1,5 +1,11 @@
 @extends('layouts.app')
 
+<p>
+    You are logged in (1) : {{ Auth::user()->name }}
+    <br>
+    You are logged in (2): {{ auth()->user()->name }}
+</p>
+
 {{-- @section('content')
 
 <div class="flex-container">

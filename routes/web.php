@@ -34,6 +34,8 @@ Route::get('rentabike', 'BicycleController@rent');
 Route::get('newbikes', 'BicycleController@buy');
 
 Route::resource('bicycle', 'BicycleController');
+Route::resource('bicycle', 'BicycleController')->except(['index', 'show']);
+
 
 
 

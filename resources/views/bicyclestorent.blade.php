@@ -8,7 +8,7 @@
 
     <hr>
 
-    @foreach ($rentablebicycles as $bicycle)
+    @foreach ($rentable_bicycles as $bicycle)
     <div class="container">
         <ul>
 

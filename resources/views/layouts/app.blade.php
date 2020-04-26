@@ -92,11 +92,11 @@
         <main class="py-4">
             @yield('content')
 
-            @yield('contentservice')
-
             @yield('contentsell')
-
             @yield('contentrent')
+            @yield('contentservice')
+            @yield('bicycles_to_create')
+
         </main>
 
 

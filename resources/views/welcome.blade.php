@@ -26,7 +26,7 @@
         }
 
         .full-height {
-            height: 100vh;
+            /* height: 100vh; */
         }
 
         .hero-image {
@@ -54,6 +54,8 @@
 
             /* The position prop spec the type ofpositining meth u for an el (static, relative, absolute, fixed, or sticky). */
             position: relative;
+
+            /* z-index: -1; */
         }
 
         .hero-text {
@@ -61,7 +63,11 @@
             position: absolute;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, +30%);
+            transform: translate(-50%, -90%);
+            color: white;
+        }
+
+        a {
             color: white;
         }
 
@@ -69,7 +75,7 @@
             color: red;
             text-decoration: underline;
 
-            fill: beige;
+
         }
 
         .flex-center {
@@ -86,6 +92,9 @@
             position: absolute;
             right: 10px;
             top: 18px;
+            color: white;
+            /* + z-index makes content closer to on the canvas */
+            z-index: +1;
         }
 
         .content {
@@ -134,6 +143,23 @@
 
 
         <div class="content">
+
+            <div>
+                @if (Route::has('login'))
+                <div class="top-right links">
+                    @auth
+                    <a href="{{ url('/home') }}">Home</a>
+                    @else
+                    <a href="{{ route('login') }}">Login</a>
+
+                    @if (Route::has('register'))
+                    <a href="{{ route('register') }}">Register</a>
+                    @endif
+                    @endauth
+                </div>
+                @endif
+
+            </div>
 
             <div class="hero-image">
                 <div class="hero-text">
