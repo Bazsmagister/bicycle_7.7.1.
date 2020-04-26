@@ -32,7 +32,7 @@
 
                 <div class="flex-container">
 
-                    <div><a href="/newbikes">New bicycles</a></div>
+                    <div><a href="/bicycle">New bicycles</a></div>
                     <div><a href="/rentabike">Rent-a-bicycle</a></div>
                     <div><a href="/service">Service</a></div>
 

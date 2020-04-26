@@ -2,9 +2,15 @@
 
 @section('contentsell')
 
-All the bicycles to sell
+All the bicycles to sell.
+@auth
+<a href="/bicycle/create"> Add a new Bicycle </a>
+@endauth
 
 <hr>
+
+
+
 
 @foreach ($sellable_bicycles as $bicycle)
 <div class="container">
@@ -14,7 +20,7 @@ All the bicycles to sell
         <li>{{$bicycle -> name }} </li>
         <li>{{$bicycle -> description }} </li>
         <li>{{$bicycle -> price }} Ft</li>
-        <img src="{{$bicycle->image}}" alt="interesting" width="" height="">
+        <img src="{{$bicycle->image}}" alt="no pic yet..." width="" height="">
 
         {{-- <img src="/storage/bic.png" alt="a bicycle png"> --}}
         <img src="/storage/bi.jpg" alt="quarter jpg" width="182" height="109">

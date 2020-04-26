@@ -31,11 +31,13 @@ Route::get('/', function () {
 
 Route::get('service', 'BicycleController@service');
 Route::get('rentabike', 'BicycleController@rent');
-Route::get('newbikes', 'BicycleController@buy');
+// Route::get('newbikes', 'BicycleController@buy');
+// Route::get('newbikes', 'BicycleController@buy');
 
-// Route::resource('bicycle', 'BicycleController');
+
+Route::resource('bicycle', 'BicycleController');
 // When declaring a resource route, you may specify a subset of actions the controller should handle instead of the full set of default actions
-Route::resource('bicycle', 'BicycleController')->except(['index', 'show']);
+// Route::resource('bicycle', 'BicycleController')->except(['index', 'show']);
 
 
 

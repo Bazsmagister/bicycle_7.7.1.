@@ -1,0 +1,22 @@
+ <form action="/bicycle" method="post" class="form">
+        @csrf
+
+        @auth
+
+        <input label="name" type="text" name="name" required>
+
+        <textarea label="description" name="description" id="desciption" placeholder="description" required></textarea>
+
+        {{-- cols="100" rows="50" --}}
+
+        <input type="file" name="image" id="image" disabled>
+        {{-- <button disabled="disabled">image upload</button> --}}
+
+
+        <button type="submit">Submit</button>
+
+
+
+        @endauth
+
+    </form>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Bicycle;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class BicycleController extends Controller
 {
@@ -12,7 +13,7 @@ class BicycleController extends Controller
     public function __construct()
     {
         // if you want an auth middleware in this controller just turn it on:
-        $this->middleware('auth');
+        // $this->middleware('auth');
     }
     /**
      * Display a listing of the resource.
@@ -21,8 +22,10 @@ class BicycleController extends Controller
      */
     public function index()
     {
-        $bicycles = Bicycle::all();
-        return view('bicyclestosell', compact('bicycles'));
+        $sellable_bicycles = Bicycle::all();
+        // return view('bicyclestosell', compact('sellable_bicycles'))->guest(); //doesn't work
+        return view('bicyclestosell', compact('sellable_bicycles'));
+
     }
 
     /**
@@ -43,7 +46,19 @@ class BicycleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Bicycle::create($request->all());
+
+        // $request->flash();
+        // $request->flashOnly(['username', 'email']);
+        // $request->flashExcept('password');
+
+        Session::flash('message', 'Bicycle has written in DB');
+
+        return redirect('bicycle')->with('status', 'A new bic is uploaded to DB');
+
+        // $input = $request->all();
+        // $name = $request->input('name');
+
     }
 
     /**
