@@ -45,6 +45,7 @@ $factory->define(Bicycle::class, function (Faker $faker) {
         'description' => $faker->paragraph,
         'is_rentable' => $faker->boolean,
         'is_sellable' => $faker->boolean,
+        'is_serviceable' => $faker-> boolean,
 
         // 'image' => '/storage/6e0cbb8c6ae4ed7c406ce4830ba11481.jpg',
         'image' => '/storage/bic.png',

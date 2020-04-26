@@ -5,7 +5,7 @@ All the bicycles to service / under service
 
 <hr>
 
-@foreach ($bicycles as $bicycle)
+@foreach ($bicycles_to_service as $bicycle)
 <div class="container">
     <ul>
 

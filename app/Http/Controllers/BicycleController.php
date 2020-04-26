@@ -12,7 +12,7 @@ class BicycleController extends Controller
     public function __construct()
     {
         // if you want an auth middleware in this controller just turn it on:
-        // $this->middleware('auth');
+        $this->middleware('auth');
     }
     /**
      * Display a listing of the resource.
@@ -94,13 +94,18 @@ class BicycleController extends Controller
     public function rent(Bicycle $bicycle)
     {
         $rentable_bicycles = DB::select('select * from bicycles where is_rentable = ?', [1]);
-        return view('bicyclestorent', compact('rentablebicycles'));
+        return view('bicyclestorent', compact('rentable_bicycles'));
     }
 
     public function buy(Bicycle $bicycle)
     {
          $sellable_bicycles = DB::select('select * from bicycles where is_sellable = ?', [1]);
-        return view('bicyclestosell', compact('sellablebicycles'));
+        return view('bicyclestosell', compact('sellable_bicycles'));
+    }
+    public function service()
+    {
+        $bicycles_to_service= DB::select('select * from bicycles where is_serviceable = ?', [1]);
+        return view('bicycle_to_service', compact('bicycles_to_service'));
     }
 
 }

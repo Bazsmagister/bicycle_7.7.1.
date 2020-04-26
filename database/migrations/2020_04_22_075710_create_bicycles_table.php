@@ -24,6 +24,8 @@ class CreateBicyclesTable extends Migration
             $table->string('description', 300)->nullable();
             $table->boolean('is_rentable')->nullable();
             $table->boolean('is_sellable')->nullable();
+            $table->boolean('is_serviceable')->nullable();
+
             $table->string('image')->nullable();
             // $table->string('image',2000)->default('bic.png')->nullable();
             // $table->string('image',255)->default('/home/bazs/code/bicycle_7.7.1/public/storage/bi.jpg');
