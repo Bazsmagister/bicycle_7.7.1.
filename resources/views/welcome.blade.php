@@ -32,11 +32,27 @@
         .hero-image {
             background-image: url("/storage/BV.jpg");
             background-color: #d3b9b7;
-            height: 700px;
-            width: 1300px;
+            width: 1355px;
+            height: 940px;
+
+            /* important */
+            background-attachment: fixed;
+            /* background-attachment: scroll; */
+            /* background-attachment: local; */
+
+
             background-position: center;
             background-repeat: no-repeat;
-            /* background-size: cover; */
+
+            /* Specify the size of a background-image with "auto" and in pixels: */
+            background-size: cover;
+            background-size: auto;
+
+            /* this doesn't work : */
+            /* background-size: 1355px 940px; */
+
+
+            /* The position prop spec the type ofpositining meth u for an el (static, relative, absolute, fixed, or sticky). */
             position: relative;
         }
 
@@ -45,7 +61,7 @@
             position: absolute;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%);
+            transform: translate(-50%, +30%);
             color: white;
         }
 
