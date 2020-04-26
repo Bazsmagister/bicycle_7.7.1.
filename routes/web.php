@@ -40,16 +40,16 @@ Route::resource('bicycle', 'BicycleController');
 Auth::routes();
 
 /*named route */
-// Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/home', function() {
-    $user = Auth::user(); //getting the current logged in user
-    // dd($user->name, $user->email, $user->phone) ;
-    // dd($user->name);
+// Route::get('/home', function() {
+//     $user = Auth::user(); //getting the current logged in user
+//      dd($user->name, $user->email, $user->phone) ;
+//     // dd($user->name);
 
-    //it works
-    // dd($user->hasRole('admin', 'editor'));
-});
+//     //it works
+//     // dd($user->hasRole('admin', 'editor'));
+// });
 
 
 
@@ -57,10 +57,10 @@ Route::get('/home', function() {
 
 
 //it works
-Route::get('/roles', function() {
-$user = Auth::user();
-// dd($user->hasRole('developer')); //will return true, if user has role
-// dd($user->givePermissionsTo('create-tasks'));// will return permission, if not null
-dd($user->can('create-tasks')); // will return true, if user has permission
-});
+// Route::get('/roles', function() {
+// $user = Auth::user();
+// // dd($user->hasRole('developer')); //will return true, if user has role
+// // dd($user->givePermissionsTo('create-tasks'));// will return permission, if not null
+// dd($user->can('create-tasks')); // will return true, if user has permission
+// });
 

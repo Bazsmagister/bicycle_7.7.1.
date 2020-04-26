@@ -11,6 +11,6 @@ class BicycleSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Bicycle::class, 10)->create();
+        factory(App\Bicycle::class, 20)->create();
     }
 }

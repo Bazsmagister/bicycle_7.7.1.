@@ -102,9 +102,10 @@
             </div>
 
             <div class="links">
-                <a href="/service">Service</a>
-                <a href="/rentabike">Rent-a-bicycle</a>
                 <a href="/newbikes">New bicycles</a>
+                <a href="/rentabike">Rent-a-bicycle</a>
+                <a href="/service">Service</a>
+
             </div>
             <br>
 
@@ -112,7 +113,7 @@
             <hr>
             <div class="links">
                 <p>Please login or register to use the side!</p>
-                {{-- <a href="https://laravel.com/docs">Laravel docs</a> --}}
+                <a href="https://laravel.com/docs">Laravel docs</a>
 
             </div>
         </div>
