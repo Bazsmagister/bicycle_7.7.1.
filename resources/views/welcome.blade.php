@@ -17,6 +17,7 @@
         body {
             background-color: #d3b9b7;
 
+
             /* color: #636b6f; */
             font-family: sans-serif, 'Nunito';
             font-weight: 200;
@@ -26,6 +27,26 @@
 
         .full-height {
             height: 100vh;
+        }
+
+        .hero-image {
+            background-image: url("/storage/BV.jpg");
+            background-color: #d3b9b7;
+            height: 700px;
+            width: 1300px;
+            background-position: center;
+            background-repeat: no-repeat;
+            /* background-size: cover; */
+            position: relative;
+        }
+
+        .hero-text {
+            text-align: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
         }
 
         .alert {
@@ -95,7 +116,16 @@
         </div>
         @endif
 
+
         <div class="content">
+
+            <div class="hero-image">
+                <div class="hero-text">
+                    <h1 style="font-size:40px">"I want to ride my bicycle..."</h1>
+                    {{-- <h4>And I'm a Bicyclist</h4> --}}
+                    {{-- <button>Come with me!</button> --}}
+                </div>
+            </div>
             <img src="/storage/bic.png" alt="a bic png" sizes="" srcset="">
             <div class="title m-b-md">
                 Bicycle
@@ -117,10 +147,12 @@
 
             </div>
         </div>
+
     </div>
     <x-alert>
-        <strong>Whoops!</strong> Something went wrong!
+        <strong>Whoops!</strong> x-alert component
     </x-alert>
+
 </body>
 
 </html>
