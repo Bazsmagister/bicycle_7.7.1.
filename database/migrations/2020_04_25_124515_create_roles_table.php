@@ -19,7 +19,9 @@ class CreateRolesTable extends Migration
             $table->string('name');
             $table->string('slug')->nullable();
 
-            $table->timestamps();
+            // $table->timestamps()->default(now());
+            $table->timestamp('created_at')->default(now());
+            $table->timestamp('updated_at')->nullable();
         });
     }
 

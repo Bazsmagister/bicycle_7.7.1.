@@ -25,7 +25,9 @@ class CreateUsersTable extends Migration
 
             // $table->timestamps();
             $table->timestamp('created_at')->default(now());
-            $table->timestamp('updated_at')->default(now());
+            // $table->timestamp('updated_at')->default(now());
+            $table->timestamp('updated_at')->nullable();
+
 
             // $table->nullableTimestamps();
 

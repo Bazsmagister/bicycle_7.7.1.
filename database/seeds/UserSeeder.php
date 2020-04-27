@@ -13,7 +13,7 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        //import DB facade!
+        //import DB facade! it works!
           DB::table('users')->insert(array(
              'id' => '1',
             'name' => 'admin',

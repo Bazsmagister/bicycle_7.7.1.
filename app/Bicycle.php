@@ -12,4 +12,6 @@ class Bicycle extends Model
     protected $guarded = [];
 
     //protected $fillable = [''];
+
+    public $timestamps = true;
 }
