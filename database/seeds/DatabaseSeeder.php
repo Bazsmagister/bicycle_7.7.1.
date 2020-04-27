@@ -14,16 +14,15 @@ class DatabaseSeeder extends Seeder
         // $this->call(UserSeeder::class);
 
          $this->call(UserSeeder::class);
-         $this->call(BicycleSeeder::class);
-         $this->call(RoleTableSeeder::class);
 
+         $this->call(BicycleSeeder::class);
+
+         $this->call(RoleTableSeeder::class);
          $this->call(PermissionTableSeeder::class);
+
          $this->call(RoleUserSeeder::class);
          $this->call(PermissionUserSeeder::class);
-
-
-
-
+         $this->call(PermissionRoleSeeder::class);
 
 
     }

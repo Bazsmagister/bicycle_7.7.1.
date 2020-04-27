@@ -21,11 +21,11 @@ class CreateRoleUserTable extends Migration
 
 
          //FOREIGN KEY CONSTRAINTS
-           $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade');
-           $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
          //SETTING THE PRIMARY KEYS
-           $table->primary(['role_id','user_id']);
+            $table->primary(['role_id','user_id']);
 
             $table->timestamps();
         });
