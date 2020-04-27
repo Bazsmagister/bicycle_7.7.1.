@@ -18,9 +18,13 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = [
-        'name', 'email', 'password', 'phone'
-    ];
+
+    // protected $fillable = [
+    //     'name', 'email', 'password', 'phone', 'created_at', 'updated_at'
+    // ];
+
+    protected $guarded = [];
+
 
     /**
      * The attributes that should be hidden for arrays.
@@ -39,4 +43,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+        // In your User model, add the following line in the User class:
+        // Now, whenever you save or update a user, Laravel will automatically update the created_at and updated_at fields.
+    public $timestamps = true;
+
 }
