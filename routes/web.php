@@ -24,6 +24,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Route::get('user/{id}', 'UserController@show');
+
+// When registering routes for single action controllers, you do not need to specify a method:
+Route::get('user/{id}', 'ShowProfile');
+
 // Route::get('/', function () {
 //     $user = $request->user(); //getting the current logged in user
 //     dd($user->hasRole('admin','editor')); // and so on

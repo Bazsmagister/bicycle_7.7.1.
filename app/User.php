@@ -48,4 +48,39 @@ class User extends Authenticatable
         // Now, whenever you save or update a user, Laravel will automatically update the created_at and updated_at fields.
     public $timestamps = true;
 
+
+
+    // public function roles() {
+
+    //     return $this->belongsToMany(Role::class);
+
+    // }
+
+    // public function permissions() {
+
+    //         return $this->belongsToMany(Permission::class);
+
+    // }
+
+    // public function hasRole($name)
+    // {
+    //     foreach ($this->roles as $role)
+    //     {
+    //         if ($role->name == $name) return true;
+    //     }
+    //     return false;
+    // }
+
+
+    // public function assignRole($role)
+    // {
+    //     return $this->roles()->attach($role);
+    // }
+
+
+    // public function removeRole($role)
+    // {
+    //     return $this->roles()->detach($role);
+    // }
+
 }

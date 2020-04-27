@@ -26,7 +26,11 @@ class CreatePermissionRoleTable extends Migration
 
              //SETTING THE PRIMARY KEYS
              $table->primary(['permission_id','role_id']);
-             $table->timestamps();
+
+            //  $table->timestamps();
+             $table->timestamp('created_at')->default(now());
+             $table->timestamp('modified_at')->nullable();
+
         });
     }
 
