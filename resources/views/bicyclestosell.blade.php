@@ -3,9 +3,10 @@
 @section('contentsell')
 
 All the bicycles to sell.
-@auth
+
+@role('super-admin')
 <a href="/bicycle/create"> Add a new Bicycle </a>
-@endauth
+@endrole
 
 <hr>
 

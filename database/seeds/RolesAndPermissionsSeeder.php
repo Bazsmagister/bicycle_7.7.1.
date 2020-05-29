@@ -55,8 +55,46 @@ class RolesAndPermissionsSeeder extends Seeder
         // $role = Role::create(['name' => 'boss-wife'])
         //     ->givePermissionTo(['edit bicycles', 'create bicycles']);
 
-        $role = Role::create(['name' => 'boss-super-admin']);
+        $role = Role::create(['name' => 'super-admin']);
         $role->givePermissionTo(Permission::all());
+
+        $admin = factory(\App\User::class)->create([
+            'id'    => '1',
+            'name'  => 'admin',
+            'email' => 'admin@admin.com',
+            'password' => bcrypt('adminadmin'),
+            'phone' => '0623232565321',
+        ]);
+        $admin ->assignRole('super-admin');
+
+
+        $serviceman = factory(\App\User::class)->create([
+            'id'    => '2',
+            'name'  => 'Serviceman Selena',
+            'email' => 'service@service.com',
+            'password' => bcrypt('serviceservice'),
+            'phone' => '0623232565321',
+        ]);
+        $serviceman ->assignRole('serviceman');
+
+        $salesman = factory(\App\User::class)->create([
+            'id'    => '3',
+            'name'  => 'Salesman Sam',
+            'email' => 'sale@sale.com',
+            'password' => bcrypt('salesale'),
+            'phone' => '0623232565321',
+        ]);
+        $salesman ->assignRole('salesman');
+
+        $customer = factory(\App\User::class)->create([
+            'id'    => '4',
+            'name'  => 'user',
+            'email' => 'user@user.com',
+            'password' => bcrypt('useruser'),
+            'phone' => '0623232565321',
+        ]);
+        $customer ->assignRole('customer');
+
 
 
         // Role::create(['name' => 'admin']);

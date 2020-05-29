@@ -6,9 +6,6 @@ use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Request;
 
-
-
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,7 +31,18 @@ Route::get('user/{id}', 'ShowProfile');
 //     dd($user->hasRole('admin','editor')); // and so on
 // });
 
-Route::get('service', 'BicycleController@service');
+
+//Route::get('service', 'BicycleController@service');
+
+Route::group(['middleware' => ['role:super-admin']], function () {
+    Route::get('service', 'BicycleController@service');
+});
+Route::group(['middleware' => ['role_or_permission:serviceman|edit bicycles']], function () {
+//
+});
+
+
+
 Route::get('rentabike', 'BicycleController@rent');
 // Route::get('newbikes', 'BicycleController@buy');
 // Route::get('newbikes', 'BicycleController@buy');
@@ -72,4 +80,3 @@ Route::get('/home', 'HomeController@index')->name('home');
 // // dd($user->givePermissionsTo('create-tasks'));// will return permission, if not null
 // dd($user->can('create-tasks')); // will return true, if user has permission
 // });
-

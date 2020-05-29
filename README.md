@@ -238,6 +238,10 @@ Roles can still be used to group permissions for easy assignment, and you can st
 
 eg: users have roles, and roles have permissions, and your app always checks for permissions, not roles.
 
+# app.php
+
+Spatie\Permission\PermissionServiceProvider::class,
+
 # middlewares
 
 https://docs.spatie.be/laravel-permission/v3/basic-usage/middleware/
@@ -292,3 +296,5 @@ in AuthServiceProvider
                 return true;
             }
         });
+
+Spatie\Permission\PermissionServiceProvider::class,

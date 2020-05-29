@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('contentservice')
-All the bicycles to service / under service
+<h3>All the bicycles to service / under service</h3>
 
 <hr>
 

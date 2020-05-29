@@ -34,8 +34,9 @@
 
                     <div><a href="/bicycle">New bicycles</a></div>
                     <div><a href="/rentabike">Rent-a-bicycle</a></div>
+                    @auth
                     <div><a href="/service">Service</a></div>
-
+                    @endauth
 
                 </div>
 
@@ -67,7 +68,7 @@
                         @else
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>Current user:
                                 {{ Auth::user()->name }} | {{ Auth::user()->email }}<span class="caret"></span>
                             </a>
 
