@@ -173,3 +173,9 @@ composer dump-autoload
 https://github.com/spatie/laravel-permission?fbclid=IwAR3HEl4t7kRcV8fQc6v23_YthrwXKXHs1BZUQH3AKmzicUAhuR5CVyQUwyE
 
 his package can be used in Laravel 5.8 or higher.
+
+composer require spatie/laravel-permission
+
+//Using version ^3.13 for spatie/laravel-permission
+
+php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvider"

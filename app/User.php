@@ -5,11 +5,15 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use App\Permissions\HasPermissionsTrait;
+
+//use App\Permissions\HasPermissionsTrait;
 
 class User extends Authenticatable
 {
     use Notifiable;
+
+    use HasRoles; //spatie
+
 
 
     /**
@@ -43,8 +47,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-        // In your User model, add the following line in the User class:
-        // Now, whenever you save or update a user, Laravel will automatically update the created_at and updated_at fields.
+    // In your User model, add the following line in the User class:
+    // Now, whenever you save or update a user, Laravel will automatically update the created_at and updated_at fields.
     public $timestamps = true;
 
 
@@ -81,5 +85,4 @@ class User extends Authenticatable
     // {
     //     return $this->roles()->detach($role);
     // }
-
 }
