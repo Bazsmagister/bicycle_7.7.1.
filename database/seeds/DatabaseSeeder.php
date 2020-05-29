@@ -11,7 +11,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-
         $this->call(UserSeeder::class);
         $this->call(BicycleSeeder::class);
 
@@ -22,6 +21,6 @@ class DatabaseSeeder extends Seeder
         //  $this->call(PermissionUserSeeder::class);
         //  $this->call(PermissionRoleSeeder::class);
 
-
+        $this->call(RolesAndPermissionsSeeder::class);
     }
 }

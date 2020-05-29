@@ -191,3 +191,103 @@ php artisan make:seeder RolesAndPermissionsSeeder
 in seeder.php:
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
+
+When you use the built-in functions for manipulating roles and permissions, the cache is automatically reset for you, and relations are automatically reloaded for the current model record:
+
+$user->assignRole('writer');
+$user->removeRole('writer');
+$user->syncRoles(params);
+$role->givePermissionTo('edit articles');
+$role->revokePermissionTo('edit articles');
+$role->syncPermissions(params);
+$permission->assignRole('writer');
+$permission->removeRole('writer');
+\$permission->syncRoles(params);
+
+# Manual cache reset
+
+To manually reset the cache for this package, you can run the following in your app code:
+
+app()->make(\Spatie\Permission\PermissionRegistrar::class)->forgetCachedPermissions();
+
+Or you can use an Artisan command:
+
+php artisan permission:cache-reset
+
+# draw
+
+https://drawsql.app/templates/laravel-permission
+
+## Timestamps
+
+Excluding Timestamps from JSON
+
+If you want to exclude timestamps from JSON output of role/permission pivots, you can extend the Role and Permission models into your own App namespace and mark the pivot as hidden:
+
+    protected $hidden = ['pivot'];
+
+Adding Timestamps to Pivots
+
+If you want to add timestamps to your pivot tables, you can do it with a few steps: - update the tables by calling \$table->timestamps(); in a migration - extend the Permission and Role models and add ->withTimestamps(); to the BelongsToMany relationshps for roles() and permissions() - update your User models (wherever you use the HasRoles or HasPermissions traits) by adding ->withTimestamps(); to the BelongsToMany relationshps for roles() and permissions()
+
+# Roles vs Permissions
+
+It is generally best to code your app around permissions only. That way you can always use the native Laravel @can and can() directives everywhere in your app.
+
+Roles can still be used to group permissions for easy assignment, and you can still use the role-based helper methods if truly necessary. But most app-related logic can usually be best controlled using the can methods, which allows Laravel’s Gate layer to do all the heavy lifting.
+
+eg: users have roles, and roles have permissions, and your app always checks for permissions, not roles.
+
+# middlewares
+
+https://docs.spatie.be/laravel-permission/v3/basic-usage/middleware/
+
+in app\http\kernel
+'role' => \Spatie\Permission\Middlewares\RoleMiddleware::class,
+'permission' => \Spatie\Permission\Middlewares\PermissionMiddleware::class,
+'role_or_permission' => \Spatie\Permission\Middlewares\RoleOrPermissionMiddleware::class,
+
+Then you can protect your routes using middleware rules:
+
+Route::group(['middleware' => ['role:super-admin']], function () {
+//
+});
+
+Route::group(['middleware' => ['permission:publish articles']], function () {
+//
+});
+
+Route::group(['middleware' => ['role:super-admin','permission:publish articles']], function () {
+//
+});
+
+Route::group(['middleware' => ['role_or_permission:super-admin|edit articles']], function () {
+//
+});
+
+Route::group(['middleware' => ['role_or_permission:publish articles']], function () {
+//
+});
+
+You can protect your controllers similarly, by setting desired middleware in the constructor:
+
+public function \_\_construct()
+{
+\$this->middleware(['role:super-admin','permission:publish articles|edit articles']);
+}
+
+public function \_\_construct()
+{
+\$this->middleware(['role_or_permission:super-admin|edit articles']);
+}
+
+# Grant superadmin
+
+\$this->registerPolicies();
+
+        // Implicitly grant "Super Admin" role all permission checks using can()
+        Gate::before(function ($user, $ability) {
+            if ($user->hasRole('Super-Admin')) {
+                return true;
+            }
+        });
