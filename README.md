@@ -283,6 +283,7 @@ public function \_\_construct()
 
 # Grant superadmin
 
+in AuthServiceProvider
 \$this->registerPolicies();
 
         // Implicitly grant "Super Admin" role all permission checks using can()

@@ -23,8 +23,9 @@ class RolesAndPermissionsSeeder extends Seeder
 
 
         // create permissions
-        Permission::create(['name' => 'create bicycles']);
         Permission::create(['name' => 'view bicycles']);
+        Permission::create(['name' => 'create bicycles']);
+
 
         Permission::create(['name' => 'edit bicycles']);
         Permission::create(['name' => 'delete bicycles']);
@@ -51,19 +52,19 @@ class RolesAndPermissionsSeeder extends Seeder
 
 
         // or may be done by chaining
-        $role = Role::create(['name' => 'boss-wife'])
-            ->givePermissionTo(['edit bicycles', 'create bicycles']);
+        // $role = Role::create(['name' => 'boss-wife'])
+        //     ->givePermissionTo(['edit bicycles', 'create bicycles']);
 
         $role = Role::create(['name' => 'boss-super-admin']);
         $role->givePermissionTo(Permission::all());
 
 
-        Role::create(['name' => 'admin']);
-        $admin = factory(\App\User::class)->create([
-        'name' => 'John Doe',
-        'email' => 'john@example.com',
-        'phone' => '000121321215'
-        ]);
-        $admin->assignRole('admin');
+        // Role::create(['name' => 'admin']);
+        // $admin = factory(\App\User::class)->create([
+        // 'name' => 'John Doe',
+        // 'email' => 'john@example.com',
+        // 'phone' => '000121321215'
+        // ]);
+        // $admin->assignRole('admin');
     }
 }
