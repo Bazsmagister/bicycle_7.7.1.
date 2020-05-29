@@ -87,7 +87,7 @@ DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
 DB_DATABASE=bicycle
-DB_USERNAME=u  
+DB_USERNAME=u
 DB_PASSWORD=u
 
 ## .env
@@ -167,3 +167,9 @@ User.php
 use App\Permissions\HasPermissionsTrait;
 
 composer dump-autoload
+
+# spatie/laravel-permission
+
+https://github.com/spatie/laravel-permission?fbclid=IwAR3HEl4t7kRcV8fQc6v23_YthrwXKXHs1BZUQH3AKmzicUAhuR5CVyQUwyE
+
+his package can be used in Laravel 5.8 or higher.

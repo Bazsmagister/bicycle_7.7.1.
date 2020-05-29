@@ -10,7 +10,6 @@ use App\Permissions\HasPermissionsTrait;
 class User extends Authenticatable
 {
     use Notifiable;
-    use HasPermissionsTrait; //Import The Trait
 
 
     /**
