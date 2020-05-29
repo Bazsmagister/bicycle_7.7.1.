@@ -179,3 +179,15 @@ composer require spatie/laravel-permission
 //Using version ^3.13 for spatie/laravel-permission
 
 php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvider"
+
+/_Copied File [/vendor/spatie/laravel-permission/config/permission.php] To [/config/permission.php]
+Copied File [/vendor/spatie/laravel-permission/database/migrations/create_permission_tables.php.stub] To [/database/migrations/2020_05_29_090505_create_permission_tables.php]
+Publishing complete._/
+
+# Seeder
+
+php artisan make:seeder RolesAndPermissionsSeeder
+
+in seeder.php:
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;

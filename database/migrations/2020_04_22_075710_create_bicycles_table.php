@@ -32,10 +32,6 @@ class CreateBicyclesTable extends Migration
             // $table->string('image',255)->default('bic.png');
 
 
-
-
-
-
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');
@@ -52,4 +48,3 @@ class CreateBicyclesTable extends Migration
         Schema::dropIfExists('bicycles');
     }
 }
-
