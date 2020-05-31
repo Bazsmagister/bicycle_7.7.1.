@@ -37,6 +37,9 @@
                     @auth
                     <div><a href="/service">Service</a></div>
                     @endauth
+                    @role('super-admin')
+                    <div><a href="/users">Users</a></div>
+                    @endrole
 
                 </div>
 

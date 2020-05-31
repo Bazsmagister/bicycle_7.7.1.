@@ -24,7 +24,9 @@ Route::get('/', function () {
 // Route::get('user/{id}', 'UserController@show');
 
 // When registering routes for single action controllers, you do not need to specify a method:
-Route::get('user/{id}', 'ShowProfile');
+//Route::get('users/{id}', 'ShowProfile');
+
+//Route::get('/users', 'UserController@index');
 
 // Route::get('/', function () {
 //     $user = $request->user(); //getting the current logged in user
@@ -35,7 +37,8 @@ Route::get('user/{id}', 'ShowProfile');
 //Route::get('service', 'BicycleController@service');
 
 Route::group(['middleware' => ['role:super-admin']], function () {
-    Route::get('service', 'BicycleController@service');
+    //Route::get('users/{id}', 'ShowProfile');
+    //Route::get('/users', 'UserController@index');
 });
 
 // Route::group(['middleware' => ['role_or_permission:serviceman|edit bicycles']], function () {
@@ -47,6 +50,10 @@ Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']
 });
 
 
+Route::resource('users', 'UserController');
+
+
+    //Route::get('service', 'BicycleController@service');
 
 
 Route::get('rentabike', 'BicycleController@rent');

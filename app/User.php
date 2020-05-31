@@ -7,7 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles; //spatie
 
-//use App\Permissions\HasPermissionsTrait;
+//use App\Permissions\HasPermissionsTrait; //before Spatie pacjage i used this trait.
 
 //class User extends Authenticatable implements MustVerifyEmail
 
