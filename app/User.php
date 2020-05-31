@@ -9,6 +9,8 @@ use Spatie\Permission\Traits\HasRoles; //spatie
 
 //use App\Permissions\HasPermissionsTrait;
 
+//class User extends Authenticatable implements MustVerifyEmail
+
 class User extends Authenticatable
 {
     use Notifiable;

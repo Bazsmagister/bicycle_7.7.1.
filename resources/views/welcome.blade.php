@@ -176,8 +176,9 @@
             <div class="links">
                 <a href="/bicycle">New bicycles</a>
                 <a href="/rentabike">Rent-a-bicycle</a>
+                @auth
                 <a href="/service">Service</a>
-
+                @endauth
             </div>
             <br>
 
@@ -192,7 +193,7 @@
 
     </div>
     <x-alert>
-        <strong>Whoops!</strong> x-alert component
+        <strong>Whoops!</strong> x-alert component try
     </x-alert>
 
 </body>

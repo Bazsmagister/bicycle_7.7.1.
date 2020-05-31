@@ -37,9 +37,15 @@ Route::get('user/{id}', 'ShowProfile');
 Route::group(['middleware' => ['role:super-admin']], function () {
     Route::get('service', 'BicycleController@service');
 });
-Route::group(['middleware' => ['role_or_permission:serviceman|edit bicycles']], function () {
-//
+
+// Route::group(['middleware' => ['role_or_permission:serviceman|edit bicycles']], function () {
+// //
+// });
+
+Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
+    \UniSharp\LaravelFilemanager\Lfm::routes();
 });
+
 
 
 
@@ -55,6 +61,9 @@ Route::resource('bicycle', 'BicycleController');
 
 
 Auth::routes();
+
+//Auth::routes(['verify' => true]);
+
 
 /*named route */
 Route::get('/home', 'HomeController@index')->name('home');

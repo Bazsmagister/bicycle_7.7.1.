@@ -230,7 +230,7 @@ Adding Timestamps to Pivots
 
 If you want to add timestamps to your pivot tables, you can do it with a few steps: - update the tables by calling \$table->timestamps(); in a migration - extend the Permission and Role models and add ->withTimestamps(); to the BelongsToMany relationshps for roles() and permissions() - update your User models (wherever you use the HasRoles or HasPermissions traits) by adding ->withTimestamps(); to the BelongsToMany relationshps for roles() and permissions()
 
-# Roles vs Permissions
+## Roles vs Permissions
 
 It is generally best to code your app around permissions only. That way you can always use the native Laravel @can and can() directives everywhere in your app.
 
@@ -238,11 +238,11 @@ Roles can still be used to group permissions for easy assignment, and you can st
 
 eg: users have roles, and roles have permissions, and your app always checks for permissions, not roles.
 
-# app.php
+## app.php
 
 Spatie\Permission\PermissionServiceProvider::class,
 
-# middlewares
+## middlewares
 
 https://docs.spatie.be/laravel-permission/v3/basic-usage/middleware/
 
@@ -285,7 +285,7 @@ public function \_\_construct()
 \$this->middleware(['role_or_permission:super-admin|edit articles']);
 }
 
-# Grant superadmin
+## Grant superadmin
 
 in AuthServiceProvider
 \$this->registerPolicies();
@@ -298,3 +298,28 @@ in AuthServiceProvider
         });
 
 Spatie\Permission\PermissionServiceProvider::class,
+
+## MustVerifyEmail
+
+in app\User.php
+class User extends Authenticatable implements MustVerifyEmail
+in:
+app/routes/web.php
+Auth::routes(['verify' => true]);
+
+and simple in your method just call this:
+
+\$user->sendEmailVerificationNotification();
+
+## File-manager to upload photos.
+
+composer require unisharp/laravel-filemanager
+php artisan vendor:publish --tag=lfm_config
+php artisan vendor:publish --tag=lfm_public
+php artisan storage:link
+
+## web
+
+Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
+\UniSharp\LaravelFilemanager\Lfm::routes();
+});
