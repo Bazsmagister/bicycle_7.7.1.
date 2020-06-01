@@ -17,10 +17,7 @@
     {{$user}}
 
     <div>
-        <a href="/users/{user}/edit">
-            <button class="btn btn-info" type="submit">Edit the user</button>
-        </a>
-
+        <a href="{{$user->id}}/edit" class="btn btn-warning">Edit</a>
     </div>
 
     <div>

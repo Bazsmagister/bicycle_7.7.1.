@@ -25,7 +25,7 @@ class UserController extends Controller
 
     public function show($id)
     {
-        return view('users.profile', ['user' => User::findOrFail($id)]);
+        return view('users.show', ['user' => User::findOrFail($id)]);
     }
 
     // public function show($id)
@@ -72,9 +72,11 @@ class UserController extends Controller
         'password' => bcrypt(request('password')),
         'phone' => request('phone')
     ]);
-        $request->flashExcept('password');
+        //$request->flashExcept('password');
 
-        return redirect()->route('users.index')
+        return redirect()->//route('users.index')
+        back()
+        ->withInput()
              ->with('message', 'User,
               '. $user->name.' created');
     }
