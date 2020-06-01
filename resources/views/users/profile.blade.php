@@ -4,18 +4,26 @@
 
 
 <div style="padding-left: 20px">
-    {{$user->name}}
-    <br>
-    {{$user->email}}
+    <p>Name :
+        {{$user->name}} </p>
+    <p> E-mail :
+        {{$user->email}} </p>
+
+    <p> Joined :
+        {{$user->created_at}} </p>
+
     <hr>
     {{-- {{$user}} --}}
     {{$user}}
+
+    <div>
+        <button class="btn btn-info" type="submit">Edit the user</button>
+    </div>
+
+    <div>
+        <button class="btn btn-danger" type="submit">Delete the user</button>
+    </div>
 </div>
-
-
-
-
-
 
 
 @endsection

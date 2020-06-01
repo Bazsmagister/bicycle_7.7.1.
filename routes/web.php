@@ -36,10 +36,11 @@ Route::get('/', function () {
 
 //Route::get('service', 'BicycleController@service');
 
-Route::group(['middleware' => ['role:super-admin']], function () {
-    //Route::get('users/{id}', 'ShowProfile');
-    //Route::get('/users', 'UserController@index');
-});
+Route::resource('users', 'UserController');
+
+// Route::group(['middleware' => ['role:super-admin']], function () {
+
+// });
 
 // Route::group(['middleware' => ['role_or_permission:serviceman|edit bicycles']], function () {
 // //
@@ -50,7 +51,7 @@ Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']
 });
 
 
-Route::resource('users', 'UserController');
+//Route::resource('users', 'UserController');
 
 
     //Route::get('service', 'BicycleController@service');

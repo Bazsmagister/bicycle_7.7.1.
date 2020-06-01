@@ -94,7 +94,11 @@
         </nav>
 
         <main class="py-4">
+            @if(Session::has('message'))
+            <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('message') }}</p>
+            @endif
             @yield('content')
+            @yield('contentuser')
 
             @yield('contentsell')
             @yield('contentrent')
