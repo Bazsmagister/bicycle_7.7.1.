@@ -1,10 +1,14 @@
 @extends('layouts.app')
 
 
+@section('logged_in')
+
+
 <div>You are logged in (1) : {{ Auth::user()->name }} </div>
 <p>
     You are logged in (2): {{ auth()->user()->name }}
 </p>
+@endsection
 
 {{-- @section('content')
 
