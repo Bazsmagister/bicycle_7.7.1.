@@ -1,7 +1,9 @@
 @extends('layouts.app')
 
 
+
 @section('content')
+
 
 <button class="btn btn-dark" type="submit">
     <a href="/users/create">Create a new user</a>

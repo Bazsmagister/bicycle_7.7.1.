@@ -104,7 +104,7 @@ class UserController extends Controller
             'users.show',
             $user->id
         )->with(
-            'flash_message',
+            'message',
             'User, '. $user->name.' updated'
         );
     }
@@ -114,10 +114,17 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $user->delete();
 
+        // return redirect()->route('users.index')
+        //     ->with(
+        //         'message',
+        //         'User successfully deleted'
+        //     );
+
+        //Multi "with" message flashed to the Session)
         return redirect()->route('users.index')
             ->with(
-                'flash_message',
+                'message',
                 'User successfully deleted'
-            );
+            )->with('alert-class', 'alert-danger');
     }
 }

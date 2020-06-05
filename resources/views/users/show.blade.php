@@ -20,9 +20,20 @@
         <a href="{{$user->id}}/edit" class="btn btn-warning">Edit</a>
     </div>
 
-    <div>
+    <form action="{{$user->id}}" method="post">
+        {{-- @method('Delete') --}}
+        {{ method_field('delete') }}
+        @csrf
+
         <button class="btn btn-danger" type="submit">Delete the user</button>
-    </div>
+    </form>
+    <hr>
+    <form action="{{ route('users.destroy', $user->id) }}" method="POST">
+        @csrf
+        @method('delete')
+        <button type="submit" class="btn btn-outline-danger">Delete</button>
+    </form>
+
 </div>
 
 
