@@ -68,8 +68,10 @@
 
             <label for="Price">Price</label>
             <input type="text" id="price" name="price" placeholder="Price" required numeric>
-
-
+            <div>
+                <label for="Upload photo">Photo(s)</label>
+                <input type="file" id="image" name="image" placeholder="Photo">
+            </div>
             {{-- <label for="sell_or_rent_or_service">Where to the bicycle</label>
             <select id="sell_or_rent_or_service" name="is_sellable">
                 <option value="to_sell">to Sell</option>
@@ -111,6 +113,7 @@
             <input type="submit" value="Submit">
         </form>
     </div>
+
     @endauth
 
 </body>

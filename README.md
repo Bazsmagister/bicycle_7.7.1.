@@ -323,3 +323,10 @@ php artisan storage:link
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
 \UniSharp\LaravelFilemanager\Lfm::routes();
 });
+
+http://127.0.0.1:8000/laravel-filemanager/demo
+
+`
+
+<iframe src="/laravel-filemanager" style="width: 100%; height: 500px; overflow: hidden; border: none;"></iframe>
+`

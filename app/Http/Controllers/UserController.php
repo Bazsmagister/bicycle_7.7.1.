@@ -123,8 +123,7 @@ class UserController extends Controller
         //Multi "with" message flashed to the Session)
         return redirect()->route('users.index')
             ->with(
-                'message',
-                'User successfully deleted'
+                'message','User successfully deleted'
             )->with('alert-class', 'alert-danger');
     }
 }
