@@ -4,7 +4,7 @@
 
 <div class="id">
 
-    All the bicycles to rent
+    All the bicycles to rent!
 
     <hr>
 

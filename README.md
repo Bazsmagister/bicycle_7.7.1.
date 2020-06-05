@@ -330,3 +330,16 @@ http://127.0.0.1:8000/laravel-filemanager/demo
 
 <iframe src="/laravel-filemanager" style="width: 100%; height: 500px; overflow: hidden; border: none;"></iframe>
 `
+
+# Scripts
+
+defer doesn't work
+{{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
+<script src="{{ asset('js/app.js') }}"></script>
+
+To fix it, simply remove the defer attribute from the script tag.
+
+    The defer attribute is a boolean attribute.
+
+    When present, it specifies that the script is executed when the page has finished parsing.
+    Note: The defer attribute is only for external scripts (should only be used if the src attribute is present).
