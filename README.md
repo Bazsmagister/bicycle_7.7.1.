@@ -359,4 +359,13 @@ To fix it, simply remove the defer attribute from the script tag.
 
 </script>
 
-#
+# enctype="multipart/form-data"
+
+multipart/form-data No characters are encoded. This value is required when you are using forms that have a file upload control
+
+# erreor finder
+
+$data= $request->all();
+echo "<pre>";
+print_r(\$data);
+//die;

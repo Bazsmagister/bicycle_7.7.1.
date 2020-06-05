@@ -91,3 +91,37 @@
             padding: 20px;
         } */
     </style>
+
+
+
+
+  Bicycle::create([
+        'name' => $request['name'],
+        'price' => $request['price'],
+        'description' => $request['description'],
+        // 'image' => $request['image']->getClientOriginalName()
+        //'image' => $request->file('image')->getClientOriginalName()
+
+         'image' => function () use ($request) {
+             if ($request->hasFile('image')) {
+                 $image_tmp = $request->file('image');
+                 if ($image_tmp->isValid()) {
+
+                        //get extension
+                     $extension = $image_tmp->getClientOriginalExtension();
+
+                     //Generating image name
+                     $imageName= rand(111, 999999).'.'.$extension;
+
+                     //Image Path
+                     $imagePath= 'images/'.$imageName;
+
+
+                     //Uploading the image
+                     return Bicycle::make($image_tmp)->save($imagePath);
+                 }
+             } else {
+                 $imageName="";
+                 return false;
+             }
+         }]);
