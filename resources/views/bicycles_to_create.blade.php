@@ -48,23 +48,16 @@
 <img id="holder" style="margin-top:15px;max-height:100px;">
 </div>
 
-<input id="ddtype" type="text">
+
 
 <script src="/vendor/laravel-filemanager/js/stand-alone-button.js"></script>
 <script>
     $('#lfm').filemanager('image');
 </script>
 
-<script type="text/javascript">
-    jQuery(document).ready(function(){
 
-            jQuery( "#ddtype" ).change(function() {
-                alert( "Handler for .change() called." );
-            });
 
-        });
 
-</script>
 
 @endauth
 
