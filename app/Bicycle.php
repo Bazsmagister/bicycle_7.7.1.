@@ -14,4 +14,9 @@ class Bicycle extends Model
     //protected $fillable = [''];
 
     public $timestamps = true;
+
+    public function getImageAttribute()
+    {
+        return $this->image;
+    }
 }

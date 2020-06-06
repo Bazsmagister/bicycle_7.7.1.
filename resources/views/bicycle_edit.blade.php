@@ -12,13 +12,15 @@
     <form action="/bicycle" method="POST" enctype="multipart/form-data">
         @csrf
         <label for="name">Name</label>
-        <input type="text" id="name" name="name" placeholder="Your biycle name.." required>
+        <input type="text" id="name" name="name" placeholder="Your biycle name.."
+            value="{{ old('name', bicycle()->name) }}">
 
         <label for="description">Description</label>
-        <input type="text" id="description" name="description" placeholder="Description" required>
+        <input type="text" id="description" name="description" placeholder="Description"
+            value="{{ old('description', bicycle()->description) }}">
 
         <label for="Price">Price</label>
-        <input type="text" id="price" name="price" placeholder="Price" required numeric>
+        <input type="text" id="price" name="price" placeholder="Price" value="{{ old('price', bicycle()->price) }}">
         <div>
             <label for="Upload photo">Photo(s)</label>
             <input type="file" id="image" name="image" placeholder="Upload photo" accept="image/*">
