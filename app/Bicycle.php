@@ -15,8 +15,8 @@ class Bicycle extends Model
 
     public $timestamps = true;
 
-    public function getImageAttribute()
-    {
-        return $this->image;
-    }
+    // public function getImageAttribute()
+    // {
+    //     return $this->image;
+    // }
 }

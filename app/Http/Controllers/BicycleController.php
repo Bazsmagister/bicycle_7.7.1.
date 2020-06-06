@@ -6,6 +6,7 @@ use App\Bicycle;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
+use App\Traits\UploadTrait;
 
 class BicycleController extends Controller
 {
@@ -102,9 +103,9 @@ class BicycleController extends Controller
      * @param  \App\Bicycle  $bicycle
      * @return \Illuminate\Http\Response
      */
-    public function show(Bicycle $bicycle)
+    public function show($id)
     {
-        //
+        return view('bicycle_show', ['bicycle' => Bicycle::findOrFail($id)]);
     }
 
     /**
@@ -125,66 +126,99 @@ class BicycleController extends Controller
      * @param  \App\Bicycle  $bicycle
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Bicycle $bicycle)
+    public function update(Request $request)
     {
-        if ($request->isMethod('post')) {
-            $data= $request->all();
-            //echo "<pre>";print_r($data);die;
+        // Form validation
+        $request->validate([
+            'name'              =>  'required',
+            'image'     =>  'required|image|mimes:jpeg,png,jpg,gif|max:2048'
+        ]);
 
-            //Creating Validation
-            //   $rules =[
-            //                 'admin_name'=>'required|string',
-            //                 'mobile'=> 'required|numeric',
-            //                 'admin_image'=> 'required|image|file',
+        // Get current user
+        $bicycle = Bicycle::findOrFail($id);
+        // Set user name
+        $bicycle->name = $request->input('name');
 
-            //             ];
-
-            //   $customMessage=[
-            //                 'admin_name.required'=>'Name is Required',
-            //                 'admin_name.alpha' => 'Valid Name is required',
-            //                 'mobile.required'=>'Mobile is Required',
-            //                 'mobile.numeric'=>'Valid Mobile is Required',
-            //                'admin_image.required'=>'Image is Required',
-            //                'admin_image.image'=>'Valid Image is Required',
-            //             ];
-
-            //   $this->validate($request, $rules, $customMessage);
-
-            //Uploading Admin Image
-            // $imageName= '';
-            if ($request->hasFile('image')) {
-                $image_tmp = $request->hasFile('image');
-                if ($image_tmp->isValid()) {
-
-                        //get extension
-                    $extension = $image_tmp->getClientOriginalExtension();
-
-                    //Generating image name
-                    $imageName= rand(111, 999999).'.'.$extension;
-
-                    //Image Path
-                    $imagePath= 'images/admin_images/admin_photos/'.$imageName;
-
-                    //Uploading the image
-                    Bicycle::make($image_tmp)->save($imagePath);
-                }
-            } else {
-                $imageName="";
-                //return false;
-            }
-
-
-
-            //$result=Bicycle  //::where('email', Auth::guard('admin')->user()->email)
-            Bicycle::update(['name'=>$data['name'], 'description'=>$data['description'], 'image'=>$imageName]);
-
-            //echo "<pre>";print_r($result);die;
-            //Session::flash('success_message', 'Details updated Successfully');
-            return redirect()->back();
+        // Check if a profile image has been uploaded
+        if ($request->has('image')) {
+            // Get image file
+            $image = $request->file('image');
+            // Make a image name based on user name and current timestamp
+            $name = Str::slug($request->input('name')).'_'.time();
+            // Define folder path
+            $folder = '/uploads/images/';
+            // Make a file path where image will be stored [ folder path + file name + file extension]
+            $filePath = $folder . $name. '.' . $image->getClientOriginalExtension();
+            // Upload image
+            $this->uploadOne($image, $folder, 'public', $name);
+            // Set user profile image path in database to filePath
+            $bicycle->image = $filePath;
         }
+        // Persist user record to database
+        $bicycle->save();
 
-        return view('home');
+        // Return user back and show a flash message
+        return redirect()->back()->with(['status' => 'Profile updated successfully.']);
     }
+
+    // if ($request->isMethod('post')) {
+    //     $data= $request->all();
+    //     //echo "<pre>";print_r($data);die;
+
+    //     //Creating Validation
+    //     //   $rules =[
+    //     //                 'admin_name'=>'required|string',
+    //     //                 'mobile'=> 'required|numeric',
+    //     //                 'admin_image'=> 'required|image|file',
+
+    //     //             ];
+
+    //     //   $customMessage=[
+    //     //                 'admin_name.required'=>'Name is Required',
+    //     //                 'admin_name.alpha' => 'Valid Name is required',
+    //     //                 'mobile.required'=>'Mobile is Required',
+    //     //                 'mobile.numeric'=>'Valid Mobile is Required',
+    //     //                'admin_image.required'=>'Image is Required',
+    //     //                'admin_image.image'=>'Valid Image is Required',
+    //     //             ];
+
+    //     //   $this->validate($request, $rules, $customMessage);
+
+    //     //Uploading Admin Image
+    //     // $imageName= '';
+    //     if ($request->hasFile('image')) {
+    //         $image_tmp = $request->hasFile('image');
+    //         if ($image_tmp->isValid()) {
+
+    //                 //get extension
+    //             $extension = $image_tmp->getClientOriginalExtension();
+
+    //             //Generating image name
+    //             $imageName= rand(111, 999999).'.'.$extension;
+
+    //             //Image Path
+    //             $imagePath= 'images/admin_images/admin_photos/'.$imageName;
+
+    //             //Uploading the image
+    //             Bicycle::make($image_tmp)->save($imagePath);
+    //         }
+    //     } else {
+    //         $imageName="";
+    //         //return false;
+    //     }
+
+
+
+    //     //$result=Bicycle  //::where('email', Auth::guard('admin')->user()->email)
+    //     Bicycle::update(['name'=>$data['name'], 'description'=>$data['description'], 'image'=>$imageName]);
+
+    //     //echo "<pre>";print_r($result);die;
+    //     //Session::flash('success_message', 'Details updated Successfully');
+    //     return redirect()->back();
+    // }
+
+    // return view('home');
+
 
     /**
      * Remove the specified resource from storage.

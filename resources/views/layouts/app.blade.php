@@ -106,6 +106,7 @@
             @yield('contentrent')
             @yield('contentservice')
             @yield('bicycles_to_create')
+            @yield('bicycles_to_edit')
             @yield('logged_in')
 
         </main>
