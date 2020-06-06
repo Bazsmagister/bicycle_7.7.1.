@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Bicycle;
+use App\Traits\UploadTrait;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
-use App\Traits\UploadTrait;
 
 class BicycleController extends Controller
 {
@@ -116,7 +117,7 @@ class BicycleController extends Controller
      */
     public function edit(Bicycle $bicycle)
     {
-        //
+        return view('bicycle_edit', compact('bicycle'));
     }
 
     /**
@@ -126,18 +127,22 @@ class BicycleController extends Controller
      * @param  \App\Bicycle  $bicycle
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request, Bicycle $bicycle)
     {
         // Form validation
         $request->validate([
-            'name'              =>  'required',
-            'image'     =>  'required|image|mimes:jpeg,png,jpg,gif|max:2048'
+            'name'              =>  'string',
+            'image'     =>  'image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
 
-        // Get current user
-        $bicycle = Bicycle::findOrFail($id);
-        // Set user name
+        // Get current bike
+        //$bicycle = Bicycle::findOrFail($id);
+        // Set bike name
         $bicycle->name = $request->input('name');
+        $bicycle->description = $request->input('description');
+        $bicycle->price = $request->input('price');
+
+
 
         // Check if a profile image has been uploaded
         if ($request->has('image')) {
@@ -228,7 +233,13 @@ class BicycleController extends Controller
      */
     public function destroy(Bicycle $bicycle)
     {
-        //
+        //$bicycle = Bicycle::findOrFail($bicycle);
+        $bicycle->delete();
+        return redirect()->route('bicycle.index')
+            ->with(
+                'message',
+                'Bike successfully deleted'
+            )->with('alert-class', 'alert-danger');
     }
 
     public function rent(Bicycle $bicycle)

@@ -12,6 +12,9 @@
     <p> Price :
         {{$bicycle->price}} </p>
 
+    <p> Price :
+        {{$bicycle->image}} </p>
+
 
     <hr>
     {{-- {{$user}} --}}
