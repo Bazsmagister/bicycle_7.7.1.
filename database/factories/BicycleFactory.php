@@ -38,7 +38,7 @@ $factory->define(Bicycle::class, function (Faker $faker) {
         // 'user_id'=> $faker->numberBetween(1,10),
         //  'user_id' => function () {
         //      return factory(App\User::class)->create()->id;},
-        'user_id' => factory(App\User::class),
+        //'user_id' => factory(App\User::class),
         'broughtIn_at' => $faker->dateTimeBetween('yesterday', '-25 hours'),
         'startedToService_at' => $faker->dateTimeBetween('yesterday', '-1 hours'),
         //'readyToTakeHome_at' => '',
@@ -47,9 +47,10 @@ $factory->define(Bicycle::class, function (Faker $faker) {
         'is_rentable' => $faker->boolean,
         'is_sellable' => $faker->boolean,
         'is_serviceable' => $faker->boolean,
+        //'image' => '/storage/bic.png',
+
 
         // 'image' => '/storage/6e0cbb8c6ae4ed7c406ce4830ba11481.jpg',
-        'image' => '/storage/bic.png',
 
         // 'image' => '/storage/app/public/6e0cbb8c6ae4ed7c406ce4830ba11481.jpg',
         //This uses lorempixel, which is very slow...

@@ -63,7 +63,7 @@ class RolesAndPermissionsSeeder extends Seeder
 
         $admin = factory(\App\User::class)->create([
             'id'    => '1',
-            'name'  => 'admin',
+            'name'  => 'Admin Adam',
             'email' => 'admin@admin.com',
             'password' => bcrypt('adminadmin'),
             'phone' => '0623232565321',
@@ -89,23 +89,23 @@ class RolesAndPermissionsSeeder extends Seeder
         ]);
         $salesman ->assignRole('salesman');
 
-        $customer = factory(\App\User::class)->create([
+        $authuser = factory(\App\User::class)->create([
             'id'    => '4',
             'name'  => 'Dr. Authenticated User',
             'email' => 'authuser@authuser.com',
             'password' => bcrypt('authuser'),
             'phone' => '0623232565321',
         ]);
-        $customer ->assignRole('authuser');
+        $authuser ->assignRole('authuser');
 
-        $customer = factory(\App\User::class)->create([
+        $visitor = factory(\App\User::class)->create([
             'id'    => '5',
             'name'  => 'Visitor Customer',
             'email' => 'visitor@visitor.com',
             'password' => bcrypt('visitor'),
             'phone' => '0623232565321',
         ]);
-        $customer ->assignRole('visitor');
+        $visitor ->assignRole('visitor');
 
 
 

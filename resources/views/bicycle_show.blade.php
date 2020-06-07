@@ -18,11 +18,11 @@
 
 
     <hr>
-    {{-- {{$user}} --}}
+
     {{$bicycle}}
 
-    {{-- @role('super-user') --}}
-    @hasanyrole('super-user|salesman|serviceman')
+
+    @role('super-user')
 
     <div>
         <a href="{{$bicycle->id}}/edit" class="btn btn-warning">Edit</a>
@@ -41,8 +41,8 @@
         @method('delete')
         <button type="submit" class="btn btn-outline-danger">Delete</button>
     </form>
-    {{-- @endrole --}}
-    @endhasanyrole
+
+    @endrole
 
 </div>
 

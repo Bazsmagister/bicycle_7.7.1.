@@ -380,5 +380,73 @@ but:
 @hasanyrole('super-user|salesman|serviceman')
 @endhasanyrole
 
+Blade doesn't recognise @hasanyrole any longer
+
+"I changed some minor (content) things in a template, and did a "php artisan cache:clear" to make sure things would be visible. Since then, I see that blade is no longer parsing @hasanyrole and @endhasanyrole any longer.
+This is how the html of the page is outputted now.Next I did replace hasanyrole by hasrole (with only one role) and that worked. Then I replaced back the hasanyrole and everything kept working. I'm happy the error is gone, but a bit puzzled and disturbed by such strange behaviour. If anyone could give a hint where I should start looking if it would occur again, it's still welcome."
+
 Check remote:
 git remote -v
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+Steps to recreate
+1.Did a fresh laravel install, configured the guards
+'guards' => [
+'employee' => [
+'driver' => 'session',
+'provider' => 'employees',
+],
+
+]
+
+2.configured model
+namespace App\Company;
+
+//use Eloquent as Model;
+use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
+class Employee extends Authenticatable
+{
+use HasRoles;
+use SoftDeletes;
+use Notifiable;
+
+public \$table = 'employees';
+
+const CREATED_AT = 'created_at';
+const UPDATED_AT = 'updated_at';
+
+protected $dates = ['deleted_at'];
+protected $guard_name = 'employee';
+
+3.After creating employee , I assign role
+
+if ($employee==true) {
+        $employee->assignRole(\$role);
+}
+
+4.I create role and assign permissions
+
+$role = Role::create(['guard_name' => 'employee', 'name' => $request->role_name])
+$role->syncPermissions($request->permissions)
+
+    I use artisan to create permissions
+
+php artisan permission:create-permission "manage_parameters" employee
+
+    On my blade file, I check for permission
+
+             @can('manage_parameters','employee')
+             <li class="pcoded-hasmenu ">
+
+             </li>
+             @endcan
+
+@sokeno
+Author
+sokeno commented on Jan 18, 2019
+
+Thanks @drbyte for your input, I actually got the fix for it, The fix was to get rid of any defined relationships on my Employee model and add protected \$guard_name = 'employee'; , Thanks
