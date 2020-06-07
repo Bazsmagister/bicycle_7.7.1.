@@ -369,3 +369,13 @@ $data= $request->all();
 echo "<pre>";
 print_r(\$data);
 //die;
+
+multi role blade :
+
+https://docs.spatie.be/laravel-permission/v3/basic-usage/blade-directives/
+
+As discussed in the Best Practices section of the docs, it is strongly recommended to always use permission directives, instead of role directives.
+but:
+
+@hasanyrole('super-user|salesman|serviceman')
+@endhasanyrole

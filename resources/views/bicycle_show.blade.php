@@ -12,15 +12,18 @@
     <p> Price :
         {{$bicycle->price}} </p>
 
-    <p> Price :
+    <p> Image :
         {{$bicycle->image}} </p>
+    <img src="{{$bicycle->image}}" alt="quarter jpg" width="100" height="100">
 
 
     <hr>
     {{-- {{$user}} --}}
     {{$bicycle}}
 
-    @role('super-admin', 'serviceman', 'salesman')
+    {{-- @role('super-user') --}}
+    @hasanyrole('super-user|salesman|serviceman')
+
     <div>
         <a href="{{$bicycle->id}}/edit" class="btn btn-warning">Edit</a>
     </div>
@@ -38,7 +41,8 @@
         @method('delete')
         <button type="submit" class="btn btn-outline-danger">Delete</button>
     </form>
-    @endrole
+    {{-- @endrole --}}
+    @endhasanyrole
 
 </div>
 

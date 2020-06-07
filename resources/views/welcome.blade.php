@@ -174,7 +174,7 @@
             </div>
 
             <div class="links">
-                <a href="/bicycle">New bicycles</a>
+                <a href="/bicyclestosell">New bicycles</a>
                 <a href="/rentabike">Rent-a-bicycle</a>
                 @auth
                 <a href="/service">Service</a>
