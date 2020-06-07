@@ -4,6 +4,7 @@
 
 use App\Bicycle;
 use Faker\Generator as Faker;
+
 //use Faker\Provider\DateTime;
 
 /*
@@ -38,9 +39,9 @@ $factory->define(Bicycle::class, function (Faker $faker) {
         //  'user_id' => function () {
         //      return factory(App\User::class)->create()->id;},
         'user_id' => factory(App\User::class),
-        'bicycle_broughtIn_at' => $faker->dateTimeBetween('yesterday', '-25 hours'),
-        'bicycle_startedToServiceIt_at' => $faker->dateTimeBetween('yesterday', '-1 hours'),
-        'bicycle_readyToTakeItHome_at' => now(),
+        'broughtIn_at' => $faker->dateTimeBetween('yesterday', '-25 hours'),
+        'startedToService_at' => $faker->dateTimeBetween('yesterday', '-1 hours'),
+        //'readyToTakeHome_at' => '',
         'price' => $faker->numberBetween(1000, 10000),
         'description' => $faker->paragraph,
         'is_rentable' => $faker->boolean,

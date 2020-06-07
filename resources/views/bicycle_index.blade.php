@@ -1,13 +1,23 @@
 @extends('layouts.app')
 
-@section('contentsell')
-
-All the bicycles to sell.
+@section('contentindex')
+<div class='admin'>
+    <p>
+        For admin : All of our bicycles.
+    </p>
+    {{-- <p style="background-color: red">
+        For admin : All of our bicycles.
+    </p> --}}
+</div>
+<hr>
+<br>
 
 @role('super-admin')
-<button>
-    <a href="/bicycle/create"> Add a new Bicycle </a>
-</button>
+<div>
+    <button>
+        <a href="/bicycle/create"> Add a new Bicycle </a>
+    </button>
+</div>
 @endrole
 
 <hr>
@@ -15,7 +25,7 @@ All the bicycles to sell.
 
 
 
-@foreach ($sellable_bicycles as $bicycle)
+@foreach ($bicycles as $bicycle)
 <div class="container">
     <ul>
 

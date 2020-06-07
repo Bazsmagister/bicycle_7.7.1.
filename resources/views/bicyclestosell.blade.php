@@ -4,13 +4,8 @@
 
 All the bicycles to sell.
 
-@role('super-admin')
-<a href="/bicycle/create"> Add a new Bicycle </a>
-@endrole
 
 <hr>
-
-
 
 
 @foreach ($sellable_bicycles as $bicycle)
@@ -32,6 +27,7 @@ All the bicycles to sell.
             <a href="bicycle/{{$bicycle->id}}" class="btn btn-info">Show</a>
         </div>
 
+        <hr>
 
         {{-- <img src="{{$bicycle->image}}"> --}}
 

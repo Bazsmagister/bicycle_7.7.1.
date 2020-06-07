@@ -1,0 +1,18 @@
+@section('contentuser')
+
+
+<ul>
+    @foreach ($users as $user)
+    <li>
+        {{-- {!! $user !!} --}}
+        {{-- Object of class stdClass could not be converted to string --}}
+
+        {{-- {{$user}} --}}
+        {{-- htmlspecialchars() expects parameter 1 to be string, object given ( --}}
+    </li>
+    @endforeach
+</ul>
+
+{{-- {{$users->links()}} --}}
+
+@endsection

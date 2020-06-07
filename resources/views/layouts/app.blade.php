@@ -34,13 +34,18 @@
 
                 <div class="flex-container">
 
-                    <div><a href="/bicycle">New bicycles</a></div>
+                    <div><a href="/bicyclestosell">New bicycles to sell</a></div>
                     <div><a href="/rentabike">Rent-a-bicycle</a></div>
                     @auth
-                    <div><a href="/service">Service</a></div>
+                    <div><a href="/service">auth(Service)</a></div>
                     @endauth
+                    @role('serviceman')
+                    <div><a href="/service">serviceman(Service)</a></div>
+                    @endrole
                     @role('super-admin')
-                    <div><a href="/users">Users</a></div>
+                    <div><a href="/service">serviceman, admin(Service)</a></div>
+                    <div class='admin'><a href="/users">admin(All Users) |</a></div>
+                    <div class="admin"><a href="/bicycle">admin(All bicycles)</a></div>
                     @endrole
 
                 </div>
@@ -101,7 +106,7 @@
             @endif
             @yield('content')
             @yield('contentuser')
-
+            @yield('contentindex')
             @yield('contentsell')
             @yield('contentrent')
             @yield('contentservice')

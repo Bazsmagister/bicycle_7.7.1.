@@ -24,8 +24,19 @@ class BicycleController extends Controller
      */
     public function index()
     {
-        $sellable_bicycles = Bicycle::all();
-        // return view('bicyclestosell', compact('sellable_bicycles'))->guest(); //doesn't work
+        // $sellable_bicycles = Bicycle::all();
+        // // return view('bicyclestosell', compact('sellable_bicycles'))->guest(); //doesn't work
+        // return view('bicyclestosell', compact('sellable_bicycles'));
+
+        $bicycles = Bicycle::all();
+        return view('bicycle_index', compact('bicycles'));
+    }
+
+    public function sellable()
+    {
+        $sellable_bicycles = DB::table('bicycles')->where('is_sellable', 1)->get();
+        //dump($sellable_bicycles);
+        //die();
         return view('bicyclestosell', compact('sellable_bicycles'));
     }
 
@@ -255,7 +266,7 @@ class BicycleController extends Controller
     }
     public function service()
     {
-        $bicycles_to_service= DB::select('select * from bicycles where is_serviceable = ?', [1]);
-        return view('bicycle_to_service', compact('bicycles_to_service'));
+        $bicycles_in_service= DB::select('select * from bicycles where is_serviceable = ?', [1]);
+        return view('bicycleservice', compact('bicycles_in_service'));
     }
 }

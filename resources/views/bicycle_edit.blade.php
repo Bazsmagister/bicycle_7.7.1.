@@ -27,12 +27,12 @@
             <input type="file" id="image" name="image" placeholder="Upload photo" accept="image/*">
         </div>
 
-        {{--
+
         <input type="checkbox" id="sellable" name="is_sellable" value="{{old('is_sellable', $bicycle->is_sellable)}}">
         <label for="is_sellable"> For Sell</label><br>
-        <input type="checkbox" id="rentable" name="is_rentable" value="1">
+        <input type="checkbox" id="rentable" name="is_rentable" value="{{old('is_rentable', $bicycle->is_rentable)}}">
         <label for="is_rentable"> For Rent</label><br>
-        <input type="checkbox" id="serviceable" name="is serviceable" value="1">
+        {{-- <input type="checkbox" id="serviceable" name="is serviceable" value="1">
         <label for="is_serviceable"> For Service</label><br><br> --}}
 
         <input type="submit" value="Submit">

@@ -4,9 +4,9 @@
 @section('logged_in')
 
 
-<div>You are logged in (1) : {{ Auth::user()->name }} </div>
+<div>Welcome : {{ Auth::user()->name }} </div>
 <p>
-    You are logged in (2): {{ auth()->user()->name }}
+    Welcome: {{ auth()->user()->name }}
 </p>
 @endsection
 

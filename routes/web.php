@@ -54,7 +54,7 @@ Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']
 //Route::resource('users', 'UserController');
 
 
-    //Route::get('service', 'BicycleController@service');
+//Route::get('service', 'BicycleController@service');
 
 
 Route::get('rentabike', 'BicycleController@rent');
@@ -63,6 +63,10 @@ Route::get('rentabike', 'BicycleController@rent');
 
 
 Route::resource('bicycle', 'BicycleController');
+Route::get('bicyclestosell', 'BicycleController@sellable');
+Route::get('service', 'BicycleController@service');
+
+
 // When declaring a resource route, you may specify a subset of actions the controller should handle instead of the full set of default actions
 // Route::resource('bicycle', 'BicycleController')->except(['index', 'show']);
 

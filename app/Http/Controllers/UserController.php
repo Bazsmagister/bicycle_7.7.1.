@@ -4,22 +4,25 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 
 class UserController extends Controller
 {
     public function index()
     {
-        $users =  User::paginate();
+        // $users =  User::paginate();
+        // //$users =  User::all();
+        // //$users = User::orderby('created_at', 'desc')->simplePaginate(5);
+        // //$users = User::orderby('id', 'desc')->simplePaginate(5);
+        // //$users =  User::simplePaginate(8);
+        // return view('users.index')->with('users', $users);
 
-        //$users =  User::all();
-        //$users = User::orderby('created_at', 'desc')->simplePaginate(5);
-
-        //$users = User::orderby('id', 'desc')->simplePaginate(5);
-
-        //$users =  User::simplePaginate(8);
-
+        $users = DB::table('users')->where('id', '<>', 1)->orderBy('created_at', 'desc')->paginate(12);
         return view('users.index')->with('users', $users);
+
+        // $users = DB::table('users')->distinct()->get();
+        // return view('users.index')->with('users', $users);
     }
 
 
@@ -123,7 +126,8 @@ class UserController extends Controller
         //Multi "with" message flashed to the Session)
         return redirect()->route('users.index')
             ->with(
-                'message','User successfully deleted'
+                'message',
+                'User successfully deleted'
             )->with('alert-class', 'alert-danger');
     }
 }

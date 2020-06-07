@@ -20,6 +20,7 @@
     {{-- {{$user}} --}}
     {{$bicycle}}
 
+    @role('super-admin', 'serviceman', 'salesman')
     <div>
         <a href="{{$bicycle->id}}/edit" class="btn btn-warning">Edit</a>
     </div>
@@ -37,6 +38,7 @@
         @method('delete')
         <button type="submit" class="btn btn-outline-danger">Delete</button>
     </form>
+    @endrole
 
 </div>
 

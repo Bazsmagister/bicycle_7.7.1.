@@ -23,3 +23,9 @@
  div>a {
      padding-right: 10px;
  }
+
+ .admin {
+     background-color: red;
+     /* font-family: fantasy;
+     color: red; */
+ }
