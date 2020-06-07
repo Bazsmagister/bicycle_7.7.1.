@@ -379,3 +379,6 @@ but:
 
 @hasanyrole('super-user|salesman|serviceman')
 @endhasanyrole
+
+Check remote:
+git remote -v

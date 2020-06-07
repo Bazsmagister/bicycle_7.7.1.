@@ -14,7 +14,7 @@
 
 @role('super-admin')
 <div>
-    <button>
+    <button class="button btn-warning">
         <a href="/bicycle/create"> Add a new Bicycle </a>
     </button>
 </div>

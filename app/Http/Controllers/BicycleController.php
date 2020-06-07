@@ -69,31 +69,8 @@ class BicycleController extends Controller
         $bicycle=  Bicycle::create([
         'name' => request('name'),
         'description' => request('description'),
-        'image' =>  function ($request) {
-            if ($request->hasFile('image')) {
-                $image_tmp = $request->file('image');
-                if ($image_tmp->isValid()) {
-
-                        //get extension
-                    $extension = $image_tmp->getClientOriginalExtension();
-
-                    //Generating image name
-                    $imageName= rand(111, 999999).'.'.$extension;
-
-                    //Image Path
-                    $imagePath= 'images/'.$imageName;
-
-
-                    //Uploading the image
-                    return request('$image_tmp');
-                    //Bicycle::make($image_tmp)->save($imagePath);
-                }
-            } else {
-                $imageName="";
-                return false;
-            }
-        }]);
-
+        'price' => request('price'),
+        ]);
 
 
 
