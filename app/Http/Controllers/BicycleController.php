@@ -117,9 +117,16 @@ class BicycleController extends Controller
      */
     public function update(Request $request, Bicycle $bicycle)
     {
+        $data= $request->all();
+        echo "<pre>";
+        print_r($data);
+        die;
+
         // Form validation
         $request->validate([
             'name'              =>  'string',
+            'description'  => 'string',
+            'price' => 'numeric',
             'image'     =>  'image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
 
@@ -129,6 +136,9 @@ class BicycleController extends Controller
         $bicycle->name = $request->input('name');
         $bicycle->description = $request->input('description');
         $bicycle->price = $request->input('price');
+        $bicycle->is_sellable = $request->input('is_sellable');
+        $bicycle->is_rentable = $request->input('is_rentable');
+        $bicycle->is_serviceable = $request->input('is_serviceable');
 
 
 

@@ -450,3 +450,10 @@ Author
 sokeno commented on Jan 18, 2019
 
 Thanks @drbyte for your input, I actually got the fix for it, The fix was to get rid of any defined relationships on my Employee model and add protected \$guard_name = 'employee'; , Thanks
+
+Check role , check @hasanyrole
+@hasanyrole('super-admin|serviceman|salesman')
+<p>has any role</p>
+@else
+<p>has not role</p>
+@endhasanyrole

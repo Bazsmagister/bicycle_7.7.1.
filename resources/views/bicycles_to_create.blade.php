@@ -20,10 +20,12 @@
 
         <label for="Price">Price</label>
         <input type="text" id="price" name="price" placeholder="Price" required numeric>
-        <div>
+
+
+        {{-- <div>
             <label for="Upload photo">Photo(s)</label>
             <input type="file" id="image" name="image" placeholder="Upload photo" accept="image/*">
-        </div>
+        </div> --}}
 
 
         <input type="checkbox" id="sellable" name="is_sellable" value="1">
