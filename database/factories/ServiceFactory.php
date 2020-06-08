@@ -10,7 +10,7 @@ $factory->define(Service::class, function (Faker $faker) {
         'broughtIn_at' => $faker->dateTimeBetween('yesterday', '-25 hours'),
         'startedToService_at' => $faker->dateTimeBetween('yesterday', '-1 hours'),
         //   'readyToTakeHome_at' => 'null',
-        'user_id' =>  random_int(1, 20),
-        'bicycle_id' =>  random_int(1, 20),
+        'user_id' =>  random_int(1, 5),
+        'bicycle_id' =>  random_int(1, 5),
     ];
 });

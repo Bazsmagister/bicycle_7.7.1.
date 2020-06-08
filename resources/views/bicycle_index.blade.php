@@ -33,10 +33,17 @@
         <li>{{$bicycle -> name }} </li>
         <li>{{$bicycle -> description }} </li>
         <li>{{$bicycle -> price }} Ft</li>
-        {{-- <img src="{{$bicycle->image}}" alt="no pic yet..." width="50" height="50"> --}}
+        <img src="/storage/{{$bicycle->image}}" alt="no pic yet..." width="50" height="50">
 
-        {{-- <img src="/storage/bic.png" alt="a bicycle png"> --}}
-        <img src="/storage/bi.jpg" alt="quarter jpg" width="182" height="109">
+        <img src="/storage/{{$bicycle->image}}" alt="a bicycle png" width="60" height="60">
+        {{-- <img src="/storage/bi.jpg" alt="quarter1 jpg" width="182" height="109"> --}}
+
+        <img src="/storage/{{$bicycle->image}}" alt="quarter jpg" width="182" height="109">
+
+        {{-- works: --}}
+        {{-- <embed src="{{ asset("/storage/$bicycle->image")}}"> --}}
+
+        {{-- <embed src="{{ asset("$bicycle->image")}}"> --}}
 
 
         {{-- <a href="{{route('bicycle.edit','$bicycle->id')}}"></a> --}}

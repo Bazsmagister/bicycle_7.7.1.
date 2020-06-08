@@ -2,11 +2,14 @@
 namespace App\Http\Controllers;
 
 use App\Bicycle;
-use App\Traits\UploadTrait;
+//use App\Traits\UploadTrait;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Session;
+use App\Traits\UploadTrait;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class BicycleController extends Controller
 {
@@ -27,7 +30,10 @@ class BicycleController extends Controller
         // // return view('bicyclestosell', compact('sellable_bicycles'))->guest(); //doesn't work
         // return view('bicyclestosell', compact('sellable_bicycles'));
 
+
         $bicycles = Bicycle::all();
+
+
         return view('bicycle_index', compact('bicycles'));
     }
 
@@ -69,7 +75,15 @@ class BicycleController extends Controller
         'name' => request('name'),
         'description' => request('description'),
         'price' => request('price'),
+        'image' => request('image'),
+
         ]);
+
+        $imageName = time().'.'.request()->image->getClientOriginalExtension();
+
+        // request()->image->move(public_path('images'), $imageName);
+        request()->image->move(storage_path('images'), $imageName);
+
 
 
 
@@ -107,6 +121,15 @@ class BicycleController extends Controller
         return view('bicycle_edit', compact('bicycle'));
     }
 
+    public function uploadOne(UploadedFile $uploadedFile, $folder = null, $disk = 'public', $filename = null)
+    {
+        $name = !is_null($filename) ? $filename : Str::random(25);
+
+        $file = $uploadedFile->storeAs($folder, $name.'.'.$uploadedFile->getClientOriginalExtension(), $disk);
+
+        return $file;
+    }
+
     /**
      * Update the specified resource in storage.
      *
@@ -117,8 +140,8 @@ class BicycleController extends Controller
     public function update(Request $request, Bicycle $bicycle)
     {
         $data= $request->all();
-        echo "<pre>";
-        print_r($data);
+        // echo "<pre>";
+        // print_r($data);
         //die;
 
         // Form validation
@@ -130,7 +153,7 @@ class BicycleController extends Controller
         ]);
 
         // Get current bike
-        //$bicycle = Bicycle::findOrFail($id);
+        //$bicycle = Bicycle::findOrFail($bicycle);
         // Set bike name
         $bicycle->name = $request->input('name');
         $bicycle->description = $request->input('description');
@@ -138,7 +161,9 @@ class BicycleController extends Controller
         $bicycle->is_sellable = $request->input('is_sellable');
         $bicycle->is_rentable = $request->input('is_rentable');
         $bicycle->is_serviceable = $request->input('is_serviceable');
-        $bicycle->image = $request->input('image');
+        $bicycle->image = $request->file('image');
+
+        //dd($bicycle);
 
 
         // Check if a profile image has been uploaded
@@ -148,7 +173,7 @@ class BicycleController extends Controller
             // Make a image name based on user name and current timestamp
             $name = Str::slug($request->input('name')).'_'.time();
             // Define folder path
-            $folder = '/uploads/images/';
+            $folder = 'storage/images/';
             // Make a file path where image will be stored [ folder path + file name + file extension]
             $filePath = $folder . $name. '.' . $image->getClientOriginalExtension();
             // Upload image
@@ -158,9 +183,11 @@ class BicycleController extends Controller
         }
         // Persist user record to database
         $bicycle->save();
+        //dd($bicycle);
+
 
         // Return user back and show a flash message
-        return redirect()->back()->with(['status' => 'Profile updated successfully.']);
+        return redirect('bicycle')->with(['message' => 'Bicycle updated successfully.']);
     }
 
     // if ($request->isMethod('post')) {

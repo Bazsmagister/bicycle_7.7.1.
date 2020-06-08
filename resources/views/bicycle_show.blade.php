@@ -13,7 +13,16 @@
 
     <p> Image :
         {{$bicycle->image}}
-        <img src="{{$bicycle->image}}" alt="this should be an image" width="100" height="100">
+
+        <img src="/storage/{{$bicycle->image}}" alt="this should be an image1" width="100" height="100">
+
+        <img src="/public/{{$bicycle->image}}" alt="this should be an image2" width="100" height="100">
+
+        {{-- <embed src="{{ asset("$bicycle->image")}}" alt="embed"> --}}
+
+        <img src="{{asset("$bicycle->image")}}" alt="this should be an image3" width="100" height="100">
+
+
     </p>
 
     <hr>

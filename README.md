@@ -453,7 +453,20 @@ Thanks @drbyte for your input, I actually got the fix for it, The fix was to get
 
 Check role , check @hasanyrole
 @hasanyrole('super-admin|serviceman|salesman')
+
 <p>has any role</p>
 @else
 <p>has not role</p>
 @endhasanyrole
+
+public function store(){
+$imageName = time().'.'.request()->image->getClientOriginalExtension();
+request()->image->move(public_path('images'), $imageName);
+}
+
+then use
+
+<embed src="{{ asset("images/$imageName")}}">
+
+In controller@update I can change the folder where it saves the pics.
+storage/images...
