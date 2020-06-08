@@ -65,6 +65,8 @@ Route::get('rentabike', 'BicycleController@rent');
 Route::resource('bicycle', 'BicycleController');
 Route::get('bicyclestosell', 'BicycleController@sellable');
 Route::get('service', 'BicycleController@service');
+Route::get('rent', 'BicycleController@rent');
+
 
 
 // When declaring a resource route, you may specify a subset of actions the controller should handle instead of the full set of default actions

@@ -34,18 +34,19 @@
 
                 <div class="flex-container">
 
-                    <div><a href="/bicyclestosell">New bicycles to sell</a></div>
+                    <div><a href="/bicycles
+                        tosell">New bicycles to sell</a></div>
                     <div><a href="/rentabike">Rent-a-bicycle</a></div>
                     @auth
-                    <div><a href="/service">auth(Service)</a></div>
+                    <div><a href="/service">Service(auth)</a></div>
                     @endauth
                     @role('serviceman')
-                    <div><a href="/service">serviceman(Service)</a></div>
+                    <div><a href="/service">Service(serviceman)</a></div>
                     @endrole
                     @role('super-admin')
-                    <div><a href="/service">serviceman, admin(Service)</a></div>
-                    <div class='admin'><a href="/users">admin(All Users) |</a></div>
-                    <div class="admin"><a href="/bicycle">admin(All bicycles)</a></div>
+                    <div><a href="/service">Service(serviceman, admin)</a></div>
+                    <div class='admin'><a href="/users">All Users(admin) |</a></div>
+                    <div class="admin"><a href="/bicycle">All bicycles(admin)</a></div>
                     @endrole
 
                 </div>

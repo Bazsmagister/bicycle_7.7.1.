@@ -243,6 +243,9 @@ class BicycleController extends Controller
     {
         $rentable_bicycles = DB::select('select * from bicycles where is_rentable = ?', [1]);
         return view('bicyclestorent', compact('rentable_bicycles'));
+
+        // $rentable_bicycles = DB::select('select * from bicycles where is_rentable = ?', [1]);
+        // return view('bicyclestorent', compact('rentable_bicycles'));
     }
 
     public function buy(Bicycle $bicycle)

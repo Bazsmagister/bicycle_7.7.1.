@@ -7,9 +7,11 @@
         {{$bicycle->name}} </p>
     <p> Description :
         {{$bicycle->description}} </p>
-
+    {{--
     <p> Price :
-        {{$bicycle->price}} Ft</p>
+        {{$bicycle->price}} Ft</p> --}}
+    <p> Price : 2000Ft / day
+        {{$bicycle->rent_price}} Ft</p>
 
     <p> Image :
         {{$bicycle->image}}

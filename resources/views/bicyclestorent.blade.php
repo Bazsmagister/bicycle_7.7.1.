@@ -15,10 +15,16 @@
             <li>{{$bicycle -> id }}</li>
             <li>{{$bicycle -> name }} </li>
             <li>{{$bicycle -> description }} </li>
+            <li>{{$bicycle -> rent_price }} Ft/day </li>
             <img src="{{$bicycle->image}}" alt="interesting" width="" height="">
 
             {{-- <img src="/storage/bic.png" alt="a bicycle png"> --}}
             <img src="/storage/bi.jpg" alt="quarter jpg" width="182" height="109">
+
+            <form action="/rent" method="get">
+                <button class='button btn-info' type="submit">Rent that bicycle</button>
+
+            </form>
 
 
             {{-- <img src="{{$bicycle->image}}" alt="originalsize"> --}}
@@ -35,6 +41,7 @@
 
         </ul>
         <hr>
+
     </div>
 
     @endforeach
