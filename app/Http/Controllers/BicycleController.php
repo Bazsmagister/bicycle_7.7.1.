@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Bicycle;
@@ -120,7 +119,7 @@ class BicycleController extends Controller
         $data= $request->all();
         echo "<pre>";
         print_r($data);
-        die;
+        //die;
 
         // Form validation
         $request->validate([
@@ -139,7 +138,7 @@ class BicycleController extends Controller
         $bicycle->is_sellable = $request->input('is_sellable');
         $bicycle->is_rentable = $request->input('is_rentable');
         $bicycle->is_serviceable = $request->input('is_serviceable');
-
+        $bicycle->image = $request->input('image');
 
 
         // Check if a profile image has been uploaded
