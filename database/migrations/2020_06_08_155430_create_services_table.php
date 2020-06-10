@@ -24,8 +24,8 @@ class CreateServicesTable extends Migration
             $table->timestamp('startedToService_at')->nullable();
             $table->timestamp('readyToTakeHome_at')->nullable()->default(Carbon::tomorrow());
 
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('bicycle_id')->references('id')->on('bicycles');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('bicycle_id')->references('id')->on('bicycles')->onDelete('cascade')->onUpdate('cascade');
 
 
             $table->timestamps();

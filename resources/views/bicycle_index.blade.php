@@ -80,7 +80,7 @@
         <tr>
             <th scope="col">#</th>
             <th scope="col">Name</th>
-            {{-- <th scope="col">Description</th> --}}
+            <th scope="col">Description</th>
             <th scope="col">Price</th>
             <th scope="col">Image</th>
             <th scope="col">Created_at</th>
@@ -92,7 +92,7 @@
         <tr>
             <td>{{ $bicycle->id }}</td>
             <td>{{ $bicycle->name }}</td>
-            {{-- <td>{{ $bicycle->description}}</td> --}}
+            <td>{{ $bicycle->description}}</td>
             <td>{{ $bicycle->price }}</td>
             <td><img src="/storage/{{ $bicycle->image }}" height="50" width="50"></td>
             <td>{{ $bicycle->created_at }}</td>

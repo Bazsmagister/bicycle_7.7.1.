@@ -10,10 +10,16 @@
 
 </div>
 <div>
-    <form action="/bicycle" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('bicycle.store') }}" method="POST" enctype="multipart/form-data">
+        {{-- <form action="/bicycle" method="POST" enctype="multipart/form-data"> --}}
         @csrf
         <label for="name">Name</label>
         <input type="text" id="name" name="name" placeholder="Your biycle name.." required>
+
+        @error('name')
+        <p class="error">{{$message}}</p>
+        @enderror
+
 
         <label for="description">Description</label>
         <input type="text" id="description" name="description" placeholder="Description" required>
@@ -21,10 +27,14 @@
         <label for="Price">Price</label>
         <input type="text" id="price" name="price" placeholder="Price" required numeric>
 
+        @error('price')
+        <p class="error">{{$message}}</p>
+        @enderror
+
 
         <div>
             <label for="Upload photo">Photo(s)</label>
-            <input type="file" id="image" name="image" placeholder="Upload photo" accept="image/*">
+            <input type="file" id="image" name="image" accept="image/*">
         </div>
 
 
@@ -32,7 +42,7 @@
         <label for="is_sellable"> For Sell</label><br>
         <input type="checkbox" id="rentable" name="is_rentable" value="1">
         <label for="is_rentable"> For Rent</label><br>
-        <input type="checkbox" id="serviceable" name="is serviceable" value="1">
+        <input type="checkbox" id="serviceable" name="is_serviceable" value="1">
         <label for="is_serviceable"> For Service</label><br><br>
 
         <input type="submit" value="Submit">

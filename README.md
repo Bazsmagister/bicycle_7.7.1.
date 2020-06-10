@@ -470,3 +470,26 @@ then use
 
 In controller@update I can change the folder where it saves the pics.
 storage/images...
+
+.env !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+FILESYSTEM_DRIVER=public
+
+form validation( with tailwind)
+
+@error('name')
+
+<p class = "text-red-500">{{$message}}</p>
+@enderror
+
+An alternate solution is adding this to the links key in your config/filesystems.php file.
+
+public_path('avatars') => storage_path('app/public/avatars'),
+
+After adding that, then you can run the artisan command again, and it should work.
+
+For the avatar validation, you can use the image rule instead of just file. The dimensions rule maybe be useful as well. Example:
+
+'avatar' => [
+'image',
+'dimensions:min_width=100,min_height=200',
+],

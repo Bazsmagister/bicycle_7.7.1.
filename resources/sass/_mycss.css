@@ -29,3 +29,7 @@
      /* font-family: fantasy;
      color: red; */
  }
+
+ .error {
+     background-color: red;
+ }
