@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Request;
 */
 
 Route::get('/', function () {
+
     return view('welcome');
 });
 

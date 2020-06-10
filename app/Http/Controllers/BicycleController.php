@@ -12,7 +12,6 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
-
 class BicycleController extends Controller
 {
     //I want to only serviceworkers to get this page
@@ -28,6 +27,12 @@ class BicycleController extends Controller
      */
     public function index()
     {
+        // $result=Bicycle::whereRaw('DATEDIFF(created_at,updated_at)<7')
+        // //  ->select('*')
+        // ->get();
+
+        // dd($result);
+
         // $sellable_bicycles = Bicycle::all();
         // // return view('bicyclestosell', compact('sellable_bicycles'))->guest(); //doesn't work
         // return view('bicyclestosell', compact('sellable_bicycles'));
