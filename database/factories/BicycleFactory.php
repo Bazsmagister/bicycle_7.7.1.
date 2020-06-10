@@ -43,11 +43,25 @@ $factory->define(Bicycle::class, function (Faker $faker) {
         'startedToService_at' => $faker->dateTimeBetween('yesterday', '-1 hours'),
         //'readyToTakeHome_at' => '',
         'price' => $faker->numberBetween(1000, 10000),
-        'description' => $faker->paragraph,
+        // 'description' => $faker->paragraph,
+         'description' =>  $faker->realText(150),
         'is_rentable' => $faker->boolean,
         'is_sellable' => $faker->boolean,
         'is_serviceable' => $faker->boolean,
-        //'image' => '/storage/bic.png',
+        'image' => '/storage/bic126kb.png',
+        // 'image' => $faker->imageUrl(666, 461, 'cats'), //slooooooowwww
+
+
+
+        // 'type' => 'image',
+        // 'url' => $faker->imageUrl(666, 461, 'cats'),
+        // 'is_primary' => $faker->randomElements([true, false]),
+        // 'name' => $faker->sentence(20, true),
+        // 'slug' => $faker->slug(),
+        // 'description' => $faker->realText(420),
+        // 'booking_details' => $faker->realText(120),
+        // 'cost' => $faker->randomFloat(2, 10, 250)
+        // 'type' => $faker->randomElement(['user', 'performer', 'admin'])
 
 
         // 'image' => '/storage/6e0cbb8c6ae4ed7c406ce4830ba11481.jpg',

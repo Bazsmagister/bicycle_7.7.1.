@@ -37,8 +37,11 @@
 
         <img src="/storage/{{$bicycle->image}}" alt="a bicycle png" width="80" height="60">
         {{-- <img src="/storage/bi.jpg" alt="quarter1 jpg" width="182" height="109"> --}}
+        <img src="/storage/bic.png" alt="bic png">
 
         <img src="/storage/{{$bicycle->image}}" alt="quarter jpg" width="182" height="109">
+
+        <img src="{{$bicycle->image}}" alt="img" width="70" height="50">
 
         {{-- works: --}}
         <embed src="{{ asset("/storage/$bicycle->image")}}">

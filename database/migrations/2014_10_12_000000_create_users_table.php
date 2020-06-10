@@ -17,6 +17,8 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique()->nullable();
+            $table->string('profile_image')->nullable(); // our profile image field
+
             // $table->string('email');
             $table->char('phone', 30)->nullable();
             $table->string('password')->default('secret');

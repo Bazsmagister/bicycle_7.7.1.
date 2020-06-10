@@ -79,10 +79,22 @@
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>Current user:
-                                {{ Auth::user()->name }} | {{ Auth::user()->email }}<span class="caret"></span>
+                                @if (auth()->user()->image)
+                                {{-- <img src="{{ asset(auth()->user()->image) }}"
+                                style="width: 40px; height: 40px; border-radius: 50%;">
+                                <img src="{{ auth()->user()->profile_image }}"
+                                    style="width: 40px; height: 40px; border-radius: 50%;"> --}}
+                                {{-- <img src="/storage/{{ auth()->user()->profile_image }}"
+                                style="width: 40px; height: 40px; border-radius: 50%;"> --}}
+                                {{-- <img src="storage/{{auth()->user()->profile_image}}" alt="no image yet"> --}}
+                                @endif
+                                {{ Auth::user()->name  }} &nbsp; <img src="/storage/{{ auth()->user()->profile_image }}"
+                                    style="width: 40px; height: 40px; border-radius: 50%;"> &nbsp;
+                                {{ Auth::user()->email }}<span class="caret"></span>
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('profile') }}">Profile</a>
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}

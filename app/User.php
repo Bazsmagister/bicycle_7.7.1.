@@ -25,11 +25,11 @@ class User extends Authenticatable
      * @var array
      */
 
-    protected $fillable = [
-        'name', 'email', 'password', 'phone', 'created_at', 'updated_at'
-    ];
+    // protected $fillable = [
+    //     'name', 'email', 'password', 'phone', 'created_at', 'updated_at'
+    // ];
 
-    //protected $guarded = [];
+    protected $guarded = [];
 
 
     /**
@@ -88,4 +88,10 @@ class User extends Authenticatable
     // {
     //     return $this->roles()->detach($role);
     // }
+
+    public function getImageAttribute()
+    {
+        return $this->profile_image;
+        //so  I can use :auth()->user()->image instead of profile_image
+    }
 }

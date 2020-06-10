@@ -3,9 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\User;
+
+use App\Traits\UploadTrait;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class UserController extends Controller
 {
@@ -90,6 +94,10 @@ class UserController extends Controller
 
         return view('users.edit', compact('user'));
     }
+
+
+
+
 
     public function update(Request $request, $id)
     {
