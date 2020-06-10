@@ -25,7 +25,8 @@
         <input type="text" id="description" name="description" placeholder="Description" required>
 
         <label for="Price">Price</label>
-        <input type="text" id="price" name="price" placeholder="Price" required numeric>
+        <input type="number" name="price" id="price" placeholder="Price" value="1000" required />
+        {{-- <input type="text" id="price" name="price" placeholder="Price" pattern="[0-9.]+" required> --}}
 
         @error('price')
         <p class="error">{{$message}}</p>

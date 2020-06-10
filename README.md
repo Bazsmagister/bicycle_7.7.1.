@@ -493,3 +493,8 @@ For the avatar validation, you can use the image rule instead of just file. The 
 'image',
 'dimensions:min_width=100,min_height=200',
 ],
+
+HTML5 supports regexes, so you could use this:
+
+<input id="numbersOnly" pattern="[0-9.]+" type="text">
+pattern="[0-9.]+"

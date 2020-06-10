@@ -21,8 +21,10 @@
 
 
         <div>
-
-            <input type="text" id="price" name="price" placeholder="Price" value="{{ old('price', $bicycle->price) }}">
+            <input type="number" name="price" id="price" placeholder="Price"
+                value="{{ old('price', $bicycle->price) }}" />
+            {{-- <input type="text" id="price" name="price" placeholder="Price" pattern="[0-9.]+"
+                value="{{ old('price', $bicycle->price) }}"> --}}
             <label for="Price">Price</label>
         </div>
 
@@ -59,10 +61,12 @@
         <div>
             <label for="Upload photo">Photo: </label>
             <input type="file" id="image" name="image" accept="image/*">
+            <img src="/storage/{{$bicycle->image}}" alt="no image yet" height="100" width="120">
+            <img src="/storage/{{$bicycle->image}}" alt="no image yet">
 
         </div>
 
-        <input type="submit" value="Submit">
+        <input class="button btn-success" type="submit" value="Submit">
     </form>
 
     <!-- <div>

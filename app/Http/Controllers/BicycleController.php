@@ -31,8 +31,9 @@ class BicycleController extends Controller
         // // return view('bicyclestosell', compact('sellable_bicycles'))->guest(); //doesn't work
         // return view('bicyclestosell', compact('sellable_bicycles'));
 
-
-        $bicycles = Bicycle::all();
+        //$bicycles = Bicycle::all();
+        // $bicycles = DB::table('bicycles')->orderBy('created_at', 'desc')->paginate(8);
+        $bicycles = DB::table('bicycles')->orderBy('updated_at', 'desc')->paginate(8);
 
 
         return view('bicycle_index', compact('bicycles'));
