@@ -30,9 +30,9 @@ class UserSeeder extends Seeder
         //     ));
 
         //this is also good! Watch for the numbers of the ?
-            // DB::insert('insert into users (id, name, email, phone, password) values (?, ?, ?, ?, ?)', [1, 'admin', 'admin@admin.com', '06123456789', 'admin']);
+        // DB::insert('insert into users (id, name, email, phone, password) values (?, ?, ?, ?, ?)', [1, 'admin', 'admin@admin.com', '06123456789', 'admin']);
 
-         //Bicycle factory makes already as much User as Bicycle
-             factory(App\User::class, 20)->create();
+        //Bicycle factory makes already as much User as Bicycle
+        factory(App\User::class, 10)->create();
     }
 }

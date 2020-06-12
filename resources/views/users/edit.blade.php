@@ -83,7 +83,7 @@
                 {{ csrf_field() }}
                 @method('PUT')
                 <div class="modal-header">
-                    Self-Review Comment
+                    Please select an image!
                 </div>
                 <div class="col-md-12">
                     <div class="text-center">
@@ -96,6 +96,7 @@
                         <div class="row">
                             <div class="col-12 col-sm-4">
                                 <div class="form-group">
+                                    hello1
                                 </div>
                             </div>
                             <div class="col-12 col-sm-4">
@@ -105,13 +106,14 @@
                             </div>
                             <div class="col-12 col-sm-4">
                                 <div class="form-group">
+                                    <p>hello2</p>
                                 </div>
                             </div>
                         </div>
                         @else
-                        <input type="image" {{-- src="{{asset('theme/adminlte3/dist/img/default.png')}}" --}}
-                            class="profile-user-img img-fluid img-circle" id="wizardPicturePreview" title="" width="150"
-                            height="150" disabled />
+                        <input type="image" {{-- src="{{asset('theme/adminlte3/dist/img/default.png')}}" --}}>
+                        <input type="image" src="{{asset('default.png')}}" class="profile-user-img img-fluid img-circle"
+                            id="wizardPicturePreview" title="" width="150" height="150" disabled />
                         <!--<input  type="file" name="user_image" id="wizard-picture" class="" hidden>-->
                         <div class="row">
                             <div class="col-12 col-sm-4">
