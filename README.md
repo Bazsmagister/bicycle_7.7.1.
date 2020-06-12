@@ -501,3 +501,57 @@ pattern="[0-9.]+"
 
 Laravel image upload:
 https://www.larashout.com/laravel-image-upload-made-easy?fbclid=IwAR1LUIXC1dCLdXQP9F_Ha4sS-i94MFrfSwxpIy2uCF7mIMtsVTCOCxiX0J8
+
+Laravel Echo REDIS Pusher Channel:
+
+1. app\config\app.php
+   uncomment :
+   // App\Providers\BroadcastServiceProvider::class,
+
+test:
+php artisan route:list
+GET|POST|HEAD broadcasting/auth Illuminate\Broadcasting\BroadcastController@authenticate
+
+2. app\config\broadcasting.php
+   'default' => env('BROADCAST_DRIVER', 'null'),
+   to log or redis or pusher:
+   'default' => env('BROADCAST_DRIVER', 'log'),
+
+3.
+
+php artisan make:event BicycleUpdated
+
+4. in
+   app\events\Bicycleupdated
+   implements ShouldBroadcast contract(interface)
+
+public function broadcastOn()
+{
+// return new PrivateChannel('channel-name');
+return new Channel('orders');
+}
+
+5.  web.php
+    use App\Events\BicycleUpdated;
+
+    Route::get('/', function () {
+    BicycleUpdated::dispatch();
+    //same as
+    // event(new BicycleUpdated);
+
+        return view('welcome');
+
+    });
+
+6.  pas (php artisan serve)
+    hit the route:
+
+check app\storage\logs\laravel.log
+
+[2020-06-12 10:22:30] local.INFO: Broadcasting [App\Events\BicycleUpdated] on channels [orders] with payload:
+{
+"socket": null
+}
+
+7. in BicycleUpdated.php
+   if you define a public property than it will load in the broadcast.

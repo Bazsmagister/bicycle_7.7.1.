@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Request;
+use App\Events\BicycleUpdated;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,10 +18,19 @@ use Illuminate\Support\Facades\Request;
 |
 */
 
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+
 Route::get('/', function () {
+    BicycleUpdated::dispatch();
+    //same as
+    // event(new BicycleUpdated);
 
     return view('welcome');
 });
+
 
 // Route::get('user/{id}', 'UserController@show');
 
