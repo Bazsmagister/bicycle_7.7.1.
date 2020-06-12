@@ -39,7 +39,8 @@ class BicycleController extends Controller
 
         //$bicycles = Bicycle::all();
         // $bicycles = DB::table('bicycles')->orderBy('created_at', 'desc')->paginate(8);
-        $bicycles = DB::table('bicycles')->orderBy('updated_at', 'desc')->paginate(8);
+        // $bicycles = DB::table('bicycles')->orderBy('updated_at', 'desc')->paginate(200);
+        $bicycles = DB::table('bicycles')->paginate(15);
 
 
         return view('bicycle_index', compact('bicycles'));

@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('contentindex')
+<div class="text-center">
+    {!! $bicycles->links() !!}
+</div>
 <div class='admin'>
     <p>
         For admin : All of our bicycles.
@@ -77,6 +80,9 @@
 
 @endforeach
 
+<div class="text-center">
+    {!! $bicycles->links() !!}
+</div>
 
 <table id="table_bikes" class="table table-striped table-bordered">
     <thead class="thead-dark">

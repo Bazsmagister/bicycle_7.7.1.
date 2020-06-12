@@ -33,7 +33,9 @@ $factory->define(Bicycle::class, function (Faker $faker) {
 $factory->define(Bicycle::class, function (Faker $faker) {
     return [
         //'name' => [[$colorName] [$faker->unique()->word]],
-        'name' => "$faker->colorName $faker->word",
+        // 'name' => "$faker->colorName $faker->word",
+        'name' => "$faker->colorName Bike",
+
 
         // 'user_id'=> $faker->numberBetween(1,10),
         //  'user_id' => function () {
