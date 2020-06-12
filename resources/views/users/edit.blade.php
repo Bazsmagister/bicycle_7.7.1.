@@ -65,4 +65,81 @@
 </form>
 
 
+
+<span data-toggle="tooltip" data-original-title="Click To Upload Picture">
+    <a class="btn btn-info btn-block text-white" data-toggle="modal" data-target="#upload-picture{{ $user->id }}"
+        data-original-title="Picture">
+        <b>Upload My Picture</b>
+    </a>
+</span>
+
+<div class="modal fade" id="upload-picture{{ $user->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form action="{{route('update_picture',['id'=>$user->id])}}" method="post" id="update-picture-form"
+                enctype="multipart/form-data">
+
+                {{ csrf_field() }}
+                @method('PUT')
+                <div class="modal-header">
+                    Self-Review Comment
+                </div>
+                <div class="col-md-12">
+                    <div class="text-center">
+
+                        @if($user->user_image != '')
+                        <input type="image" src="{{ URL::to('/') }}/public/storage/users/image/{{ $user->user_image }}"
+                            class="profile-user-img img-fluid img-circle" id="wizardPicturePreview" title="" width="150"
+                            height="165" disabled />
+                        <!--<input  type="file" name="user_image" id="wizard-picture" class="" hidden>-->
+                        <div class="row">
+                            <div class="col-12 col-sm-4">
+                                <div class="form-group">
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-4">
+                                <div class="form-group">
+                                    <input type="file" name="user_image" id="wizard-picture" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-4">
+                                <div class="form-group">
+                                </div>
+                            </div>
+                        </div>
+                        @else
+                        <input type="image" {{-- src="{{asset('theme/adminlte3/dist/img/default.png')}}" --}}
+                            class="profile-user-img img-fluid img-circle" id="wizardPicturePreview" title="" width="150"
+                            height="150" disabled />
+                        <!--<input  type="file" name="user_image" id="wizard-picture" class="" hidden>-->
+                        <div class="row">
+                            <div class="col-12 col-sm-4">
+                                <div class="form-group">
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-4">
+                                <div class="form-group">
+                                    <input type="file" name="user_image" id="wizard-picture" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-4">
+                                <div class="form-group">
+                                </div>
+                            </div>
+                        </div>
+                        @endif
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="submit" id="upload_pic_btn-submit" class="btn btn-success btn-ok">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
 @endsection

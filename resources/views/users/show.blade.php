@@ -11,6 +11,8 @@
 
     <p> Joined :
         {{$user->created_at}} </p>
+    <img src="{{$user->user_image}}" alt="image 0 should be here">
+    <img src="/storage/users/image/{{$user->user_image}}" alt="image 1 should be here">
 
     <hr>
     {{-- {{$user}} --}}

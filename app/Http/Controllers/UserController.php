@@ -9,6 +9,7 @@ use App\Traits\UploadTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class UserController extends Controller
@@ -137,5 +138,35 @@ class UserController extends Controller
                 'message',
                 'User successfully deleted'
             )->with('alert-class', 'alert-danger');
+    }
+
+
+    public function update_picture(Request $request, $id)
+    {
+        DB::beginTransaction();
+        try {
+            $user = User::find($id);
+            if ($request->user_image != "") {
+                $user_image = $request->file('user_image');
+                $new_name = rand() . '.' . $user_image->getClientOriginalExtension();
+                $user_image->move(public_path('storage/users/image'), $new_name);
+                // $user_image->move(public_path('images'), $new_name);
+
+                $user->user_image = $new_name;
+            }
+            $user->save();
+
+
+            DB::commit();
+
+            // Session::flash('success', 'Picture Successfully Uploaded');
+            Session::flash('message', 'Picture Successfully Uploaded');
+
+            return redirect()->route('home');
+        } catch (Exception $exception) {
+            DB::rollback();
+            Session::flash('error', 'Action failed!');
+            return redirect()->back();
+        }
     }
 }
