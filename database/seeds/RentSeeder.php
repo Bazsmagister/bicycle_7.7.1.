@@ -1,9 +1,9 @@
 <?php
 
-use App\Service;
+use App\Rent;
 use Illuminate\Database\Seeder;
 
-class ServiceSeeder extends Seeder
+class RentSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,6 +12,6 @@ class ServiceSeeder extends Seeder
      */
     public function run()
     {
-        //factory(App\Service::class, 5)->create();
+        factory(App\Rent::class, 10)->create();
     }
 }

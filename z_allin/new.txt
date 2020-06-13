@@ -1,0 +1,13 @@
+/* or you can add also another table that is dependent on user_id:*/
+       /*factory(App\User::class, 50)->create()->each(function($u) {
+            $userId = $u->id;
+            DB::table('posts')->insert([
+                'body' => str_random(100),
+                'user_id' => $userId,
+            ]);
+        });*/
+
+
+
+
+In Ubuntu, there are two different php.ini's. One for CLI and one for the web server/php-fpm. Make sure it's enabled in both environment. When you do php -m, it's the CLI version you're checking but that doesn't mean it's enabled for the web server
