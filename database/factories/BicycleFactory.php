@@ -50,6 +50,7 @@ $factory->define(Bicycle::class, function (Faker $faker) {
         'is_rentable' => $faker->boolean,
         'is_sellable' => $faker->boolean,
         'is_serviceable' => $faker->boolean,
+        'is_availableToRent' => $faker->boolean,
         'image' => '/storage/bic126kb.png',
         // 'image' => $faker->imageUrl(666, 461, 'cats'), //slooooooowwww
 

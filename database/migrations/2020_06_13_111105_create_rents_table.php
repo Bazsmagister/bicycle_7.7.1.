@@ -16,9 +16,9 @@ class CreateRentsTable extends Migration
     {
         Schema::create('rents', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
+
             $table->unsignedBigInteger('bicycle_id');
-            $table->boolean('availableToRent');
+            $table->unsignedBigInteger('user_id');
 
             $table->timestamp('rentStarted_at')->default(Carbon::yesterday());
             $table->timestamp('rentEnds_at')->default(now());

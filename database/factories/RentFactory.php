@@ -27,6 +27,6 @@ $factory->define(Rent::class, function (Faker $faker) {
 
         'rentStarted_at' => $faker->dateTimeBetween('yesterday', '-25 hours'),
         'rentEnds_at' => $faker->dateTimeBetween('yesterday', '-1 hours'),
-        'availableToRent' => $faker->boolean,
+        // 'availableToRent' => $faker->boolean,
     ];
 });
