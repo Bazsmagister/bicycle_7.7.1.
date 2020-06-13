@@ -12,6 +12,6 @@ class RentSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Rent::class, 5)->create();
+        //factory(App\Rent::class, 5)->create();
     }
 }

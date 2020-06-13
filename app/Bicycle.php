@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Bicycle extends Model
@@ -19,4 +20,14 @@ class Bicycle extends Model
     // {
     //     return $this->image;
     // }
+
+    // public function rents()
+    // {
+    //     return $this->belongsToMany(App\Rent::class);
+    // }
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class)->withTimestamps();
+    }
 }

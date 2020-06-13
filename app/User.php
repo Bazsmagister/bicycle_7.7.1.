@@ -2,12 +2,13 @@
 
 namespace App;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Bicycle;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Spatie\Permission\Traits\HasRoles; //spatie
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-//use App\Permissions\HasPermissionsTrait; //before Spatie pacjage i used this trait.
+//use App\Permissions\HasPermissionsTrait; //before Spatie package i used this trait.
 
 //class User extends Authenticatable implements MustVerifyEmail
 
@@ -94,4 +95,40 @@ class User extends Authenticatable
         return $this->profile_image;
         //so  I can use :auth()->user()->image instead of profile_image
     }
+
+    public function rents()
+    {
+        $this->belongsToMany('App\Rent');
+        // ->withPivot('rents');
+    }
+
+
+    public function bicycles()
+    {
+        return $this->belongsToMany(Bicycle::class)->withTimestamps();
+        // ->withPivot('rents');
+    }
+
+    // For rent
+    // $user->cars()->attach($car_id, ['type' => 'rent']);
+
+    // $user = User::with('bicycles')->find(1);
+
+    // @foreach($user->cars as $car)
+
+    // {{ $car->name }}
+
+    // // Either buy or rent
+    // {{ $car->pivot->type }}
+
+    // @endforeach
+
+
+
+    // public function buyingBicycles()
+    // {
+    //     return $this->belongsToMany(Bicycle::class)
+    //             // ->wherePivot('type', 'buy')
+    //             ->withPivot('rents');
+    // }
 }

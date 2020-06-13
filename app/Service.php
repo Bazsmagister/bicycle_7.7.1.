@@ -8,4 +8,9 @@ class Service extends Model
 {
     //
      protected $guarded = [];
+
+     public function users(){
+         $this->hasMany('App\Users');
+
+     }
 }

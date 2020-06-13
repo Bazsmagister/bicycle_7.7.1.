@@ -30,9 +30,8 @@ class CreateBicyclesTable extends Migration
             $table->boolean('is_rentable')->nullable();
             $table->boolean('is_sellable')->nullable();
             $table->boolean('is_serviceable')->nullable();
+
             $table->boolean('is_availableToRent')->nullable();
-
-
 
             $table->string('image')->nullable();
             // $table->string('image',2000)->default('bic.png')->nullable();

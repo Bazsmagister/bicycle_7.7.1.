@@ -22,6 +22,10 @@ use App\Events\BicycleUpdated;
 //     return view('welcome');
 // });
 
+ DB::listen(function ($query) {
+     var_dump($query->sql, $query->bindings);
+ });
+
 
 Route::get('/', function () {
     BicycleUpdated::dispatch();
