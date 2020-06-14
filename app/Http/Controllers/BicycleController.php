@@ -313,7 +313,7 @@ class BicycleController extends Controller
             )->with('alert-class', 'alert-danger');
     }
 
-    public function allRentableBicycles(Bicycle $bicycle)
+    public function allRentableBicycles()
     {
         $rentable_bicycles = DB::select('select * from bicycles where is_rentable = ?', [1]);
         return view('bicyclestorent', compact('rentable_bicycles'));
@@ -332,9 +332,11 @@ class BicycleController extends Controller
         // return view('bicyclestorent', compact('rentable_bicycles'));
     }
 
-    public function rent(Bicycle $bicycle)
+    public function rent($id)
     {
-        return view('bicycle_rent_form', ['bicycle' => Bicycle::findOrFail($id)]);
+        //$rentable_bicycles = DB::select('select * from bicycles where is_rentable = ?', [1]);
+
+        return view('rent_this_bicycle', ['bicycle' => Bicycle::findOrFail($id)]);
         // return view('bicycle_rent_form', ['bicycle' => Bicycle::findOrFail($id)]);
     }
 

@@ -54,7 +54,8 @@
         <input type="date" id="rentstartdate" name="rentstartdate" required>
         <br>
         <label for="rentstarttime">Choose a time for rent start:</label>
-        <input type="time" id="rentstarttime" name="rentstarttime" min="08:00" max="20:00" required>
+        {{-- <input type="time" id="rentstarttime" name="rentstarttime" min="08:00" max="20:00" step="1" required> --}}
+        {{-- <input type="text" id="rentstarttime" name="rentstarttime" min="08:00" max="20:00" step="1" required> --}}
 
         <br>
         <input type="button" value="Rent start now" name="rentstarttime" onclick="datetime()">
@@ -135,7 +136,7 @@
 
         var date = date.toLocaleDateString();
 
-        var dateAndTime = date.toLocaleString("hu-HU");
+        var dateAndTime = date.toLocaleString("hu-HU"); //doesn't work...
 
         document.getElementById("demo1").innerHTML = date;
         document.getElementById("demo2").innerHTML = time;

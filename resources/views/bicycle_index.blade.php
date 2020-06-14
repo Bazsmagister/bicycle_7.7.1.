@@ -79,64 +79,41 @@
 </div>
 
 @endforeach
-
-<div class="text-center">
+<div class="container mid>
+    {{-- <div class="text-center"> --}}
     {!! $bicycles->links() !!}
 </div>
 
-<table id="table_bikes" class="table table-striped table-bordered">
-    <thead class="thead-dark">
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Name</th>
-            <th scope="col">Description</th>
-            <th scope="col">Price</th>
-            <th scope="col">Image</th>
-            <th scope="col">Created_at</th>
+<div class=" container mid">
+    <table id="table_bikes" class="table table-striped table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Description</th>
+                <th scope="col">Price</th>
+                <th scope="col">Image</th>
+                <th scope="col">Created_at</th>
 
-        </tr>
-    </thead>
-    <tbody>
-        @foreach ($bicycles as $bicycle)
-        <tr>
-            <td>{{ $bicycle->id }}</td>
-            <td>{{ $bicycle->name }}</td>
-            <td>{{ $bicycle->description}}</td>
-            <td>{{ $bicycle->price }}</td>
-            <td><img src="/storage/{{ $bicycle->image }}" height="50" width="50"></td>
-            <td>{{ $bicycle->created_at }}</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($bicycles as $bicycle)
+            <tr>
+                <td>{{ $bicycle->id }}</td>
+                <td>{{ $bicycle->name }}</td>
+                <td>{{ $bicycle->description}}</td>
+                <td>{{ $bicycle->price }}</td>
+                <td><img src="/storage/{{ $bicycle->image }}" height="50" width="50"></td>
+                <td>{{ $bicycle->created_at }}</td>
 
-        </tr>
-        @endforeach
-    </tbody>
-</table>
-
-
-<div class="container mid">
-    <h4 class="text-center">Users</h4>
-  
-    <form class="form-group">
-      <div>
-  
-        <button type="button" class="btn btn-outline-dark create-order-btn"><i class='far fa-sticky-note'></i>CREATE NEW USER</button>
-        <input type="text" placeholder="SEARCH TERM" class="search-bar" id="admin-search">
-        <button type="submit" class="btn btn-secondary search-btn"><i class='fas fa-search'></i>SEARCH</button>
-  
-      </div>
-  
-    </form>
-    <table class="table table-borderless">
-  
-      <tbody>
-        <tr>
-          <td><h5 class="name">Name Surname</h5>
-          <p class="table-content">Position</p>
-          </td>
-          <td class="col-btn"><button type="button" class="btn btn-outline-dark edit-btn">EDIT</button>
-            <button type="submit" class="btn btn-secondary remove-btn">REMOVE</button>
-          </td>
-        </tr>
-      </tbody>
+            </tr>
+            @endforeach
+        </tbody>
     </table>
+</div>
+
+
+
 
 @endsection

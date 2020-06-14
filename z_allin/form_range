@@ -1,0 +1,98 @@
+ <div id="page-wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="    left_situationen">
+                        @if(session()->has('message'))
+                        <div class="alert alert-success">
+                            {{ session()->get('message') }}
+                        </div>
+                        @endif
+                        <form class="fyl_form" action="/samverkan/{{request()->route('id')}}" method="post">
+                            @csrf
+                            <div class="range-wraph" style="width: 100%;">
+                                <label class="custom-range_motet">1. Är målet med samverkan tydligt?<br>
+                                    <input type="range" name="samverkan1" value="{{ old('samverkan1') }}" class="range"
+                                        min="1" max="10"></label>
+                                <output class="bubble"></output>
+                            </div>
+                            <div class="range-wraph" style="width: 100%;">
+                                <label class="custom-range_situationen">2. Är din roll i samverkan tydlig?<br>
+                                    <input type="range" name="samverkan2" value="{{ old('samverkan2') }}" class="range"
+                                        min="1" max="10"></label>
+                                <output class="bubble"></output>
+                            </div>
+                            <div class="range-wraph" style="width: 100%;">
+                                <label class="custom-range_situationen">3. Hur fungerar kommunikationen med andra
+                                    samverkanspartners?<br>
+                                    <input type="range" name="samverkan3" value="{{ old('samverkan3') }}" class="range"
+                                        min="1" max="10"></label>
+                                <output class="bubble"></output>
+                            </div>
+                            <div class="range-wraph" style="width: 100%;">
+                                <label class="custom-range_situationen">4. Hur fungerar samordningen av olika
+                                    enheters/organsiationers åtgärder?<br>
+                                    <input type="range" name="samverkan4" value="{{ old('samverkan4') }}" class="range"
+                                        min="1" max="10">
+                                    <input type="hidden" name="client_id" value="{{$bicycle->id}}">
+                                </label>
+                                <output class="bubble"></output>
+                            </div>
+                            <div class="form-check">
+
+                                <label class="custom-range_situationen">5. Är det möjligt att förbättra samverkan i
+                                    detta
+                                    fall??</label></label>
+                            </div>
+                            <div class="form-check">
+
+                                <label class="custom-range_situationen">
+                                    <input class="form-check-input" type="radio" name="samverkan_select" value="Nej"
+                                        checked> Nej </label>
+                            </div>
+                            <div class="form-check">
+
+                                <label class="form-check-label" for="exampleRadios1">
+                                    <input class="form-check-input" type="radio" name="samverkan_select" value="ja"> Ja,
+                                    ange vad</label>
+                            </div>
+                            <div class="form-group">
+                                <textarea name="samverkan_description" value="{{ old('samverkan_description') }}"
+                                    class="form-control"></textarea>
+                                @if ($errors->has('samverkan_description'))
+                                <span class="text-danger">{{ $errors->first('samverkan_description') }}</span>
+                                @endif
+                            </div>
+                            <p class="bottom_text">Tack för dina svar</p>
+                            <button type="submit" style="width: 100px;" class="btn btn-primary">Skicka</button>
+                        </form>
+                        <script>
+                            const allRanges = document.querySelectorAll(".range-wraph");
+                        allRanges.forEach(wrap => {
+                            const range = wrap.querySelector(".range");
+                            const bubble = wrap.querySelector(".bubble");
+
+                            range.addEventListener("input", () => {
+                                setBubble(range, bubble);
+                            });
+                            setBubble(range, bubble);
+                        });
+                        function setBubble(range, bubble) {
+                            const val = range.value;
+                            const min = range.min ? range.min : 0;
+                            const max = range.max ? range.max : 100;
+                            const newVal = Number(((val - min) * 100) / (max - min));
+                            bubble.innerHTML = val;
+
+                            // Sorta magic numbers based on size of the native UI thumb
+                            bubble.style.left = `calc(${newVal}% + (${8 - newVal * 0.15}px))`;
+                        }
+
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.container-fluid -->
+    </div>
+    <!-- /#page-wrapper -->

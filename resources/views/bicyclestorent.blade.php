@@ -45,6 +45,8 @@
                 <button class='button btn-info' onclick="alert('Please login or register to rent this bicycle')">Rent
                     that bicycle</button>
 
+                <button class='button btn-info' onclick="swal('Please login or register to rent this bicycle')">Rent
+                    that bicycle</button>
 
                 Why doesn't work this when I don't use script tag?->
                 <button id='alertbutton' class='button btn-info' onclick="pleaseLogin()">Rent that bicycle</button>
@@ -79,8 +81,14 @@
 
 </div>
 
+
+
 <script>
     function pleaseLogin() {
+
+    swal("Please login or register to use this function");
+    // swal.fire('hi there', 'wazzup?', 'success');
+    // swal('hi there', 'wazzup?', 'info');
     alert("Please login or register to use this function");
     }
 </script>

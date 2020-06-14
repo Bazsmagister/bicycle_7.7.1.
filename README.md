@@ -502,6 +502,8 @@ pattern="[0-9.]+"
 Laravel image upload:
 https://www.larashout.com/laravel-image-upload-made-easy?fbclid=IwAR1LUIXC1dCLdXQP9F_Ha4sS-i94MFrfSwxpIy2uCF7mIMtsVTCOCxiX0J8
 
+npm install bootstrap-sweetalert
+
 Laravel Echo REDIS Pusher Channel:
 
 1. app\config\app.php

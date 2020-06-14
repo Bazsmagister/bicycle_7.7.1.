@@ -1,0 +1,25 @@
+public function store(Request $request, $id)
+    {
+        $validatedData = $request->validate([
+            'samverkan1' => 'required',
+            'samverkan2' => 'required',
+            'samverkan3' => 'required',
+            'samverkan4' => 'required',
+            'samverkan_select' => 'required|in:ja,Nej',
+            'client_id' => 'required',
+            'samverkan_description' => 'nullable|max:150|required_if:samverkan_select,ja',
+        ],
+            [
+                'samverkan_description.required_if' => 'fältet krävs när valet är ja',
+                'samverkan_description.max' => 'Beskrivningen får inte vara större än 150 tecken!',
+            ]);
+        Samverkan::create($request->all());
+        Alert::success('Framgång', 'Framgångsrikt skickat');
+        if (Auth::user()->role == "clients")
+        {
+            return redirect()->to('om/'.$id);
+        }else{
+            return redirect()->to('instalningar/'.$id);
+
+        }
+    }
