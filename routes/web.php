@@ -131,3 +131,5 @@ Route::post('/profile/update', 'ProfileController@updateProfile')->name('profile
 //     ]);
 
 Route::put('update_picture/{id}', 'UserController@update_picture')->name('update_picture');
+
+Route::resource('rents', 'RentController');

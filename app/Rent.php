@@ -15,4 +15,6 @@ class Rent extends Model
     // {
     //     $this->belongsToMany('App\Users');
     // }
+
+    protected $guarded = [];
 }
