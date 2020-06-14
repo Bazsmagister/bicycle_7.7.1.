@@ -51,7 +51,7 @@
         @method('PATCH')
 
         <label for="rentstartdate">Rent start (date and time):</label>
-        <input type="date" id="rentstartdate" name="rentstartdate" required>
+        <input type="date" id="rentstartdate" name="rentStarted_at" required>
         <br>
         <label for="rentstarttime">Choose a time for rent start:</label>
         {{-- <input type="time" id="rentstarttime" name="rentstarttime" min="08:00" max="20:00" step="1" required> --}}

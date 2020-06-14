@@ -41,8 +41,8 @@ $factory->define(Bicycle::class, function (Faker $faker) {
         //  'user_id' => function () {
         //      return factory(App\User::class)->create()->id;},
         //'user_id' => factory(App\User::class),
-        'broughtIn_at' => $faker->dateTimeBetween('yesterday', '-25 hours'),
-        'startedToService_at' => $faker->dateTimeBetween('yesterday', '-1 hours'),
+        //'broughtIn_at' => $faker->dateTimeBetween('yesterday', '-25 hours'),
+        //'startedToService_at' => $faker->dateTimeBetween('yesterday', '-1 hours'),
         //'readyToTakeHome_at' => '',
         'price' => $faker->numberBetween(1000, 10000),
         // 'description' => $faker->paragraph,
@@ -95,8 +95,7 @@ $factory->define(Bicycle::class, function (Faker $faker) {
         // 'image' => $faker->imageUrl('/home/bazs/code/bicycle_7.7.1/storage/app/public/bic.png'),
 
 
-
-        'created_at' => $faker->dateTimeBetween('yesterday', '-30 hours'),
+        //'created_at' => $faker->dateTimeBetween('yesterday', '-30 hours'),
         'updated_at' => now(),
     ];
 });

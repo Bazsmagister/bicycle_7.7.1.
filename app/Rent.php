@@ -17,4 +17,5 @@ class Rent extends Model
     // }
 
     protected $guarded = [];
+    public $timestamps = true;
 }

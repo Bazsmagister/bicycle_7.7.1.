@@ -42,7 +42,9 @@
                 <div class="flex-container">
 
                     <div><a href="/bicyclestosell">New bicycles to sell</a></div>
-                    <div><a href="/bicyclestorent">Rent-a-bicycle</a></div>
+                    <div><a href="/bicyclestorent">Our bicycles to rent</a></div>
+                    <div><a href="/rents/create">Create a Rent</a></div>
+
                     @auth
                     <div><a href="/service">Service(auth)</a></div>
                     @endauth

@@ -17,11 +17,12 @@ class CreateRentsTable extends Migration
         Schema::create('rents', function (Blueprint $table) {
             $table->id();
 
-            $table->unsignedBigInteger('bicycle_id');
             $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('bicycle_id');
+            
 
-            $table->timestamp('rentStarted_at')->default(Carbon::yesterday());
-            $table->timestamp('rentEnds_at')->default(now());
+            $table->timestamp('rentStarted_at')->default(Carbon::now());
+            $table->timestamp('rentEnds_at')->default(Carbon::now()->addDay(1));
 
             $table->timestamps();
 

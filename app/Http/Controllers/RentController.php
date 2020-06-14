@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Rent;
 use App\User;
+use App\Bicycle;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,7 +19,9 @@ class RentController extends Controller
      */
     public function index()
     {
-        $rents = Rent::all();
+        //$rents = Rent::all();
+        $rents = Rent::paginate();
+
         return view('rents.index', compact('rents'));
     }
 
@@ -45,18 +49,52 @@ class RentController extends Controller
         // $user_id = auth()->user()->id();
         //dd($user_id);
 
-        $rent=  Rent::create([
+        /* $rent=  Rent::create([
         'user_id' => request('user_id'),
         'bicycle_id' => request('bicycle_id'),
         'rentStarted_at' => request('rentStarted_at'),
         'rentEnds_at' => request('rentEnds_at')
-    ]);
+        ]);
         //$request->flash;
 
-        return redirect()->//route('users.index')
-        back()
+        return redirect()->route('rents.index')
+        
         ->withInput()
-             ->with('message', 'Rent Nr.'. $rent->id. '  has been created');
+             ->with('message', 'Rent Nr.'. $rent->id. '  has been created'); */
+
+
+
+        //ver2
+        
+            $user = User::find(Auth::id()); 
+            //dd($user);
+            if(!$user) {
+                return 'no user';
+            }
+
+            $bicycle = Bicycle::find($request->input('bicycle_id'));
+            $bicycle->is_availableToRent = 0;
+            if(!$bicycle) {
+                return 'no bike';
+            }
+
+            $rentalData = [
+                'user_id' => $user->id, 
+                'bicycle_id' => $bicycle->id, 
+               /*  'rentStarted_at' => Carbon::now(),
+                'rentEnds_at' => (Carbon::now()->addDay(1)), */
+                'rentStarted_at' =>  $request->rentStarted_at ?? Carbon::now(),
+                'rentEnds_at' => $request->rentEnds_at ?? Carbon::now()->addDay(1),
+
+            ];
+            $rent = Rent::firstOrCreate($rentalData);
+            $bicycle->is_availableToRent = 0;
+            $bicycle->save();
+
+            return redirect()->route('rents.index')
+        
+            ->withInput()
+                 ->with('message', 'Rent Nr.'. $rent->id. '  has been created'); 
     }
 
     /**

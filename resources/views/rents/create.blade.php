@@ -63,21 +63,21 @@
         <input type="number" id="bicycle_id" name="bicycle_id" required>
         <br>
         <label for="rentstartdate">Rent start (date and time):</label>
-        <input type="date" id="rentstartdate" name="rentStarted_at" required>
+        <input type="date" id="rentstartdate" name="rentStarted_at" >
         <br>
-        <label for="rentstarttime">Choose a time for rent start:</label>
+        {{-- <label for="rentstarttime">Choose a time for rent start:</label> --}}
         {{-- <input type="time" id="rentstarttime" name="rentstarttime" min="08:00" max="20:00" step="1" required> --}}
         {{-- <input type="text" id="rentstarttime" name="rentstarttime" min="08:00" max="20:00" step="1" required> --}}
 
         <br>
-        <input type="button" value="Rent start now" name="rentStarted_at" onclick="datetime()">
-
+       {{--  <input type="button" value="Rent start now" name="rentStarted_at" onclick="datetime()">
         <p id="demo1">here comes the now timestamp</p>
         <p id="demo2">here comes the now timestamp</p>
-        <p id="demo3">here comes the now timestamp</p>
-        <hr>
+        <p id="demo3">here comes the now timestamp</p> --}}
+        
         <label for="rentenddate">Rent end (date and time):</label>
         <input type="date" id="rentenddate" name="rentEnds_at">
+
         {{-- <input type="datetime-local" not supported in firefox> --}}
         <br>
 

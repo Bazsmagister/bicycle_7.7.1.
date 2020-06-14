@@ -315,11 +315,14 @@ class BicycleController extends Controller
 
     public function allRentableBicycles()
     {
-        $rentable_bicycles = DB::select('select * from bicycles where is_rentable = ?', [1]);
-        return view('bicyclestorent', compact('rentable_bicycles'));
+        /* $rentable_bicycles = DB::select('select * from bicycles where is_rentable = ?', [1]); */
+       // $rentable_bicycles = DB::select('select * from bicycles where is_availableToRent = ?', [1]);
+       // return view('bicyclestorent', compact('rentable_bicycles'));
 
         // $rentable_bicycles = DB::select('select * from bicycles where is_rentable = ?', [1]);
-        // return view('bicyclestorent', compact('rentable_bicycles'));
+         $rentable_bicycles = DB::table('bicycles')->where('is_rentable', 1)->where('is_availabletoRent', 1)->get();
+
+         return view('bicyclestorent', compact('rentable_bicycles'));
     }
 
 

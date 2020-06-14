@@ -16,6 +16,8 @@
             <li>{{$bicycle -> name }} </li>
             <li>{{$bicycle -> description }} </li>
             <li>{{$bicycle -> rent_price }} Ft/day </li>
+            <li>{{$bicycle -> is_rentable }} </li>
+            <li>{{$bicycle -> is_availableToRent }} </li>
             <img src="{{$bicycle->image}}" alt="interesting" width="" height="">
 
             {{-- <img src="/storage/bic.png" alt="a bicycle png"> --}}
@@ -28,19 +30,22 @@
             </div>
 
             <br>
-            <form action="/rentabike" method="get">
-                <button class='button btn-info' type="submit">Rent that bicycle</button>
+            <form action="/rents" method="post">
+            @csrf
+            
+                <input type="number" id="bicycle_id" name="bicycle_id" value={{$bicycle->id}} hidden>
 
+                {{-- <label for="rentstartdate">Rent start (date and time):</label>
+                <input type="date" id="rentstartdate" name="rentStarted_at" > --}}
+                <br>
+                <button class='button btn-info' type="submit">Rent that bicycle from now on for 1 day</button>
             </form>
 
-
-
-            <a href="/rentabike">Link</a>
+           {{--  <a href="/rents/create">create</a> --}}
             <button>
-                <a href="/rentabike">Linkwithbutton</a>
+                <a href="/rents/create">Make a more complex rent if you want to plan a rent in the future.</a>
             </button>
-            @else
-
+           @else
             <div>
                 <button class='button btn-info' onclick="alert('Please login or register to rent this bicycle')">Rent
                     that bicycle</button>
@@ -54,20 +59,7 @@
                 {{-- <button class='button btn-info' onClick="pleaseLogin()" disabled>Rent that bicycle</button> --}}
             </div>
 
-
             @endauth
-
-            {{-- <img src="{{$bicycle->image}}" alt="originalsize"> --}}
-            {{-- <img src="$bicycle->image"> --}}
-            {{-- <img src="/storage/images/{{$bicycle->image}}"> --}}
-            {{-- <img src="/storage/bi.jpg" alt="a bicycle"> --}}
-            {{-- <img src="/storage/bic.xcf" alt="a bicycle"> --}}
-            {{-- <li>{{$bicycle -> image }} </li> --}}
-            {{-- <div><img src="bic.png" alt="a bicycle"></div> --}}
-            {{-- <img src="/storage/app/public/bic.png" alt="a bicycle"> --}}
-            {{-- <img src="/public/storage/bic.png" alt="?." sizes="24*24" srcset=""> --}}
-            {{-- <img src="/home/bazs/code/bicycle_7.7.1/storage/app/public/bic.png"> --}}
-            {{-- <img src="/home/bazs/code/bicycle_7.7.1/public/storage/bic.png"> --}}
 
         </ul>
         <hr>

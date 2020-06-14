@@ -504,6 +504,10 @@ https://www.larashout.com/laravel-image-upload-made-easy?fbclid=IwAR1LUIXC1dCLdX
 
 npm install bootstrap-sweetalert
 
+ $bicycle->is_availableToRent = 0;
+            $bicycle->save();
+            
+
 Laravel Echo REDIS Pusher Channel:
 
 1. app\config\app.php
