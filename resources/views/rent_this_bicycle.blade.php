@@ -11,9 +11,6 @@
     <p> Price :
         {{$bicycle->price}} Ft</p>
 
-    <p> Rent Price /24h :
-        {{$bicycle->rent_price}} Ft</p>
-
     <p> Image :
         @role('super-admin')
         {{$bicycle->image}}
@@ -40,17 +37,9 @@
     </p>
 
     <hr>
-    @auth
-    @if ($bicycle->is_rentable==1)
-    <form action="/rentthisbike" method="get">
-        <button class='button btn-info' type="submit">Rent that bicycle</button>
-
-    </form>
-    @endif
-    @endauth
 
     {{-- @hasanyrole('super-admin') --}}
-    @hasanyrole('super-admin|serviceman|salesman')
+    @auth('super-admin|serviceman|salesman')
 
 
     <div>
@@ -66,19 +55,17 @@
     </form> --}}
 
     <hr>
-    <form action="{{ route('bicycle.destroy', $bicycle->id) }}" method="POST">
+    <form action="{{ route('bicycle.rent', $bicycle->id) }}" method="POST">
         @csrf
-        @method('delete')
-        <button type="submit" class="btn btn-danger">Delete the bicycle</button>
+        @method('put')
+        <button type="submit" class="btn btn-warning">Rent the bicycle</button>
     </form>
 
+    @endauth
     <hr>
 
     {{$bicycle}}
     <hr>
-
-    @endhasanyrole
-
 
     <p>Test roles:</p>
     @hasanyrole('super-admin|serviceman|salesman')

@@ -27,6 +27,7 @@ use App\Events\BicycleUpdated;
  }); */
 
 
+
 Route::get('/', function () {
     BicycleUpdated::dispatch();
     //same as
@@ -72,7 +73,7 @@ Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']
 //Route::get('service', 'BicycleController@service');
 
 
-Route::get('rentabike', 'BicycleController@rent');
+Route::get('bicyclestorent', 'BicycleController@allRentableBicycles');
 // Route::get('newbikes', 'BicycleController@buy');
 // Route::get('newbikes', 'BicycleController@buy');
 
@@ -80,7 +81,7 @@ Route::get('rentabike', 'BicycleController@rent');
 Route::resource('bicycle', 'BicycleController');
 Route::get('bicyclestosell', 'BicycleController@sellable');
 Route::get('service', 'BicycleController@service');
-Route::get('rent', 'BicycleController@rent');
+Route::get('rentabike', 'BicycleController@rent');
 
 
 
