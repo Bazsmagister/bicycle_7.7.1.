@@ -19,11 +19,11 @@
         {{$bicycle->image}}
         @endrole
 
-        <img src="{{$bicycle->image}}" alt="interesting" width="150" height="120">
+        <img src="{{$bicycle->image}}" alt="interesting" width="" height="">
 
-        <img src="/storage/{{$bicycle->image}}" alt="this should be an image 0">
+        {{-- <img src="/storage/{{$bicycle->image}}" alt="this should be an image 0">
 
-        <img src="/storage/{{$bicycle->image}}" alt="this should be an image3" width="130" height="100">
+        <img src="/storage/{{$bicycle->image}}" alt="this should be an image3" width="130" height="100"> --}}
 
 
 
@@ -45,37 +45,45 @@
 
     <hr>
     @auth
-    @if ($bicycle->is_rentable==1)
-    <form action="/bicycles/{id}" method="POST">
+    @if (($bicycle->is_rentable==1) && ($bicycle->is_availableToRent ==1))
+    <form action="/rents" method="POST">
         @csrf
-        @method('PATCH')
+        {{-- @method('PATCH') --}}
 
-        <label for="rentstartdate">Rent start (date and time):</label>
-        <input type="date" id="rentstartdate" name="rentStarted_at" required>
+        <input type="number" name='bicycle_id' value='{{$bicycle->id}}' hidden>
+
+        <label for="rentstartdate">Rent start :</label>
+        <input type="date" id="rentstartdate" name="rentStarted_at">
+        {{-- <input type="date" id="rentstartdate" name="rentStarted_at" required> --}}
         <br>
-        <label for="rentstarttime">Choose a time for rent start:</label>
+        {{-- <label for="rentstarttime">Choose a time for rent start:</label> --}}
         {{-- <input type="time" id="rentstarttime" name="rentstarttime" min="08:00" max="20:00" step="1" required> --}}
         {{-- <input type="text" id="rentstarttime" name="rentstarttime" min="08:00" max="20:00" step="1" required> --}}
 
         <br>
-        <input type="button" value="Rent start now" name="rentstarttime" onclick="datetime()">
+        {{-- <input type="button" value="Rent start now" name="rentstarttime" onclick="datetime()"> --}}
 
-        <p id="demo1">here comes the now timestamp</p>
+        {{-- <p id="demo1">here comes the now timestamp</p>
         <p id="demo2">here comes the now timestamp</p>
         <p id="demo3">here comes the now timestamp</p>
-        <hr>
-        <label for="rentenddate">Rent end (date and time):</label>
-        <input type="date" id="rentenddate" name="rentenddate">
+        <hr> --}}
+        <label for="rentenddate">Rent end :</label>
+        <input type="date" id="rentenddate" name="rentEnds_at">
         {{-- <input type="datetime-local" not supported in firefox> --}}
         <br>
 
-        <label for="rentendtime">Choose a time for rent end:</label>
-        <input type="time" id="rentendtime" name="rentendtime" min="08:00" max="20:00">
+        {{-- <label for="rentendtime">Choose a time for rent end:</label>
+        <input type="time" id="rentendtime" name="rentendtime" min="08:00" max="20:00"> --}}
 
         <br>
-        <button class='button btn-info' type="submit">Rent that bicycle</button>
+        <button class='button btn-info' type="submit">Rent that bicycle from now on for 1 day</button>
 
     </form>
+    <br>
+    <button>
+        <a href="/rents/create">Make a more complex rent if you want to plan a rent in the future even for more
+            days.</a>
+    </button>
 
 
     @endif

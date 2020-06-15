@@ -18,7 +18,7 @@
             <li>{{$bicycle -> rent_price }} Ft/day </li>
             <li>{{$bicycle -> is_rentable }} </li>
             <li>{{$bicycle -> is_availableToRent }} </li>
-            <img src="{{$bicycle->image}}" alt="interesting" width="" height="">
+            <img src="{{$bicycle->image}}" alt="interesting" width="150" height="120">
 
             {{-- <img src="/storage/bic.png" alt="a bicycle png"> --}}
             <img src="/storage/bi.jpg" alt="quarter jpg" width="182" height="109">
@@ -31,8 +31,8 @@
 
             <br>
             <form action="/rents" method="post">
-            @csrf
-            
+                @csrf
+
                 <input type="number" id="bicycle_id" name="bicycle_id" value={{$bicycle->id}} hidden>
 
                 {{-- <label for="rentstartdate">Rent start (date and time):</label>
@@ -41,11 +41,11 @@
                 <button class='button btn-info' type="submit">Rent that bicycle from now on for 1 day</button>
             </form>
 
-           {{--  <a href="/rents/create">create</a> --}}
+            {{--  <a href="/rents/create">create</a> --}}
             <button>
                 <a href="/rents/create">Make a more complex rent if you want to plan a rent in the future.</a>
             </button>
-           @else
+            @else
             <div>
                 <button class='button btn-info' onclick="alert('Please login or register to rent this bicycle')">Rent
                     that bicycle</button>

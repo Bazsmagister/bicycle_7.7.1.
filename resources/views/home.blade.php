@@ -4,7 +4,7 @@
 @section('logged_in')
 
 
-<div>Welcome : {{ Auth::user()->name }} </div>
+{{-- <div>Welcome : {{ Auth::user()->name }} </div> --}}
 <p>
     Welcome: {{ auth()->user()->name }}
 </p>
