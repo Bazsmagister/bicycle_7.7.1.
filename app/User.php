@@ -56,6 +56,59 @@ class User extends Authenticatable
     public $timestamps = true;
 
 
+    public function getImageAttribute()
+    {
+        return $this->profile_image;
+        //so  I can use :auth()->user()->image instead of profile_image
+    }
+
+    public function rents()
+    {
+        $this->hasMany('App\Rent');
+        // ->withPivot('rents');
+    }
+
+
+    public function bicycles()
+    {
+        return $this->belongsToMany(Bicycle::class)->withTimestamps();
+        // ->withPivot('rents');
+    }
+
+
+    public function services()
+    {
+        return $this->hasMany(Bicycle::class)->withTimestamps();
+        // ->withPivot('rents');
+    }
+
+    // For rent
+    // $user->cars()->attach($car_id, ['type' => 'rent']);
+
+    // $user = User::with('bicycles')->find(1);
+
+    // @foreach($user->cars as $car)
+
+    // {{ $car->name }}
+
+    // // Either buy or rent
+    // {{ $car->pivot->type }}
+
+    // @endforeach
+
+
+
+    // public function buyingBicycles()
+    // {
+    //     return $this->belongsToMany(Bicycle::class)
+    //             // ->wherePivot('type', 'buy')
+    //             ->withPivot('rents');
+    // }
+}
+
+
+
+
 
     // public function roles() {
 
@@ -89,46 +142,3 @@ class User extends Authenticatable
     // {
     //     return $this->roles()->detach($role);
     // }
-
-    public function getImageAttribute()
-    {
-        return $this->profile_image;
-        //so  I can use :auth()->user()->image instead of profile_image
-    }
-
-    public function rents()
-    {
-        $this->belongsToMany('App\Rent');
-        // ->withPivot('rents');
-    }
-
-
-    public function bicycles()
-    {
-        return $this->belongsToMany(Bicycle::class)->withTimestamps();
-        // ->withPivot('rents');
-    }
-
-    // For rent
-    // $user->cars()->attach($car_id, ['type' => 'rent']);
-
-    // $user = User::with('bicycles')->find(1);
-
-    // @foreach($user->cars as $car)
-
-    // {{ $car->name }}
-
-    // // Either buy or rent
-    // {{ $car->pivot->type }}
-
-    // @endforeach
-
-
-
-    // public function buyingBicycles()
-    // {
-    //     return $this->belongsToMany(Bicycle::class)
-    //             // ->wherePivot('type', 'buy')
-    //             ->withPivot('rents');
-    // }
-}

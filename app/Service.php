@@ -7,10 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 class Service extends Model
 {
     //
-     protected $guarded = [];
+    protected $guarded = [];
 
-     public function users(){
-         $this->hasMany('App\Users');
+    public function users()
+    {
+        $this->belongsTo('App\Users');
+    }
 
-     }
+    public function bicycles()
+    {
+        $this->belongsTo('App\Bicycle');
+    }
 }

@@ -21,13 +21,15 @@ class Bicycle extends Model
     //     return $this->image;
     // }
 
-    // public function rents()
-    // {
-    //     return $this->belongsToMany(App\Rent::class);
-    // }
+
 
     public function users()
     {
         return $this->belongsToMany(User::class)->withTimestamps();
+    }
+
+    public function rents()
+    {
+        return $this->hasMany(App\Rent::class)->withTimestamps();
     }
 }
