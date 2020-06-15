@@ -13,11 +13,13 @@ class DatabaseSeeder extends Seeder
     {
         
         $this->call(RolesAndPermissionsSeeder::class);
-        $this->call(UserSeeder::class);
         $this->call(BicycleSeeder::class);
-        $this->call(BicycleUserSeeder::class);
-        //$this->call(ServiceSeeder::class);
         $this->call(RentSeeder::class);
+        $this->call(UserSeeder::class);
+       
+        //$this->call(BicycleUserSeeder::class);
+        //$this->call(ServiceSeeder::class);
+      
         
     }
 }

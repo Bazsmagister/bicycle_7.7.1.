@@ -1,8 +1,9 @@
 <?php
 
+use Carbon\Carbon;
+use Illuminate\Support\Arr;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Carbon\Carbon;
 
 class UserSeeder extends Seeder
 {
@@ -33,6 +34,18 @@ class UserSeeder extends Seeder
         // DB::insert('insert into users (id, name, email, phone, password) values (?, ?, ?, ?, ?)', [1, 'admin', 'admin@admin.com', '06123456789', 'admin']);
 
         //Bicycle factory makes already as much User as Bicycle
-        factory(App\User::class, 5)->create();
+        //factory(App\User::class, 5)->create();
+
+         //create 10 users
+         $user = factory(App\User::class,10)->create();
+         //dd($user);
+
+         $id_arr = Arr::pluck($user , 'id'); // get user id array
+       
+         // create 2 rents for each user
+         $user->each(function ($user) {
+             $rents = $user->rents()->saveMany(factory(App\Rent::class,2)->make());
+             });     
+ 
     }
 }

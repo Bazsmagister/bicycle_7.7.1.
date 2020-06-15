@@ -11,11 +11,11 @@ class Service extends Model
 
     public function users()
     {
-        $this->belongsTo('App\Users');
+        return $this->belongsTo('App\User');
     }
 
     public function bicycles()
     {
-        $this->belongsTo('App\Bicycle');
+        return $this->belongsTo('App\Bicycle');
     }
 }

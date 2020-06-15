@@ -64,7 +64,9 @@ class User extends Authenticatable
 
     public function rents()
     {
-        $this->hasMany('App\Rent');
+        return $this->hasMany(Rent::class)
+        /* ->withTimestamps() */
+        ;
         // ->withPivot('rents');
     }
 

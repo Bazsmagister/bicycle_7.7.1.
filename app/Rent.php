@@ -8,12 +8,12 @@ class Rent extends Model
 {
     public function bicycle()
     {
-        return $this->belongsTo('App\Bicycles');
+        return $this->belongsTo('App\Bicycle')->withTimestamps();
     }
 
     public function user()
     {
-        $this->belongsTo('App\Users');
+       return $this->belongsTo('App\User')->withTimestamps();
     }
 
     protected $guarded = [];

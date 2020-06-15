@@ -25,11 +25,15 @@ class Bicycle extends Model
 
     public function users()
     {
-        return $this->belongsToMany(User::class)->withTimestamps();
+        return $this->belongsToMany(User::class)
+        ->withTimestamps()
+        ;
     }
 
     public function rents()
     {
-        return $this->hasMany(App\Rent::class)->withTimestamps();
+        return $this->hasMany(App\Rent::class)
+        /* ->withTimestamps() */
+        ;
     }
 }
