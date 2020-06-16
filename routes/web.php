@@ -30,31 +30,28 @@ use App\Events\BicycleUpdated;
 
 Route::get('/', function () {
     //$names = collect(explode(',', 'michael, esther, peace'));
-   /*  $names = explode(',', 'michael, esther, peace');
-    $names = collect($names);
-    //dd($names);
+    /*  $names = explode(',', 'michael, esther, peace');
+     $names = collect($names);
+     //dd($names);
+     $rand = $names->random();
+     dd($rand); */
+    ////////////////////////
+    // echo strtotime("now"), "\n";
+    // echo strtotime("10 September 2000"), "\n";
+    // echo strtotime("+1 day"), "\n";
+    // echo strtotime("+1 week"), "\n";
+    // echo strtotime("+1 week 2 days 4 hours 2 seconds"), "\n";
+    // echo strtotime("next Thursday"), "\n";
+    // echo strtotime("last Monday"), "\n";
 
-    $rand = $names->random();
-    dd($rand); */
+    // echo date("jS F, Y", strtotime("11.12.10"));
+    // // outputs 10th December, 2011
 
-    
+    // echo date("jS F, Y", strtotime("11/12/10"));
+    // // outputs 12th November, 2010
 
-echo strtotime("now"), "\n";
-echo strtotime("10 September 2000"), "\n";
-echo strtotime("+1 day"), "\n";
-echo strtotime("+1 week"), "\n";
-echo strtotime("+1 week 2 days 4 hours 2 seconds"), "\n";
-echo strtotime("next Thursday"), "\n";
-echo strtotime("last Monday"), "\n";
-
-echo date("jS F, Y", strtotime("11.12.10"));
-// outputs 10th December, 2011
-
-echo date("jS F, Y", strtotime("11/12/10"));
-// outputs 12th November, 2010
-
-echo date("jS F, Y", strtotime("11-12-10"));
-// outputs 11th December, 2010  
+    // echo date("jS F, Y", strtotime("11-12-10"));
+    // // outputs 11th December, 2010
 
 $maxValue = App\User::max('id');
 dd($maxValue);
