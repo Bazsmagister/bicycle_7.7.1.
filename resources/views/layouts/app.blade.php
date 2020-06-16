@@ -29,6 +29,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.min.css">
 
+
 </head>
 
 <body>
@@ -55,6 +56,7 @@
                     <div><a href="/service">Service(serviceman, admin)</a></div>
                     <div class='admin'><a href="/users">All Users(admin) |</a></div>
                     <div class="admin"><a href="/bicycle">All bicycles(admin)</a></div>
+                    <div class="admin"><a href="/rents">All rents(admin)</a></div>
                     @endrole
 
                 </div>
@@ -134,6 +136,8 @@
             @yield('bicycles_to_create')
             @yield('bicycle_edit')
             @yield('logged_in')
+            @yield('rents_edit')
+
 
         </main>
 

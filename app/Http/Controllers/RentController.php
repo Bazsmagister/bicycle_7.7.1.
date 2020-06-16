@@ -58,43 +58,43 @@ class RentController extends Controller
         //$request->flash;
 
         return redirect()->route('rents.index')
-        
+
         ->withInput()
              ->with('message', 'Rent Nr.'. $rent->id. '  has been created'); */
 
 
 
         //ver2
-        
-            $user = User::find(Auth::id()); 
-            //dd($user);
-            if(!$user) {
-                return 'no user';
-            }
 
-            $bicycle = Bicycle::find($request->input('bicycle_id'));
-            $bicycle->is_availableToRent = 0;
-            if(!$bicycle) {
-                return 'no bike';
-            }
+        $user = User::find(Auth::id());
+        //dd($user);
+        if (!$user) {
+            return 'no user';
+        }
 
-            $rentalData = [
-                'user_id' => $user->id, 
-                'bicycle_id' => $bicycle->id, 
+        $bicycle = Bicycle::find($request->input('bicycle_id'));
+        $bicycle->is_availableToRent = 0;
+        if (!$bicycle) {
+            return 'no bike';
+        }
+
+        $rentalData = [
+                'user_id' => $user->id,
+                'bicycle_id' => $bicycle->id,
                /*  'rentStarted_at' => Carbon::now(),
                 'rentEnds_at' => (Carbon::now()->addDay(1)), */
                 'rentStarted_at' =>  $request->rentStarted_at ?? Carbon::now(),
                 'rentEnds_at' => $request->rentEnds_at ?? Carbon::now()->addDay(1),
 
             ];
-            $rent = Rent::firstOrCreate($rentalData);
-            $bicycle->is_availableToRent = 0;
-            $bicycle->save();
+        $rent = Rent::firstOrCreate($rentalData);
+        $bicycle->is_availableToRent = 0;
+        $bicycle->save();
 
-            return redirect()->route('rents.index')
-        
+        return redirect()->route('rents.index')
+
             ->withInput()
-                 ->with('message', 'Rent Nr.'. $rent->id. '  has been created'); 
+                 ->with('message', 'Rent Nr.'. $rent->id. '  has been created');
     }
 
     /**
@@ -105,7 +105,8 @@ class RentController extends Controller
      */
     public function show(Rent $rent)
     {
-        return view('rents.show', ['rent' => Rent::findOrFail($id)]);
+        // return view('rents.show', ['rent' => Rent::findOrFail($id)]);
+        return view('rents.show', compact('rent'));
     }
 
     /**
@@ -116,7 +117,7 @@ class RentController extends Controller
      */
     public function edit(Rent $rent)
     {
-        $rent = Rent::findOrFail($id);
+        // $rent = Rent::findOrFail($id);
 
         return view('rents.edit', compact('rent'));
     }
@@ -130,15 +131,19 @@ class RentController extends Controller
      */
     public function update(Request $request, Rent $rent)
     {
-        $rent = Rent::findOrFail($id);
-        $rent->user_id = auth()->user()->id;
+        // $rent = Rent::findOrFail($id);
+
+        // $rent->user_id = auth()->user()->id;
+        //or
+        $rent->user_id = $request->input('user_id');
+
         $rent->bicycle_id = $request->input('bicycle_id');
-        $rent->rentStarted_at = Carbon\Carbon::now();
+        $rent->rentStarted_at = $request->input('rentStarted_at');
         $rent->rentEnds_at = $request->input('rentEnds_at');
         $rent->save();
 
         return redirect()->route(
-            'rents.show',
+            'rents.index',
             $rent->id
         )->with(
             'message',
@@ -154,7 +159,8 @@ class RentController extends Controller
      */
     public function destroy(Rent $rent)
     {
-        $rent = Rent::findOrFail($id);
+
+        // $rent = Rent::findOrFail($id);
         $rent->delete();
 
 

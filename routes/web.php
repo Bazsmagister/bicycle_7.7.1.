@@ -53,8 +53,8 @@ Route::get('/', function () {
     // echo date("jS F, Y", strtotime("11-12-10"));
     // // outputs 11th December, 2010
 
-$maxValue = App\User::max('id');
-dd($maxValue);
+    // $maxValue = App\User::max('id');
+    // dd($maxValue);
 
     BicycleUpdated::dispatch();
     //same as

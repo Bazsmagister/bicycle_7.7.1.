@@ -57,6 +57,36 @@
     </table>
 </div>
 
+<div class="container mid">
+    <table class="table table-bordered table-striped">
+        <tr>
+            <th>ID</th>
+            <th>User Id</th>
+            <th>Bicycle Id</th>
+            <th>Rent Start</th>
+            <th>Rent End</th>
+
+        </tr>
+        @foreach($rents as $rent)
+        <tr>
+            <td>{{ $rent->id }}</td>
+            <td>{{ $rent->user_id}}</td>
+            <td>{{ $rent->bicycle_id }}</td>
+            <td>{{ $rent->rentStarted_at}}</td>
+            <td>{{ $rent->rentEnds_at }}</td>
+
+            <td><a href="rents/{{$rent->id}}/edit " class="btn btn-info">Edit</a>
+
+                <form action="{{ route('rents.destroy', $rent->id) }}" method="POST">
+                    @csrf
+                    @method('delete')
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+
+        </tr>
+        @endforeach
+    </table>
+</div>
 
 
 
