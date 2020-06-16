@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Request;
 use App\Events\BicycleUpdated;
+use App\Helpers;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +30,11 @@ use App\Events\BicycleUpdated;
 
 
 Route::get('/', function () {
+    myCustomHelper();
+
+    // HelperClass::myCustomMethod();
+
+
     //$names = collect(explode(',', 'michael, esther, peace'));
     /*  $names = explode(',', 'michael, esther, peace');
      $names = collect($names);
