@@ -504,9 +504,8 @@ https://www.larashout.com/laravel-image-upload-made-easy?fbclid=IwAR1LUIXC1dCLdX
 
 npm install bootstrap-sweetalert
 
- $bicycle->is_availableToRent = 0;
+$bicycle->is_availableToRent = 0;
             $bicycle->save();
-            
 
 Laravel Echo REDIS Pusher Channel:
 
@@ -561,3 +560,36 @@ check app\storage\logs\laravel.log
 
 7. in BicycleUpdated.php
    if you define a public property than it will load in the broadcast.
+
+# custom helpers:
+
+artisan make:provider HelperServiceProvider
+in this register method:
+
+public function register()
+{
+foreach (glob(app_path().'/Helpers/\*.php') as $filename) {
+            require_once($filename);
+}
+}
+
+Make a Helpers folder in App root.
+
+in app\config\app.php add to providers.
+App\Providers\HelperServiceProvider::class,
+
+in composer.json:
+"autoload": {
+"psr-4": {
+"App\\": "app/"
+},
+"classmap": [
+"database/seeds",
+"database/factories"
+],
+"files": [
+"app/Helpers/helpers.php"
+]
+},
+
+composer dumpautoload
