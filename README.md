@@ -604,4 +604,12 @@ php artisan make:notification InvoicePaid
 php artisan make:notification newBicycleToRent
 //a new notification php is created.
 
+
+ public function via($notifiable)
+    {
+        // return ['mail'];
+        return ['mail', 'database'];
+    }
+
 php artisan notifications:table
+php artisan migrate
