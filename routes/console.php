@@ -17,3 +17,8 @@ use Illuminate\Support\Facades\Artisan;
 Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
 })->describe('Display an inspiring quote');
+
+
+Artisan::command('email:send {user}', function (DripEmailer $drip, $user) {
+    $drip->send(User::find($user));
+})->describe('send an email');

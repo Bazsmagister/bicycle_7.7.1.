@@ -613,3 +613,7 @@ php artisan make:notification newBicycleToRent
 
 php artisan notifications:table
 php artisan migrate
+
+# commands
+
+php artisan make:command SendEmails

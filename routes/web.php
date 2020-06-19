@@ -4,6 +4,7 @@
 use App\Helpers;
 use App\Events\BicycleUpdated;
 use App\Notifications\rentIsOver;
+use Illuminate\Foundation\Inspiring;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Route;
@@ -43,6 +44,14 @@ use Illuminate\Support\Facades\Request;
 
 
 Route::get('/', function () {
+    dump(Inspiring::quote());
+    echo(Inspiring::quote());
+    var_dump(Inspiring::quote());
+    print_r(Inspiring::quote());
+
+
+ /*    $logfilename = 'cron_'. now()->format('Y_m_d') . '.txt'; 
+    dump($logfilename); */    
 
 
 
@@ -53,7 +62,7 @@ Route::get('/', function () {
     // }
 
     //$user = App\User::find(1);
-    $user = auth()->user();
+  /*   $user = auth()->user();
 
 
     foreach ($user->unreadNotifications as $notification) {
@@ -67,11 +76,11 @@ Route::get('/', function () {
         echo $notification ->created_at;
         // echo $notification->data['expires'];
         echo $notification->data['link'];
-        echo $notification->data['data2'];
+        echo $notification->data['data2']; */
 
 
         // echo $notification->data['data'] -> ['link'];
-    }
+    //}
 
 
     //auth()->loginUsingId(1);
@@ -115,7 +124,9 @@ Route::get('/', function () {
     // $maxValue = App\User::max('id');
     // dd($maxValue);
 
-    BicycleUpdated::dispatch();
+    
+    //BicycleUpdated::dispatch();
+    
     //same as
     // event(new BicycleUpdated);
 
