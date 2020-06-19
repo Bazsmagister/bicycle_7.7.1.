@@ -8,6 +8,9 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Spatie\Permission\Traits\HasRoles; //spatie
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+use App\Notifications\rentIsOver;
+
+
 //use App\Permissions\HasPermissionsTrait; //before Spatie package i used this trait.
 
 //class User extends Authenticatable implements MustVerifyEmail
@@ -106,6 +109,10 @@ class User extends Authenticatable
     //             // ->wherePivot('type', 'buy')
     //             ->withPivot('rents');
     // }
+
+
+
+
 }
 
 

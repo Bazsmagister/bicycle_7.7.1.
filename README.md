@@ -593,3 +593,15 @@ in composer.json:
 },
 
 composer dumpautoload
+
+# php ini
+
+echo php_ini_loaded_file();
+
+# Notification
+
+php artisan make:notification InvoicePaid
+php artisan make:notification newBicycleToRent
+//a new notification php is created.
+
+php artisan notifications:table

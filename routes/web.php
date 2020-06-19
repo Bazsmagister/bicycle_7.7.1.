@@ -1,12 +1,13 @@
 
 <?php
 
+use App\Helpers;
+use App\Events\BicycleUpdated;
+use App\Notifications\rentIsOver;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Request;
-use App\Events\BicycleUpdated;
-use App\Helpers;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,13 +28,37 @@ use App\Helpers;
      var_dump($query->sql, $query->bindings);
  }); */
 
+ //auth()->loginUsingId(1);
 
 
 Route::get('/', function () {
-    myCustomHelper();
+    $user = App\User::find(1);
+    //dd($user);
 
-    // HelperClass::myCustomMethod();
+    foreach ($user->notifications as $notification) {
+        echo $notification->type;
+    }
 
+    // $user = App\User::find(1);
+
+    // foreach ($user->unreadNotifications as $notification) {
+    //     echo $notification->type;
+    // }
+
+
+    //auth()->loginUsingId(1);
+
+
+
+
+    //echo php_ini_loaded_file();
+    // $now= date('Y-m-d');
+    // $dateStart = date('Y-m-d', strtotime('-5 year'));
+
+    // $dateEnd = date('Y-m-d');
+    // dump($now, $dateStart, $dateEnd);
+
+    // myCustomHelper();
 
     //$names = collect(explode(',', 'michael, esther, peace'));
     /*  $names = explode(',', 'michael, esther, peace');
