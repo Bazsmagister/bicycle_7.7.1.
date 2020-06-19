@@ -36,6 +36,7 @@ class newRentIsMade extends Notification
     {
         //return ['mail'];
         return ['mail', 'database'];
+        // return ['mail', 'database', 'broadcast'];
     }
 
     /**
@@ -51,7 +52,15 @@ class newRentIsMade extends Notification
                     ->greeting('Hello!')
                     ->line('A new rent has been made. ')
                     //->action('Notification Action', url('/'))
+                    ->line('You rent expires at :')
+
                     ->line('Thank you for using our application! Enjoy your trip :)');
+
+
+        // return (new MailMessage)->view(
+        //     'mail.newRentIsMade',
+        //     ['expire' => $this->rent->rentEnds_At]
+        // );
     }
 
     /**
@@ -63,7 +72,9 @@ class newRentIsMade extends Notification
     public function toArray($notifiable)
     {
         return [
-            //
+                'expires'=>$this->rent->rentEnds_at,
+                'data2'=>'My Data',
+                'link'=>'My Link'
         ];
     }
 }

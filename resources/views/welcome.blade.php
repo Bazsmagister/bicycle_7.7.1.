@@ -198,7 +198,16 @@
 
     @foreach(Auth::user()->unreadNotifications as $not)
     <li>
-        <a class="dropdown-item">new renting has been created: {{$not->created_at}}</a>
+        <a class="dropdown-item">new rent has been created: {{$not->created_at}}</a>
+    </li>
+    @endforeach
+
+    @foreach(Auth::user()->unreadNotifications as $not)
+    {{$not}}
+    <li>
+        <a class="dropdown-item">new rent Expires: {{$not->data['expires']}}</a>
+        <br>
+        <a class="dropdown-item">new rent fakedata: {{$not->data['data2']}}</a>
     </li>
     @endforeach
 

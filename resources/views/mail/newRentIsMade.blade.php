@@ -16,7 +16,8 @@
 
 @endforeach
 
-
+{{-- {{$expire}}
+{{'expire'}} --}}
 
 {{-- Action Button --}}
 @isset($actionText)
@@ -34,19 +35,6 @@
 {{ $actionText }}
 @endcomponent
 @endisset
-
-@foreach(Auth::user()->unreadNotifications as $not)
-<li>
-    <a class="dropdown-item">a new rent has been created: {{$not->created_at}}</a>
-</li>
-@endforeach
-
-@foreach(Auth::user()->unreadNotifications as $not)
-
-<li>
-    <a class="dropdown-item">Your rent expires: {{$not->data['expires']}}</a>
-</li>
-@endforeach
 
 {{-- Outro Lines --}}
 @foreach ($outroLines as $line)

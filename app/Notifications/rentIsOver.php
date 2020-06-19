@@ -30,7 +30,7 @@ class rentIsOver extends Notification implements ShouldQueue
     public function via($notifiable)
     {
         // return ['mail'];
-        return ['mail', 'database'];
+        return ['mail', 'database', 'broadcast'];
     }
 
     /**

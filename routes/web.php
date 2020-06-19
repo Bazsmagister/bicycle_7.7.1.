@@ -30,6 +30,17 @@ use Illuminate\Support\Facades\Request;
 
  //auth()->loginUsingId(1);
 
+ Route::get('mail', function () {
+     //  $rent = App\Rent::latest();
+     $rent = App\Rent::find(32);
+
+     //dd($rent);
+
+     return (new App\Notifications\newRentIsMade($rent))
+                ->toMail($rent->user);
+ });
+
+
 
 Route::get('/', function () {
 
@@ -47,8 +58,19 @@ Route::get('/', function () {
 
     foreach ($user->unreadNotifications as $notification) {
         echo $notification ->type;
+        echo $notification ->id;
+
+        //echo $notification ->keytype;
+        //echo $notification['table'];
+
         //dd($notification);
         echo $notification ->created_at;
+        // echo $notification->data['expires'];
+        echo $notification->data['link'];
+        echo $notification->data['data2'];
+
+
+        // echo $notification->data['data'] -> ['link'];
     }
 
 
