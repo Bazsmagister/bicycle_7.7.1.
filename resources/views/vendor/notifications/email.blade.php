@@ -35,18 +35,30 @@
 @endcomponent
 @endisset
 
-@foreach(Auth::user()->unreadNotifications as $not)
+{{-- @foreach(Auth::user()->unreadNotifications as $not)
+ {{$not}}
 <li>
     <a class="dropdown-item">a new rent has been created: {{$not->created_at}}</a>
 </li>
-@endforeach
+@endforeach --}}
 
-@foreach(Auth::user()->unreadNotifications as $not)
+<p>Your rent expires at: </p>
+@php
+// auth()->user()->unreadNotifications->first()->data['expires']
+// dump(auth()->user()->unreadNotifications->last()->data['expires']);
+// print_r(auth()->user()->unreadNotifications->last()->first()->data['expires']);
+// var_dump(auth()->user()->unreadNotifications->last()->data['expires']);
+print_r(auth()->user()->unreadNotifications->last()->data['expires']);
+@endphp
+<br>
+
+
+{{-- @foreach(Auth::user()->unreadNotifications as $not)
 
 <li>
     <a class="dropdown-item">Your rent expires: {{$not->data['expires']}}</a>
 </li>
-@endforeach
+@endforeach --}}
 
 {{-- Outro Lines --}}
 @foreach ($outroLines as $line)
