@@ -196,6 +196,12 @@
         <strong>Whoops!</strong> x-alert component try
     </x-alert>
 
+    @foreach(Auth::user()->unreadNotifications as $not)
+    <li>
+        <a class="dropdown-item">new renting has been created: {{$not->created_at}}</a>
+    </li>
+    @endforeach
+
 </body>
 
 </html>

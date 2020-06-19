@@ -9,6 +9,7 @@ use App\Bicycle;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Notifications\rentIsOver;
+use App\Notifications\newRentIsMade;
 use Illuminate\Support\Facades\Auth;
 
 class RentController extends Controller
@@ -20,18 +21,7 @@ class RentController extends Controller
      */
     public function index()
     {
-        $user= auth()->user();
 
-        // $user= auth()->user()->name;
-        //dd($user);
-        $rent = $user->rents()->get();
-        //dd($rent);
-
-        // $when = now()->addMinutes(1);
-
-        // $user->notify((new RentisOver($rent))->delay($when));
-
-        $user->notify(new rentIsOver($rent));
 
         //$rents = Rent::all();
         $rents = Rent::paginate();
@@ -104,6 +94,25 @@ class RentController extends Controller
         $rent = Rent::firstOrCreate($rentalData);
         $bicycle->is_availableToRent = 0;
         $bicycle->save();
+
+
+        //$user= auth()->user();
+
+        // $user= auth()->user()->name;
+        //dd($user);
+
+        //$rent = $user->rents()->get();
+
+        //dd($rent);
+        // $when = now()->addMinutes(1);
+        // $user->notify((new RentisOver($rent))->delay($when));
+
+        // $user->notify(new rentIsOver($rent));
+
+        $user->notify(new newRentIsMade($rent));
+
+        // auth()->user()->notify(new newRentMade(Rent::findOrFail($id)));
+
 
         return redirect()->route('rents.index')
 

@@ -41,7 +41,7 @@ class rentIsOver extends Notification implements ShouldQueue
      */
     public function toMail($notifiable)
     {
-        $url = url('/rents/'.$this->rent->id);
+        //$url = url('/rents/'.$this->rent->id);
 
         return (new MailMessage)
                     ->from('test@example.com', 'Example')

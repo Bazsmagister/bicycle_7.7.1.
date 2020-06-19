@@ -32,18 +32,24 @@ use Illuminate\Support\Facades\Request;
 
 
 Route::get('/', function () {
-    $user = App\User::find(1);
-    //dd($user);
 
-    foreach ($user->notifications as $notification) {
-        echo $notification->type;
-    }
+
 
     // $user = App\User::find(1);
-
-    // foreach ($user->unreadNotifications as $notification) {
+    // //dd($user);
+    // foreach ($user->notifications as $notification) {
     //     echo $notification->type;
     // }
+
+    //$user = App\User::find(1);
+    $user = auth()->user();
+
+
+    foreach ($user->unreadNotifications as $notification) {
+        echo $notification ->type;
+        //dd($notification);
+        echo $notification ->created_at;
+    }
 
 
     //auth()->loginUsingId(1);

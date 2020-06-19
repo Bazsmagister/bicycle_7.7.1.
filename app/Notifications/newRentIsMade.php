@@ -2,12 +2,14 @@
 
 namespace App\Notifications;
 
+use App\Rent;
 use Illuminate\Bus\Queueable;
+use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
-use Illuminate\Notifications\Notification;
 
-class newBicycleToRent extends Notification
+class newRentIsMade extends Notification
+// class rentIsOver extends Notification implements ShouldQueue
 {
     use Queueable;
 
@@ -16,9 +18,12 @@ class newBicycleToRent extends Notification
      *
      * @return void
      */
-    public function __construct()
+
+    public $rent;
+
+    public function __construct(Rent $rent)
     {
-        //
+        $this->rent = $rent;
     }
 
     /**
@@ -29,8 +34,8 @@ class newBicycleToRent extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail'];
-        // return ['mail', 'database'];
+        //return ['mail'];
+        return ['mail', 'database'];
     }
 
     /**
@@ -42,9 +47,11 @@ class newBicycleToRent extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+                    ->from('test@example.com', 'Example')
+                    ->greeting('Hello!')
+                    ->line('A new rent has been made. ')
+                    //->action('Notification Action', url('/'))
+                    ->line('Thank you for using our application! Enjoy your trip :)');
     }
 
     /**
