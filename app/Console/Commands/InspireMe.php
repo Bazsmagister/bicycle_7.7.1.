@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use Carbon\Carbon;
 use Illuminate\Console\Command;
 use Illuminate\Foundation\Inspiring;
 
@@ -38,7 +39,13 @@ class InspireMe extends Command
      */
     public function handle()
     {
-        echo(Inspiring::quote());
+        echo(Inspiring::quote()),"\n";
+        echo 'foo end', "\n";
+        $this->line('==================');
+        $this->line('Running my job at ' . Carbon::now());
+        $this->line('Ending my job at ' . Carbon::now());
+
+
         // echo(Inspiring::quote()) > laravel.log;
     }
 }

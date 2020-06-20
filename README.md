@@ -617,3 +617,16 @@ php artisan migrate
 
 php artisan make:command SendEmails
 app\Console\Commands\SendEmail.php
+
+edit:
+crontab -e
+
+list:
+crontab -l
+
+delete/remove
+crontab -r
+
+---everyminutes
+
+-   -   -   -   -   5stars php /home/bazs/code/bicycle_7.7.1/artisan schedule:run >> /home/bazs/code/bicycle_7.7.1/storage/logs/laravel_output.log 2>&1

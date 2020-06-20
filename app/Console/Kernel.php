@@ -31,7 +31,7 @@ class Kernel extends ConsoleKernel
 
         // $schedule->command('inspire')->hourly();
 
-        $schedule->command('inspire:me')->everyMinute();
+        $schedule->command('inspire:me')->everyMinute()-> appendOutputTo(storage_path().'/logs/laravel_output.log');
         // ->dailyAt('10:02');
         //
 
