@@ -2,9 +2,11 @@
 
 namespace App\Console\Commands;
 
-use Illuminate\Console\Command;
 use App\User;
 use App\DripEmailer;
+use Illuminate\Console\Command;
+
+//use Illuminate\Support\Facades\Mail;
 
 class SendEmails extends Command
 {
@@ -14,11 +16,20 @@ class SendEmails extends Command
      * @var string
      */
 
+    protected $signature = 'email:send
+                        {user : The ID of the user}';
+
+
+    //protected $signature = 'email:send
+    //                     {user : The ID of the user}
+    //                     {--queue= : Whether the job should be queued}';
+
+
     //protected $signature = 'email:send {user}';
     //protected $signature =email:send {user*};
     //php artisan email:send foo bar
 
-     protected $signature = 'email:send {user} {--id=*}';
+    //protected $signature = 'email:send {user} {--id=*}';
     //php artisan email:send --id=1 --id=2
 
 
@@ -47,11 +58,17 @@ class SendEmails extends Command
 
     /**
      * Execute the console command.
+     * The handle method will be called when your command is executed. You may place your command logic in this method.
      *
      * @return mixed
      */
-    public function handle(DripEmailer $drip)
+    public function handle()
     {
-        $drip->send(User::find($this->argument('user')));
+        send(User::find($this->argument('user')));
     }
+
+    // public function handle(DripEmailer $drip)
+    // {
+    //     $drip->send(User::find($this->argument('user')));
+    // }
 }

@@ -44,14 +44,16 @@ use Illuminate\Support\Facades\Request;
 
 
 Route::get('/', function () {
-    dump(Inspiring::quote());
     echo(Inspiring::quote());
-    var_dump(Inspiring::quote());
-    print_r(Inspiring::quote());
+
+    // dump(Inspiring::quote());
+    // echo(Inspiring::quote());
+    // var_dump(Inspiring::quote());
+    // print_r(Inspiring::quote());
 
 
- /*    $logfilename = 'cron_'. now()->format('Y_m_d') . '.txt'; 
-    dump($logfilename); */    
+    /*    $logfilename = 'cron_'. now()->format('Y_m_d') . '.txt';
+       dump($logfilename); */
 
 
 
@@ -62,24 +64,24 @@ Route::get('/', function () {
     // }
 
     //$user = App\User::find(1);
-  /*   $user = auth()->user();
+    /*   $user = auth()->user();
 
 
-    foreach ($user->unreadNotifications as $notification) {
-        echo $notification ->type;
-        echo $notification ->id;
+      foreach ($user->unreadNotifications as $notification) {
+          echo $notification ->type;
+          echo $notification ->id;
 
-        //echo $notification ->keytype;
-        //echo $notification['table'];
+          //echo $notification ->keytype;
+          //echo $notification['table'];
 
-        //dd($notification);
-        echo $notification ->created_at;
-        // echo $notification->data['expires'];
-        echo $notification->data['link'];
-        echo $notification->data['data2']; */
+          //dd($notification);
+          echo $notification ->created_at;
+          // echo $notification->data['expires'];
+          echo $notification->data['link'];
+          echo $notification->data['data2']; */
 
 
-        // echo $notification->data['data'] -> ['link'];
+    // echo $notification->data['data'] -> ['link'];
     //}
 
 
@@ -124,9 +126,9 @@ Route::get('/', function () {
     // $maxValue = App\User::max('id');
     // dd($maxValue);
 
-    
+
     //BicycleUpdated::dispatch();
-    
+
     //same as
     // event(new BicycleUpdated);
 

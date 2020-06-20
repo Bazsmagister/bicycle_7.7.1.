@@ -19,6 +19,20 @@ Artisan::command('inspire', function () {
 })->describe('Display an inspiring quote');
 
 
-Artisan::command('email:send {user}', function (DripEmailer $drip, $user) {
-    $drip->send(User::find($user));
-})->describe('send an email');
+// Artisan::command('email:send {user}', function (DripEmailer $drip, $user) {
+//     $drip->send(User::find($user));
+// })->describe('send an email');
+
+
+
+
+Artisan::command('project:init', function () {
+    Artisan::call('migrate:refresh');
+    echo('migrate refresh done'), "\n";
+
+    Artisan::call('db:seed');
+    echo('seed done'), "\n";
+
+    Artisan::call('config:clear');
+    echo('config clear done'), "\n";
+})->describe('Running commands');

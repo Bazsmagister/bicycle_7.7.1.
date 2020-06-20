@@ -13,7 +13,9 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-         Commands\SendEmails::class
+         //Commands\SendEmails::class,
+         Commands\InspireMe::class,
+
     ];
 
     /**
@@ -24,8 +26,31 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
+        //from SO
+        //$schedule = $this->app->make(Schedule::class);
+
         // $schedule->command('inspire')->hourly();
-        $schedule->command('inspire')->everyMinute();
+
+        $schedule->command('inspire:me')->everyMinute();
+        // ->dailyAt('10:02');
+        //
+
+
+        // $schedule->call(function () {
+        //     echo('hello');
+        // })->dailyAt('10:01');
+
+        //->everyMinute()
+
+        // $schedule->call(function () {
+        //     DB::table('rents')->delete();
+        // })->everyMinute();
+
+        //->everyFiveMinutes();
+        //->dailyAt('13:00');
+
+
+        //php artisan schedule:run
     }
 
     /**

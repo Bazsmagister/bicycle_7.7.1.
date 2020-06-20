@@ -604,12 +604,11 @@ php artisan make:notification InvoicePaid
 php artisan make:notification newBicycleToRent
 //a new notification php is created.
 
-
- public function via($notifiable)
-    {
-        // return ['mail'];
-        return ['mail', 'database'];
-    }
+public function via(\$notifiable)
+{
+// return ['mail'];
+return ['mail', 'database'];
+}
 
 php artisan notifications:table
 php artisan migrate
@@ -617,3 +616,4 @@ php artisan migrate
 # commands
 
 php artisan make:command SendEmails
+app\Console\Commands\SendEmail.php
