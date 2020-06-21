@@ -48,7 +48,7 @@
 
                     @auth
                     <div><a href="/service">Service(auth)</a></div>
-                    <div><a href="/myRents">My previosus rents(auth)</a></div>
+                    <div><a href="/myRents">My previous rents(auth)</a></div>
 
                     @endauth
                     @role('serviceman')

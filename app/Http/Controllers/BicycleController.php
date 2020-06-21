@@ -19,6 +19,7 @@ class BicycleController extends Controller
     {
         // if you want an auth middleware in this controller just turn it on:
         // $this->middleware('auth');
+        // $this->middleware('auth')->except('index', 'show');
     }
     /**
      * Display a listing of the resource.
@@ -161,7 +162,6 @@ class BicycleController extends Controller
      */
     public function show($id)
     {
-
         return view('bicycle_show', ['bicycle' => Bicycle::findOrFail($id)]);
     }
 

@@ -82,6 +82,7 @@ class UserController extends Controller
     ]);
         //$request->flashExcept('password');
 
+
         return redirect()->//route('users.index')
         back()
         ->withInput()
@@ -170,20 +171,21 @@ class UserController extends Controller
         }
     }
 
-    public function myRents(){
+    public function myRents()
+    {
         $myRents =auth()->user()->rents;
         //dd($myRents);
-    /*     foreach ($myRents as $myRent) {
-            echo $myRent->rentStarted_at, "\n";
-            echo $myRent->created_at, "\n";
-            echo $myRent->bicycle_id;
-        }
-     */
-      /*   echo $myRents->rentStarted_at;
-        echo $myRents->created_at;
-        echo $myRents->bicycle_id; */
-    
-            //dd($myRents);
+        /*     foreach ($myRents as $myRent) {
+                echo $myRent->rentStarted_at, "\n";
+                echo $myRent->created_at, "\n";
+                echo $myRent->bicycle_id;
+            }
+         */
+        /*   echo $myRents->rentStarted_at;
+          echo $myRents->created_at;
+          echo $myRents->bicycle_id; */
+
+        //dd($myRents);
         return view('myRents', compact('myRents'));
     }
 }

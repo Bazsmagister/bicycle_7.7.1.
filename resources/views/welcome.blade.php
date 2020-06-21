@@ -125,7 +125,7 @@
 </head>
 
 <body>
- 
+
 
     <div class="flex-center position-ref full-height">
         @if (Route::has('login'))
@@ -160,7 +160,13 @@
                 </div>
                 @endif
 
+
+
+
+
             </div>
+
+
 
             <div class="hero-image">
                 <div class="hero-text">
@@ -196,7 +202,7 @@
     <x-alert>
         <strong>Whoops!</strong> x-alert component try
     </x-alert>
-   
+
 
     {{-- @foreach(Auth::user()->unreadNotifications as $not)
     <li>
@@ -204,7 +210,7 @@
     </li>
     @endforeach --}}
 
-   {{--  @foreach(Auth::user()->unreadNotifications as $not)
+    {{--  @foreach(Auth::user()->unreadNotifications as $not)
     {{$not}}
     <li>
         <a class="dropdown-item">new rent Expires: {{$not->data['expires']}}</a>
