@@ -91,6 +91,13 @@ class BicycleController extends Controller
         // print_r($data);
         // die;
 
+        $request->validate([
+            'name'         =>  'string',
+            'description'  => 'string',
+            'price' => 'numeric',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2040',
+        ]);
+
         $bicycle=  Bicycle::create([
         'name' => request('name'),
         'description' => request('description'),

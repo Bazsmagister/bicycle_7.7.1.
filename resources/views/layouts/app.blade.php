@@ -48,6 +48,8 @@
 
                     @auth
                     <div><a href="/service">Service(auth)</a></div>
+                    <div><a href="/myRents">My previosus rents(auth)</a></div>
+
                     @endauth
                     @role('serviceman')
                     <div><a href="/service">Service(serviceman)</a></div>

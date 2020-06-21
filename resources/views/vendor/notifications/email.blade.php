@@ -48,7 +48,8 @@
 // dump(auth()->user()->unreadNotifications->last()->data['expires']);
 // print_r(auth()->user()->unreadNotifications->last()->first()->data['expires']);
 // var_dump(auth()->user()->unreadNotifications->last()->data['expires']);
-print_r(auth()->user()->unreadNotifications->last()->data['expires']);
+
+//print_r(auth()->user()->unreadNotifications->last()->data['expires']);
 @endphp
 <br>
 

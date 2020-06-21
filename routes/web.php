@@ -44,6 +44,21 @@ use Illuminate\Support\Facades\Request;
 
 
 Route::get('/', function () {
+   /*   auth()->loginUsingId(1);
+    $myRents =auth()->user()->rents;
+    //dd($myRents);
+    foreach ($myRents as $myRent) {
+        echo $myRent->rentStarted_at, "\n";
+        echo $myRent->created_at, "\n";
+        echo $myRent->bicycle_id;
+    } */
+
+  /*   echo $myRents->rentStarted_at;
+    echo $myRents->created_at;
+    echo $myRents->bicycle_id; */
+
+       // dd($myRents);
+
     echo(Inspiring::quote());
 
     // dump(Inspiring::quote());
@@ -232,3 +247,5 @@ Route::post('/profile/update', 'ProfileController@updateProfile')->name('profile
 Route::put('update_picture/{id}', 'UserController@update_picture')->name('update_picture');
 
 Route::resource('rents', 'RentController');
+
+Route::get('/myRents', 'UserController@myRents');
