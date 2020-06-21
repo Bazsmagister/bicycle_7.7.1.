@@ -30,7 +30,8 @@
         }
 
         .hero-image {
-            background-image: url("/storage/BV.jpg");
+            /* background-image: url("/storage/BV.jpg"); */
+            background-image: url("/BV.jpg");
             background-color: #d3b9b7;
             width: 1355px;
             height: 940px;
