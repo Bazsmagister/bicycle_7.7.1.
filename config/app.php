@@ -180,6 +180,7 @@ return [
 
         Spatie\Permission\PermissionServiceProvider::class,
         App\Providers\HelperServiceProvider::class,
+        //Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
 
     ],
 

@@ -628,5 +628,31 @@ delete/remove
 crontab -r
 
 ---everyminutes
+in crontab -e:
 
 -   -   -   -   -   5stars php /home/bazs/code/bicycle_7.7.1/artisan schedule:run >> /home/bazs/code/bicycle_7.7.1/storage/logs/laravel_output.log 2>&1
+
+composer require --dev barryvdh/laravel-ide-helper
+answer: Using version ^2.7 for barryvdh/laravel-ide-helper
+
+php artisan clear-compiled
+
+php artisan ide-helper:generate
+answer: A new helper file was written to \_ide_helper.php
+
+# These are not necessaary above laravel 5.5
+
+{
+in Appserviceprovider.php:
+public function register()
+{
+if ($this->app->environment() !== 'production') {
+                    $this->app->register(\Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);
+}
+}
+or:
+If you are using Laravel versions older than 5.5, add the service provider to the providers array in config/app.php:
+
+        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+
+}
