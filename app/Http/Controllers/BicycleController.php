@@ -26,6 +26,19 @@ class BicycleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function autocompletebike(Request $request)
+    {
+        $data = Bicycle::select("name")
+
+                ->where("name", "LIKE", "%{$request->input('query')}%")
+
+                ->select('name')->distinct()//?
+
+                ->get();
+
+        return response()->json($data);
+    }
+
     public function index()
     {
         // $result=Bicycle::whereRaw('DATEDIFF(created_at,updated_at)<7')

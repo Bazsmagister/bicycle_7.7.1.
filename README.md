@@ -656,3 +656,33 @@ If you are using Laravel versions older than 5.5, add the service provider to th
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
 
 }
+
+# Autocomplete:
+
+idea from:
+https://www.itsolutionstuff.com/post/ajax-autocomplete-textbox-in-laravel-58-exampleexample.html
+
+Route::get('autocomplete', 'UserController@autocomplete')->name('autocomplete');
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js">
+
+<script>
+    var path = "{{ route('autocomplete') }}";
+    $('input.typeahead').typeahead({
+        source:  function (query, process) {
+        return $.get(path, { query: query }, function (data) {
+                return process(data);
+            });
+        }
+    });
+</script>
+<div class="container">
+
+    <!-- <h5>Autocomplete Search using Bootstrap Typeahead JS</h5> -->
+
+    <h5>Autocomplete Search using Bootstrap Typeahead JS</h5>
+
+    <input class="typeahead form-control" type="text" placeholder="Start typing...">
+
+</div>
+!!!Autocomplete script must be in section. Out of section it doesn't work!!!

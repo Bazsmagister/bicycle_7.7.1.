@@ -44,20 +44,20 @@ use Illuminate\Support\Facades\Request;
 
 
 Route::get('/', function () {
-   /*   auth()->loginUsingId(1);
-    $myRents =auth()->user()->rents;
-    //dd($myRents);
-    foreach ($myRents as $myRent) {
-        echo $myRent->rentStarted_at, "\n";
-        echo $myRent->created_at, "\n";
-        echo $myRent->bicycle_id;
-    } */
+    /*   auth()->loginUsingId(1);
+     $myRents =auth()->user()->rents;
+     //dd($myRents);
+     foreach ($myRents as $myRent) {
+         echo $myRent->rentStarted_at, "\n";
+         echo $myRent->created_at, "\n";
+         echo $myRent->bicycle_id;
+     } */
 
-  /*   echo $myRents->rentStarted_at;
-    echo $myRents->created_at;
-    echo $myRents->bicycle_id; */
+    /*   echo $myRents->rentStarted_at;
+      echo $myRents->created_at;
+      echo $myRents->bicycle_id; */
 
-       // dd($myRents);
+    // dd($myRents);
 
     echo(Inspiring::quote());
 
@@ -249,3 +249,6 @@ Route::put('update_picture/{id}', 'UserController@update_picture')->name('update
 Route::resource('rents', 'RentController');
 
 Route::get('/myRents', 'UserController@myRents');
+
+Route::get('autocomplete', 'UserController@autocomplete')->name('autocomplete');
+Route::get('autocompletebike', 'BicycleController@autocompletebike')->name('autocompletebike');

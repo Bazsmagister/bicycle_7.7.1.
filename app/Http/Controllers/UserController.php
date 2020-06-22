@@ -14,6 +14,19 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class UserController extends Controller
 {
+    public function autocomplete(Request $request)
+    {
+        $data = User::select("name")
+
+                ->where("name", "LIKE", "%{$request->input('query')}%")
+
+                ->select('name')->distinct()//?
+
+                ->get();
+
+        return response()->json($data);
+    }
+
     public function index()
     {
         // $users =  User::paginate();
