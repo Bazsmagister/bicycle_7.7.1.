@@ -69,7 +69,13 @@
     @foreach ( $deletedUsers as $deletedUser )
     <li>
         <p>id: {{$deletedUser->id }} Name : {{$deletedUser->name}} Deleted at : {{$deletedUser->deleted_at}}
-            <button id="restore">Restore</button></p>
+            <form action="/restoreDeletedUser/{{$deletedUser->id}}" method="post">
+                @csrf
+                {{-- @method('put') --}}
+                <button type="submit">Restore user</button>
+            </form>
+
+            {{-- <button id="restore">Restore</button></p> --}}
     </li>
     @endforeach
 </ul>

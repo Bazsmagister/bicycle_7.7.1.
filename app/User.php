@@ -22,7 +22,6 @@ class User extends Authenticatable
 {
     use Notifiable;
 
-
     use HasRoles; //spatie
     use SoftDeletes; //trash user
 

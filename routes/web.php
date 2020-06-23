@@ -253,4 +253,5 @@ Route::get('/myRents', 'UserController@myRents');
 Route::get('autocomplete', 'UserController@autocomplete')->name('autocomplete');
 Route::get('autocompletebike', 'BicycleController@autocompletebike')->name('autocompletebike');
 
-Route::get('restoreDeleted', 'UserController@restoreDeletedUser')->name('restoreDeleted');
+Route::post('restoreDeletedUser/{id}', 'UserController@restoreDeletedUser')->name('restoreDeletedUser');
+// Route::get('restoreDeletedUser/{id}', 'UserController@restoreDeletedUser')->name('restoreDeletedUser');

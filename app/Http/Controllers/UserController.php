@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\User;
 
-use App\Traits\UploadTrait;
+use Exception;
 
+use App\Traits\UploadTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -34,11 +35,31 @@ class UserController extends Controller
                 ->get();
     }
 
-    public function restoreDeletedUsers(User $user)
+    public function restoreDeletedUser(Request $request)
     {
+        // $deletedUsers = User::onlyTrashed()
+        //         //->where('airline_id', 1)
+        //         ->get();
+
+        //dd($user);
+
         User::withTrashed()
-        ->where('id', $user->id)
+        ->where('id', request('id')) //doesn't work
+        // ->select('id')
         ->restore();
+        //dd($user);
+
+        $users = DB::table('users')->where('id', '<>', 1)->orderBy('created_at', 'desc')->paginate(12);
+
+
+
+        $deletedUsers = User::onlyTrashed()
+                //->where('airline_id', 1)
+                ->get();
+        //dd($deletedUsers);
+
+        //return view('users.index')->with('users', $users)->with('deletedUsers', $deletedUsers);
+        return redirect('users')->with('message', 'user was restored');
     }
 
     public function index()
