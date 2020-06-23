@@ -31,8 +31,13 @@ class CreateUsersTable extends Migration
             // $table->timestamp('updated_at')->default(now());
             $table->timestamp('updated_at')->nullable();
 
+            $table->softDeletes('deleted_at', 0);
+            //$table->softDeletesTz('deleted_at', 0); //with Timezone
 
-            // $table->nullableTimestamps();
+
+
+
+            // $table->nullableTimestamps(0); //Alias of timestamps() method.
 
             // $table->unsignedBigInteger('role_id')->index();
             // $table->foreign('role_id')->references('id')->on('roles');

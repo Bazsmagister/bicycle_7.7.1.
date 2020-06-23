@@ -668,7 +668,9 @@ Route::get('autocomplete', 'UserController@autocomplete')->name('autocomplete');
 
 <script>
     var path = "{{ route('autocomplete') }}";
-    $('input.typeahead').typeahead({
+
+    // $('input.typeahead').typeahead({  //works with class
+    $('#autocomplete').typeahead({       //works with id
         source:  function (query, process) {
         return $.get(path, { query: query }, function (data) {
                 return process(data);
@@ -682,7 +684,7 @@ Route::get('autocomplete', 'UserController@autocomplete')->name('autocomplete');
 
     <h5>Autocomplete Search using Bootstrap Typeahead JS</h5>
 
-    <input class="typeahead form-control" type="text" placeholder="Start typing...">
+    <input id="autocomplete" class="typeahead form-control" type="text" placeholder="Start typing...">
 
 </div>
 !!!Autocomplete script must be in section. Out of section it doesn't work!!!

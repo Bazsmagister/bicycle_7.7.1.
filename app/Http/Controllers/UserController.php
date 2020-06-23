@@ -27,6 +27,20 @@ class UserController extends Controller
         return response()->json($data);
     }
 
+    public function getDeletedUsers()
+    {
+        $deletedUsers = User::onlyTrashed()
+                //->where('airline_id', 1)
+                ->get();
+    }
+
+    public function restoreDeletedUsers(User $user)
+    {
+        User::withTrashed()
+        ->where('id', $user->id)
+        ->restore();
+    }
+
     public function index()
     {
         // $users =  User::paginate();
@@ -36,8 +50,17 @@ class UserController extends Controller
         // //$users =  User::simplePaginate(8);
         // return view('users.index')->with('users', $users);
 
+        $deletedUsers = User::onlyTrashed()
+                //->where('airline_id', 1)
+                ->get();
+        //dd($deletedUsers);
+
+
+
+
+
         $users = DB::table('users')->where('id', '<>', 1)->orderBy('created_at', 'desc')->paginate(12);
-        return view('users.index')->with('users', $users);
+        return view('users.index')->with('users', $users)->with('deletedUsers', $deletedUsers);
 
         // $users = DB::table('users')->distinct()->get();
         // return view('users.index')->with('users', $users);

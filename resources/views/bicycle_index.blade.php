@@ -28,7 +28,7 @@
 <div class="container">
     {{-- <h5>Autocomplete Search using Bootstrap Typeahead JS</h5> --}}
     <h5>Autocomplete search: </h5>
-    <input class="typeahead form-control" type="text" placeholder="Start typing...">
+    <input id="autocomplete" class=" typeahead form-control" type="text" placeholder="Start typing...">
 </div>
 
 
@@ -120,17 +120,17 @@
 
 <script>
     var path = "{{ route('autocompletebike') }}";
-    $('input.typeahead').typeahead({
+    // $('input.typeahead').typeahead({  //works with class
+    $('#autocomplete').typeahead({       //works with id
         source:  function (query, process) {
         return $.get(path, { query: query }, function (data) {
-                return process(data);
+                 return process(data);
+                //  return data;
             });
         }
     });
 
 </script>
-
-
 
 
 @endsection

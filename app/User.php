@@ -2,14 +2,17 @@
 
 namespace App;
 
+//use Illuminate\Database\Eloquent\Model; //do I need this?
+
 use App\Bicycle;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Spatie\Permission\Traits\HasRoles; //spatie
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 
 use App\Notifications\rentIsOver;
-
 
 //use App\Permissions\HasPermissionsTrait; //before Spatie package i used this trait.
 
@@ -19,7 +22,9 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+
     use HasRoles; //spatie
+    use SoftDeletes; //trash user
 
 
 
@@ -59,15 +64,28 @@ class User extends Authenticatable
     public $timestamps = true;
 
 
+
+
+
     public function getImageAttribute()
     {
         return $this->profile_image;
         //so  I can use :auth()->user()->image instead of profile_image
     }
 
+    protected $with = ['rents'];
+    //protected $with = ['rents', 'bicycles'];
+
+    //After that you can set the $with property to eager load the relation.
+
+    protected $visible = ['id','name', 'email','rents'];
+    //protected $visible = ['id','name','rents', 'email', 'bicycles'];
+    //Setting the $visible property to include the details will make the details visible when the Student gets converted to an array.
+
     public function rents()
     {
         return $this->hasMany(Rent::class)
+        //->withTrashed();
         /* ->withTimestamps() */
         ;
         // ->withPivot('rents');
@@ -109,10 +127,6 @@ class User extends Authenticatable
     //             // ->wherePivot('type', 'buy')
     //             ->withPivot('rents');
     // }
-
-
-
-
 }
 
 

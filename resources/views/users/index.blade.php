@@ -63,4 +63,14 @@
     });
 </script>
 
+<hr>
+<h4>Deleted Users:</h4>
+<ul>
+    @foreach ( $deletedUsers as $deletedUser )
+    <li>
+        <p>id: {{$deletedUser->id }} Name : {{$deletedUser->name}} Deleted at : {{$deletedUser->deleted_at}}
+            <button id="restore">Restore</button></p>
+    </li>
+    @endforeach
+</ul>
 @endsection
