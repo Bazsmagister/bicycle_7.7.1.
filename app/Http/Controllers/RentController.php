@@ -126,10 +126,12 @@ class RentController extends Controller
      * @param  \App\Rent  $rent
      * @return \Illuminate\Http\Response
      */
-    public function show(Rent $rent)
+    public function show($id)
     {
-        // return view('rents.show', ['rent' => Rent::findOrFail($id)]);
-        return view('rents.show', compact('rent'));
+       
+        return view('rents.show', ['rent' => Rent::findOrFail($id)]);
+
+        //return view('rents.show', compact('rent')); //works either well
     }
 
     /**

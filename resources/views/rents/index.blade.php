@@ -50,6 +50,15 @@
                 <td>{{ $rent->bicycle_id}}</td>
                 <td>{{ $rent->rentStarted_at }}</td>
                 <td>{{ $rent->rentEnds_at }}</td>
+                <td><a href="rents/{{$rent->id}}/edit " class="btn btn-info">Edit</a>
+                <a href="rents/{{$rent->id}} " class="btn btn-info">Show</a>
+
+                <form action="{{ route('rents.destroy', $rent->id) }}" method="POST">
+                    @csrf
+                    @method('delete')
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </td>   
 
             </tr>
             @endforeach
@@ -76,13 +85,14 @@
             <td>{{ $rent->rentEnds_at }}</td>
 
             <td><a href="rents/{{$rent->id}}/edit " class="btn btn-info">Edit</a>
+                <a href="rents/{{$rent->id}} " class="btn btn-info">Show</a>
 
                 <form action="{{ route('rents.destroy', $rent->id) }}" method="POST">
                     @csrf
                     @method('delete')
                     <button type="submit" class="btn btn-danger">Delete</button>
                 </form>
-
+            </td>   
         </tr>
         @endforeach
     </table>

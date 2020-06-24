@@ -64,12 +64,12 @@ class User extends Authenticatable
     // Now, whenever you save or update a user, Laravel will automatically update the created_at and updated_at fields.
     public $timestamps = true;
 
-    protected $with = ['rents'];
+    //protected $with = ['rents'];
     //protected $with = ['rents', 'bicycles'];
 
     //After that you can set the $with property to eager load the relation.
 
-    protected $visible = ['id','name', 'email','rents'];
+    //protected $visible = ['id','name', 'email','rents'];
     //protected $visible = ['id','name','rents', 'email', 'bicycles'];
     //Setting the $visible property to include the details will make the details visible when the Student gets converted to an array.
 
