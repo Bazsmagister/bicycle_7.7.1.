@@ -71,12 +71,14 @@
         <p>id: {{$deletedUser->id }} Name : {{$deletedUser->name}} Deleted at : {{$deletedUser->deleted_at}}
             <form action="/restoreDeletedUser/{{$deletedUser->id}}" method="post">
                 @csrf
-                {{-- @method('put') --}}
+
                 <button type="submit">Restore user</button>
             </form>
 
-            {{-- <button id="restore">Restore</button></p> --}}
-    </li>
-    @endforeach
+
+            @endforeach
 </ul>
+
+
+
 @endsection

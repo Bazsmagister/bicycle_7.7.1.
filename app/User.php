@@ -25,8 +25,6 @@ class User extends Authenticatable
     use HasRoles; //spatie
     use SoftDeletes; //trash user
 
-
-
     /**
      * The attributes that are mass assignable.
      *
@@ -62,16 +60,6 @@ class User extends Authenticatable
     // Now, whenever you save or update a user, Laravel will automatically update the created_at and updated_at fields.
     public $timestamps = true;
 
-
-
-
-
-    public function getImageAttribute()
-    {
-        return $this->profile_image;
-        //so  I can use :auth()->user()->image instead of profile_image
-    }
-
     protected $with = ['rents'];
     //protected $with = ['rents', 'bicycles'];
 
@@ -80,6 +68,12 @@ class User extends Authenticatable
     protected $visible = ['id','name', 'email','rents'];
     //protected $visible = ['id','name','rents', 'email', 'bicycles'];
     //Setting the $visible property to include the details will make the details visible when the Student gets converted to an array.
+
+    public function getImageAttribute()
+    {
+        return $this->profile_image;
+        //so  I can use :auth()->user()->image instead of profile_image
+    }
 
     public function rents()
     {
