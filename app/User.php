@@ -56,6 +56,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+   /*  protected $casts = [
+    'secret' => Hash::class.':sha256',
+    ]; */
+
     // In your User model, add the following line in the User class:
     // Now, whenever you save or update a user, Laravel will automatically update the created_at and updated_at fields.
     public $timestamps = true;
