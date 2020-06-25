@@ -200,6 +200,9 @@
         </div>
 
     </div>
+
+    
+
     <x-alert>
         <strong>Whoops!</strong> x-alert component try
     </x-alert>

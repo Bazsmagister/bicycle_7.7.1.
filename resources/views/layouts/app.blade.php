@@ -43,9 +43,9 @@
 
                 <div class="flex-container">
 
-                    <div><a href="/bicyclestosell">New bicycles to sell</a></div>
-                    <div><a href="/bicyclestorent">Our bicycles to rent</a></div>
-                    <div><a href="/rents/create">Create a Rent</a></div>
+                    <div><a class="{{Request::path()==='bicyclestosell' ? 'current_page_item' : ''}}" href="/bicyclestosell">New bicycles to sell</a></div>
+                    <div class="current_page_item" ><a href="/bicyclestorent">Our bicycles to rent</a></div>
+                    <div class="{{Request::path()==='rents/create' ? 'page_item active' : ''}}"><a href="/rents/create">Create a Rent</a></div>
 
                     @auth
                     <div><a href="/service">Service(auth)</a></div>
