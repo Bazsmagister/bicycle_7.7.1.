@@ -72,14 +72,15 @@ Route::get('/', function () {
     //$command ="python ".public_path() . "\storage\python\python.py";
     //$command =public_path() . "\storage\python\python.py";
 
-    $command ='python C:/Users/Legion/code/bicycle_7.7.1/public/storage/python/python.py'; //need python
-    //$command ='python '. public_path() . "/storage/python/python.py"; //need pyt/*  */hon
+    //On Linux works, 
+    //$command ='python C:/Users/Legion/code/bicycle_7.7.1/public/storage/python/python.py'; //need python
+    //$command ='python '. public_path() . "/storage/python/python.py"; //need python
      //DD($command);
-   $proc = Process::fromShellCommandline($command, null, [])->mustRun()->getOutput(); //getErrorOutput();
-    echo $proc; 
+    //$proc = Process::fromShellCommandline($command, null, [])->mustRun()->getOutput(); //getErrorOutput();
+    //echo $proc; 
 
 
-     //win 10  not works
+    //On win 10  not works
 /*     $process = new Process(['python ', 'C:/Users/Legion/code/bicycle_7.7.1/public/storage/python/python.py']);
     //dd($process);
     echo $process->mustRun()->getOutput();

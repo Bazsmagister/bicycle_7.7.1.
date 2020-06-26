@@ -34,6 +34,15 @@ div > a {
     background-color: red;
 }
 
-.try {
-    background-color: blue;
+.active {
+    background-color: lightblue;
+}
+
+.navbar {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    justify-content: space-between;
+    padding: 0.5rem;
 }
