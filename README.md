@@ -688,3 +688,19 @@ Route::get('autocomplete', 'UserController@autocomplete')->name('autocomplete');
 
 </div>
 !!!Autocomplete script must be in section. Out of section it doesn't work!!!
+
+# Python in laravel
+
+$result = shell_exec("python " . storage_path() . "/python/python.py 2>&1"); //this works
+    echo($result);
+
+    $result2 = shell_exec("python " . public_path() . "/storage/python/python.py 2>&1"); //this works too
+    echo($result2);
+
+    $command ="python ".public_path() . "/storage/python/python.py";
+    // $command =public_path() . "/storage/python/python.py"; //need python
+
+    $proc = Process::fromShellCommandline($command, null, [])->mustRun()->
+    getOutput();
+    //getErrorOutput();
+    echo $proc;
