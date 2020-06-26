@@ -1,35 +1,39 @@
- body {
-     background-color: rgb(200, 235, 183);
- }
+body {
+    background-color: rgb(200, 235, 183);
+}
 
- .flex-container {
-     display: flex;
-     justify-content: space-between;
-     padding-right: 8px;
-     margin-left: auto;
-     margin-right: auto;
- }
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+    padding-right: 8px;
+    margin-left: auto;
+    margin-right: auto;
+}
 
- .flex-container>div {
-     text-align: center;
-     font-size: 20px;
- }
+.flex-container > div {
+    text-align: center;
+    font-size: 20px;
+}
 
- nav {
-     padding-right: 10px;
-     font-size: 7px;
- }
+nav {
+    padding-right: 10px;
+    font-size: 7px;
+}
 
- div>a {
-     padding-right: 10px;
- }
+div > a {
+    padding-right: 10px;
+}
 
- .admin {
-     background-color: red;
-     /* font-family: fantasy;
+.admin {
+    background-color: red;
+    /* font-family: fantasy;
      color: red; */
- }
+}
 
- .error {
-     background-color: red;
- }
+.error {
+    background-color: red;
+}
+
+.try {
+    background-color: blue;
+}

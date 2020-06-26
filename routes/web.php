@@ -68,14 +68,23 @@ Route::get('/', function () {
     $result2 = shell_exec("python " . public_path() . "/storage/python/python.py 2>&1"); //this works too
     echo($result2);
 
-    $command ="python ".public_path() . "/storage/python/python.py";
-    // $command =public_path() . "/storage/python/python.py"; //need python
+    //$command ="python ".public_path() . "/storage/python/python.py";
+    //$command ="python ".public_path() . "\storage\python\python.py";
+    //$command =public_path() . "\storage\python\python.py";
 
-    $proc = Process::fromShellCommandline($command, null, [])->mustRun()->
-    getOutput();
-    //getErrorOutput();
-    echo $proc;
+    $command ='python C:/Users/Legion/code/bicycle_7.7.1/public/storage/python/python.py'; //need python
+    //$command ='python '. public_path() . "/storage/python/python.py"; //need pyt/*  */hon
+     //DD($command);
+   $proc = Process::fromShellCommandline($command, null, [])->mustRun()->getOutput(); //getErrorOutput();
+    echo $proc; 
 
+
+     //win 10  not works
+/*     $process = new Process(['python ', 'C:/Users/Legion/code/bicycle_7.7.1/public/storage/python/python.py']);
+    //dd($process);
+    echo $process->mustRun()->getOutput();
+    var_dump($process->getOutput()); */
+    //echo $process->getOutput();
 
     // dump(Inspiring::quote());
     // echo(Inspiring::quote());

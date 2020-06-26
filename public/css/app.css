@@ -10962,10 +10962,14 @@ div > a {
 .admin {
   background-color: red;
   /* font-family: fantasy;
-  color: red; */
+   color: red; */
 }
 
 .error {
   background-color: red;
+}
+
+.try {
+  background-color: blue;
 }
 
