@@ -8,6 +8,7 @@ use Illuminate\Foundation\Inspiring;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Route;
+use Symfony\Component\Process\Process;
 use Illuminate\Support\Facades\Request;
 
 /*
@@ -59,7 +60,22 @@ Route::get('/', function () {
 
     // dd($myRents);
 
-    echo(Inspiring::quote());
+    echo(Inspiring::quote()), "\n";
+
+    $result = shell_exec("python " . storage_path() . "/python/python.py 2>&1"); //this works
+    echo($result);
+
+    $result2 = shell_exec("python " . public_path() . "/storage/python/python.py 2>&1"); //this works too
+    echo($result2);
+
+    $command ="python ".public_path() . "/storage/python/python.py";
+    // $command =public_path() . "/storage/python/python.py"; //need python
+
+    $proc = Process::fromShellCommandline($command, null, [])->mustRun()->
+    getOutput();
+    //getErrorOutput();
+    echo $proc;
+
 
     // dump(Inspiring::quote());
     // echo(Inspiring::quote());
