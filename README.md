@@ -704,3 +704,6 @@ $result = shell_exec("python " . storage_path() . "/python/python.py 2>&1"); //t
     getOutput();
     //getErrorOutput();
     echo $proc;
+
+Don't forget
+RegisterController middleware auth:guest!!!

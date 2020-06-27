@@ -5,7 +5,7 @@
 @role('super-admin')
 <div class='admin'>
     <p>
-        For admin : All of our bicycles.
+        For admin : All of our users.
     </p>
     {{-- <p style="background-color: red">
         For admin : All of our bicycles.
