@@ -5,13 +5,20 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <title>Bicycle 7</title>
+
+    <script src="{{ asset('js/app.js') }}"></script>
 
     <!-- Fonts
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     -->
 
     <!-- Styles -->
+    {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
+
     <style>
         html,
         body {
@@ -117,208 +124,226 @@
         }
 
         .m-b-md {
-            margin-bottom: 30px;
+            /* margin-bottom: 30px; */
         }
     </style>
-    {{-- <link rel="stylesheet" href="css/app.css"> --}}
 
+    <link rel="stylesheet" href="css/app.css">
 
 </head>
 
 <body>
 
-
-    <div class="flex-center position-ref full-height">
+    {{-- <div class="flex-center position-ref full-height">
         @if (Route::has('login'))
         <div class="top-right links">
             @auth
             <a href="{{ url('/home') }}">Home</a>
-            @else
-            <a href="{{ route('login') }}">Login</a>
+    @else
+    <a href="{{ route('login') }}">Login</a>
 
-            @if (Route::has('register'))
-            <a href="{{ route('register') }}">Register</a>
-            @endif
-            @endauth
-        </div>
-        @endif
-
-
-        <div class="content">
-
-            <div>
-                @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                    <a href="{{ url('/home') }}">Home</a>
-                    @else
-                    <a href="{{ route('login') }}">Login</a>
-
-                    @if (Route::has('register'))
-                    <a href="{{ route('register') }}">Register</a>
-                    @endif
-                    @endauth
-                </div>
-                @endif
+    @if (Route::has('register'))
+    <a href="{{ route('register') }}">Register</a>
+    @endif
+    @endauth
+    </div>
+    @endif
+    </div> --}}
 
 
+    <div class="content">
 
-
-
-            </div>
-
-
-
-            <div class="hero-image">
-                <div class="hero-text">
-                    <h1 style="font-size:40px">"I want to ride my bicycle..."</h1>
-                    {{-- <h4>And I'm a Bicyclist</h4> --}}
-                    {{-- <button>Come with me!</button> --}}
-                </div>
-            </div>
-            <img src="/storage/bic.png" alt="a bic png" sizes="" srcset="">
-            <div class="title m-b-md">
-                Bicycle
-            </div>
-
-            <div class="links">
-                <a href="/bicyclestosell">New bicycles</a>
-                <a href="/bicyclestorent">Rent-a-bicycle</a>
+        <div>
+            @if (Route::has('login'))
+            <div class="top-right links">
                 @auth
-                <a href="/service">Service</a>
+                <a href="{{ url('/home') }}">Home</a>
+                @else
+                <a href="{{ route('login') }}">Login</a>
+
+                @if (Route::has('register'))
+                <a href="{{ route('register') }}">Register</a>
+                @endif
                 @endauth
             </div>
-            <br>
+            @endif
 
-            <br>
-            <hr>
-            <div class="links">
-                <p>Please login or register to use the side!</p>
-                <a href="https://laravel.com/docs">Laravel docs</a>
+        </div>
 
+        <div class="hero-image">
+            <div class="hero-text">
+                <h1 style="font-size:40px">"I want to ride my bicycle..."</h1>
+                {{-- <h4>And I'm a Bicyclist</h4> --}}
+                {{-- <button>Come with me!</button> --}}
             </div>
-            
-@guest
-<div class="modal" id="signIn">
-    <div class="modal-dialog">
-    {{-- <div class="modal-fade"> --}}
-        <div class="modal-content">
-            <!-- Modal Header -->
-            <div class="modal-header">
-                <h4 class="modal-title">SignIn</h4>
-                <button type="button" class="close" data-dismiss="modal">
-                    &times;
-                </button>
+        </div>
+        <img src="/storage/bic.png" alt="a bic png" sizes="" srcset="">
+        <div class="title m-b-md">
+            Bicycle
+        </div>
+
+        <div class="links">
+            <a href="/bicyclestosell">New bicycles</a>
+            <a href="/bicyclestorent">Rent-a-bicycle</a>
+            @auth
+            <a href="/service">Service</a>
+            @endauth
+        </div>
+        <br>
+        @guest
+        <li class="list-inline-item">
+            <button type="button" class="btn btn-primary btn-outline-light" data-toggle="modal" data-target="#signIn"
+                href="{{ route('login') }}">{{ __('Login') }}</button>
+        </li>
+        @if (Route::has('register'))
+        <li class="list-inline-item">
+            <button type="button" class="btn btn-primary btn-outline-light" data-toggle="modal" data-target="#signUp"
+                href="{{ route('register') }}">{{ __('Register') }} </button>
+        </li>
+        @endif
+        @endguest
+        <br>
+        <hr>
+        <div class="links">
+            <p>Please login or register to use the side!</p>
+            <a href="https://laravel.com/docs">Laravel docs</a>
+        </div>
+
+
+        <div>
+            <div class="modal" id="signIn">
+                <div class="modal-dialog">
+
+                    <div class="modal-content">
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <h4 class="modal-title">SignIn</h4>
+                            <button type="button" class="close" data-dismiss="modal">
+                                &times;
+                            </button>
+                        </div>
+
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            <form method="POST" action="{{ route('login') }}">
+                                @csrf
+                                <div class="form-group">
+                                    <label for="email" class="">{{ __('E-Mail Address') }}</label>
+                                    <input id="email" type="email" class="form-control" @error('email') is-invalid
+                                        @enderror" name="email" value="{{ old('email') }}" required autocomplete="email"
+                                        autofocus />
+
+                                    @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+
+                                </div>
+                                <div class="form-group">
+                                    <label for="password" class="">{{ __('Password') }}</label>
+                                    <input id="password" type="password"
+                                        class="form-control @error('password') is-invalid @enderror" name="password"
+                                        required autocomplete="current-password">
+
+                                    @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary btn-block">
+                                        Sign In
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <!-- Modal body -->
-            <div class="modal-body">
-                <form method="POST" action="{{ route('login') }}">
-                    @csrf
-                    <div class="form-group">
-                        <label for="email" class="">{{ __('E-Mail Address') }}</label>
-                        <input id="email" type="email" class="form-control" @error('email') is-invalid @enderror"
-                            name="email" value="{{ old('email') }}" required autocomplete="email" autofocus />
+            <div class="modal fade" id="signUp" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header text-center">
+                            <h4 class="modal-title w-100 font-weight-bold">Sign up</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body mx-3">
+                            <form method="POST" action="{{ route('register') }}">
+                                @csrf
+                                <div class="md-form mb-5">
 
-                        @error('email')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                        @enderror
+                                    <i class="fas fa-user prefix grey-text"></i>
+                                    <input type="text" id="orangeForm-name" class="form-control validate" name="name"
+                                        required>
+                                    <label data-error="wrong" data-success="right" for="orangeForm-name">Your
+                                        name</label>
+                                </div>
+                                <div class="md-form mb-5">
+                                    <i class="fas fa-envelope prefix grey-text"></i>
+                                    <input type="email" id="orangeForm-email" class="form-control validate" name="email"
+                                        required>
+                                    <label data-error="wrong" data-success="right" for="orangeForm-email">Your
+                                        email</label>
+                                </div>
 
-                    </div>
-                    <div class="form-group">
-                        <label for="password" class="">{{ __('Password') }}</label>
-                        <input id="password" type="password"
-                            class="form-control @error('password') is-invalid @enderror" name="password" required
-                            autocomplete="current-password">
+                                <div class="md-form mb-4">
+                                    <i class="fas fa-lock prefix grey-text"></i>
+                                    <input type="password" id="password" class="form-control validate" name="password"
+                                        required autocomplete="new-password">
+                                    <label data-error="wrong" data-success="right" for="orangeForm-pass">Your
+                                        password</label>
+                                </div>
+                                <div class="md-form mb-4">
+                                    <i class="fas fa-lock prefix grey-text"></i>
 
-                        @error('password')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                        @enderror
+                                    {{-- <input type="password" placeholder="Confirm Password" id="confirm_password"
+                                                                class="form-control validate" required> --}}
+
+                                    <input id="password-confirm" type="password" class="form-control"
+                                        name="password_confirmation" required autocomplete="new-password">
+
+
+                                    <label data-error="wrong" data-success="right" for="confirm_password">Confirm
+                                        password</label>
+                                </div>
+                        </div>
+                        <div class="modal-footer d-flex justify-content-center">
+                            <button type="submit" class="btn btn-deep-orange">Sign up</button>
+                        </div>
+                        </form>
                     </div>
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-primary btn-block">
-                            Sign In
-                        </button>
-                    </div>
-                </form>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<div class="modal fade" id="signUp" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-  aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Sign up</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body mx-3">
-         <form method="POST" action="{{ route('register') }}">
-            @csrf
-        <div class="md-form mb-5">
-          
-          <i class="fas fa-user prefix grey-text"></i>
-          <input type="text" id="orangeForm-name" class="form-control validate" name="name" required>
-          <label data-error="wrong" data-success="right" for="orangeForm-name">Your name</label>
-        </div>
-        <div class="md-form mb-5">
-          <i class="fas fa-envelope prefix grey-text"></i>
-          <input type="email" id="orangeForm-email" class="form-control validate" name="email" required>
-          <label data-error="wrong" data-success="right" for="orangeForm-email">Your email</label>
-        </div>
 
-        <div class="md-form mb-4">
-          <i class="fas fa-lock prefix grey-text"></i>
-          <input type="password" id="password" class="form-control validate" name="password" required>
-          <label data-error="wrong" data-success="right" for="orangeForm-pass">Your password</label>
-        </div>
-        <div class="md-form mb-4">
-          <i class="fas fa-lock prefix grey-text"></i>
-          <input type="password" placeholder="Confirm Password" id="confirm_password" class="form-control validate" required >
-          <label data-error="wrong" data-success="right" for="confirm_password">Confirm password</label>
-        </div>
-
-      </div>
-      <div class="modal-footer d-flex justify-content-center">
-        <button type="submit" class="btn btn-deep-orange">Sign up</button>
-      </div>
-      </form>
-    </div>
-  </div>
-</div>
-
-@endguest
-
-        </div>
-
-    </div>
 
     <x-alert>
         <strong>Whoops!</strong> x-alert component try
     </x-alert>
-<script>
-var password = document.getElementById("password")
-  , confirm_password = document.getElementById("confirm_password");
 
-function validatePassword(){
-  if(password.value != confirm_password.value) {
-    confirm_password.setCustomValidity("Passwords Don't Match");
-  } else {
-    confirm_password.setCustomValidity('');
-  }
-}
+    <script>
+        var password = document.getElementById("password")
+        , password-confirm = document.getElementById("password-confirm");
 
-password.onchange = validatePassword;
-confirm_password.onkeyup = validatePassword;
-</script>
+        function validatePassword(){
+        if(password.value != password-confirm.value) {
+            password-confirm.setCustomValidity("Passwords Don't Match");
+        } else {
+            password-confirm.setCustomValidity('');
+        }
+        }
+
+        password.onchange = validatePassword;
+        confirm_password.onkeyup = validatePassword;
+    </script>
 
     {{-- @foreach(Auth::user()->unreadNotifications as $not)
     <li>
@@ -334,6 +359,7 @@ confirm_password.onkeyup = validatePassword;
         <a class="dropdown-item">new rent fakedata: {{$not->data['data2']}}</a>
     </li>
     @endforeach --}}
+
 
 </body>
 
