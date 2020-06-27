@@ -229,7 +229,7 @@
                                 @csrf
                                 <div class="form-group">
                                     <label for="email" class="">{{ __('E-Mail Address') }}</label>
-                                    <input id="email" type="email" class="form-control" @error('email') is-invalid
+                                    <input id="email" type="email" class="form-control @error('email') is-invalid
                                         @enderror" name="email" value="{{ old('email') }}" required autocomplete="email"
                                         autofocus />
 
@@ -294,10 +294,15 @@
 
                                 <div class="md-form mb-4">
                                     <i class="fas fa-lock prefix grey-text"></i>
-                                    <input type="password" id="password" class="form-control validate" name="password"
-                                        required autocomplete="new-password">
-                                    <label data-error="wrong" data-success="right" for="orangeForm-pass">Your
+                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"  name="password"
+                                        required autocomplete="new-password" onchange="check_pass();">
+                                    <label data-error="wrong" data-success="right" for="password">Your
                                         password</label>
+                                        @error('password')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                 </div>
                                 <div class="md-form mb-4">
                                     <i class="fas fa-lock prefix grey-text"></i>
@@ -305,16 +310,17 @@
                                     {{-- <input type="password" placeholder="Confirm Password" id="confirm_password"
                                                                 class="form-control validate" required> --}}
 
-                                    <input id="password-confirm" type="password" class="form-control"
-                                        name="password_confirmation" required autocomplete="new-password">
+                                    <input id="confirm_password" type="password" class="form-control validate"
+                                        name="password_confirmation"  required autocomplete="new-password" onchange="check_pass();">
 
 
                                     <label data-error="wrong" data-success="right" for="confirm_password">Confirm
                                         password</label>
+                                         <span id='message'></span>
                                 </div>
                         </div>
                         <div class="modal-footer d-flex justify-content-center">
-                            <button type="submit" class="btn btn-deep-orange">Sign up</button>
+                            <button id="submit"  disabled type="submit" class="btn btn-info" >Sign up</button>
                         </div>
                         </form>
                     </div>
@@ -330,19 +336,42 @@
     </x-alert>
 
     <script>
-        var password = document.getElementById("password")
-        , password-confirm = document.getElementById("password-confirm");
+        function check_pass() {
+            if (document.getElementById('password').value ==
+                    document.getElementById('confirm_password').value) {
+                document.getElementById('submit').disabled = false;
+            } else {
+                document.getElementById('submit').disabled = true;
+            }
+        }
+       /*  var password = document.getElementById("password")
+        , confirm_password = document.getElementById("confirm_password");
 
         function validatePassword(){
-        if(password.value != password-confirm.value) {
-            password-confirm.setCustomValidity("Passwords Don't Match");
-        } else {
-            password-confirm.setCustomValidity('');
+        if(password.value != confirm_password.value) {
+            confirm_password.style.backgroundColor="red";
+            confirm_password.setCustomValidity("Passwords Don't Match");
         }
+            
+        } else {
+            confirm_password.setCustomValidity('');
+           
         }
 
-        password.onchange = validatePassword;
-        confirm_password.onkeyup = validatePassword;
+        password.onchange = validatePassword();
+        confirm_password.onkeyup = validatePassword(); */
+
+/* 
+        var check = function() {
+        if (document.getElementById('password').value ==
+            document.getElementById('confirm_password').value) {
+            document.getElementById('message').style.color = 'green';
+            document.getElementById('message').innerHTML = 'matching';
+        } else {
+            document.getElementById('message').style.color = 'red';
+            document.getElementById('message').innerHTML = 'not matching';
+        }
+        } */
     </script>
 
     {{-- @foreach(Auth::user()->unreadNotifications as $not)
