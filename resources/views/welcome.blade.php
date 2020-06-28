@@ -296,7 +296,7 @@
                                     <i class="fas fa-lock prefix grey-text"></i>
                                     <input id="password" type="password"
                                         class="form-control @error('password') is-invalid @enderror" name="password"
-                                        onkeyup="check2();" required>
+                                         required>
                                     <label data-error="wrong" data-success="right" for="password">Your
                                         password</label>
                                     @error('password')
@@ -312,7 +312,7 @@
                                                                 class="form-control validate" required> --}}
 
                                     <input id="confirm_password" type="password" class="form-control"
-                                        name="password_confirmation" onkeyup="check2();" function="alertMe()" required>
+                                        name="password_confirmation"  required>
 
 
                                     <label data-error="wrong" data-success="right" for="confirm_password">Confirm
@@ -322,6 +322,7 @@
                         </div>
                         <div class="modal-footer d-flex justify-content-center">
                             <button id="submit" type="submit" class="btn btn-info">Sign up</button>
+                           
                         </div>
                         </form>
                     </div>
@@ -394,7 +395,6 @@
         var passwordvalue = document.getElementById("password").value;
         var passwordconfirmvalue = document.getElementById("confirm_password").value;
 
-
         if (passwordvalue == passwordconfirmvalue){
             document.getElementById('message').style.color = 'green';
             document.getElementById('message').innerHTML = 'matching';
@@ -404,14 +404,19 @@
             document.getElementById('message').innerHTML = 'not matching';
             alertMe();
         }}
-        document.getElementById("pasword").onkeyup = function() {check2()};
-        document.getElementById("confirm_pasword").onkeyup = function() {check2()};
+        //document.getElementById("pasword").onkeyup = function() {check2()};
+        //document.getElementById("confirm_pasword").onkeyup = function() {check2()};
+
+        document.getElementById("password").addEventListener("keyup", check2);
+        document.getElementById("confirm_password").addEventListener("keyup", check2);
+         //equivalent
+        //document.onkeyup = check2;
+        //document.getElementById("confirm_password").addEventListener("keyup", alertMe);
 
         function alertMe(){
         alert(passwordvalue);
         alert(passwordconfirmvalue);
         }
-
 
     </script>
 
