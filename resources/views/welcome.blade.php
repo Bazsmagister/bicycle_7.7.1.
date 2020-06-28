@@ -294,10 +294,10 @@
 
                                 <div class="md-form mb-4">
                                     <i class="fas fa-lock prefix grey-text"></i>
-                                    <input id="password" type="password"
+                                    <input id="password_reg" type="password"
                                         class="form-control @error('password') is-invalid @enderror" name="password"
-                                         required>
-                                    <label data-error="wrong" data-success="right" for="password">Your
+                                        required>
+                                    <label data-error="wrong" data-success="right" for="password_reg">Your
                                         password</label>
                                     @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -312,7 +312,7 @@
                                                                 class="form-control validate" required> --}}
 
                                     <input id="confirm_password" type="password" class="form-control"
-                                        name="password_confirmation"  required>
+                                        name="password_confirmation" required>
 
 
                                     <label data-error="wrong" data-success="right" for="confirm_password">Confirm
@@ -322,7 +322,7 @@
                         </div>
                         <div class="modal-footer d-flex justify-content-center">
                             <button id="submit" type="submit" class="btn btn-info">Sign up</button>
-                           
+
                         </div>
                         </form>
                     </div>
@@ -392,7 +392,7 @@
 
 
         function check2() {
-        var passwordvalue = document.getElementById("password").value;
+        var passwordvalue = document.getElementById("password_reg").value;
         var passwordconfirmvalue = document.getElementById("confirm_password").value;
 
         if (passwordvalue == passwordconfirmvalue){
@@ -407,10 +407,11 @@
         //document.getElementById("pasword").onkeyup = function() {check2()};
         //document.getElementById("confirm_pasword").onkeyup = function() {check2()};
 
-        document.getElementById("password").addEventListener("keyup", check2);
+        document.getElementById("password_reg").addEventListener("onchange", check2);
         document.getElementById("confirm_password").addEventListener("keyup", check2);
          //equivalent
         //document.onkeyup = check2;
+        //document.addEventListener("keyup", check2);
         //document.getElementById("confirm_password").addEventListener("keyup", alertMe);
 
         function alertMe(){
