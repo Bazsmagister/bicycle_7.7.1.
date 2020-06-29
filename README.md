@@ -1,6 +1,14 @@
-## Rent a bicycle
+# Laravel 7.7.1
 
-Laravel 7.7.1
+git clone [this repo.git]:
+`git clone https://github.com/Bazsmagister/bicycle_7.7.1.git`
+
+`composer install`
+
+`cp .env.example .env`
+// edit your database settings in .env file
+
+`php artisan key:generate`
 
 ## Make auth in laravel 7
 
