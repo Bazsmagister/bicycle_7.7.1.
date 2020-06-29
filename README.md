@@ -1,6 +1,7 @@
 # Laravel 7.7.1
 
 git clone [this repo.git]:
+
 `git clone https://github.com/Bazsmagister/bicycle_7.7.1.git`
 
 `composer install`
