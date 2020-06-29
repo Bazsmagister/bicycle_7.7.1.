@@ -39,8 +39,13 @@
                 <div class="panel-body">
                     <li style="list-style-type:disc">
                         <a href="{{ route('users.show', $user->id ) }}"><b>{{ $user->name }} | {{$user->email}}</b><br>
-
                         </a>
+                    </li>
+                    <li>Joined at:
+                        {{-- {{date('F d, Y', strtotime($user->created_at))}} --}}
+                        {{date('Y F d', strtotime($user->created_at))}} at
+                        at
+                        {{date('g : ia', strtotime($user->created_at))}}
                     </li>
                 </div>
                 @endforeach
