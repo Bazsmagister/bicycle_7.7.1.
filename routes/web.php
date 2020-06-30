@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Route;
 use Symfony\Component\Process\Process;
 use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Storage;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,6 +46,17 @@ use Illuminate\Support\Facades\Request;
 
 
 Route::get('/', function () {
+    $breaks = array("<br />","<br>","<br/>");
+    $request['codeSrc'] = str_ireplace($breaks, "\r\n", $request['codeSrc']);
+    /*
+        \r = CR (Carriage Return) → Used as a new line character in Mac OS before X
+        \n = LF (Line Feed) → Used as a new line character in Unix/Mac OS X
+        \r\n = CR + LF → Used as a new line character in Windows
+    */
+    Storage::put('text.txt', $request['codeSrc'])
+    $process = new Process(array('sh', 'app/Http/Controllers/comp.sh'));
+    $process->run();
+
     /*   auth()->loginUsingId(1);
      $myRents =auth()->user()->rents;
      //dd($myRents);
@@ -72,19 +84,19 @@ Route::get('/', function () {
     //$command ="python ".public_path() . "\storage\python\python.py";
     //$command =public_path() . "\storage\python\python.py";
 
-    //On Linux works, 
+    //On Linux works,
     //$command ='python C:/Users/Legion/code/bicycle_7.7.1/public/storage/python/python.py'; //need python
     //$command ='python '. public_path() . "/storage/python/python.py"; //need python
-     //DD($command);
+    //DD($command);
     //$proc = Process::fromShellCommandline($command, null, [])->mustRun()->getOutput(); //getErrorOutput();
-    //echo $proc; 
+    //echo $proc;
 
 
     //On win 10  not works
-/*     $process = new Process(['python ', 'C:/Users/Legion/code/bicycle_7.7.1/public/storage/python/python.py']);
-    //dd($process);
-    echo $process->mustRun()->getOutput();
-    var_dump($process->getOutput()); */
+    /*     $process = new Process(['python ', 'C:/Users/Legion/code/bicycle_7.7.1/public/storage/python/python.py']);
+        //dd($process);
+        echo $process->mustRun()->getOutput();
+        var_dump($process->getOutput()); */
     //echo $process->getOutput();
 
     // dump(Inspiring::quote());
