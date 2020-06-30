@@ -1,6 +1,7 @@
 
 <?php
 
+use App\User;
 use App\Helpers;
 use App\Events\BicycleUpdated;
 use App\Notifications\rentIsOver;
@@ -33,6 +34,21 @@ use Illuminate\Support\Facades\Storage;
 
  //auth()->loginUsingId(1);
 
+ Route::get('mapWithKeys', function () {
+     $userCollections = User::all();
+     //dd($userCollections);
+     $userCollectionskey = $userCollections ->mapWithKeys(function ($user) {
+         return [$user['name'] => $user['created_at']];
+     });
+
+     $userCollectionsmap = $userCollectionskey->all();
+     //dd($userCollectionsmap);
+     //print_r($userCollections);
+     //echo $userCollections;
+     //dd($userCollections);
+     return view('welcome', compact('userCollectionsmap'));
+ });
+
  Route::get('mail', function () {
      //  $rent = App\Rent::latest();
      $rent = App\Rent::find(32);
@@ -46,16 +62,7 @@ use Illuminate\Support\Facades\Storage;
 
 
 Route::get('/', function () {
-    $breaks = array("<br />","<br>","<br/>");
-    $request['codeSrc'] = str_ireplace($breaks, "\r\n", $request['codeSrc']);
-    /*
-        \r = CR (Carriage Return) → Used as a new line character in Mac OS before X
-        \n = LF (Line Feed) → Used as a new line character in Unix/Mac OS X
-        \r\n = CR + LF → Used as a new line character in Windows
-    */
-    Storage::put('text.txt', $request['codeSrc'])
-    $process = new Process(array('sh', 'app/Http/Controllers/comp.sh'));
-    $process->run();
+    //Storage::put('text.txt', 'hello');
 
     /*   auth()->loginUsingId(1);
      $myRents =auth()->user()->rents;

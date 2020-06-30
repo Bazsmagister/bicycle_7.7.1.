@@ -331,6 +331,18 @@
         </div>
     </div>
 
+    <div>
+        <ul>
+            @foreach ( $userCollectionsmap as $name => $date)
+            <li>
+                {{  $name }} | Joined at: {{  $date }}
+            </li>
+
+            @endforeach
+        </ul>
+
+    </div>
+
 
 
     <x-alert>
