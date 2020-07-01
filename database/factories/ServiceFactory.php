@@ -24,6 +24,11 @@ $factory->define(Service::class, function (Faker $faker) {
         'broughtIn_at' => Carbon::yesterday(),
         'startedToService_at' => Carbon::now(),
         'readyToTakeIt_at' => Carbon::tomorrow(),
+        'taken_at' => Carbon::now()->subDays(2),
+
+
+        'notes' => $faker->sentence(),
+        'status' => $faker->randomElement(['accepted', 'repariring', 'ready', 'taken']),
 
 
 

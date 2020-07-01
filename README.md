@@ -725,3 +725,7 @@ RegisterController middleware auth:guest!!!
 
 $user->notify(new newServiceIsMade($service));
 need to create a notify when a bike is brought in , started to service, or ready to take it home
+
+# enum
+
+\$table->enum('status', ['pending','processing','completed','decline'])->default('pending');

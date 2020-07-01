@@ -22,10 +22,16 @@ class CreateServicesTable extends Migration
             $table->unsignedBigInteger('serviceman_id');
 
             $table->boolean('isActive');
+            $table->enum('status', ['accepted','repariring','ready','taken'])->nullable();
 
             $table->timestamp('broughtIn_at')->nullable()->default(Carbon::now()->subDays(1));
             $table->timestamp('startedToService_at')->nullable()->default(Carbon::now());
             $table->timestamp('readyToTakeIt_at')->nullable()->default(Carbon::tomorrow());
+            $table->timestamp('taken_at')->nullable();
+
+
+            $table->string('notes')->nullable();
+
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('bicycle_id')->references('id')->on('bicycles')->onDelete('cascade')->onUpdate('cascade');

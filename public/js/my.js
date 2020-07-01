@@ -111,7 +111,7 @@ document.getElementById("alertbutton").addEventListener("click", pleaseLogin);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/bazs/code/bicycle_7.7.1/resources/js/my.js */"./resources/js/my.js");
+module.exports = __webpack_require__(/*! C:\Users\Legion\code\bicycle_7.7.1\resources\js\my.js */"./resources/js/my.js");
 
 
 /***/ })

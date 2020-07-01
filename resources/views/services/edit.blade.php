@@ -18,7 +18,12 @@
             {{-- <h5>Autocomplete Search using Bootstrap Typeahead JS</h5> --}}
             <h5>Autocomplete search: </h5>
 
-            <input class="typeahead form-control" type="text" name="user_name" placeholder="Start typing...">
+            <input 
+           {{--  id="typeahead" --}}
+             class="typeahead form-control" type="text" name="user_name" 
+            {{-- data-provide="typeahead"  --}}
+            autocomplete="off" 
+            placeholder="Start typing...">
 
         </div>
 
@@ -94,15 +99,47 @@
 @endauth
 
 
+<script>//works
+  /*   var path = "{{ route('autocomplete') }}";
+    $('input.typeahead').typeahead({
+   
+        source:  function (query, process) {
+        return $.get(path, { query: query }, function (data) {
+                return process(data);
+            });
+        }
+    }); */
+</script>
+
 <script>
     var path = "{{ route('autocomplete') }}";
+    var $input = $(".typeahead");
+
     $('input.typeahead').typeahead({
+      /*   hint: true,
+        highlight: true,
+        minLength: 1 */
         source:  function (query, process) {
         return $.get(path, { query: query }, function (data) {
                 return process(data);
             });
         }
     });
+    $input.change(function() {
+  var current = $input.typeahead("getActive");
+  if (current) {
+    // Some item from your model is active!
+    if (current.name == $input.val()) {
+      // This means the exact match is found. Use toLowerCase() if you want case insensitive match.
+    } else {
+      // This means it is only a partial match, you can either add a new item
+      // or take the active if you don't want new items
+    }
+  } else {
+    // Nothing is active so it is a new value (or maybe empty value)
+  }
+});
+
 </script>
 
 @endsection
