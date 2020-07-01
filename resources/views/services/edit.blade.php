@@ -13,10 +13,17 @@
         @csrf
         @method('patch')
 
+        <div class="container">
+
+            {{-- <h5>Autocomplete Search using Bootstrap Typeahead JS</h5> --}}
+            <h5>Autocomplete search: </h5>
+
+            <input class="typeahead form-control" type="text" name="user_name" placeholder="Start typing...">
+
+        </div>
 
         <div>
-
-            <input type="number" min="0" step="1" id="user_id" name="user_id"
+            <input type="number" min="1" step="1" id="user_id" name="user_id"
                 value="{{ old('user_id', $service->user_id) }}">
             <label for="ID">ID</label>
         </div>
@@ -32,7 +39,27 @@
 
             <input type="date" id="broughtIn_at" name="broughtIn_at"
                 value="{{ old('broughtIn_at', $service->broughtIn_at) }}">
-            <label for="brought in at">Brought in at</label>
+            <label for="broughtIn_at">Brought in at</label>
+        </div>
+
+        <div>
+
+            <input type="date" id="startedToService_at" name="startedToService_at"
+                value="{{ old('startedToService_at', $service->startedToService_at) }}">
+            <label for="startedToService_at">Started to Service it at</label>
+        </div>
+
+        <div>
+
+            <input type="date" id="readyToTakeIt_at" name="readyToTakeIt_at"
+                value="{{ old('readyToTakeIt_at', $service->readyToTakeIt_at) }}">
+            <label for="readyToTakeIt_at">Ready to take it at</label>
+        </div>
+
+        <div>
+
+            <input type="select" id="isActive" name="isActive" value="{{ old('isActive', $service->isActive) }}">
+            <label for="isActive">Is active?</label>
         </div>
 
 
@@ -53,10 +80,6 @@
 <hr>
 
 
-
-
-
-
 <hr>
 
 <div>
@@ -70,5 +93,16 @@
 
 @endauth
 
+
+<script>
+    var path = "{{ route('autocomplete') }}";
+    $('input.typeahead').typeahead({
+        source:  function (query, process) {
+        return $.get(path, { query: query }, function (data) {
+                return process(data);
+            });
+        }
+    });
+</script>
 
 @endsection

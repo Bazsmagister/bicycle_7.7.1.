@@ -19,6 +19,8 @@ $factory->define(Service::class, function (Faker $faker) {
         'bicycle_id' =>  random_int(4, 9),
         'serviceman_id' =>  random_int(1, 2),
 
+        'isActive' => random_int(0, 1),
+
         'broughtIn_at' => Carbon::yesterday(),
         'startedToService_at' => Carbon::now(),
         'readyToTakeIt_at' => Carbon::tomorrow(),

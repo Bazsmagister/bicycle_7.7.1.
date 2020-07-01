@@ -21,6 +21,8 @@ class CreateServicesTable extends Migration
             $table->unsignedBigInteger('bicycle_id');
             $table->unsignedBigInteger('serviceman_id');
 
+            $table->boolean('isActive');
+
             $table->timestamp('broughtIn_at')->nullable()->default(Carbon::now()->subDays(1));
             $table->timestamp('startedToService_at')->nullable()->default(Carbon::now());
             $table->timestamp('readyToTakeIt_at')->nullable()->default(Carbon::tomorrow());

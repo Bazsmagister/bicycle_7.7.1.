@@ -15,6 +15,8 @@
     <ul>
         <div>
             <li> Service unique number (ID): {{$service -> id }}</li>
+            <li> Serviceman (ID): {{$service -> serviceman_id }}</li>
+            <li> Is Active: {{$service -> isActive }}</li>
         </div>
         <br>
         <div>
