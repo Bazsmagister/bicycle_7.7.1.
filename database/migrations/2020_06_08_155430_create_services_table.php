@@ -19,10 +19,11 @@ class CreateServicesTable extends Migration
 
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('bicycle_id');
+            $table->unsignedBigInteger('serviceman_id');
 
-            $table->timestamp('broughtIn_at')->nullable();
-            $table->timestamp('startedToService_at')->nullable();
-            $table->timestamp('readyToTakeHome_at')->nullable()->default(Carbon::tomorrow());
+            $table->timestamp('broughtIn_at')->nullable()->default(Carbon::now()->subDays(1));
+            $table->timestamp('startedToService_at')->nullable()->default(Carbon::now());
+            $table->timestamp('readyToTakeIt_at')->nullable()->default(Carbon::tomorrow());
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('bicycle_id')->references('id')->on('bicycles')->onDelete('cascade')->onUpdate('cascade');

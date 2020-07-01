@@ -6,7 +6,7 @@
 
     @auth
     {{-- @if ($bicycle->is_rentable==1) --}}
-    <form action="/rents" method="POST">
+    <form action="/services" method="POST">
         @csrf
 
         @php
@@ -16,14 +16,23 @@
         @endphp
 
 
-        {{-- <label for="user_id">Which user_id are you?:</label> --}}
-        <input type="number" min="1" step="1" value="{{$id}}" id="user_id" name="user_id" required hidden>
-
-        <label for="bicycle_id">Which Bicycle_id do you want to rent?:</label>
+        <label for="user_id">Which user has the bicycle that needs to be servised?:</label>
+        <input type="number" min="1" step="1" value="{{$id}}" id="user_id" name="user_id" required>
+        <br>
+        <label for="user_name">Which user has the bicycle that needs to be servised?:</label>
+        <input type="text" id="user_name" name="user_name" placeholder="name">
+        <br>
+        <label for="bicycle_id">Which Bicycle_id do you want to service (Bicycle_id):</label>
         <input type="number" min="1" step="1" id="bicycle_id" name="bicycle_id" required>
         <br>
-        <label for="rentstartdate">Rent start (date and time):</label>
-        <input type="date" id="rentstartdate" name="rentStarted_at">
+        <label for="broughtIndate">Brought In (date and time):</label>
+        <input type="date" id="broughtIndate" name="broughtInAt_at">
+
+        <label for="servicestartdate">Service start (date and time):</label>
+        <input type="date" id="servicestartdate" name="broughtInAt_at">
+
+        <label for="readyToTakeIt">Ready to take it (date and time):</label>
+        <input type="date" id="readyToTakeIt" name="readyToTakeIt_at">
         <br>
         {{-- <label for="rentstarttime">Choose a time for rent start:</label> --}}
         {{-- <input type="time" id="rentstarttime" name="rentstarttime" min="08:00" max="20:00" step="1" required> --}}
@@ -35,8 +44,7 @@
         <p id="demo2">here comes the now timestamp</p>
         <p id="demo3">here comes the now timestamp</p> --}}
 
-        <label for="rentenddate">Rent end (date and time):</label>
-        <input type="date" id="rentenddate" name="rentEnds_at">
+
 
         {{-- <input type="datetime-local" not supported in firefox> --}}
         <br>
@@ -45,7 +53,7 @@
         <input type="time" id="rentendtime" name="rentEnds_at" min="08:00" max="20:00"> --}}
 
         <br>
-        <button class='button btn-info' type="submit">Rent that bicycle</button>
+        <button class='button btn-info' type="submit">Start to service that bicycle</button>
 
 
 

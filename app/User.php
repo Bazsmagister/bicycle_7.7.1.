@@ -81,10 +81,10 @@ class User extends Authenticatable
     }
 
     //makes the password always hashed:
-    public function setPasswordAttribute($value)
-    {
-        $this->attributes['password'] = Hash::make($value);
-    }
+    // public function setPasswordAttribute($value)
+    // {
+    //     $this->attributes['password'] = Hash::make($value);
+    // }
 
     public function rents()
     {

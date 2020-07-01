@@ -73,15 +73,25 @@ class RolesAndPermissionsSeeder extends Seeder
 
         $serviceman = factory(\App\User::class)->create([
             'id'    => '2',
-            'name'  => 'Serviceman Sergey',
-            'email' => 'service@service.com',
+            'name'  => 'Serviceman Sergey(serviceman_1)',
+            'email' => 'servicesergey@service.com',
             'password' => bcrypt('serviceservice'),
             'phone' => '0623232565321',
         ]);
         $serviceman ->assignRole('serviceman');
 
-        $salesman = factory(\App\User::class)->create([
+        $serviceman2 = factory(\App\User::class)->create([
             'id'    => '3',
+            'name'  => 'Serviceman Sebastian(serviceman_2)',
+            'email' => 'servicesebastian@service.com',
+            'password' => bcrypt('serviceservice'),
+            'phone' => '0623232565320',
+        ]);
+        $serviceman2 ->assignRole('serviceman');
+
+
+        $salesman = factory(\App\User::class)->create([
+            'id'    => '4',
             'name'  => 'Salesman Sam',
             'email' => 'sale@sale.com',
             'password' => bcrypt('salesale'),
@@ -90,7 +100,7 @@ class RolesAndPermissionsSeeder extends Seeder
         $salesman ->assignRole('salesman');
 
         $authuser = factory(\App\User::class)->create([
-            'id'    => '4',
+            'id'    => '5',
             'name'  => 'Dr. Authenticated User',
             'email' => 'authuser@authuser.com',
             'password' => bcrypt('authuser'),
@@ -99,7 +109,7 @@ class RolesAndPermissionsSeeder extends Seeder
         $authuser ->assignRole('authuser');
 
         $visitor = factory(\App\User::class)->create([
-            'id'    => '5',
+            'id'    => '6',
             'name'  => 'Visitor Customer',
             'email' => 'visitor@visitor.com',
             'password' => bcrypt('visitor'),

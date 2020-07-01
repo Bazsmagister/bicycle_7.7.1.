@@ -716,3 +716,12 @@ $result = shell_exec("python " . storage_path() . "/python/python.py 2>&1"); //t
 
 Don't forget
 RegisterController middleware auth:guest!!!
+
+# Input type number only positive:
+
+ <input type="number" min="1" step="1">
+
+# todo:
+
+$user->notify(new newServiceIsMade($service));
+need to create a notify when a bike is brought in , started to service, or ready to take it home

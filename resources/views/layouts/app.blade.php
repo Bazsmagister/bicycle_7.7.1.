@@ -47,10 +47,10 @@
                             bicycles to sell</a></div>
                     <div class="{{Request::path()==='bicyclestorent' ? 'active' : ''}}"><a href="/bicyclestorent">Our
                             bicycles to rent</a></div>
-                    <div class="{{Request::path()==='rents/create' ? 'active' : ''}}"><a href="/rents/create">Create a
-                            Rent</a></div>
 
                     @auth
+                    <div class="{{Request::path()==='rents/create' ? 'active' : ''}}"><a href="/rents/create">Create a
+                            Rent(auth)</a></div>
                     <div class="{{Request::path()==='service' ? 'active' : ''}}"><a href="/service">Service(auth)</a>
                     </div>
                     <div class="{{Request::path()==='myRents' ? 'active' : ''}}"><a href="/myRents">My previous
@@ -58,14 +58,17 @@
 
                     @endauth
                     @role('serviceman')
-                    <div class="{{Request::path()==='service' ? 'active' : ''}}"><a
-                            href="/service">Service(serviceman)</a></div>
+                    <div class="{{Request::path()==='services' ? 'active' : ''}}"><a
+                            href="/services">Service(serviceman)</a></div>
+                    <div class="{{Request::path()==='services' ? 'active' : ''}}"><a
+                            href="/services">Service/myWorkshop($serviceman)</a></div>
                     @endrole
                     @role('super-admin')
                     <div><a href="/service">Service(serviceman, admin)</a></div>
                     <div class='admin'><a href="/users">All Users(admin) |</a></div>
                     <div class="admin"><a href="/bicycle">All bicycles(admin)</a></div>
                     <div class="admin"><a href="/rents">All rents(admin)</a></div>
+                    <div class="admin"><a href="/services">All services(admin)</a></div>
                     <div class="admin"><a href="/mapWithKeys">UserNameDateMapWithKeys(admin)</a></div>
                     @endrole
 

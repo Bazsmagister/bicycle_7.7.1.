@@ -7,7 +7,7 @@ use Faker\Generator as Faker;
 
 $factory->define(Rent::class, function (Faker $faker) {
     return [
-        'user_id' =>  random_int(1, 5),
+        'user_id' =>  random_int(2, 5),
         // 'user_id' => function () {
         //     return factory(App\User::class)->create()->id;
         // },

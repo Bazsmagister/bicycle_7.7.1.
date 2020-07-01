@@ -24,9 +24,9 @@
         Description : <li>{{$bicycle -> description }} </li>
         Brought im :<li>{{$bicycle -> broughtIn_at }} </li>
         Started to service at : <li>{{$bicycle -> startedToService_at }} </li>
-        Ready to take home :<li>{{$bicycle -> readyToTakeHome_at }} </li>
-        {{-- <img src="{{$bicycle->image}}" alt="interesting" width="182" height="109"> --}}
-        <img src="{{$bicycle->image}}" alt="interesting" width height>
+        Ready to take home :<li>{{$bicycle -> readyToTakeIt_at }} </li>
+        <img src="{{$bicycle->image}}" alt="interesting" width="182" height="109">
+        {{-- <img src="{{$bicycle->image}}" alt="interesting" width height> --}}
     </ul>
     <hr>
 </div>
@@ -49,7 +49,7 @@
         Description : <li>{{$bicycle -> description }} </li>
         Brought im :<li>{{$bicycle -> broughtIn_at }} </li>
         Started to service at : <li>{{$bicycle -> startedToService_at }} </li>
-        Ready to take home :<li>{{$bicycle -> readyToTakeHome_at }} </li>
+        Ready to take home :<li>{{$bicycle -> readyToTakeIt_at }} </li>
         {{-- <img src="{{$bicycle->image}}" alt="interesting" width="182" height="109"> --}}
         <img src="{{$bicycle->image}}" alt="interesting" width height>
     </ul>

@@ -36,4 +36,11 @@ class Bicycle extends Model
         /* ->withTimestamps() */
         ;
     }
+
+    public function services()
+    {
+        return $this->hasMany(App\Service::class)
+        /* ->withTimestamps() */
+        ;
+    }
 }

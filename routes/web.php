@@ -300,3 +300,6 @@ Route::get('autocompletebike', 'BicycleController@autocompletebike')->name('auto
 
 Route::post('restoreDeletedUser/{id}', 'UserController@restoreDeletedUser')->name('restoreDeletedUser');
 // Route::get('restoreDeletedUser/{id}', 'UserController@restoreDeletedUser')->name('restoreDeletedUser');
+
+
+Route::resource('services', 'ServiceController');
