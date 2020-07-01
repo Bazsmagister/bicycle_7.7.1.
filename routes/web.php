@@ -46,7 +46,7 @@ use Illuminate\Support\Facades\Storage;
      //print_r($userCollections);
      //echo $userCollections;
      //dd($userCollections);
-     return view('welcome', compact('userCollectionsmap'));
+     return view('UserNameDateMapWithKeys', compact('userCollectionsmap'));
  });
 
  Route::get('mail', function () {

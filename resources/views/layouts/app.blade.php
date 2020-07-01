@@ -35,7 +35,7 @@
 
 <body>
     <div id="app">
-        <nav  class="navbar navbar-expand-md  navbar-light bg-white shadow"{{-- --}}>
+        <nav class="navbar navbar-expand-md  navbar-light bg-white shadow" {{-- --}}>
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ 'Welcome' }}
@@ -43,23 +43,30 @@
 
                 <div class="flex-container">
 
-                    <div class="{{Request::path()==='bicyclestosell' ? 'active' : ''}}"><a  href="/bicyclestosell">New bicycles to sell</a></div>
-                    <div class="{{Request::path()==='bicyclestorent' ? 'active' : ''}}"><a href="/bicyclestorent">Our bicycles to rent</a></div>
-                    <div class="{{Request::path()==='rents/create' ? 'active' : ''}}"><a href="/rents/create">Create a Rent</a></div>
+                    <div class="{{Request::path()==='bicyclestosell' ? 'active' : ''}}"><a href="/bicyclestosell">New
+                            bicycles to sell</a></div>
+                    <div class="{{Request::path()==='bicyclestorent' ? 'active' : ''}}"><a href="/bicyclestorent">Our
+                            bicycles to rent</a></div>
+                    <div class="{{Request::path()==='rents/create' ? 'active' : ''}}"><a href="/rents/create">Create a
+                            Rent</a></div>
 
                     @auth
-                    <div class="{{Request::path()==='service' ? 'active' : ''}}"><a href="/service">Service(auth)</a></div>
-                    <div class="{{Request::path()==='myRents' ? 'active' : ''}}"><a href="/myRents">My previous rents(auth)</a></div>
+                    <div class="{{Request::path()==='service' ? 'active' : ''}}"><a href="/service">Service(auth)</a>
+                    </div>
+                    <div class="{{Request::path()==='myRents' ? 'active' : ''}}"><a href="/myRents">My previous
+                            rents(auth)</a></div>
 
                     @endauth
                     @role('serviceman')
-                    <div class="{{Request::path()==='service' ? 'active' : ''}}"><a href="/service">Service(serviceman)</a></div>
+                    <div class="{{Request::path()==='service' ? 'active' : ''}}"><a
+                            href="/service">Service(serviceman)</a></div>
                     @endrole
                     @role('super-admin')
-                    <div ><a href="/service">Service(serviceman, admin)</a></div>
+                    <div><a href="/service">Service(serviceman, admin)</a></div>
                     <div class='admin'><a href="/users">All Users(admin) |</a></div>
                     <div class="admin"><a href="/bicycle">All bicycles(admin)</a></div>
                     <div class="admin"><a href="/rents">All rents(admin)</a></div>
+                    <div class="admin"><a href="/mapWithKeys">UserNameDateMapWithKeys(admin)</a></div>
                     @endrole
 
                 </div>
