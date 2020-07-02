@@ -2,19 +2,26 @@
 
 @section('content')
 
-
 <div style="padding-left: 20px">
     <p>Brought In :
         {{$service->broughtIn_at}} </p>
-    <p>Start :
-        {{$service->serviceStarted_at}} </p>
-    <p> Ends :
+    <p>Start to service:
+        {{$service->startedToService_at}} </p>
+    <p> Ready to take it at :
         {{$service->readyToTakeIt_at}} </p>
 
-    <p> The User who owns the bicycle :
+    <p> The User who owns the bicycle/ Owner's name :
         {{$service->user->name}} </p>
-    <img src="{{$service->user->user_image}}" alt="image 0 should be here">
+    <p> Owner's phone: {{$service->user->phone}}</p>
+    <p> Owner's email: {{$service->user->email}} </p>
+
+    <p> Notes: {{$service->notes}} </p>
+
+    <p> Status: {{$service->status}} </p>
+
+    {{-- <img src="{{$service->user->user_image}}" alt="image 0 should be here">
     <img src="/storage/users/image/{{$service->user->user_image}}" alt="image 1 should be here" width=50px height=50px>
+    --}}
 
     <hr>
 
@@ -29,16 +36,17 @@
         {{ method_field('delete') }}
         @csrf
 
-        <button class="btn btn-danger" type="submit">Delete the Service</button>
+        <button class="btn btn-danger" type="submit"
+            onclick="return confirm('Do you really want to delete it?');">Delete the Service</button>
     </form>
     <hr>
     <form action="{{ route('services.destroy', $service->id) }}" method="POST">
         @csrf
         @method('delete')
-        <button type="submit" class="btn btn-outline-danger">Delete</button>
+        <button type="submit" class="btn btn-outline-danger"
+            onclick="return confirm('Do you really want to delete it?');">Delete</button>
     </form>
 
 </div>
-
 
 @endsection

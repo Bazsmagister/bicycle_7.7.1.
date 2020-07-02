@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Service;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use App\Notifications\newServiceCreated;
 
 class ServiceController extends Controller
 {
@@ -37,12 +39,18 @@ class ServiceController extends Controller
     public function store(Request $request)
     {
         $serviceData = [
-                'user_id' => $user->id,
-                'bicycle_id' => $bicycle->id,
+                'user_id' => $request->user_id,
+                'bicycle_id' => $request -> bicycle_id,
                /*  'rentStarted_at' => Carbon::now(),
                 'rentEnds_at' => (Carbon::now()->addDay(1)), */
+                'broughtIn_at' => $request->broughtIn_at ?? Carbon::now(),
                 'rentStarted_at' =>  $request->rentStarted_at ?? Carbon::now(),
                 'rentEnds_at' => $request->rentEnds_at ?? Carbon::now()->addDay(2),
+                'taken_at' => $request->taken_at ?? 'Still not taken yet',
+                'notes' => $request->notes ?? 'No notes yet, everything was worked fine',
+                'isActive' => $request->isActive,
+                'status' => $request -> status,
+
 
             ];
         $service = Service::firstOrCreate($serviceData);
@@ -65,7 +73,7 @@ class ServiceController extends Controller
 
         $user= $service->user();
         dd($user);
-        $user->notify(new newServiceIsMade($service));
+        $user->notify(new newServiceCreated($service));
         //$user->notify(new newRentIsMade($rent));
 
         // auth()->user()->notify(new newRentMade(Rent::findOrFail($id)));
@@ -85,7 +93,7 @@ class ServiceController extends Controller
      */
     public function show(Service $service)
     {
-        //
+        return view('services.show', compact('service')); //works either well
     }
 
     /**
@@ -109,6 +117,30 @@ class ServiceController extends Controller
     public function update(Request $request, Service $service)
     {
         //
+        // $rent = Rent::findOrFail($id);
+
+        // $rent->user_id = auth()->user()->id;
+        //or
+        $service->user_id = $request->input('user_id');
+        $service->bicycle_id = $request->input('bicycle_id');
+        $service->serviceman_id = $request->input('serviceman_id');
+
+        $service->broughtIn_at = $request->input('broughtIn_at');
+        $service->startedToService_at = $request->input('startedToService_at');
+        $service->readyToTakeIt_at = $request->input('readyToTakeIt_at');
+        $service->taken_at = $request->input('taken_at');
+        $service->isActive = $request->input('isActive');
+        $service->notes = $request->input('notes');
+
+        $service->save();
+
+        return redirect()->route(
+            'services.index',
+            $service->id
+        )->with(
+            'message',
+            'Service instant has been updated'
+        );
     }
 
     /**
@@ -119,6 +151,13 @@ class ServiceController extends Controller
      */
     public function destroy(Service $service)
     {
-        //
+        $service->delete();
+
+
+        return redirect()->route('services.index')
+            ->with(
+                'message',
+                'Service instant successfully deleted'
+            )->with('alert-class', 'alert-danger');
     }
 }

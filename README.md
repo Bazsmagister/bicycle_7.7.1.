@@ -611,6 +611,7 @@ echo php_ini_loaded_file();
 
 php artisan make:notification InvoicePaid
 php artisan make:notification newBicycleToRent
+php artisan make:notification newServiceCreated
 //a new notification php is created.
 
 public function via(\$notifiable)
@@ -729,3 +730,5 @@ need to create a notify when a bike is brought in , started to service, or ready
 # enum
 
 \$table->enum('status', ['pending','processing','completed','decline'])->default('pending');
+
+# onclick="return confirm('Do you really want to delete it?');"
