@@ -729,6 +729,7 @@ need to create a notify when a bike is brought in , started to service, or ready
 
 # enum
 
-\$table->enum('status', ['pending','processing','completed','decline'])->default('pending');
+$table->enum('status', ['pending','processing','completed','decline'])->default('pending');
+$table->enum('status', ['accepted','repariring','ready','taken'])->nullable();
 
 # onclick="return confirm('Do you really want to delete it?');"

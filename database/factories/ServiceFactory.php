@@ -15,7 +15,7 @@ $factory->define(Service::class, function (Faker $faker) {
         // 'bicycle_id' =>  random_int(1, 5),
         // 'serviceman_id' =>  random_int(1, 2),
 
-        'user_id' =>  random_int(6, 9),
+        'user_id' =>  random_int(5, 9),
         'bicycle_id' =>  random_int(4, 9),
         'serviceman_id' =>  random_int(1, 2),
 

@@ -2,65 +2,47 @@
 
 @section('contentservice')
 
-@hasanyrole('super-admin|serviceman|salesman')
-<p>has any role</p>
+@auth
 
-
-<h3>All the bicycles to service / under service</h3>
-
+<h3>My service progress / my active service instants</h3>
+{{-- <h3>All my bicycles to service / under service</h3> --}}
 <hr>
 
+{{-- <div class="flexbox">
+    <div class='boxes' style="background-color: gray" id="1">Accepted</div>
+    <div class='boxes' id="2">Repairing</div>
+    <div class='boxes' id="3">Ready</div>
+    <div class='boxes' id="4">Taken</div>
+</div> --}}
 
-@foreach ($bicycles_in_service as $bicycle)
+@foreach ($myBicycleServiceProgress as $service)
 <div class="container">
     <ul>
         <div>
-            ID: <li>{{$bicycle -> id }}</li>
+            <li> Service ID: {{$service -> id }}</li>
         </div>
-        <br>
-        <div>
-            Name:<li>{{$bicycle -> name }} </li>
+
+        <li> Brought in :{{$service -> broughtIn_at }} </li>
+        <li> Started to service at : {{$service -> startedToService_at }} </li>
+        <li> Ready to take it home :{{$service -> readyToTakeIt_at }} </li>
+        <li> Taken at :{{$service -> taken_at }} </li>
+
+        <li> Notes : {{$service -> notes }} </li>
+        <li> Status : {{$service -> status }} </li>
+
+        <div class="flexbox">
+            <div class="{{$service -> status ==='accepted' ? 'accepted' : 'boxes'}}" id="1">Accepted</div>
+            <div class="{{$service -> status ==='repairing' ? 'repairing' : 'boxes'}}" id="2">Repairing</div>
+            <div class="{{$service -> status ==='ready' ? 'ready' : 'boxes'}}" id="3">Ready</div>
+            <div class="{{$service -> status ==='taken' ? 'taken' : 'boxes'}}" id="4">Taken</div>
         </div>
-        Description : <li>{{$bicycle -> description }} </li>
-        Brought im :<li>{{$bicycle -> broughtIn_at }} </li>
-        Started to service at : <li>{{$bicycle -> startedToService_at }} </li>
-        Ready to take home :<li>{{$bicycle -> readyToTakeIt_at }} </li>
-        <img src="{{$bicycle->image}}" alt="interesting" width="182" height="109">
-        {{-- <img src="{{$bicycle->image}}" alt="interesting" width height> --}}
+
     </ul>
     <hr>
 </div>
 
 @endforeach
 
-@else
-<p>has not role</p>
-
-@foreach ($bicycles_in_service as $bicycle)
-<div class="container">
-    <ul>
-        <div>
-            ID: <li>{{$bicycle -> id }}</li>
-        </div>
-        <br>
-        <div>
-            Name:<li>{{$bicycle -> name }} </li>
-        </div>
-        Description : <li>{{$bicycle -> description }} </li>
-        Brought im :<li>{{$bicycle -> broughtIn_at }} </li>
-        Started to service at : <li>{{$bicycle -> startedToService_at }} </li>
-        Ready to take home :<li>{{$bicycle -> readyToTakeIt_at }} </li>
-        {{-- <img src="{{$bicycle->image}}" alt="interesting" width="182" height="109"> --}}
-        <img src="{{$bicycle->image}}" alt="interesting" width height>
-    </ul>
-    <hr>
-</div>
-
-@endforeach
-
-
-
-@endhasanyrole
-
+@endauth
 
 @endsection

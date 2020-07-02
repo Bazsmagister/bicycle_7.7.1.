@@ -369,9 +369,34 @@ class BicycleController extends Controller
         $sellable_bicycles = DB::select('select * from bicycles where is_sellable = ?', [1]);
         return view('bicyclestosell', compact('sellable_bicycles'));
     }
+
     public function service()
     {
-        $bicycles_in_service= DB::select('select * from bicycles where is_serviceable = ?', [1]);
-        return view('bicycleservice', compact('bicycles_in_service'));
+        // $bicycles_in_service = DB::select('select * from bicycles where is_serviceable = ?', [1]);
+        // return view('bicycleservice', compact('bicycles_in_service'));
+
+        $user_id = auth()->user()->id;
+        //echo($user_id);
+
+        // $myBicycleServiceProgress = DB::select('select * from services where user_id = ?', [$user_id]);
+        // print_r($myBicycleServiceProgress);
+
+        // $myBicycleServiceProgress = DB::whereRaw('select * from services, user_id = $user_id');
+        // print_r($myBicycleServiceProgress);
+
+        // $myBicycleServiceProgress = DB::table('users')->leftJoin('services', 'users.id', '=', 'services.user_id')->get();
+        // print_r($myBicycleServiceProgress);
+        // dd($myBicycleServiceProgress);
+
+        $myBicycleServiceProgress = DB::table('services')
+                                    ->where('user_id', [$user_id])
+                                    ->where('isActive', '1')
+                                    ->get();
+
+        //print_r($myBicycleServiceProgress);
+        //dd($myBicycleServiceProgress);
+
+        // return view('bicycleservice', compact('bicycles_in_service'));
+        return view('bicycleservice', compact('myBicycleServiceProgress'));
     }
 }
