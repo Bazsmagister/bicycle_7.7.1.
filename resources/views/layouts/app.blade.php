@@ -51,28 +51,25 @@
                     @auth
                     <div class="{{Request::path()==='rents/create' ? 'active' : ''}}"><a href="/rents/create">Create a
                             Rent(auth)</a></div>
-                    <div class="{{Request::path()==='service' ? 'active' : ''}}"><a href="/service">Service(auth)</a>
+                    <div class="{{Request::path()==='service' ? 'active' : ''}}"><a
+                            href="/service">ServiceProgress(auth)</a>
                     </div>
                     <div class="{{Request::path()==='myRents' ? 'active' : ''}}"><a href="/myRents">My previous
                             rents(auth)</a></div>
 
                     @endauth
+
                     @role('serviceman')
                     <div class="{{Request::path()==='services' ? 'active' : ''}}"><a
                             href="/services">Service(serviceman)</a></div>
                     <div class="{{Request::path()==='services' ? 'active' : ''}}"><a
                             href="/services">Service/myWorkshop($serviceman)</a></div>
                     @endrole
-                    @role('super-admin')
-                    <div><a href="/service">Service(serviceman, admin)</a></div>
-                    <div class='admin'><a href="/users">All Users(admin) |</a></div>
-                    <div class="admin"><a href="/bicycle">All bicycles(admin)</a></div>
-                    <div class="admin"><a href="/rents">All rents(admin)</a></div>
-                    <div class="admin"><a href="/services">All services(admin)</a></div>
-                    <div class="admin"><a href="/mapWithKeys">UserNameDateMapWithKeys(admin)</a></div>
-                    @endrole
+
 
                 </div>
+
+
 
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -133,13 +130,32 @@
                         @endguest
                     </ul>
                 </div>
+
             </div>
+            <div class="flex-container">
+
+                @role('super-admin')
+                <div class="admin"><a href="/bicycles">All bicycles(admin)</a></div>
+                <div class="admin"><a href="/rents">All rents(admin)</a></div>
+                <div class="admin"><a href="/services">All services(admin)</a></div>
+                <div class='admin'><a href="/users">All Users(admin) |</a></div>
+                <div class='admin'><a href="/indexDeletedAlso">Users index Deleted Also(admin) |</a></div>
+                <div class='admin'><a href="/OnlyDeletedUsers">OnlyDeletedUsers |</a></div>
+                <div class='admin'><a href="/services">Services(serviceman, admin)</a></div>
+
+                <div class="admin"><a href="/mapWithKeys">UserNameDateMapWithKeys(admin)</a></div>
+                @endrole
+
+            </div>
+
         </nav>
 
         <main class="py-4">
+
             @if(Session::has('message'))
             <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('message') }}</p>
             @endif
+
             @yield('content')
             @yield('contentuser')
             @yield('contentindex')
@@ -151,10 +167,7 @@
             @yield('logged_in')
             @yield('rents_edit')
 
-
         </main>
-
-
 
     </div>
 

@@ -2,33 +2,18 @@
 
 @section('content')
 
+{{-- <script>
+    var path = "{{ route('autocompleteUser') }}";
+$('input.typeahead').typeahead({
+source: function (query, process) {
+return $.get(path, { query: query }, function (data) {
+return process(data);
+});
+}
+});
+</script> --}}
 
-
-<div class="container">
-
-    {{-- <h5>Autocomplete Search using Bootstrap Typeahead JS</h5> --}}
-    <h5>Autocomplete search: </h5>
-
-    <input class="typeahead form-control" type="text" placeholder="Start typing...">
-
-</div>
-
-
-
-<script>
-    var path = "{{ route('autocomplete') }}";
-    $('input.typeahead').typeahead({
-        source:  function (query, process) {
-        return $.get(path, { query: query }, function (data) {
-                return process(data);
-            });
-        }
-    });
-</script>
-
-<hr>
 <h4>NameDateMap:</h4>
-
 
 <div>
     <ul>
@@ -41,7 +26,6 @@
     </ul>
 
 </div>
-
 
 <script>
     //doesn't work:

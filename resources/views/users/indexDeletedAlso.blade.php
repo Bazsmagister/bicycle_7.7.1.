@@ -5,8 +5,7 @@
 @role('super-admin')
 <div class='admin'>
     <p>
-        For admin : All of our users. <br>
-        We have {{ $activeUserCount }} active users.
+        For admin : All of our users.
     </p>
     {{-- <p style="background-color: red">
         For admin : All of our bicycles.
@@ -58,18 +57,35 @@
     </div>
 </div>
 
+
+
 <hr>
+<h4>Deleted Users:</h4>
+<ul>
+    @foreach ( $deletedUsers as $deletedUser )
+    <li>
+        <p>id: {{$deletedUser->id }} Name : {{$deletedUser->name}} Deleted at : {{$deletedUser->deleted_at}}
+            <form action="/restoreDeletedUser/{{$deletedUser->id}}" method="post">
+                @csrf
+
+                <button type="submit">Restore user</button>
+            </form>
+
+
+            @endforeach
+</ul>
+
 
 <script>
     var path = "{{ route('autocompleteUser') }}";
     $('input.typeahead').typeahead({
+
     source: function (query, process) {
     return $.get(path, { query: query }, function (data) {
     return process(data);
     });
     }
     });
-
 </script>
 
 @endsection

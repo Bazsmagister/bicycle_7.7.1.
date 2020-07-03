@@ -4,6 +4,7 @@
 use App\User;
 use App\Helpers;
 use App\Events\BicycleUpdated;
+use App\Http\Controllers\UserController;
 use App\Notifications\rentIsOver;
 use Illuminate\Foundation\Inspiring;
 use Illuminate\Support\Facades\Auth;
@@ -213,6 +214,10 @@ Route::get('/', function () {
 
 Route::resource('users', 'UserController');
 
+Route::get('indexDeletedAlso', 'UserController@indexDeletedAlso');
+Route::get('OnlyDeletedUsers', 'UserController@OnlyDeletedUsers');
+
+
 // Route::group(['middleware' => ['role:super-admin']], function () {
 
 // });
@@ -237,7 +242,8 @@ Route::get('bicyclestorent', 'BicycleController@allRentableBicycles');
 // Route::get('newbikes', 'BicycleController@buy');
 
 
-Route::resource('bicycle', 'BicycleController');
+Route::resource('bicycles', 'BicycleController');
+
 Route::get('bicyclestosell', 'BicycleController@sellable');
 Route::get('service', 'BicycleController@service');
 Route::get('rentabike', 'BicycleController@rent');
@@ -295,8 +301,13 @@ Route::resource('rents', 'RentController');
 
 Route::get('/myRents', 'UserController@myRents');
 
-Route::get('autocomplete', 'UserController@autocomplete')->name('autocomplete');
-Route::get('autocompletebike', 'BicycleController@autocompletebike')->name('autocompletebike');
+
+// Route::get('autocomplete', 'UserController@autocomplete')->name('autocomplete');
+// Route::get('autocompletebike', 'BicycleController@autocompletebike')->name('autocompletebike');
+
+Route::get('autocompleteUser', 'UserController@autocompleteUser')->name('autocompleteUser');
+Route::get('autocompleteBike', 'BicycleController@autocompleteBike')->name('autocompleteBike');
+
 
 Route::post('restoreDeletedUser/{id}', 'UserController@restoreDeletedUser')->name('restoreDeletedUser');
 // Route::get('restoreDeletedUser/{id}', 'UserController@restoreDeletedUser')->name('restoreDeletedUser');

@@ -26,7 +26,7 @@ All the bicycles to sell.
 
         {{-- <a href="{{route('bicycle.edit','$bicycle->id')}}"></a> --}}
         <div>
-            <a href="bicycle/{{$bicycle->id}}" class="btn btn-info">Show</a>
+            <a href="bicycles/{{$bicycle->id}}" class="btn btn-info">Show</a>
         </div>
 
         <hr>

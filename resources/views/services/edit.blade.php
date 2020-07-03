@@ -132,7 +132,7 @@
 </script>
 
 <script>
-    var path = "{{ route('autocomplete') }}";
+    var path = "{{ route('autocompleteUser') }}";
     var $input = $(".typeahead");
 
     $('input.typeahead').typeahead({

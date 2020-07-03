@@ -5,9 +5,52 @@
 @hasanyrole('super-admin|serviceman|salesman')
 <p>has any role</p>
 
-
 <h3>All the bicycles to service / under service</h3>
+<hr>
+<div class=" container mid">
+    <table id="table_services" class="table table-striped table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">user_id</th>
+                <th scope="col">bicycle_id</th>
+                <th scope="col">broughtIn_at</th>
+                <th scope="col">StartedToService_at</th>
+                <th scope="col">ReadyToTakeIt_at</th>
+                <th scope="col">Serviceman_id</th>
+                <th scope="col">Notes</th>
+                <th scope="col">Status</th>
 
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($services as $service)
+            <tr>
+                <td>{{ $service->id }}</td>
+                <td>{{ $service->user_id }}</td>
+                <td>{{ $service->bicycle_id}}</td>
+                <td>{{ $service->broughtIn_at}}</td>
+                <td>{{ $service->startedToService_at }}</td>
+                <td>{{ $service->readyToTakeIt_at }}</td>
+                <td>{{ $service->serviceman_id }}</td>
+                <td>{{ $service->notes }}</td>
+                <td>{{ $service->status }}</td>
+                <td><a href="services/{{$service->id}}/edit " class="btn btn-info">Edit</a>
+                    <a href="services/{{$service->id}} " class="btn btn-info">Show</a>
+
+                    <form action="{{ route('services.destroy', $service->id) }}" method="POST">
+                        @csrf
+                        @method('delete')
+                        <button type="submit" class="btn btn-danger"
+                            onclick="return confirm('Do you really want to delete it?');">Delete</button>
+                    </form>
+                </td>
+
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+</div>
 <hr>
 
 @foreach ($services as $service)
@@ -49,43 +92,5 @@
 
 
 
-<div class=" container mid">
-    <table id="table_services" class="table table-striped table-bordered">
-        <thead class="thead-dark">
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">user_id</th>
-                <th scope="col">bicycle_id</th>
-                <th scope="col">broughtIn_at</th>
-                <th scope="col">serviceStarted_at</th>
-                <th scope="col">serviceEnds_at</th>
-
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($services as $service)
-            <tr>
-                <td>{{ $service->id }}</td>
-                <td>{{ $service->user_id }}</td>
-                <td>{{ $service->bicycle_id}}</td>
-                <td>{{ $service->broughtIn_at}}</td>
-                <td>{{ $service->rentStarted_at }}</td>
-                <td>{{ $service->rentEnds_at }}</td>
-                <td><a href="services/{{$service->id}}/edit " class="btn btn-info">Edit</a>
-                    <a href="services/{{$service->id}} " class="btn btn-info">Show</a>
-
-                    <form action="{{ route('services.destroy', $service->id) }}" method="POST">
-                        @csrf
-                        @method('delete')
-                        <button type="submit" class="btn btn-danger"
-                            onclick="return confirm('Do you really want to delete it?');">Delete</button>
-                    </form>
-                </td>
-
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
-</div>
 
 @endsection

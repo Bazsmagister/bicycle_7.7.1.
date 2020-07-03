@@ -97,7 +97,7 @@
     </div>
 
     <hr>
-    <form action="{{ route('bicycle.destroy', $bicycle->id) }}" method="POST">
+    <form action="{{ route('bicycles.destroy', $bicycle->id) }}" method="POST">
         @csrf
         @method('delete')
         <button type="submit" class="btn btn-danger">Delete the bicycle</button>

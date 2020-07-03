@@ -2,26 +2,23 @@
 
 @section ('content')
 
-  <ul>
-@foreach ($myRents as $myRent) 
- 
+<ul>
+    @foreach ($myRents as $myRent)
 
-    <li> 
-        <p> Rent started :   {{$myRent->rentStarted_at}}   </p>
-    </li>
-  
 
-   
     <li>
-         <p>bicycle id:  {{$myRent->bicycle_id}} </p>
+        <p> Rent started : {{$myRent->rentStarted_at}} </p>
+    </li>
+
+
+
+    <li>
+        <p>bicycle id: {{$myRent->bicycle_id}} </p>
     </li>
 
     <hr>
-@endforeach
-   </ul>
-   
-   
-
+    @endforeach
+</ul>
 
 
 @endsection

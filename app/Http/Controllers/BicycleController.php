@@ -26,7 +26,7 @@ class BicycleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function autocompletebike(Request $request)
+    public function autocompleteBike(Request $request)
     {
         $data = Bicycle::select("name")
 
@@ -57,7 +57,7 @@ class BicycleController extends Controller
         $bicycles = DB::table('bicycles')->paginate(15);
 
 
-        return view('bicycle_index', compact('bicycles'));
+        return view('bicycles.index', compact('bicycles'));
     }
 
     public function sellable()
@@ -75,7 +75,7 @@ class BicycleController extends Controller
      */
     public function create()
     {
-        return view('bicycles_to_create');
+        return view('bicycles.create');
     }
 
     /**
@@ -175,7 +175,7 @@ class BicycleController extends Controller
      */
     public function show($id)
     {
-        return view('bicycle_show', ['bicycle' => Bicycle::findOrFail($id)]);
+        return view('bicycles.show', ['bicycle' => Bicycle::findOrFail($id)]);
     }
 
     /**
@@ -186,7 +186,7 @@ class BicycleController extends Controller
      */
     public function edit(Bicycle $bicycle)
     {
-        return view('bicycle_edit', compact('bicycle'));
+        return view('bicycles.edit', compact('bicycle'));
     }
 
     public function uploadOne(UploadedFile $uploadedFile, $folder = null, $disk = 'public', $filename = null)
@@ -255,7 +255,7 @@ class BicycleController extends Controller
 
 
         // Return user back and show a flash message
-        return redirect('bicycle')->with(['message' => 'Bicycle updated successfully.']);
+        return redirect('bicycles')->with(['message' => 'Bicycle updated successfully.']);
     }
 
     // if ($request->isMethod('post')) {
@@ -327,7 +327,7 @@ class BicycleController extends Controller
     {
         //$bicycle = Bicycle::findOrFail($bicycle);
         $bicycle->delete();
-        return redirect()->route('bicycle.index')
+        return redirect()->route('bicycles.index')
             ->with(
                 'message',
                 'Bike successfully deleted'
@@ -349,7 +349,7 @@ class BicycleController extends Controller
 
     public function rentThisBicycle($id)
     {
-        return view('bicycle_show', ['bicycle' => Bicycle::findOrFail($id)]);
+        return view('bicycles.show', ['bicycle' => Bicycle::findOrFail($id)]);
 
 
         // $rentable_bicycles = DB::select('select * from bicycles where is_rentable = ?', [1]);

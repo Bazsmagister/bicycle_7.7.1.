@@ -18,7 +18,7 @@
 @role('super-admin')
 <div>
     <button class="button btn-warning">
-        <a href="/bicycle/create"> Add a new Bicycle </a>
+        <a href="/bicycles/create"> Add a new Bicycle </a>
     </button>
 </div>
 @endrole
@@ -59,7 +59,7 @@
 
         {{-- <a href="{{route('bicycle.edit','$bicycle->id')}}"></a> --}}
         <div>
-            <a href="bicycle/{{$bicycle->id}}" class="btn btn-info">Show</a>
+            <a href="bicycles/{{$bicycle->id}}" class="btn btn-info">Show</a>
         </div>
 
 
@@ -89,7 +89,7 @@
     {!! $bicycles->links() !!}
 </div>
 
-<div class=" container mid">
+<div class= " container mid">
     <table id="table_bikes" class="table table-striped table-bordered">
         <thead class="thead-dark">
             <tr>
@@ -119,7 +119,7 @@
 </div>
 
 <script>
-    var path = "{{ route('autocompletebike') }}";
+    var path = "{{ route('autocompleteBike') }}";
     // $('input.typeahead').typeahead({  //works with class
     $('#autocomplete').typeahead({       //works with id
         source:  function (query, process) {

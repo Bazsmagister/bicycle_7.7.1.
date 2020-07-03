@@ -15,83 +15,69 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class UserController extends Controller
 {
-    public function autocomplete(Request $request)
+    public function __construct()
     {
-        $data = User::select("name")
-
-                ->where("name", "LIKE", "%{$request->input('query')}%")
-
-                ->select('name')->distinct()//?
-
-                ->get();
-
-        return response()->json($data);
-    }
-
-    public function getDeletedUsers()
-    {
-        $deletedUsers = User::onlyTrashed()
-                //->where('airline_id', 1)
-                ->get();
-    }
-
-    public function restoreDeletedUser(Request $request)
-    {
-        // $deletedUsers = User::onlyTrashed()
-        //         //->where('airline_id', 1)
-        //         ->get();
-
-        //dd($user);
-
-        User::withTrashed()
-        ->where('id', request('id')) //doesn't work
-        // ->select('id')
-        ->restore();
-        //dd($user);
-
-        $users = DB::table('users')->where('id', '<>', 1)->orderBy('created_at', 'desc')->paginate(12);
-
-
-
-        $deletedUsers = User::onlyTrashed()
-                //->where('airline_id', 1)
-                ->get();
-        //dd($deletedUsers);
-
-        //return view('users.index')->with('users', $users)->with('deletedUsers', $deletedUsers);
-        return redirect('users')->with('message', 'user was restored');
+        //$this->middleware('auth');
     }
 
     public function index()
     {
-        // $users =  User::paginate();
-        // //$users =  User::all();
-        // //$users = User::orderby('created_at', 'desc')->simplePaginate(5);
+        $activeUserCount = User::count();
+        //dd($activeUserCount);
+        $users =  User::paginate(10); //in view: <div class="panel-heading">Page {{ $users->currentPage() }} of {{ $users->lastPage() }} and    {!! $users->links() !!}
+        //$users =  User::all();
+        //$users = User::orderby('created_at', 'desc')->simplePaginate(8);
         // //$users = User::orderby('id', 'desc')->simplePaginate(5);
         // //$users =  User::simplePaginate(8);
+        return view('users.index')->with('users', $users)->with('activeUserCount', $activeUserCount);
+
+        //Works:
+        // $activeUserCount = User::count();
+        // $users =  User::paginate(10); //in view: <div class="panel-heading">Page {{ $users->currentPage() }} of {{ $users->lastPage() }} and    {!! $users->links() !!}
+        // return view('users.index')->with('users', $users)->with('activeUserCount', $activeUserCount);
+
+        // $users =  User::paginate(10); //in view: <div class="panel-heading">Page {{ $users->currentPage() }} of {{ $users->lastPage() }} and    {!! $users->links() !!}
         // return view('users.index')->with('users', $users);
 
-        $deletedUsers = User::onlyTrashed()
-                //->where('airline_id', 1)
-                ->get();
-        //dd($deletedUsers);
-
-
-
-
-
-        $users = DB::table('users')->where('id', '<>', 1)->orderBy('created_at', 'desc')->paginate(12);
-        return view('users.index')->with('users', $users)->with('deletedUsers', $deletedUsers);
+        // $users = DB::table('users')->where('id', '<>', 1)->orderBy('created_at', 'desc')->paginate(12);
+        // return view('users.index')->with('users', $users);
 
         // $users = DB::table('users')->distinct()->get();
         // return view('users.index')->with('users', $users);
     }
 
 
+    // public function autocompleteUser(Request $request)
+    // {
+    //     $data = User::select("name")
+
+    //             ->where("name", "LIKE", "%{$request->input('query')}%")
+
+    //             ->select('name',)->distinct()//?
+
+    //             ->get();
+
+    //     return response()->json($data);
+    // }
+
+    public function autocompleteUser(Request $request)
+    {
+        $data = User::select("name", "id")
+
+                ->where("name", "LIKE", "%{$request->input('query')}%")
+
+                ->select('name', 'id')->distinct()//?
+
+                ->get();
+
+        return response()->json($data);
+        dd($data);
+    }
+
+
     public function show($id)
     {
         return view('users.show', ['user' => User::findOrFail($id)]);
-        
     }
 
     // public function show($id)
@@ -124,7 +110,6 @@ class UserController extends Controller
         // $password = $request['phone'];
 
 
-
         // $user = User::create($request->only('name', 'email', 'password', 'phone'));
 
         // //Display a successful message upon save
@@ -154,8 +139,6 @@ class UserController extends Controller
 
         return view('users.edit', compact('user'));
     }
-
-
 
 
 
@@ -245,5 +228,71 @@ class UserController extends Controller
 
         //dd($myRents);
         return view('myRents', compact('myRents'));
+    }
+
+    public function getDeletedUsers()
+    {
+        $deletedUsers = User::onlyTrashed()
+                //->where('airline_id', 1)
+                ->get();
+    }
+
+    public function restoreDeletedUser(Request $request)
+    {
+        // $deletedUsers = User::onlyTrashed()
+        //         //->where('airline_id', 1)
+        //         ->get();
+
+        //dd($user);
+
+        User::withTrashed()
+        ->where('id', request('id')) //doesn't work
+        // ->select('id')
+        ->restore();
+        //dd($user);
+
+        $users = DB::table('users')->where('id', '<>', 1)->orderBy('created_at', 'desc')->paginate(12);
+
+
+
+        $deletedUsers = User::onlyTrashed()
+                //->where('airline_id', 1)
+                ->get();
+        //dd($deletedUsers);
+
+        //return view('users.index')->with('users', $users)->with('deletedUsers', $deletedUsers);
+        return redirect('users')->with('message', 'user was restored');
+    }
+
+    public function indexDeletedAlso()
+    {
+        // $users =  User::paginate();
+        // //$users =  User::all();
+        // //$users = User::orderby('created_at', 'desc')->simplePaginate(5);
+        // //$users = User::orderby('id', 'desc')->simplePaginate(5);
+        // //$users =  User::simplePaginate(8);
+        // return view('users.index')->with('users', $users);
+
+        $deletedUsers = User::onlyTrashed()
+                //->where('airline_id', 1)
+                ->get();
+        //dd($deletedUsers);
+
+
+        $users = DB::table('users')->where('id', '<>', 1)->orderBy('created_at', 'desc')->paginate(12);
+
+        return view('users.indexDeletedAlso')->with('users', $users)->with('deletedUsers', $deletedUsers);
+
+        // $users = DB::table('users')->distinct()->get();
+        // return view('users.index')->with('users', $users);
+    }
+
+    public function onlyDeletedUsers()
+    {
+        $deletedUsers = User::onlyTrashed()
+                //->where('airline_id', 1)
+                ->get();
+        //dd($deletedUsers);
+        return view('users.onlydeletedusers', compact('deletedUsers'));
     }
 }

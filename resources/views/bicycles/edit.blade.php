@@ -9,7 +9,7 @@
 
 </div>
 <div>
-    <form id='form' action="/bicycle/{{$bicycle->id}}" method="POST" enctype="multipart/form-data">
+    <form id='form' action="/bicycles/{{$bicycle->id}}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <div>
@@ -94,7 +94,7 @@
 <hr>
 
 <div>
-    <form action="{{ route('bicycle.destroy', $bicycle->id) }}" method="POST">
+    <form action="{{ route('bicycles.destroy', $bicycle->id) }}" method="POST">
         @csrf
         @method('delete')
         <button type="submit" class="btn btn-danger">Delete</button>
