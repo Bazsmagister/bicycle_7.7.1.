@@ -59,14 +59,9 @@
 
                     @endauth
 
-                    @role('serviceman')
-                    <div class="{{Request::path()==='services' ? 'active' : ''}}"><a
-                            href="/services">Service(serviceman)</a></div>
-                    <div class="{{Request::path()==='services' ? 'active' : ''}}"><a
-                            href="/services">Service/myWorkshop($serviceman)</a></div>
-                    @endrole
 
                 </div>
+
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -126,6 +121,21 @@
                         @endguest
                     </ul>
                 </div>
+
+            </div>
+            <div class="flex-container">
+
+                @role('serviceman')
+                <div class="{{Request::path()==='services' ? 'active' : ''}}"><a
+                        href="/services">Service(serviceman)</a></div>
+                <div class="{{Request::path()==='services' ? 'active' : ''}}"><a
+                        href="/services">Service/myWorkshop($serviceman)</a>
+                </div>
+                <div class="{{Request::path()==='services/create' ? 'active' : ''}}"><a href="/services/create">Create
+                        new
+                        service($serviceman)</a>
+                </div>
+                @endrole
 
             </div>
             <div class="flex-container">

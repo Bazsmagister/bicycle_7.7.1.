@@ -108,16 +108,14 @@ class RolesAndPermissionsSeeder extends Seeder
         ]);
         $authuser ->assignRole('authuser');
 
-        $visitor = factory(\App\User::class)->create([
-            'id'    => '6',
-            'name'  => 'Visitor Customer',
-            'email' => 'visitor@visitor.com',
-            'password' => bcrypt('visitor'),
-            'phone' => '0623232565321',
-        ]);
-        $visitor ->assignRole('visitor');
-
-
+        // $visitor = factory(\App\User::class)->create([
+        //     'id'    => '6',
+        //     'name'  => 'Visitor Customer',
+        //     'email' => 'visitor@visitor.com',
+        //     'password' => bcrypt('visitor'),
+        //     'phone' => '0623232565321',
+        // ]);
+        // $visitor ->assignRole('visitor');
 
 
         // Role::create(['name' => 'admin']);

@@ -38,25 +38,60 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
+        $requestdata= $request->all();
+        //dd($requestdata);
+
+        // Doc:
+        // $validatedData = $request->validate([
+        // 'title' => 'required|unique:posts|max:255',
+        // 'body' => 'required',
+        // ]);
+
+
+        //Validating fields
+        // $this->validate($request, [
+        //     'user_id'=>'required|max:100',
+        //      'bicycle_id' =>'required|email',
+        //     'broughtIn_at' =>'required',
+        //     'startedToServiceIt_at' => 'required',
+        //     'readyToTakeIt_at' => 'numeric',
+        //     'notes' => 'alphanumeric',
+        //     'notes' => 'alphanumeric',
+        //     'isActive => 'required',
+        //    'status' => 'required',
+
+        //     ]);
+
+        // $name = $request['name'];
+        // $email = $request['email'];
+        // $password = $request['password'];
+        // $password = $request['phone'];
+
+
         $serviceData = [
+                //'user_name' => $request->user_name,
                 'user_id' => $request->user_id,
                 'bicycle_id' => $request -> bicycle_id,
                /*  'rentStarted_at' => Carbon::now(),
                 'rentEnds_at' => (Carbon::now()->addDay(1)), */
                 'broughtIn_at' => $request->broughtIn_at ?? Carbon::now(),
-                'rentStarted_at' =>  $request->rentStarted_at ?? Carbon::now(),
-                'rentEnds_at' => $request->rentEnds_at ?? Carbon::now()->addDay(2),
-                'taken_at' => $request->taken_at ?? 'Still not taken yet',
+                'startedToService_at' =>  $request->startedToService_at ?? Carbon::now(),
+                'readyToTakeIt_at' => $request->readyToTakeIt_at ?? Carbon::now()->addDay(2),
+                //'taken_at' => $request->taken_at ?? 'Still not taken yet',
                 'notes' => $request->notes ?? 'No notes yet, everything was worked fine',
-                'isActive' => $request->isActive,
+                //'isActive' => $request->isActive,
                 'status' => $request -> status,
+                'serviceman_id' => $request -> serviceman_id,
+                'isActive' => '1',
 
 
             ];
         $service = Service::firstOrCreate($serviceData);
 
-        $service->save();
+        //$service->status = 'accepted';
+        //$service->isActive = '1';
 
+        $service->save();
 
         //$user= auth()->user();
 
@@ -72,12 +107,11 @@ class ServiceController extends Controller
         // $user->notify(new rentIsOver($rent));
 
         $user= $service->user();
-        dd($user);
+        //dd($user);
         $user->notify(new newServiceCreated($service));
         //$user->notify(new newRentIsMade($rent));
 
         // auth()->user()->notify(new newRentMade(Rent::findOrFail($id)));
-
 
         return redirect()->route('services.index')
 

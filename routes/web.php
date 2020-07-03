@@ -51,8 +51,8 @@ use Illuminate\Support\Facades\Storage;
  });
 
  Route::get('mail', function () {
-       $rent = App\Rent::latest()->first();
-    // $rent = App\Rent::find(32);
+     $rent = App\Rent::latest()->first();
+     // $rent = App\Rent::find(30);
 
      dd($rent);
 
@@ -147,8 +147,6 @@ Route::get('/', function () {
 
 
     //auth()->loginUsingId(1);
-
-
 
 
     //echo php_ini_loaded_file();
