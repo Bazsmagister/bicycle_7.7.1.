@@ -295,4 +295,17 @@ class UserController extends Controller
         //dd($deletedUsers);
         return view('users.onlydeletedusers', compact('deletedUsers'));
     }
+
+    public function findId(Request $request)
+    {
+        $foundname= request('name');
+        $user =  DB::table('users')->where('name', $foundname)->first();
+        //dd($user);
+        $myid = $user->id;
+
+        //dd($myid);
+
+
+        return view('services.create', compact('myid', 'foundname'));
+    }
 }

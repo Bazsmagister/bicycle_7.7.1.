@@ -5,7 +5,23 @@
 <div class=container>
 
     @auth
-    {{-- @if ($bicycle->is_rentable==1) --}}
+
+    <form action="/users/findId" method="POST">
+        @csrf
+        <div>
+            {{-- <h5>Autocomplete Search using Bootstrap Typeahead JS</h5> --}}
+            <h5>User name / Autocomplete : </h5>
+            <input {{--  id="typeahead" --}} class="typeahead form-control" type="text" name="name"
+                {{-- data-provide="typeahead"  --}} autocomplete="off" placeholder="Start typing..." required>
+        </div>
+
+        <button class="btn btn-info btn-sm" type=" submit">Get the Id</button>
+    </form>
+
+    User id is: {{ $myid ?? '' }} <br>
+    Username is : {{ $foundname }}
+    <hr>
+
     <form action="/services" method="POST" id="servicecreateform">
         @csrf
 
@@ -15,18 +31,17 @@
         // var_dump($id);
         @endphp
 
-        <div>
-            {{-- <h5>Autocomplete Search using Bootstrap Typeahead JS</h5> --}}
-            <h5>Autocomplete search user: </h5>
-            <input {{--  id="typeahead" --}} class="typeahead form-control" type="text" name="user_name"
-                {{-- data-provide="typeahead"  --}} autocomplete="off" placeholder="Start typing...">
-        </div>
+        {{-- <div>
+        <h5>Autocomplete search user: </h5>
+        <input class="typeahead form-control" type="text" name="user_name"
+            autocomplete="off" placeholder="Start typing...">
+        </div> --}}
 
         {{-- <label for="user_name">Which user has the bicycle that needs to be servised?:</label>
         <input type="text" id="user_name" name="user_name" placeholder="name"> --}}
 
         <label for="user_id">Which user has the bicycle that needs to be servised? user_id:</label>
-        <input type="number" min="1" step="1" id="user_id" name="user_id" required>
+        <input type="number" min="1" step="1" id="user_id" name="user_id" value="{{ $myid }}" required>
         <br>
 
         <br>
@@ -41,10 +56,6 @@
 
         <label for="readyToTakeIt">Ready to take it at(date and time):</label>
         <input type="date" id="readyToTakeIt" name="readyToTakeIt_at">
-        <br>
-
-        {{-- <label for="notes">Notes:</label>
-        <input type="textarea" rows='4' cols="50" id="notes" name="notes_at" form="servicecreateform"> --}}
 
         <br>
         <label for="createtextarea">Notes:</label>

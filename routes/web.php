@@ -212,6 +212,8 @@ Route::get('/', function () {
 
 Route::resource('users', 'UserController');
 
+Route::post('users/findId', 'UserController@findId');
+
 Route::get('indexDeletedAlso', 'UserController@indexDeletedAlso');
 Route::get('OnlyDeletedUsers', 'UserController@OnlyDeletedUsers');
 

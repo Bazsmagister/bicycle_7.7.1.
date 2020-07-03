@@ -109,6 +109,11 @@ class User extends Authenticatable
         // ->withPivot('rents');
     }
 
+    public function getId()
+    {
+        return $this->id;
+    }
+
     // For rent
     // $user->cars()->attach($car_id, ['type' => 'rent']);
 

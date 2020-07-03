@@ -11,7 +11,6 @@
     </li>
 
 
-
     <li>
         <p>bicycle id: {{$myRent->bicycle_id}} </p>
     </li>

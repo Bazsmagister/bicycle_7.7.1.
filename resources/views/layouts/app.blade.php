@@ -127,8 +127,8 @@
 
                 @role('serviceman')
                 <div class="{{Request::path()==='services' ? 'active' : ''}}"><a
-                        href="/services">Service(serviceman)</a></div>
-                <div class="{{Request::path()==='services' ? 'active' : ''}}"><a
+                        href="/services">Services(serviceman)</a></div>
+                <div class="{{Request::path()==='service' ? 'active' : ''}}"><a
                         href="/services">Service/myWorkshop($serviceman)</a>
                 </div>
                 <div class="{{Request::path()==='services/create' ? 'active' : ''}}"><a href="/services/create">Create
