@@ -305,7 +305,6 @@ class UserController extends Controller
 
         //dd($myid);
 
-
         return view('services.create', compact('myid', 'foundname'));
     }
 }

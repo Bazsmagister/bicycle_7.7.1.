@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+
 //use Illuminate\Notifications\Notifiable;
 
 class Service extends Model
@@ -15,7 +16,10 @@ class Service extends Model
     protected $casts = [
         'broughIn_at' => 'datetime',
         'startedToService_at' => 'datetime',
-        'readyToTakeIt_at' => 'datetime'
+        'readyToTakeIt_at' => 'datetime',
+        'taken_at' => 'datetime',
+        'isActive' => 'boolean'
+
     ];
 
     public $timestamps = true;

@@ -125,3 +125,11 @@
                  return false;
              }
          }]);
+
+
+
+ @php
+        //$id= auth()->user()->id;
+        // dd($id);
+        // var_dump($id);
+@endphp

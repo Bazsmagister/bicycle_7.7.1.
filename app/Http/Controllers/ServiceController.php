@@ -16,7 +16,7 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        $services = Service::all();
+        $services = Service::orderBy('created_at', 'desc')->get();
         return view('services.index', compact('services'));
     }
 
@@ -49,23 +49,18 @@ class ServiceController extends Controller
 
 
         //Validating fields
-        // $this->validate($request, [
-        //     'user_id'=>'required|max:100',
-        //      'bicycle_id' =>'required|email',
-        //     'broughtIn_at' =>'required',
-        //     'startedToServiceIt_at' => 'required',
-        //     'readyToTakeIt_at' => 'numeric',
-        //     'notes' => 'alphanumeric',
-        //     'notes' => 'alphanumeric',
-        //     'isActive => 'required',
-        //    'status' => 'required',
+        $this->validate($request, [
+            'user_id'=>'required',
+            'bicycle_id' =>'required|numeric',
+            'broughtIn_at' =>'',
+            'startedToServiceIt_at' => '',
+            'readyToTakeIt_at' => '',
+            'notes' => 'sometimes|string',
+            'serviceman_id' => 'numeric',
+            'isActive' => 'numeric',
+            'status' => 'string',
+            ]);
 
-        //     ]);
-
-        // $name = $request['name'];
-        // $email = $request['email'];
-        // $password = $request['password'];
-        // $password = $request['phone'];
 
 
         $serviceData = [
@@ -78,7 +73,7 @@ class ServiceController extends Controller
                 'startedToService_at' =>  $request->startedToService_at ?? Carbon::now(),
                 'readyToTakeIt_at' => $request->readyToTakeIt_at ?? Carbon::now()->addDay(2),
                 //'taken_at' => $request->taken_at ?? 'Still not taken yet',
-                'notes' => $request->notes ?? 'No notes yet, everything was worked fine',
+                'notes' => $request->notes ?? 'No notes yet, everything has worked fine',
                 //'isActive' => $request->isActive,
                 'status' => $request -> status,
                 'serviceman_id' => $request -> serviceman_id,
@@ -92,6 +87,7 @@ class ServiceController extends Controller
         //$service->isActive = '1';
 
         $service->save();
+        //dd('Hello');
 
         //$user= auth()->user();
 
@@ -106,9 +102,12 @@ class ServiceController extends Controller
 
         // $user->notify(new rentIsOver($rent));
 
+        /*
         $user= $service->user();
         //dd($user);
         $user->notify(new newServiceCreated($service));
+        */
+
         //$user->notify(new newRentIsMade($rent));
 
         // auth()->user()->notify(new newRentMade(Rent::findOrFail($id)));

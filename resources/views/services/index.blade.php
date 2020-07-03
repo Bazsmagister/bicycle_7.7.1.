@@ -20,6 +20,7 @@
                 <th scope="col">Serviceman_id</th>
                 <th scope="col">Notes</th>
                 <th scope="col">Status</th>
+                <th scope="col">Is_active?</th>
 
             </tr>
         </thead>
@@ -35,6 +36,7 @@
                 <td>{{ $service->serviceman_id }}</td>
                 <td>{{ $service->notes }}</td>
                 <td>{{ $service->status }}</td>
+                <td>{{ $service->isActive }}</td>
                 <td><a href="services/{{$service->id}}/edit " class="btn btn-info">Edit</a>
                     <a href="services/{{$service->id}} " class="btn btn-info">Show</a>
 
