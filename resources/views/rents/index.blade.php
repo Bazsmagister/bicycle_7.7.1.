@@ -1,21 +1,21 @@
 @extends('layouts.app')
 
 @section('contentindex')
-<div class="text-center">
+
+{{-- <div class="text-center">
     {!! $rents->links() !!}
-</div>
+</div> --}}
+
+@role('super-admin')
 <div class='admin'>
     <p>
         For admin : All of our rents
+        Total rents: {{ $rentCount }} .
     </p>
     {{-- <p style="background-color: red">
         For admin : All of our bicycles.
     </p> --}}
 </div>
-<hr>
-<br>
-
-@role('super-admin')
 <div>
     <button class="button btn-warning">
         <a href="/rents/create"> Add a new Rent </a>
@@ -56,7 +56,8 @@
                 <form action="{{ route('rents.destroy', $rent->id) }}" method="POST">
                     @csrf
                     @method('delete')
-                    <button type="submit" class="btn btn-danger">Delete</button>
+                    <button type="submit" class="btn btn-danger" onclick="return confirm('Do you really want to delete it?');"
+>Delete</button>
                 </form>
             </td>   
 
@@ -90,7 +91,8 @@
                 <form action="{{ route('rents.destroy', $rent->id) }}" method="POST">
                     @csrf
                     @method('delete')
-                    <button type="submit" class="btn btn-danger">Delete</button>
+                    <button type="submit" class="btn btn-danger" onclick="return confirm('Do you really want to delete it?');"
+>Delete</button>
                 </form>
             </td>   
         </tr>

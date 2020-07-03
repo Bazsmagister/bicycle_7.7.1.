@@ -51,10 +51,10 @@ use Illuminate\Support\Facades\Storage;
  });
 
  Route::get('mail', function () {
-     //  $rent = App\Rent::latest();
-     $rent = App\Rent::find(32);
+       $rent = App\Rent::latest()->first();
+    // $rent = App\Rent::find(32);
 
-     //dd($rent);
+     dd($rent);
 
      return (new App\Notifications\newRentIsMade($rent))
                 ->toMail($rent->user);

@@ -66,11 +66,7 @@
                             href="/services">Service/myWorkshop($serviceman)</a></div>
                     @endrole
 
-
                 </div>
-
-
-
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -142,6 +138,7 @@
                 <div class='admin'><a href="/indexDeletedAlso">Users index Deleted Also(admin) |</a></div>
                 <div class='admin'><a href="/OnlyDeletedUsers">OnlyDeletedUsers |</a></div>
                 <div class='admin'><a href="/services">Services(serviceman, admin)</a></div>
+                <div class='admin'><a href="/mail">Mail(admin)</a></div>
 
                 <div class="admin"><a href="/mapWithKeys">UserNameDateMapWithKeys(admin)</a></div>
                 @endrole

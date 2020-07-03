@@ -27,13 +27,15 @@
         {{ method_field('delete') }}
         @csrf
 
-        <button class="btn btn-danger" type="submit">Delete the rent</button>
+        <button class="btn btn-danger" type="submit" onclick="return confirm('Do you really want to delete it?');"
+>Delete the rent</button>
     </form>
     <hr>
     <form action="{{ route('rents.destroy', $rent->id) }}" method="POST">
         @csrf
         @method('delete')
-        <button type="submit" class="btn btn-outline-danger">Delete</button>
+        <button type="submit" class="btn btn-outline-danger" onclick="return confirm('Do you really want to delete it?');"
+>Delete</button>
     </form>
 
 </div>

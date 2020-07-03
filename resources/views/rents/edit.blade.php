@@ -8,11 +8,10 @@
     with email: {{auth()->user()->email}} --}}
 
 </div>
-<div>
+<div class=container>
     <form id='form' action="/rents/{{$rent->id}}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('patch')
-
 
         <div>
 
@@ -46,29 +45,17 @@
 
         <input class="button btn-success" type="submit" value="Submit">
     </form>
-
-
-
-</div>
+<br>
 <hr>
-
-
-
-
-
-
-<hr>
-
-<div>
+    <div>
     <form action="{{ route('rents.destroy', $rent->id) }}" method="POST">
         @csrf
         @method('delete')
-        <button type="submit" class="btn btn-danger">Delete</button>
+        <button type="submit" class="btn btn-danger" onclick="return confirm('Do you really want to delete it?');">Delete</button>
     </form>
 </div>
-
+</div>
 
 @endauth
-
 
 @endsection

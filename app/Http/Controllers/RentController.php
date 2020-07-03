@@ -22,11 +22,14 @@ class RentController extends Controller
     public function index()
     {
 
-
+        /* $rentCount = Rent::count();
         //$rents = Rent::all();
         $rents = Rent::paginate();
+        return view('rents.index', compact('rents')); */
 
-        return view('rents.index', compact('rents'));
+        $rentCount = Rent::count();
+        $rents = Rent::paginate();
+        return view('rents.index', compact('rents', 'rentCount'));
     }
 
     /**
