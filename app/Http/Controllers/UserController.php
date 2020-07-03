@@ -22,15 +22,18 @@ class UserController extends Controller
 
     public function index()
     {
-        $activeUserCount = User::count();
+        /* $activeUserCount = User::count();
         //dd($activeUserCount);
         $users =  User::paginate(10); //in view: <div class="panel-heading">Page {{ $users->currentPage() }} of {{ $users->lastPage() }} and    {!! $users->links() !!}
         //$users =  User::all();
         //$users = User::orderby('created_at', 'desc')->simplePaginate(8);
         // //$users = User::orderby('id', 'desc')->simplePaginate(5);
         // //$users =  User::simplePaginate(8);
-        return view('users.index')->with('users', $users)->with('activeUserCount', $activeUserCount);
+        return view('users.index')->with('users', $users)->with('activeUserCount', $activeUserCount); */
 
+        $data =  User::all();
+
+        return response()->json($data);
         //Works:
         // $activeUserCount = User::count();
         // $users =  User::paginate(10); //in view: <div class="panel-heading">Page {{ $users->currentPage() }} of {{ $users->lastPage() }} and    {!! $users->links() !!}

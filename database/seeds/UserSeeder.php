@@ -37,7 +37,7 @@ class UserSeeder extends Seeder
         //factory(App\User::class, 5)->create();
 
          //create 10 users
-         $user = factory(App\User::class,10)->create();
+         $user = factory(App\User::class,5)->create();
          //dd($user);
 
          $id_arr = Arr::pluck($user , 'id'); // get user id array
