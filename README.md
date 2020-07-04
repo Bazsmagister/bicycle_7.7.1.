@@ -736,7 +736,6 @@ $table->enum('status', ['accepted','repariring','ready','taken'])->nullable();
 
 ??
 //use Illuminate\Notifications\Notifiable;
-
 class Service extends Model
 {
 //use Notifiable;

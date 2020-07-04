@@ -1,0 +1,32 @@
+ <!--Bind select value with form.category-->
+  <select name="options" v-model="form.category">
+    <!--Add an empty (no value) option-->
+    <option :value="null">Choose a Category</option>
+    <!--Add options when value is id-->
+    <option v-for="category in categories"
+            :key="category.id"
+            :value="category.id"
+    >
+      {{category.name}}
+    </option>
+  </select>
+  <br><br>
+  <!--See how the state change when option select change-->
+  <div>Value of Category: {{form.category}}</div>
+
+
+
+
+  ar app = new Vue({
+  el: '#app',
+  data: {
+    form:{
+      category: null
+    },
+    categories: [
+      {id: 1, name:"Category 1"},
+      {id: 2, name:"Category 2"},
+      {id:3, name:"Category 3"}
+    ]
+  }
+})

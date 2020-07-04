@@ -22,19 +22,20 @@ class UserController extends Controller
 
     public function index()
     {
-        /* $activeUserCount = User::count();
-        //dd($activeUserCount);
-        $users =  User::paginate(10); //in view: <div class="panel-heading">Page {{ $users->currentPage() }} of {{ $users->lastPage() }} and    {!! $users->links() !!}
-        //$users =  User::all();
-        //$users = User::orderby('created_at', 'desc')->simplePaginate(8);
-        // //$users = User::orderby('id', 'desc')->simplePaginate(5);
-        // //$users =  User::simplePaginate(8);
-        return view('users.index')->with('users', $users)->with('activeUserCount', $activeUserCount); */
+        $activeUserCount = User::count();
+        // //dd($activeUserCount);
+         $users =  User::paginate(10); //in view: <div class="panel-heading">Page {{ $users->currentPage() }} of {{ $users->lastPage() }} and    {!! $users->links() !!}
+        // //$users =  User::all();
+        // //$users = User::orderby('created_at', 'desc')->simplePaginate(8);
+        // // //$users = User::orderby('id', 'desc')->simplePaginate(5);
+        // // //$users =  User::simplePaginate(8);
+         return view('users.index')->with('users', $users)->with('activeUserCount', $activeUserCount);
 
-        $data =  User::all();
-
-        return response()->json($data);
         //Works:
+
+        // $data =  User::all();
+        // return response()->json($data);
+
         // $activeUserCount = User::count();
         // $users =  User::paginate(10); //in view: <div class="panel-heading">Page {{ $users->currentPage() }} of {{ $users->lastPage() }} and    {!! $users->links() !!}
         // return view('users.index')->with('users', $users)->with('activeUserCount', $activeUserCount);
@@ -292,11 +293,22 @@ class UserController extends Controller
 
     public function onlyDeletedUsers()
     {
-        $deletedUsers = User::onlyTrashed()
-                //->where('airline_id', 1)
-                ->get();
+        //works
+        // $deletedUsers = User::onlyTrashed()
+        //         //->where('airline_id', 1)
+        //         ->get();
+        // //dd($deletedUsers);
+        // return view('users.onlydeletedusers', compact('deletedUsers'));
+
+
+        $data = User::onlyTrashed()->get();
+        //dd($data);
+        //->where('airline_id', 1)
+        //->get();
         //dd($deletedUsers);
-        return view('users.onlydeletedusers', compact('deletedUsers'));
+
+        return response()->json($data);
+        // return $data;
     }
 
     public function findId(Request $request)

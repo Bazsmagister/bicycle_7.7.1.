@@ -60,71 +60,76 @@
 
 <hr>
 <div class="container">
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col" width="50%">name</th>
-      <th scope="col">Email</th>
-      <th scope="col">Phone</th>
-      <th scope="col">Created_at</th>
-    </tr>
-  </thead>
-  <tbody>
-    @foreach($users as $user)
-    <tr>
-      <th scope="row">{{$user->name}}</th>
-      <td>{{$user->email}}</td>
-      <td>{{$user->phone}}</td>
-      <td>{{$user->created_at}}</td>
-    </tr>
-    @endforeach
-  </tbody>
-</table>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col" width="50%">name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Created_at</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($users as $user)
+            <tr>
+                <th scope="row">{{$user->name}}</th>
+                <td>{{$user->email}}</td>
+                <td>{{$user->phone}}</td>
+                <td>{{$user->created_at}}</td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
 </div>
 
-<div class="input-group mb-3" >
-  <div class="input-group-prepend">
-    <label
-        class="input-group-text"
-        for="action_manufacturer_input">User</label>
-  </div>
-  <select
-      v-model="form.manufacturer"
-      class="custom-select"
-      id="manufacturer_input">
-    <option disabled selected value="undefined">Please select one...</option>
-    <option
-        v-for="user in users"
-        v-bind:value="user.id">
-     {{--  {{ user.name ?? 'a' }} : {{ user.email ?? 'b' }} --}}
-    </option>
-    <option v-on:click="toggle_input()">Add new user...</option>
-  </select>
-</div>
 
-<script>
-  
-    fetch('/users')
-    .then(response => response.json())
-    .then(data => {
-    console.log(data) // Prints result from `response.json()` in getRequest
-    })
-    .catch(error => console.error(error))
-</script>
+<button onclick="fetcher()">Fetch/GET OnlyDeletedUsers</button>
+<br>
+<button onclick="fetcherR()">Fetch/GET OnlyDeletedUsers 2</button>
 
 
-
-
-<script>
+{{-- <script>
     var path = "{{ route('autocompleteUser') }}";
-    $('input.typeahead').typeahead({
-    source: function (query, process) {
-    return $.get(path, { query: query }, function (data) {
-    return process(data);
-    });
+$('input.typeahead').typeahead({
+source: function (query, process) {
+return $.get(path, { query: query }, function (data) {
+return process(data);
+});
+}
+});
+</script> --}}
+
+<script>
+    function fetcher(){
+
+        fetch('OnlyDeletedUsers')
+        .then(response => response.json())
+        .then(data => {
+        console.log(data) // Prints result from `response.json()` in getRequest
+        console.log(data[0].email)
+        alert(data[0].name)
+        })
+        .catch(error => console.error(error))
+        }
+
+    // function fetcher2(){
+    //     let response = await fetch('OnlyDeletedUsers');
+    //     let text = await response.text();
+    //     //console.log(text)
+    //     alert(text.slice(0, 80) + '...');
+    //     }
+</script>
+
+<script>
+    function fetcherR(){
+    let response = await fetch('OnlyDeletedUsers');
+    let text = await response.text();
+    //console.log(text)
+    alert(text.slice(0, 80) + '...');
     }
-    });
 
 </script>
+
+
 
 @endsection

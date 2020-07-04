@@ -50,14 +50,20 @@ use Illuminate\Support\Facades\Storage;
      return view('UserNameDateMapWithKeys', compact('userCollectionsmap'));
  });
 
+ //it gives a view about the mail.
  Route::get('mail', function () {
-     $rent = App\Rent::latest()->first();
-     // $rent = App\Rent::find(30);
 
-     dd($rent);
+    //  $rent = App\Rent::latest()->first();
+     //  // $rent = App\Rent::find(30);
+     //  dd($rent);
+     //  return (new App\Notifications\newRentIsMade($rent))
+     //             ->toMail($rent->user);
 
-     return (new App\Notifications\newRentIsMade($rent))
-                ->toMail($rent->user);
+
+     $service = App\Service::latest()->first();
+     dd($service);
+     return (new App\Notifications\newServiceCreated($service))
+                ->toMail($service->user);
  });
 
 
@@ -215,7 +221,10 @@ Route::resource('users', 'UserController');
 Route::post('users/findId', 'UserController@findId');
 
 Route::get('indexDeletedAlso', 'UserController@indexDeletedAlso');
-Route::get('OnlyDeletedUsers', 'UserController@OnlyDeletedUsers');
+
+ Route::get('OnlyDeletedUsers', 'UserController@onlyDeletedUsers');
+//Route::post('OnlyDeletedUsers', 'UserController@onlyDeletedUsers');
+
 
 
 // Route::group(['middleware' => ['role:super-admin']], function () {
