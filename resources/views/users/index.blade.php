@@ -85,10 +85,10 @@
 
 <button onclick="fetcher()">Fetch/GET OnlyDeletedUsers</button>
 <br>
-<button onclick="fetcherR()">Fetch/GET OnlyDeletedUsers 2</button>
+<button onclick="fetcher2()">Fetch/GET OnlyDeletedUsers 2</button>
 
 
-{{-- <script>
+<script>
     var path = "{{ route('autocompleteUser') }}";
 $('input.typeahead').typeahead({
 source: function (query, process) {
@@ -97,7 +97,7 @@ return process(data);
 });
 }
 });
-</script> --}}
+</script>
 
 <script>
     function fetcher(){
@@ -121,11 +121,13 @@ return process(data);
 </script>
 
 <script>
-    function fetcherR(){
+    async function fetcher2(){
     let response = await fetch('OnlyDeletedUsers');
     let text = await response.text();
     //console.log(text)
     alert(text.slice(0, 80) + '...');
+    alert(text);
+
     }
 
 </script>
