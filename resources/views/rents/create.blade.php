@@ -2,10 +2,29 @@
 
 @section('content')
 
-<div style="padding-left: 20px">
+<div class="container">
+
 
     @auth
     {{-- @if ($bicycle->is_rentable==1) --}}
+
+    <form action="/bicycles/findId" method="POST">
+        @csrf
+        <p>Choose the bicycle that you want to rent: </p>
+        <input {{--  id="typeahead" --}} class="typeahead form-control" type="text" name="name"
+            {{-- data-provide="typeahead"  --}} autocomplete="off" placeholder="Start typing..." required>
+
+        @error('name')
+        <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
+
+        <button class="btn btn-info btn-sm" type="submit">Get the Id</button>
+    </form>
+    <br>
+    Bikename is : {{ $foundbikename ?? '' }}
+    <br>
+    Bike id is: {{ $myid ?? '' }}
+
     <form action="/rents" method="POST">
         @csrf
 
@@ -15,14 +34,19 @@
         // var_dump($id);
         @endphp
 
+        {{-- <div class="container">
+        <h5>Bicycle search(autocomplete): </h5>
+        <input id="autocomplete" class=" typeahead form-control" type="text" placeholder="Start typing...">
+    </div> --}}
+
 
         {{-- <label for="user_id">Which user_id are you?:</label> --}}
         <input type="number" min="1" step="1" value="{{$id}}" id="user_id" name="user_id" required hidden>
 
-        <label for="bicycle_id">Which Bicycle_id do you want to rent?:</label>
-        <input type="number" min="1" step="1" id="bicycle_id" name="bicycle_id" required>
+        <label for="bicycle_id">Which Bicycle id do you want to rent?:</label>
+        <input type="number" min="1" step="1" value="{{$myid ?? ''}}" name="bicycle_id" required>
         <br>
-        <label for="rentstartdate">Rent start (date and time):</label>
+        <label for="rentstartdate">Rent start (default now):</label>
         <input type="date" id="rentstartdate" name="rentStarted_at">
         <br>
         {{-- <label for="rentstarttime">Choose a time for rent start:</label> --}}
@@ -35,7 +59,7 @@
         <p id="demo2">here comes the now timestamp</p>
         <p id="demo3">here comes the now timestamp</p> --}}
 
-        <label for="rentenddate">Rent end (date and time):</label>
+        <label for="rentenddate">Rent end (defalult tomorrow):</label>
         <input type="date" id="rentenddate" name="rentEnds_at">
 
         {{-- <input type="datetime-local" not supported in firefox> --}}
@@ -56,67 +80,43 @@
     {{-- @endif --}}
     @endauth
 
-    {{-- @hasanyrole('super-admin') --}}
+    <p>Test roles:</p>
     @hasanyrole('super-admin|serviceman|salesman')
-
-    {{-- <div>
-        <a href="{{$bicycle->id}}/edit" class="btn btn-warning">Edit</a>
-</div>
-
-<hr>
-<form action="{{ route('bicycle.destroy', $bicycle->id) }}" method="POST">
-    @csrf
-    @method('delete')
-    <button type="submit" class="btn btn-danger">Delete the bicycle</button>
-</form> --}}
-
-{{-- <form action="{{$bicycle->id}}" method="post">
-
-{{ method_field('delete') }}
-@csrf
-
-<button class="btn btn-outline-danger" type="submit">Delete the bicycle</button>
-</form> --}}
-
-<hr>
-
-{{-- {{$bicycle}} --}}
-<hr>
-
-@endhasanyrole
-
-
-<p>Test roles:</p>
-@hasanyrole('super-admin|serviceman|salesman')
-<p>has any role</p>
-@else
-<p>has not role</p>
-@endhasanyrole
+    <p>has any role</p>
+    @else
+    <p>has not role</p>
+    @endhasanyrole
 
 </div>
-
-
-@endsection
 
 <script>
-    function datetime(){
-        var now= Date.now();
+    var path = "{{ route('autocompleteBike') }}";
+    var $input = $(".typeahead");
 
-        var date = new Date();
-
-
-        //alert(now);
-        var time = date.toLocaleTimeString();
-        // document.getElementById("demo").innerHTML = now;
-
-        var date = date.toLocaleDateString();
-
-        var dateAndTime = date.toLocaleString("hu-HU"); //doesn't work...
-
-        document.getElementById("demo1").innerHTML = date;
-        document.getElementById("demo2").innerHTML = time;
-        document.getElementById("demo3").innerHTML = dateAndTime;
-
-    }
-
+        $('input.typeahead').typeahead({
+        /* hint: true,
+        highlight: true,
+        minLength: 1 */
+        source: function (query, process) {
+        return $.get(path, { query: query }, function (data) {
+        return process(data);
+        });
+        }
+        });
+        $input.change(function() {
+        var current = $input.typeahead("getActive");
+        if (current) {
+        // Some item from your model is active!
+        if (current.name == $input.val()) {
+        // This means the exact match is found. Use toLowerCase() if you want case insensitive match.
+        } else {
+        // This means it is only a partial match, you can either add a new item
+        // or take the active if you don't want new items
+        }
+        } else {
+        // Nothing is active so it is a new value (or maybe empty value)
+        }
+        });
 </script>
+
+@endsection

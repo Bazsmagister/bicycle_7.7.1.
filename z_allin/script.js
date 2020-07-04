@@ -15,3 +15,13 @@ function datetime() {
     document.getElementById("demo2").innerHTML = time;
     document.getElementById("demo3").innerHTML = dateAndTime;
 }
+
+//works
+var path = "{{ route('autocomplete') }}";
+$("input.typeahead").typeahead({
+    source: function(query, process) {
+        return $.get(path, { query: query }, function(data) {
+            return process(data);
+        });
+    }
+});

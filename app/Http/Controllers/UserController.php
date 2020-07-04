@@ -51,32 +51,33 @@ class UserController extends Controller
     }
 
 
-    // public function autocompleteUser(Request $request)
-    // {
-    //     $data = User::select("name")
-
-    //             ->where("name", "LIKE", "%{$request->input('query')}%")
-
-    //             ->select('name',)->distinct()//?
-
-    //             ->get();
-
-    //     return response()->json($data);
-    // }
-
     public function autocompleteUser(Request $request)
     {
-        $data = User::select("name", "id")
+        $data = User::select("name")
 
                 ->where("name", "LIKE", "%{$request->input('query')}%")
 
-                ->select('name', 'id')->distinct()//?
+                ->select('name', )->distinct()//?
 
                 ->get();
 
         return response()->json($data);
-        dd($data);
     }
+
+    //tried
+    // public function autocompleteUser(Request $request)
+    // {
+    //     $data = User::select("name", "id")
+
+    //             ->where("name", "LIKE", "%{$request->input('query')}%")
+
+    //             ->select('name', 'id')->distinct()//?
+
+    //             ->get();
+
+    //     return response()->json($data);
+    //     dd($data);
+    // }
 
 
     public function show($id)
@@ -291,7 +292,7 @@ class UserController extends Controller
         // return view('users.index')->with('users', $users);
     }
 
-    public function onlyDeletedUsers()
+    public function onlyDeletedUsersAPI()
     {
         //works
         // $deletedUsers = User::onlyTrashed()
@@ -309,6 +310,19 @@ class UserController extends Controller
 
         return response()->json($data);
         // return $data;
+    }
+
+    public function onlyDeletedUsers()
+    {
+        //works
+        $deletedUsersCount = User::onlyTrashed()->count();
+        //dd($deletedUsersCount);
+
+        $deletedUsers = User::onlyTrashed()
+                //->where('airline_id', 1)
+                ->get();
+        //dd($deletedUsers);
+        return view('users.onlydeletedusers', compact('deletedUsers', 'deletedUsersCount'));
     }
 
     public function findId(Request $request)

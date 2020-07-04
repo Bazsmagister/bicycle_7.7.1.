@@ -65,9 +65,9 @@
         </div>
         <br>
         <div>
-            <li> Bicycle owner id: {{$service -> user -> id }} </li>
-            <li> Bicycle owner name: {{$service -> user -> name }} </li>
-            <li> Bicycle owner phone: {{$service -> user -> phone }} </li>
+            <li> Bicycle owner id: {{$service->user->id ?? '' }} </li>
+            <li> Bicycle owner name: {{$service -> user -> name ?? '' }} </li>
+            <li> Bicycle owner phone: {{$service -> user -> phone ?? ''}} </li>
         </div>
         <li>Bicycle's Description : {{$service -> bicycle -> description }} </li>
         <img src="{{$service -> bicycle ->image}}" alt="interesting" width="182" height="109">

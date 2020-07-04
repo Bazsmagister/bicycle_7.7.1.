@@ -399,4 +399,16 @@ class BicycleController extends Controller
         // return view('bicycleservice', compact('bicycles_in_service'));
         return view('bicycleservice', compact('myBicycleServiceProgress'));
     }
+
+    public function findId(Request $request)
+    {
+        $foundbikename= request('name');
+        $bike =  DB::table('bicycles')->where('name', $foundbikename)->first();
+        //dd($user);
+        $myid = $bike->id;
+
+        //dd($myid);
+
+        return view('rents.create', compact('myid', 'foundbikename'));
+    }
 }

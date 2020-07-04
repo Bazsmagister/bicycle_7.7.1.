@@ -102,7 +102,7 @@ return process(data);
 <script>
     function fetcher(){
 
-        fetch('OnlyDeletedUsers')
+        fetch('OnlyDeletedUsersAPI')
         .then(response => response.json())
         .then(data => {
         console.log(data) // Prints result from `response.json()` in getRequest
@@ -122,7 +122,7 @@ return process(data);
 
 <script>
     async function fetcher2(){
-    let response = await fetch('OnlyDeletedUsers');
+    let response = await fetch('OnlyDeletedUsersAPI');
     let text = await response.text();
     //console.log(text)
     alert(text.slice(0, 80) + '...');

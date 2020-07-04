@@ -13,15 +13,11 @@
         @csrf
         @method('patch')
 
-        <div>
-
-            {{-- <h5>Autocomplete Search using Bootstrap Typeahead JS</h5> --}}
+        {{-- <div>
             <h5>Autocomplete search: </h5>
-
-            <input {{--  id="typeahead" --}} class="typeahead form-control" type="text" name="user_name"
-                {{-- data-provide="typeahead"  --}} autocomplete="off" placeholder="Start typing...">
-
-        </div>
+            <input class="typeahead form-control" type="text" name="user_name" autocomplete="off"
+                placeholder="Start typing...">
+        </div> --}}
 
         <div>
             <input type="number" min="1" step="1" id="user_id" name="user_id"
@@ -118,21 +114,11 @@
 
 @endauth
 
-<script>
-    //works
-  /*   var path = "{{ route('autocomplete') }}";
-    $('input.typeahead').typeahead({
 
-        source:  function (query, process) {
-        return $.get(path, { query: query }, function (data) {
-                return process(data);
-            });
-        }
-    }); */
-</script>
 
 <script>
     var path = "{{ route('autocompleteUser') }}";
+    // var path = "autocompleteUser";
     var $input = $(".typeahead");
 
     $('input.typeahead').typeahead({

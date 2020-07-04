@@ -6,6 +6,7 @@
 <div class='admin'>
     <p>
         For admin : only deleted Users
+        <p>Deleted users count: {{ $deletedUsersCount }} </p>
     </p>
     {{-- <p style="background-color: red">
         For admin : All of our bicycles.

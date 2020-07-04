@@ -219,11 +219,14 @@ Route::get('/', function () {
 Route::resource('users', 'UserController');
 
 Route::post('users/findId', 'UserController@findId');
+Route::post('bicycles/findId', 'BicycleController@findId');
+
+
 
 Route::get('indexDeletedAlso', 'UserController@indexDeletedAlso');
 
  Route::get('OnlyDeletedUsers', 'UserController@onlyDeletedUsers');
-//Route::post('OnlyDeletedUsers', 'UserController@onlyDeletedUsers');
+ Route::get('OnlyDeletedUsersAPI', 'UserController@onlyDeletedUsersAPI');
 
 
 

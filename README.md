@@ -740,3 +740,8 @@ class Service extends Model
 {
 //use Notifiable;
 ??
+
+# fetch
+
+two scripts with fetch() the same url doesn't work in one script tag.
+one of them is async await. Why is that?

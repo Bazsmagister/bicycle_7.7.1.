@@ -123,7 +123,7 @@
                 </div>
 
             </div>
-            <div class="flex-container">
+            <div class="flex-containeradmin">
 
                 @role('serviceman')
                 <div class="{{Request::path()==='services' ? 'active' : ''}}"><a
@@ -138,7 +138,7 @@
                 @endrole
 
             </div>
-            <div class="flex-container">
+            <div class="flex-containeradmin">
 
                 @role('super-admin')
                 <div class="admin"><a href="/bicycles">All bicycles(admin)</a></div>

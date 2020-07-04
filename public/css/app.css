@@ -10887,11 +10887,24 @@ body {
 }
 
 .flex-container {
+  /* background-color: lightpink; */
+  display: flex;
+  justify-content: space-between;
+  /* flex-wrap: wrap; */
+  /* multi-line */
+  /* padding-right: 8px; */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.flex-containeradmin {
+  background-color: linen;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  font-size: 20px;
   /* multi-line */
-  padding-right: 8px;
+  /* padding-right: 8px; */
   margin-left: auto;
   margin-right: auto;
 }
@@ -10919,7 +10932,7 @@ body {
 
 nav {
   padding-right: 10px;
-  font-size: 7px;
+  font-size: 10px;
 }
 
 div > a {
@@ -10928,8 +10941,6 @@ div > a {
 
 .admin {
   background-color: red;
-  /* font-family: fantasy;
-   color: red; */
 }
 
 .error {
@@ -10944,8 +10955,8 @@ div > a {
   position: relative;
   display: flex;
   flex-wrap: wrap;
-  align-items: stretch;
-  justify-content: space-between;
+  align-items: normal;
+  justify-content: normal;
   padding: 0.5rem;
 }
 
