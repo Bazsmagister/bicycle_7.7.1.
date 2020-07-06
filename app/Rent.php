@@ -19,6 +19,16 @@ class Rent extends Model
     }
 
     protected $guarded = [];
+
+  /*   protected $fillable =[
+        'bicycle_id',
+        'user_id',
+        'broughIn_at', 
+        'startedToService_at',
+        'readyToTakeIt_at',
+        'isActive', 
+    ]; */
+
     public $timestamps = true;
     //You may disable the default created_at and updated_at timestamps by setting the public $timestamps property of your model to false.
     

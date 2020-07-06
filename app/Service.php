@@ -10,7 +10,16 @@ class Service extends Model
 {
     //use Notifiable;
 
-    //
+    // protected $fillable = [
+    //      'bicycle_id',
+    //      'user_id',
+    //    'broughIn_at'
+    //    'startedToService_at', 
+    //    'readyToTakeIt_at', 
+    //    'taken_at',
+    //    'isActive',
+    // ];
+
     protected $guarded = [];
 
     protected $casts = [

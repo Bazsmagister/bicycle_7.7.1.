@@ -12,7 +12,11 @@ class Bicycle extends Model
 
     protected $guarded = [];
 
-    //protected $fillable = [''];
+    //protected $fillable = [
+  /*   name, price, rent_price, description, image,
+    broughtIn_at,
+    startedToServiceIt_at,
+    readyToTakeIt_at]; */
 
     public $timestamps = true;
 

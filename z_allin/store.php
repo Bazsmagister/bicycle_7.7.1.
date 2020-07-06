@@ -12,6 +12,7 @@ class UserController extends Controller
 
         // 1. not safe, no validation, not recommended
         //User::create($request->all());
+        // in User Model :protected $fillable = ['name', 'email', 'password', 'phone'];
 
         //2.a //request()
         // $user = new User();
