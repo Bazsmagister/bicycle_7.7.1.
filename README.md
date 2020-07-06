@@ -11,6 +11,14 @@ git clone [this repo.git]:
 
 `php artisan key:generate`
 
+# user_email : password
+
+admin@admin.com : adminadmin
+servicesergey@service.com : serviceservice
+servicesebastian@service.com : serviceservice
+authuser@authuser.com : authuser
+sale@sale.com : salesale
+
 ## Make auth in laravel 7
 
 composer require laravel/ui
