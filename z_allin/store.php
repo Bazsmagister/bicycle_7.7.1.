@@ -11,6 +11,7 @@ class UserController extends Controller
     {
 
         // 1. not safe, no validation, not recommended
+        //User::create(request()->all());
         //User::create($request->all());
         // in User Model :protected $fillable = ['name', 'email', 'password', 'phone'];
 
@@ -75,5 +76,31 @@ class UserController extends Controller
         //         'password' => $request->password,
         //     ];
         // $suser = User::firstOrCreate($userData);
+    
+        //3 d
+        //User::create(request()->validate([
+        // name => required,
+        // email => required
+        //]));    
     }
+         //create and update method save them in the database in one go.
+    public function update(){
+        $user->update(request()->validate([
+            'name' => 'required',
+            'email' =>'required'
+        ]));
+        return redirect('/users/' . $user->id);
+    }
+
+    //or
+    protected function validateUser(){
+        return request() ->validate([
+            'name' => 'required', 
+            'email' => 'required'
+        ]);
+    }
+
+    User::create($this->validateUser());
+
+    $user ->update($this->validateUser());
 }
