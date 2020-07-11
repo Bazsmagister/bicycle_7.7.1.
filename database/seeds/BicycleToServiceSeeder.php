@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class BicycleSeeder extends Seeder
+class BicycleToServiceSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,6 +11,6 @@ class BicycleSeeder extends Seeder
      */
     public function run()
     {
-        //factory(App\Bicycle::class, 10)->create();
+        factory(App\BicycleToService::class, 10)->create();
     }
 }

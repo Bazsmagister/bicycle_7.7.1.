@@ -183,10 +183,10 @@
         </div>
 
         <div class="links">
-            <a href="/bicyclestosell">New bicycles</a>
-            <a href="/bicyclestorent">Rent-a-bicycle</a>
+            <a href="/bicyclesToSell">New bicycles</a>
+            <a href="/bicyclesToRent">Rent-a-bicycle</a>
             @auth
-            <a href="/service">Service</a>
+            <a href="/serviceguest">Service</a>
             @endauth
         </div>
         <br>

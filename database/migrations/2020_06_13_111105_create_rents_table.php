@@ -19,7 +19,7 @@ class CreateRentsTable extends Migration
 
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('bicycle_id');
-            
+
 
             $table->timestamp('rentStarted_at')->default(Carbon::now());
             $table->timestamp('rentEnds_at')->default(Carbon::now()->addDay(1));
@@ -27,7 +27,7 @@ class CreateRentsTable extends Migration
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('bicycle_id')->references('id')->on('bicycles')->onDelete('cascade')->onUpdate('cascade');
+            //$table->foreign('bicycle_id')->references('id')->on('bicycle-to-rents')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

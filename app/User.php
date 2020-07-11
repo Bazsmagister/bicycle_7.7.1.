@@ -95,17 +95,22 @@ class User extends Authenticatable
         // ->withPivot('rents');
     }
 
-
-    public function bicycles()
+    public function bicycleToSell()
     {
-        return $this->belongsToMany(Bicycle::class)->withTimestamps();
+        return $this->belongsToMany(BicycleToSell::class)->withTimestamps();
+        // ->withPivot('rents');
+    }
+
+    public function bicycleToRent()
+    {
+        return $this->belongsToMany(BicycleToRent::class)->withTimestamps();
         // ->withPivot('rents');
     }
 
 
     public function services()
     {
-        return $this->hasMany(Bicycle::class)->withTimestamps();
+        return $this->hasMany(BicycleToService::class)->withTimestamps();
         // ->withPivot('rents');
     }
 

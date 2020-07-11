@@ -60,13 +60,13 @@ class BicycleController extends Controller
         return view('bicycles.index', compact('bicycles'));
     }
 
-    public function sellable()
-    {
-        $sellable_bicycles = DB::table('bicycles')->where('is_sellable', 1)->get();
-        //dump($sellable_bicycles);
-        //die();
-        return view('bicyclestosell', compact('sellable_bicycles'));
-    }
+    // public function sellable()
+    // {
+    //     $sellable_bicycles = DB::table('bicycles')->where('is_sellable', 1)->get();
+    //     //dump($sellable_bicycles);
+    //     //die();
+    //     return view('bicyclestosell', compact('sellable_bicycles'));
+    // }
 
     /**
      * Show the form for creating a new resource.

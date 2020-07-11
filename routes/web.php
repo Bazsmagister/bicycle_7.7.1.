@@ -249,14 +249,13 @@ Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']
 //Route::get('service', 'BicycleController@service');
 
 
-Route::get('bicyclestorent', 'BicycleController@allRentableBicycles');
 // Route::get('newbikes', 'BicycleController@buy');
 // Route::get('newbikes', 'BicycleController@buy');
 
 
 Route::resource('bicycles', 'BicycleController');
 
-Route::get('bicyclestosell', 'BicycleController@sellable');
+
 Route::get('service', 'BicycleController@service');
 Route::get('rentabike', 'BicycleController@rent');
 
@@ -326,3 +325,11 @@ Route::post('restoreDeletedUser/{id}', 'UserController@restoreDeletedUser')->nam
 
 
 Route::resource('services', 'ServiceController');
+
+Route::resource('bicyclesToSell', 'BicycleToSellController');
+Route::resource('bicyclesToRent', 'BicycleToRentController');
+Route::resource('bicyclesToService', 'BicycleToServiceController');
+
+Route::get('serviceguest', function () {
+    return view('serviceguest');
+});

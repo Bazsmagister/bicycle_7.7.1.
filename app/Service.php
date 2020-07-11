@@ -14,8 +14,8 @@ class Service extends Model
     //      'bicycle_id',
     //      'user_id',
     //    'broughIn_at'
-    //    'startedToService_at', 
-    //    'readyToTakeIt_at', 
+    //    'startedToService_at',
+    //    'readyToTakeIt_at',
     //    'taken_at',
     //    'isActive',
     // ];
@@ -40,6 +40,6 @@ class Service extends Model
 
     public function bicycle()
     {
-        return $this->belongsTo('App\Bicycle');
+        return $this->belongsTo('App\BicycleToService');
     }
 }

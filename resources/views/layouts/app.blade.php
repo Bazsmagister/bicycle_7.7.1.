@@ -43,9 +43,9 @@
 
                 <div class="flex-container">
 
-                    <div class="{{Request::path()==='bicyclestosell' ? 'active' : ''}}"><a href="/bicyclestosell">New
+                    <div class="{{Request::path()==='bicyclesToSell' ? 'active' : ''}}"><a href="/bicyclesToSell">New
                             bicycles to sell</a></div>
-                    <div class="{{Request::path()==='bicyclestorent' ? 'active' : ''}}"><a href="/bicyclestorent">Our
+                    <div class="{{Request::path()==='bicyclesToRent' ? 'active' : ''}}"><a href="/bicyclesToRent">Our
                             bicycles to rent</a></div>
 
                     @auth
@@ -141,7 +141,7 @@
             <div class="flex-containeradmin">
 
                 @role('super-admin')
-                <div class="admin"><a href="/bicycles">All bicycles(admin)</a></div>
+                {{-- <div class="admin"><a href="/bicycles">All bicycles(admin)</a></div> --}}
                 <div class="admin"><a href="/rents">All rents(admin)</a></div>
                 <div class="admin"><a href="/services">All services(admin)</a></div>
                 <div class='admin'><a href="/users">All Users(admin) |</a></div>
