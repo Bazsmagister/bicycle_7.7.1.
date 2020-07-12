@@ -219,7 +219,9 @@ Route::get('/', function () {
 Route::resource('users', 'UserController');
 
 Route::post('users/findId', 'UserController@findId');
-Route::post('bicycles/findId', 'BicycleController@findId');
+Route::post('bicyclesToRent/findId', 'BicycleToRentController@findId');
+Route::post('bicyclesToSell/findId', 'BicycleToSellController@findId');
+
 
 
 
@@ -256,7 +258,7 @@ Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']
 Route::resource('bicycles', 'BicycleController');
 
 
-Route::get('service', 'BicycleController@service');
+Route::get('service', 'BicycleToServiceController@service');
 Route::get('rentabike', 'BicycleController@rent');
 
 
@@ -317,7 +319,9 @@ Route::get('/myRents', 'UserController@myRents');
 // Route::get('autocompletebike', 'BicycleController@autocompletebike')->name('autocompletebike');
 
 Route::get('autocompleteUser', 'UserController@autocompleteUser')->name('autocompleteUser');
-Route::get('autocompleteBike', 'BicycleController@autocompleteBike')->name('autocompleteBike');
+Route::get('autocompleteBikeToSell', 'BicycleToSellController@autocompleteBikeToSell')->name('autocompleteBikeToSell');
+Route::get('autocompleteBikeToRent', 'BicycleToRentController@autocompleteBikeToRent')->name('autocompleteBikeToRent');
+
 
 
 Route::post('restoreDeletedUser/{id}', 'UserController@restoreDeletedUser')->name('restoreDeletedUser');

@@ -8,7 +8,7 @@
     @auth
     {{-- @if ($bicycle->is_rentable==1) --}}
 
-    <form action="/bicycles/findId" method="POST">
+    <form action="/bicyclesToRent/findId" method="POST">
         @csrf
         <p>Choose the bicycle that you want to rent: </p>
         <input {{--  id="typeahead" --}} class="typeahead form-control" type="text" name="name"
@@ -90,7 +90,7 @@
 </div>
 
 <script>
-    var path = "{{ route('autocompleteBike') }}";
+    var path = "{{ route('autocompleteBikeToRent') }}";
     var $input = $(".typeahead");
 
         $('input.typeahead').typeahead({

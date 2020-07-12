@@ -7,6 +7,7 @@ use App\User;
 use App\Bicycle;
 
 use Carbon\Carbon;
+use App\BicycleToRent;
 use Illuminate\Http\Request;
 use App\Notifications\rentIsOver;
 use App\Notifications\newRentIsMade;
@@ -79,7 +80,7 @@ class RentController extends Controller
             return 'no user';
         }
 
-        $bicycle = Bicycle::find($request->input('bicycle_id'));
+        $bicycle = BicycleToRent::find($request->input('bicycle_id'));
         $bicycle->is_availableToRent = 0;
         if (!$bicycle) {
             return 'no bike';
@@ -131,7 +132,6 @@ class RentController extends Controller
      */
     public function show($id)
     {
-       
         return view('rents.show', ['rent' => Rent::findOrFail($id)]);
 
         //return view('rents.show', compact('rent')); //works either well

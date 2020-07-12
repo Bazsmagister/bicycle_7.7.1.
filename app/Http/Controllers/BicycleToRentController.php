@@ -199,4 +199,29 @@ class BicycleToRentController extends Controller
                 'Bike successfully deleted'
             )->with('alert-class', 'alert-danger');
     }
+
+    public function autocompleteBikeToRent(Request $request)
+    {
+        $data = BicycleToRent::select("name")
+
+                ->where("name", "LIKE", "%{$request->input('query')}%")
+
+                ->select('name')->distinct()//?
+
+                ->get();
+
+        return response()->json($data);
+    }
+
+    public function findId(Request $request)
+    {
+        $foundbikename= request('name');
+        $bike =  DB::table('bicycle_to_rents')->where('name', $foundbikename)->first();
+        //dd($user);
+        $myid = $bike->id;
+
+        //dd($myid);
+
+        return view('rents.create', compact('myid', 'foundbikename'));
+    }
 }

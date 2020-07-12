@@ -119,7 +119,7 @@
 </div>
 
 <script>
-    var path = "{{ route('autocompleteBike') }}";
+    var path = "{{ route('autocompleteBikeToSell') }}";
     // $('input.typeahead').typeahead({  //works with class
     $('#autocomplete').typeahead({       //works with id
         source:  function (query, process) {
