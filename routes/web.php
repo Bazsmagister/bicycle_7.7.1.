@@ -29,9 +29,9 @@ use Illuminate\Support\Facades\Storage;
 //     return view('welcome');
 // });
 
- /* DB::listen(function ($query) {
-     var_dump($query->sql, $query->bindings);
- }); */
+//   DB::listen(function ($query) {
+//       var_dump($query->sql, $query->bindings);
+//   });
 
  //auth()->loginUsingId(1);
 
@@ -255,11 +255,11 @@ Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']
 // Route::get('newbikes', 'BicycleController@buy');
 
 
-Route::resource('bicycles', 'BicycleController');
+//Route::resource('bicycles', 'BicycleController');
 
 
 Route::get('service', 'BicycleToServiceController@service');
-Route::get('rentabike', 'BicycleController@rent');
+Route::get('rentabike', 'BicycleToRentController@rent');
 
 
 
@@ -331,6 +331,8 @@ Route::post('restoreDeletedUser/{id}', 'UserController@restoreDeletedUser')->nam
 Route::resource('services', 'ServiceController');
 
 Route::resource('bicyclesToSell', 'BicycleToSellController');
+// Route::resource('bicycles_to_sell', 'BicycleToSellController');
+
 Route::resource('bicyclesToRent', 'BicycleToRentController');
 Route::resource('bicyclesToService', 'BicycleToServiceController');
 

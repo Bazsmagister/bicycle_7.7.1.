@@ -107,7 +107,8 @@ class BicycleToSellController extends Controller
      */
     public function show(BicycleToSell $bicycleToSell)
     {
-        return view('bicyclesToSell.show', compact('$bicycleToSell'));
+        //dd($bicycleToSell);
+        return view('bicyclesToSell.show', compact('bicycleToSell'));
     }
 
     /**

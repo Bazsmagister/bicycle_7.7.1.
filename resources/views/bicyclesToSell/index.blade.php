@@ -4,13 +4,10 @@
 <div class="text-center">
     {!! $bicycles->links() !!}
 </div>
-<div class='admin'>
+<div class=''>
     <p>
-        For admin : All of our bicycles.
+        All of our bicycles:
     </p>
-    {{-- <p style="background-color: red">
-        For admin : All of our bicycles.
-    </p> --}}
 </div>
 <hr>
 <br>
@@ -18,7 +15,7 @@
 @role('super-admin')
 <div>
     <button class="button btn-warning">
-        <a href="/bicyclesToSell/create"> Add a new Bicycle </a>
+        <a href="/bicyclesToSell/create"> Add a new sellable bicycle </a>
     </button>
 </div>
 @endrole
@@ -59,7 +56,9 @@
 
         {{-- <a href="{{route('bicycle.edit','$bicycle->id')}}"></a> --}}
         <div>
-            <a href="bicycles/{{$bicycle->id}}" class="btn btn-info">Show</a>
+            <a href="bicyclesToSell/{{$bicycle->id}}" class="btn btn-info">Show</a>
+            <a href="{{ route('bicyclesToSell.show', $bicycle->id) }}" class="btn btn-info">Show</a>
+
         </div>
 
 

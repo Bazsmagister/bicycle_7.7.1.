@@ -224,4 +224,12 @@ class BicycleToRentController extends Controller
 
         return view('rents.create', compact('myid', 'foundbikename'));
     }
+
+    public function rent($id)
+    {
+        //$rentable_bicycles = DB::select('select * from bicycles where is_rentable = ?', [1]);
+
+        return view('rent_this_bicycle', ['bicycle' => BicycleToRent::findOrFail($id)]);
+        // return view('bicycle_rent_form', ['bicycle' => Bicycle::findOrFail($id)]);
+    }
 }

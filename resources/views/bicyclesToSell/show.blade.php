@@ -4,22 +4,19 @@
 
 <div style="padding-left: 20px">
     <p>Name :
-        {{$bicycle->name}} </p>
+        {{$bicycleToSell->name}} </p>
     <p> Description :
-        {{$bicycle->description}} </p>
+        {{$bicycleToSell->description}} </p>
 
     <p> Price :
-        {{$bicycle->price}} Ft</p>
-
-    <p> Rent Price /24h :
-        {{$bicycle->rent_price}} Ft</p>
+        {{$bicycleToSell->price}} Ft</p>
 
     <p> Image :
         @role('super-admin')
-        {{$bicycle->image}}
+        {{$bicycleToSell->image}}
         @endrole
 
-        <img src="{{$bicycle->image}}" alt="interesting" width="" height="">
+        <img src="{{$bicycleToSell->image}}" alt="interesting" width="" height="">
 
         {{-- <img src="/storage/{{$bicycle->image}}" alt="this should be an image 0">
 
@@ -45,7 +42,7 @@
 
     <hr>
     @auth
-    @if (($bicycle->is_rentable==1) && ($bicycle->is_availableToRent ==1))
+    @if ($bicycleToSell->is_availableToRent ==1)
     <form action="/rents" method="POST">
         @csrf
         {{-- @method('PATCH') --}}
@@ -93,11 +90,11 @@
     @hasanyrole('super-admin|serviceman|salesman')
 
     <div>
-        <a href="{{$bicycle->id}}/edit" class="btn btn-warning">Edit</a>
+        <a href="{{$bicycleToSell->id}}/edit" class="btn btn-warning">Edit</a>
     </div>
 
     <hr>
-    <form action="{{ route('bicycles.destroy', $bicycle->id) }}" method="POST">
+    <form action="{{ route('bicyclesToSell.destroy', $bicycleToSell->id) }}" method="POST">
         @csrf
         @method('delete')
         <button type="submit" class="btn btn-danger">Delete the bicycle</button>
@@ -113,7 +110,7 @@
 
     <hr>
 
-    {{$bicycle}}
+    {{$bicycleToSell}}
     <hr>
 
     @endhasanyrole
@@ -130,26 +127,3 @@
 
 
 @endsection
-
-<script>
-    function datetime(){
-        var now= Date.now();
-
-        var date = new Date();
-
-
-        //alert(now);
-        var time = date.toLocaleTimeString();
-        // document.getElementById("demo").innerHTML = now;
-
-        var date = date.toLocaleDateString();
-
-        var dateAndTime = date.toLocaleString("hu-HU"); //doesn't work...
-
-        document.getElementById("demo1").innerHTML = date;
-        document.getElementById("demo2").innerHTML = time;
-        document.getElementById("demo3").innerHTML = dateAndTime;
-
-
-    }
-</script>
