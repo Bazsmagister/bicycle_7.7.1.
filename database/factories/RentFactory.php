@@ -3,11 +3,17 @@
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
 use App\Rent;
+use Carbon\Carbon;
 use Faker\Generator as Faker;
 
 $factory->define(Rent::class, function (Faker $faker) {
+    $random =  Carbon::now()->subDays(rand(20, 30));
+    $random2 = Carbon::now()->subDays(rand(15, 19));
+    $random3 = Carbon::now()->subDays(rand(10, 14));
+    $random4 = Carbon::now()->subDays(rand(5, 9));
+
     return [
-        'user_id' =>  random_int(2, 5),
+        'user_id' =>  random_int(6, 10),
         // 'user_id' => function () {
         //     return factory(App\User::class)->create()->id;
         // },
@@ -25,9 +31,17 @@ $factory->define(Rent::class, function (Faker $faker) {
         //     // return $bicycle_id;
         // },
 
-        'rentStarted_at' => $faker->dateTimeBetween('yesterday', '-25 hours'),
-        'rentEnds_at' => $faker->dateTimeBetween('yesterday', '-1 hours'),
-        'is_closed' => $faker ->boolean,
+
+        // 'rentStarted_at' => $faker->dateTimeBetween('yesterday', '-25 hours'),
+        // 'rentEnds_at' => $faker->dateTimeBetween('yesterday', '-1 hours'),
+        // 'is_closed' => $faker ->boolean,
+
+
+        'rentStarted_at' => Carbon::now()->subDays(rand(10, 14)),
+        'rentEnds_at' => Carbon::now()->subDays(rand(0, 9)),
+        'is_closed' => $faker ->boolean(1),
+
+
         // 'availableToRent' => $faker->boolean,
     ];
 });

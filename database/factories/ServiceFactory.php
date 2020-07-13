@@ -7,6 +7,11 @@ use Faker\Generator as Faker;
 use Carbon\Carbon;
 
 $factory->define(Service::class, function (Faker $faker) {
+    $random =  Carbon::now()->subDays(rand(20, 30));
+    $random2 = Carbon::now()->subDays(rand(15, 19));
+    $random3 = Carbon::now()->subDays(rand(10, 14));
+    $random4 = Carbon::now()->subDays(rand(5, 9));
+
     return [
         // 'broughtIn_at' => $faker->dateTimeBetween('yesterday', '-25 hours'),
         // 'startedToService_at' => $faker->dateTimeBetween('yesterday', '-1 hours'),
@@ -20,13 +25,18 @@ $factory->define(Service::class, function (Faker $faker) {
         'serviceman_id' =>  random_int(1, 2),
 
         // 'isActive' => random_int(0, 1),
-        'isActive' => $faker->boolean(),
 
+        'broughtIn_at' =>        $random,
+        'startedToService_at' => $random2,
+        'readyToTakeIt_at' =>   $random3,
+        'taken_at' =>            $random4,
 
-        'broughtIn_at' => Carbon::yesterday(),
-        'startedToService_at' => Carbon::now(),
-        'readyToTakeIt_at' => Carbon::tomorrow(),
-        'taken_at' => Carbon::now()->subDays(2),
+        'isActive' => $faker->boolean(0),
+
+        // 'broughtIn_at' => Carbon::yesterday(),
+        // 'startedToService_at' => Carbon::now(),
+        // 'readyToTakeIt_at' => Carbon::tomorrow(),
+        // 'taken_at' => Carbon::now()->subDays(2),
 
 
         'notes' => $faker->sentence(),

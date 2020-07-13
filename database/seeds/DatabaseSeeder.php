@@ -18,12 +18,16 @@ class DatabaseSeeder extends Seeder
         $this->call(BicycleToSellSeeder::class);
         $this->call(BicycleToServiceSeeder::class);
 
+        $this->call(UserSeeder::class);
+
 
 
         $this->call(RentSeeder::class);
+        $this->call(ServiceSeeder::class);
 
 
-        $this->call(UserSeeder::class);
+
+
 
 
 
