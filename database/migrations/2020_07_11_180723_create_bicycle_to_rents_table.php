@@ -28,7 +28,7 @@ class CreateBicycleToRentsTable extends Migration
             $table->integer('rent_price')->nullable();
             $table->string('description', 160)->nullable();
 
-            $table->boolean('is_availableToRent')->nullable();
+            $table->boolean('is_availableToRent')->nullable()->default('1');
 
 
             $table->timestamps();

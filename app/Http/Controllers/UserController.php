@@ -57,7 +57,7 @@ class UserController extends Controller
 
                 ->where("name", "LIKE", "%{$request->input('query')}%")
 
-                ->select('name', )->distinct()//?
+                ->select('name')->distinct()//?
 
                 ->get();
 

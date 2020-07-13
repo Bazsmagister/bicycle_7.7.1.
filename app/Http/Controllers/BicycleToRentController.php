@@ -17,10 +17,21 @@ class BicycleToRentController extends Controller
      */
     public function index()
     {
+        $bicyclesCount = BicycleToRent::count();
         $bicycles = DB::table('bicycle_to_rents')->paginate(15);
 
 
-        return view('bicyclesToRent.index', compact('bicycles'));
+        return view('bicyclesToRent.index', compact('bicycles', 'bicyclesCount'));
+    }
+
+     public function indexrentable()
+    {
+        $bicycles = DB::table('bicycle_to_rents')
+        ->where('is_availableToRent', 1)
+        ->paginate(15);
+
+
+        return view('bicyclesToRent.rentable', compact('bicycles'));
     }
 
     /**
