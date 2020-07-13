@@ -19,7 +19,6 @@ class BicycleToServiceController extends Controller
     {
         $bicycles = DB::table('bicycles')->paginate(15);
 
-
         return view('bicyclesToService.index', compact('bicycles'));
     }
 
@@ -53,10 +52,7 @@ class BicycleToServiceController extends Controller
         'description' => request('description'),
         'price' => request('price'),
 
-
         ]);
-
-
 
         // dd($bicycle);
 
@@ -139,8 +135,8 @@ class BicycleToServiceController extends Controller
         $request->validate([
             'name'              =>  'string',
             'description'  => 'string',
-            'price' => 'numeric',
-            'image'     =>  'image|mimes:jpeg,png,jpg,gif|max:2048'
+            'workhours' => 'numeric',
+
         ]);
 
         // Get current bike
@@ -148,28 +144,9 @@ class BicycleToServiceController extends Controller
         // Set bike name
         $bicycleToService->name = $request->input('name');
         $bicycleToService->description = $request->input('description');
-        $bicycleToService->price = $request->input('price');
+        $bicycleToService->workhours = $request->input('workhours');
 
 
-
-        //dd($bicycle);
-
-
-        // Check if a profile image has been uploaded
-        if ($request->has('image')) {
-            // Get image file
-            $image = $request->file('image');
-            // Make a image name based on user name and current timestamp
-            $name = Str::slug($request->input('name')).'_'.time();
-            // Define folder path
-            $folder = 'images/';
-            // Make a file path where image will be stored [ folder path + file name + file extension]
-            $filePath = $folder . $name. '.' . $image->getClientOriginalExtension();
-            // Upload image
-            $this->uploadOne($image, $folder, 'public', $name);
-            // Set user profile image path in database to filePath
-            $bicycleToService->image = $filePath;
-        }
         // Persist user record to database
         $bicycleToService->save();
         //dd($bicycle);
@@ -196,7 +173,7 @@ class BicycleToServiceController extends Controller
             )->with('alert-class', 'alert-danger');
     }
 
-    public function service()
+    public function myserviceprogress()
     {
         // $bicycles_in_service = DB::select('select * from bicycles where is_serviceable = ?', [1]);
         // return view('bicycleservice', compact('bicycles_in_service'));
@@ -223,6 +200,36 @@ class BicycleToServiceController extends Controller
         //dd($myBicycleServiceProgress);
 
         // return view('bicycleservice', compact('bicycles_in_service'));
-        return view('bicycleservice', compact('myBicycleServiceProgress'));
+        return view('services.myserviceprogress', compact('myBicycleServiceProgress'));
+    }
+
+    public function myoldservices()
+    {
+        // $bicycles_in_service = DB::select('select * from bicycles where is_serviceable = ?', [1]);
+        // return view('bicycleservice', compact('bicycles_in_service'));
+
+        $user_id = auth()->user()->id;
+        //echo($user_id);
+
+        // $myBicycleServiceProgress = DB::select('select * from services where user_id = ?', [$user_id]);
+        // print_r($myBicycleServiceProgress);
+
+        // $myBicycleServiceProgress = DB::whereRaw('select * from services, user_id = $user_id');
+        // print_r($myBicycleServiceProgress);
+
+        // $myBicycleServiceProgress = DB::table('users')->leftJoin('services', 'users.id', '=', 'services.user_id')->get();
+        // print_r($myBicycleServiceProgress);
+        // dd($myBicycleServiceProgress);
+
+        $myoldservices = DB::table('services')
+                                    ->where('user_id', [$user_id])
+                                    ->where('isActive', '0')
+                                    ->get();
+
+        //print_r($myBicycleServiceProgress);
+        //dd($myBicycleServiceProgress);
+
+        // return view('bicycleservice', compact('bicycles_in_service'));
+        return view('services.myoldservices', compact('myoldservices'));
     }
 }

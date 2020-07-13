@@ -17,21 +17,24 @@ class CreateBicycleToServicesTable extends Migration
             $table->id();
             //$table->unsignedBigInteger('bicycle_id');
 
-            $table->unsignedBigInteger('user_id')->nullable();
+            //$table->unsignedBigInteger('user_id')->nullable();
             $table->string('name');
 
-            $table->timestamp('broughtIn_at')->nullable();
-            $table->timestamp('startedToService_at')->nullable();
-            $table->timestamp('readyToTakeIt_at')->nullable();
+            $table->string('description');
 
-            $table->unsignedInteger('workhours')->nullable();
+
+            // $table->timestamp('broughtIn_at')->nullable();
+            // $table->timestamp('startedToService_at')->nullable();
+            // $table->timestamp('readyToTakeIt_at')->nullable();
+
+            // $table->unsignedInteger('workhours')->nullable();
 
             $table->string('notes', 300)->nullable();
 
             $table->timestamps();
 
             //Same:
-            $table->foreign('user_id')->references('id')->on('users');
+            //$table->foreign('user_id')->references('id')->on('users');
             //$table->foreignId('user_id')->constrained();
             //$table->foreignId('user_id')->constrained('users');
             //$table->foreignId('user_id')->constrained()->onDelete('cascade');

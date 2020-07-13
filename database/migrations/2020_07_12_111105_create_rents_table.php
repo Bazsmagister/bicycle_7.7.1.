@@ -5,7 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Carbon\Carbon;
 
-class CreateServicesTable extends Migration
+class CreateRentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,34 +14,26 @@ class CreateServicesTable extends Migration
      */
     public function up()
     {
-        Schema::create('services', function (Blueprint $table) {
+        Schema::create('rents', function (Blueprint $table) {
             $table->id();
 
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('bicycle_id');
-            $table->unsignedBigInteger('serviceman_id');
-
-            $table->boolean('isActive');
-            $table->enum('status', ['accepted','repariring','ready','taken'])->nullable();
-
-            $table->timestamp('broughtIn_at')->nullable()->default(Carbon::now()->subDays(1));
-            $table->timestamp('startedToService_at')->nullable()->default(Carbon::now());
-            $table->timestamp('readyToTakeIt_at')->nullable()->default(Carbon::tomorrow());
-            $table->timestamp('taken_at')->nullable();
 
 
-            $table->string('notes')->nullable();
+            $table->timestamp('rentStarted_at')->default(Carbon::now());
+            $table->timestamp('rentEnds_at')->default(Carbon::now()->addDay(1));
+            $table->boolean('is_closed')->nullable()->default('0');
 
+            $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
-            //$table->foreign('bicycle_id')->references('id')->on('bicycle-to-services')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('bicycle_id')->references('id')->on('bicycle_to_rents')->onDelete('cascade')->onUpdate('cascade');
 
             //$table->foreignId('user_id')->constrained();
             //$table->foreignId('user_id')->constrained('users');
             //$table->foreignId('user_id')->constrained()->onDelete('cascade');
             //$table->foreignId('user_id')->nullable()->constrained();
-
-            $table->timestamps();
         });
     }
 
@@ -52,6 +44,6 @@ class CreateServicesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('services');
+        Schema::dropIfExists('rents');
     }
 }

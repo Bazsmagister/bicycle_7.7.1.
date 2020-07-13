@@ -25,8 +25,9 @@ $factory->define(Rent::class, function (Faker $faker) {
         //     // return $bicycle_id;
         // },
 
-        //'rentStarted_at' => $faker->dateTimeBetween('yesterday', '-25 hours'),
-        //'rentEnds_at' => $faker->dateTimeBetween('yesterday', '-1 hours'),
+        'rentStarted_at' => $faker->dateTimeBetween('yesterday', '-25 hours'),
+        'rentEnds_at' => $faker->dateTimeBetween('yesterday', '-1 hours'),
+        'is_closed' => $faker ->boolean,
         // 'availableToRent' => $faker->boolean,
     ];
 });

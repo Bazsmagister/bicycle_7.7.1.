@@ -35,8 +35,6 @@ class CreateUsersTable extends Migration
             //$table->softDeletesTz('deleted_at', 0); //with Timezone
 
 
-
-
             // $table->nullableTimestamps(0); //Alias of timestamps() method.
 
             // $table->unsignedBigInteger('role_id')->index();

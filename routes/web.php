@@ -258,7 +258,10 @@ Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']
 //Route::resource('bicycles', 'BicycleController');
 
 
-Route::get('service', 'BicycleToServiceController@service');
+Route::get('myserviceprogress', 'BicycleToServiceController@myserviceprogress');
+Route::get('myoldservices', 'BicycleToServiceController@myoldservices');
+
+
 Route::get('rentabike', 'BicycleToRentController@rent');
 
 
@@ -312,7 +315,9 @@ Route::put('update_picture/{id}', 'UserController@update_picture')->name('update
 
 Route::resource('rents', 'RentController');
 
-Route::get('/myRents', 'UserController@myRents');
+Route::get('/myPreviousRents', 'UserController@myPreviousRents');
+Route::get('/myActiveRents', 'UserController@myActiveRents');
+
 
 
 // Route::get('autocomplete', 'UserController@autocomplete')->name('autocomplete');

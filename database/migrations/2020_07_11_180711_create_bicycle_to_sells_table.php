@@ -16,7 +16,6 @@ class CreateBicycleToSellsTable extends Migration
         Schema::create('bicycle_to_sells', function (Blueprint $table) {
             $table->id();
 
-
             //$table->unsignedBigInteger('bicycle_id');
             $table->string('name')->nullable();
 

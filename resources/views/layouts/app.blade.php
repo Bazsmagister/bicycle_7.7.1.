@@ -49,12 +49,23 @@
                             bicycles to rent</a></div>
 
                     @auth
+
                     <div class="{{Request::path()==='rents/create' ? 'active' : ''}}"><a href="/rents/create">Create a
                             Rent(auth)</a></div>
-                    <div class="{{Request::path()==='service' ? 'active' : ''}}"><a
-                            href="/service">ServiceProgress(auth)</a>
+                    <div class="{{Request::path()==='myserviceprogress' ? 'active' : ''}}"><a
+                            href="/myserviceprogress">MyServiceProgress(auth)</a>
                     </div>
-                    <div class="{{Request::path()==='myRents' ? 'active' : ''}}"><a href="/myRents">My previous
+
+                    <div class="{{Request::path()==='myoldservices' ? 'active' : ''}}"><a
+                            href="/myoldservices">MyOldServices(auth)</a>
+                    </div>
+
+                    <div class="{{Request::path()==='myActiveRents' ? 'active' : ''}}"><a href="/myActiveRents">My
+                            Active
+                            rent(s)(auth)</a></div>
+
+                    <div class="{{Request::path()==='myPreviousRents' ? 'active' : ''}}"><a href="/myPreviousRents">My
+                            previous
                             rents(auth)</a></div>
 
                     @endauth

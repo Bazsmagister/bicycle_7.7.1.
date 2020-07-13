@@ -217,7 +217,7 @@ class UserController extends Controller
         }
     }
 
-    public function myRents()
+    public function myPreviousRents()
     {
         $myRents =auth()->user()->rents;
         //dd($myRents);
@@ -232,7 +232,25 @@ class UserController extends Controller
           echo $myRents->bicycle_id; */
 
         //dd($myRents);
-        return view('bicyclesToRent.myRents', compact('myRents'));
+        return view('bicyclesToRent.myPreviousRents', compact('myRents'));
+    }
+
+    public function myActiveRents()
+    {
+        $myRents =auth()->user()->rents;
+        //dd($myRents);
+        /*     foreach ($myRents as $myRent) {
+                echo $myRent->rentStarted_at, "\n";
+                echo $myRent->created_at, "\n";
+                echo $myRent->bicycle_id;
+            }
+         */
+        /*   echo $myRents->rentStarted_at;
+          echo $myRents->created_at;
+          echo $myRents->bicycle_id; */
+
+        //dd($myRents);
+        return view('bicyclesToRent.myActiveRents', compact('myRents'));
     }
 
     public function getDeletedUsers()

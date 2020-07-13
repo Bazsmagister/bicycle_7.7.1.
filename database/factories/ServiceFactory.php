@@ -16,7 +16,7 @@ $factory->define(Service::class, function (Faker $faker) {
         // 'serviceman_id' =>  random_int(1, 2),
 
         'user_id' =>  random_int(5, 9),
-        'bicycle_id' =>  random_int(4, 9),
+        'bicycle_id' =>  random_int(4, 10),
         'serviceman_id' =>  random_int(1, 2),
 
         // 'isActive' => random_int(0, 1),
@@ -30,7 +30,7 @@ $factory->define(Service::class, function (Faker $faker) {
 
 
         'notes' => $faker->sentence(),
-        'status' => $faker->randomElement(['accepted', 'repariring', 'ready', 'taken']),
+        'status' => $faker->randomElement(['accepted', 'repairing', 'ready', 'taken']),
 
 
 

@@ -18,25 +18,25 @@ class CreateBicycleToRentsTable extends Migration
             //$table->unsignedBigInteger('bicycle_id');
             $table->string('name')->nullable();
 
-            $table->unsignedBigInteger('user_id')->nullable();
-
+            //$table->unsignedBigInteger('user_id')->nullable();
 
             $table->string('image')->nullable();
-            $table->timestamp('rentStarted_at')->nullable();
-            $table->timestamp('rentEnds_at')->nullable();
+
+            // $table->timestamp('rentStarted_at')->nullable();
+            // $table->timestamp('rentEnds_at')->nullable();
+
             $table->integer('rent_price')->nullable();
-            $table->string('description')->nullable();
+            $table->string('description', 160)->nullable();
 
             $table->boolean('is_availableToRent')->nullable();
 
 
             $table->timestamps();
-            $table->foreign('user_id')->references('id')->on('users');
+            //$table->foreign('user_id')->references('id')->on('users');
             //$table->foreignId('user_id')->constrained();
             //$table->foreignId('user_id')->constrained('users');
             //$table->foreignId('user_id')->constrained()->onDelete('cascade');
             //$table->foreignId('user_id')->nullable()->constrained();
-
         });
     }
 

@@ -21,7 +21,7 @@ class BicycleUserSeeder extends Seeder
         $bicycles = factory(Bicycle::class, 5)->create();
         $users = factory(User::class, 5)->create();
 
-       // $bicycles->first()->users()->sync($users);
+        // $bicycles->first()->users()->sync($users);
         $users->first()->bicycles()->sync($bicycles);
     }
 }
