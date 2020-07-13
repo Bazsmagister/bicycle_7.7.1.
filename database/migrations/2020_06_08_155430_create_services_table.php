@@ -36,6 +36,10 @@ class CreateServicesTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             //$table->foreign('bicycle_id')->references('id')->on('bicycle-to-services')->onDelete('cascade')->onUpdate('cascade');
 
+            //$table->foreignId('user_id')->constrained();
+            //$table->foreignId('user_id')->constrained('users');
+            //$table->foreignId('user_id')->constrained()->onDelete('cascade');
+            //$table->foreignId('user_id')->nullable()->constrained();
 
             $table->timestamps();
         });

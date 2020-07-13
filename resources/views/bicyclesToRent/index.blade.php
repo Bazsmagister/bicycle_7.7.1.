@@ -4,9 +4,9 @@
 <div class="text-center">
     {!! $bicycles->links() !!}
 </div>
-<div class='admin'>
+<div>
     <p>
-        For admin : All of our bicycles.
+        All of our bicycles to rent.
     </p>
     {{-- <p style="background-color: red">
         For admin : All of our bicycles.
@@ -59,7 +59,7 @@
 
         {{-- <a href="{{route('bicycle.edit','$bicycle->id')}}"></a> --}}
         <div>
-            <a href="bicycles/{{$bicycle->id}}" class="btn btn-info">Show</a>
+            <a href="bicyclesToRent/{{$bicycle->id}}" class="btn btn-info">Show</a>
         </div>
 
 

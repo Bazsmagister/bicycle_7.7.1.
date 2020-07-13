@@ -6,7 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class BicycleToSell extends Model
 {
-    protected $table = "bicycle_to_sells";
+    //protected $table = "bicycle_to_sells";
+    public $table = "bicycle_to_sells";
+
     // protected $table = "bicyclestosell";
 
 

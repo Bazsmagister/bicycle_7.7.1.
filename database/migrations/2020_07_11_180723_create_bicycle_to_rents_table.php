@@ -32,6 +32,11 @@ class CreateBicycleToRentsTable extends Migration
 
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users');
+            //$table->foreignId('user_id')->constrained();
+            //$table->foreignId('user_id')->constrained('users');
+            //$table->foreignId('user_id')->constrained()->onDelete('cascade');
+            //$table->foreignId('user_id')->nullable()->constrained();
+
         });
     }
 

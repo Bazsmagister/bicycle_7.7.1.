@@ -51,15 +51,15 @@
                 <td>{{ $rent->rentStarted_at }}</td>
                 <td>{{ $rent->rentEnds_at }}</td>
                 <td><a href="rents/{{$rent->id}}/edit " class="btn btn-info">Edit</a>
-                <a href="rents/{{$rent->id}} " class="btn btn-info">Show</a>
+                    <a href="rents/{{$rent->id}} " class="btn btn-info">Show</a>
 
-                <form action="{{ route('rents.destroy', $rent->id) }}" method="POST">
-                    @csrf
-                    @method('delete')
-                    <button type="submit" class="btn btn-danger" onclick="return confirm('Do you really want to delete it?');"
->Delete</button>
-                </form>
-            </td>   
+                    <form action="{{ route('rents.destroy', $rent->id) }}" method="POST">
+                        @csrf
+                        @method('delete')
+                        <button type="submit" class="btn btn-danger"
+                            onclick="return confirm('Do you really want to delete it?');">Delete</button>
+                    </form>
+                </td>
 
             </tr>
             @endforeach
@@ -91,15 +91,18 @@
                 <form action="{{ route('rents.destroy', $rent->id) }}" method="POST">
                     @csrf
                     @method('delete')
-                    <button type="submit" class="btn btn-danger" onclick="return confirm('Do you really want to delete it?');"
->Delete</button>
+                    <button type="submit" class="btn btn-danger"
+                        onclick="return confirm('Do you really want to delete it?');">Delete</button>
                 </form>
-            </td>   
+            </td>
         </tr>
         @endforeach
     </table>
 </div>
 
+<div class="text-center">
+    {!! $rents->links() !!}
+</div>
 
 
 @endsection

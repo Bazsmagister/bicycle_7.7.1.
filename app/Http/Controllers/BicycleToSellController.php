@@ -105,11 +105,25 @@ class BicycleToSellController extends Controller
      * @param  \App\BicycleToSell  $bicycleToSell
      * @return \Illuminate\Http\Response
      */
-    public function show(BicycleToSell $bicycleToSell)
+
+    // public function show(BicycleToSell $bicycleToSell)
+    // {
+    //     it doesn't work with RouteModelBinding.  I don't know why. I set $table in model even,
+    //     //dd($bicycleToSell);
+    //     return view('bicyclesToSell.show', compact('bicycleToSell'));
+    // }
+
+    public function show($id)
     {
-        //dd($bicycleToSell);
-        return view('bicyclesToSell.show', compact('bicycleToSell'));
+        // it works this way:
+        //return view('users.show', ['user' => User::findOrFail($id)]);
+        return view('bicyclesToSell.show', ['bicycleToSell' => BicycleToSell::findOrFail($id)]);
     }
+
+
+
+
+
 
     /**
      * Show the form for editing the specified resource.

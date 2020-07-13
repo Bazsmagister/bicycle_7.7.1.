@@ -107,11 +107,18 @@ class BicycleToRentController extends Controller
      * @param  \App\BicycleToRent  $bicycleToRent
      * @return \Illuminate\Http\Response
      */
-    public function show(BicycleToRent $bicycleToRent)
-    {
-        return view('bicyclesToRent.show', compact('$bicycleToRent'));
+    // public function show(BicycleToRent $bicycleToRent)
+    // {
+    //     return view('bicyclesToRent.show', compact('bicycleToRent'));
 
-        //return view('bicycles.show', ['bicycle' => Bicycle::findOrFail($id)]);
+    //     //return view('bicycles.show', ['bicycle' => Bicycle::findOrFail($id)]);
+    // }
+
+    public function show($id)
+    {
+        // it works this way:
+        //return view('users.show', ['user' => User::findOrFail($id)]);
+        return view('bicyclesToRent.show', ['bicycleToRent' => BicycleToRent::findOrFail($id)]);
     }
 
     /**

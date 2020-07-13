@@ -232,7 +232,7 @@ class UserController extends Controller
           echo $myRents->bicycle_id; */
 
         //dd($myRents);
-        return view('myRents', compact('myRents'));
+        return view('bicyclesToRent.myRents', compact('myRents'));
     }
 
     public function getDeletedUsers()

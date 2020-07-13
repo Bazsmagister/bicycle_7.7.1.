@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class BicycleToRent extends Model
 {
     protected $table = "bicycle_to_rents";
+
     protected $guarded = [];
 
     //protected $fillable = ['name', 'rent_price', 'description', 'image'];

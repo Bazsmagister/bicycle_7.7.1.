@@ -108,6 +108,13 @@ class User extends Authenticatable
     }
 
 
+    public function bicycleToService()
+    {
+        return $this->belongsToMany(BicycleToService::class)->withTimestamps();
+        // ->withPivot('rents');
+    }
+
+
     public function services()
     {
         return $this->hasMany(BicycleToService::class)->withTimestamps();

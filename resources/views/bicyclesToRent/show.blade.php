@@ -4,22 +4,20 @@
 
 <div style="padding-left: 20px">
     <p>Name :
-        {{$bicycle->name}} </p>
+        {{$bicycleToRent->name}} </p>
     <p> Description :
-        {{$bicycle->description}} </p>
+        {{$bicycleToRent->description}} </p>
 
-    <p> Price :
-        {{$bicycle->price}} Ft</p>
 
     <p> Rent Price /24h :
-        {{$bicycle->rent_price}} Ft</p>
+        {{$bicycleToRent->rent_price}} Ft</p>
 
     <p> Image :
         @role('super-admin')
-        {{$bicycle->image}}
+        {{$bicycleToRent->image}}
         @endrole
 
-        <img src="{{$bicycle->image}}" alt="interesting" width="" height="">
+        <img src="{{$bicycleToRent->image}}" alt="interesting" width="" height="">
 
         {{-- <img src="/storage/{{$bicycle->image}}" alt="this should be an image 0">
 
@@ -45,12 +43,12 @@
 
     <hr>
     @auth
-    @if (($bicycle->is_rentable==1) && ($bicycle->is_availableToRent ==1))
+    @if ($bicycleToRent->is_availableToRent ==1)
     <form action="/rents" method="POST">
         @csrf
         {{-- @method('PATCH') --}}
 
-        <input type="number" name='bicycle_id' value='{{$bicycle->id}}' hidden>
+        <input type="number" name='bicycle_id' value='{{$bicycleToRent->id}}' hidden>
 
         <label for="rentstartdate">Rent start :</label>
         <input type="date" id="rentstartdate" name="rentStarted_at">
@@ -93,11 +91,11 @@
     @hasanyrole('super-admin|serviceman|salesman')
 
     <div>
-        <a href="{{$bicycle->id}}/edit" class="btn btn-warning">Edit</a>
+        <a href="{{$bicycleToRent->id}}/edit" class="btn btn-warning">Edit</a>
     </div>
 
     <hr>
-    <form action="{{ route('bicycles.destroy', $bicycle->id) }}" method="POST">
+    <form action="{{ route('bicyclesToRent.destroy', $bicycleToRent->id) }}" method="POST">
         @csrf
         @method('delete')
         <button type="submit" class="btn btn-danger">Delete the bicycle</button>
@@ -113,7 +111,7 @@
 
     <hr>
 
-    {{$bicycle}}
+    {{$bicycleToRent}}
     <hr>
 
     @endhasanyrole
@@ -130,26 +128,3 @@
 
 
 @endsection
-
-<script>
-    function datetime(){
-        var now= Date.now();
-
-        var date = new Date();
-
-
-        //alert(now);
-        var time = date.toLocaleTimeString();
-        // document.getElementById("demo").innerHTML = now;
-
-        var date = date.toLocaleDateString();
-
-        var dateAndTime = date.toLocaleString("hu-HU"); //doesn't work...
-
-        document.getElementById("demo1").innerHTML = date;
-        document.getElementById("demo2").innerHTML = time;
-        document.getElementById("demo3").innerHTML = dateAndTime;
-
-
-    }
-</script>
