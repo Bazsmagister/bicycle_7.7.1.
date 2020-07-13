@@ -46,7 +46,10 @@
                     <div class="{{Request::path()==='bicyclesToSell' ? 'active' : ''}}"><a href="/bicyclesToSell">New
                             bicycles to sell</a></div>
                     <div class="{{Request::path()==='bicyclesToRent' ? 'active' : ''}}"><a href="/bicyclesToRent">Our
-                            bicycles to rent</a></div>
+                            bicycles to rent (all)</a></div>
+
+                    <div class="{{Request::path()==='indexrentable' ? 'active' : ''}}"><a href="/indexrentable">Our
+                            bicycles to rent (just available)</a></div>
 
                     @auth
                     <div class="{{Request::path()==='rents/create' ? 'active' : ''}}"><a href="/rents/create">Create a

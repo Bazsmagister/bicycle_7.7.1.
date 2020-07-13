@@ -334,8 +334,10 @@ Route::resource('bicyclesToSell', 'BicycleToSellController');
 // Route::resource('bicycles_to_sell', 'BicycleToSellController');
 
 Route::resource('bicyclesToRent', 'BicycleToRentController');
+Route::get('indexrentable', 'BicycleToRentController@indexrentable');
+
 Route::resource('bicyclesToService', 'BicycleToServiceController');
 
 Route::get('serviceguest', function () {
-    return view('serviceguest');
+    return view('services.serviceguest');
 });
