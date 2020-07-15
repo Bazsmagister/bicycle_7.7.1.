@@ -25,7 +25,6 @@
 
 <hr>
 
-
 <div class="text-center">
     {!! $rents->links() !!}
 </div>
@@ -39,6 +38,7 @@
                 <th scope="col">bicycle_id</th>
                 <th scope="col">rentStarted_at</th>
                 <th scope="col">rentEnds_at</th>
+                <th scope="col">bicycleReturned_at</th>
 
             </tr>
         </thead>
@@ -50,6 +50,7 @@
                 <td>{{ $rent->bicycle_id}}</td>
                 <td>{{ $rent->rentStarted_at }}</td>
                 <td>{{ $rent->rentEnds_at }}</td>
+                <td>{{ $rent->bicycleReturned_at }}</td>
                 <td><a href="rents/{{$rent->id}}/edit " class="btn btn-info">Edit</a>
                     <a href="rents/{{$rent->id}} " class="btn btn-info">Show</a>
 
@@ -67,7 +68,8 @@
     </table>
 </div>
 
-<div class="container mid">
+{{-- An other table: --}}
+{{-- <div class="container mid">
     <table class="table table-bordered table-striped">
         <tr>
             <th>ID</th>
@@ -75,30 +77,34 @@
             <th>Bicycle Id</th>
             <th>Rent Start</th>
             <th>Rent End</th>
+            <th>Bicycle returned at :</th>
 
         </tr>
         @foreach($rents as $rent)
         <tr>
             <td>{{ $rent->id }}</td>
-            <td>{{ $rent->user_id}}</td>
-            <td>{{ $rent->bicycle_id }}</td>
-            <td>{{ $rent->rentStarted_at}}</td>
-            <td>{{ $rent->rentEnds_at }}</td>
+<td>{{ $rent->user_id}}</td>
+<td>{{ $rent->bicycle_id }}</td>
+<td>{{ $rent->rentStarted_at}}</td>
+<td>{{ $rent->rentEnds_at }}</td>
+<td>{{ $rent->bicycleReturned_at }}</td>
 
-            <td><a href="rents/{{$rent->id}}/edit " class="btn btn-info">Edit</a>
-                <a href="rents/{{$rent->id}} " class="btn btn-info">Show</a>
 
-                <form action="{{ route('rents.destroy', $rent->id) }}" method="POST">
-                    @csrf
-                    @method('delete')
-                    <button type="submit" class="btn btn-danger"
-                        onclick="return confirm('Do you really want to delete it?');">Delete</button>
-                </form>
-            </td>
-        </tr>
-        @endforeach
-    </table>
-</div>
+
+<td><a href="rents/{{$rent->id}}/edit " class="btn btn-info">Edit</a>
+    <a href="rents/{{$rent->id}} " class="btn btn-info">Show</a>
+
+    <form action="{{ route('rents.destroy', $rent->id) }}" method="POST">
+        @csrf
+        @method('delete')
+        <button type="submit" class="btn btn-danger"
+            onclick="return confirm('Do you really want to delete it?');">Delete</button>
+    </form>
+</td>
+</tr>
+@endforeach
+</table>
+</div> --}}
 
 <div class="text-center">
     {!! $rents->links() !!}

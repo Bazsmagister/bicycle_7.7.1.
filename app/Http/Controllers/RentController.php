@@ -118,7 +118,7 @@ class RentController extends Controller
         // auth()->user()->notify(new newRentMade(Rent::findOrFail($id)));
 
 
-        return redirect()->route('rents.index')
+        return redirect()->route('bicyclesToRent.myActiveRents')
 
             ->withInput()
                  ->with('message', 'Rent Nr.'. $rent->id. '  has been created');
@@ -168,6 +168,9 @@ class RentController extends Controller
         $rent->bicycle_id = $request->input('bicycle_id');
         $rent->rentStarted_at = $request->input('rentStarted_at');
         $rent->rentEnds_at = $request->input('rentEnds_at');
+        $rent->bicycleReturned_at = $request->input('bicycleReturned_at') ?? Carbon::now();
+        // $rent->bicycleReturned_at = $request->rentEnds_at ?? Carbon::now();
+
         $rent->save();
 
         return redirect()->route(

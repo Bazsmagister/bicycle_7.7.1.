@@ -142,12 +142,14 @@
                 @role('serviceman')
                 <div class="{{Request::path()==='services' ? 'active' : ''}}"><a
                         href="/services">Services(serviceman)</a></div>
-                <div class="{{Request::path()==='service' ? 'active' : ''}}"><a
-                        href="/services">Service/myWorkshop($serviceman)</a>
+                <div class="{{Request::path()==='myworkshop' ? 'active' : ''}}"><a
+                        href="/myworkshop">Service/myWorkshop($serviceman)</a>
                 </div>
                 <div class="{{Request::path()==='services/create' ? 'active' : ''}}"><a href="/services/create">Create
                         new
                         service($serviceman)</a>
+                </div>
+                <div class="{{Request::path()==='rents' ? 'active' : ''}}"><a href="/rents">All rents(serviceman)</a>
                 </div>
                 @endrole
 

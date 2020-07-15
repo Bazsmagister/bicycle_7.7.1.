@@ -10,7 +10,7 @@ $factory->define(Service::class, function (Faker $faker) {
     $random =  Carbon::now()->subDays(rand(20, 30));
     $random2 = Carbon::now()->subDays(rand(15, 19));
     $random3 = Carbon::now()->subDays(rand(10, 14));
-    $random4 = Carbon::now()->subDays(rand(5, 9));
+    $random4 = Carbon::now()->subDays(rand(1, 9));
 
     return [
         // 'broughtIn_at' => $faker->dateTimeBetween('yesterday', '-25 hours'),
@@ -29,7 +29,7 @@ $factory->define(Service::class, function (Faker $faker) {
         'broughtIn_at' =>        $random,
         'startedToService_at' => $random2,
         'readyToTakeIt_at' =>   $random3,
-        'taken_at' =>            $random4,
+        'taken_at' =>          $faker->randomElement(["$random4", null]),
 
         'isActive' => $faker->boolean(0),
 

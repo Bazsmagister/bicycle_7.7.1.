@@ -10,7 +10,7 @@ $factory->define(Rent::class, function (Faker $faker) {
     $random =  Carbon::now()->subDays(rand(20, 30));
     $random2 = Carbon::now()->subDays(rand(15, 19));
     $random3 = Carbon::now()->subDays(rand(10, 14));
-    $random4 = Carbon::now()->subDays(rand(5, 9));
+    $random4 = Carbon::now()->subDays(rand(1, 9));
 
     return [
         'user_id' =>  random_int(6, 10),
@@ -37,8 +37,13 @@ $factory->define(Rent::class, function (Faker $faker) {
         // 'is_closed' => $faker ->boolean,
 
 
+
+
+
         'rentStarted_at' => Carbon::now()->subDays(rand(10, 14)),
-        'rentEnds_at' => Carbon::now()->subDays(rand(0, 9)),
+        'rentEnds_at' =>  $faker->dateTimeBetween('-8 days', '+7days'),
+        'bicycleReturned_at' =>  $faker->randomElement(["$random4", null]),
+        //'rentEnds_at' => Carbon::now()->subDays(rand(0, 9)),
         'is_closed' => $faker ->boolean(1),
 
 

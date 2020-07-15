@@ -23,6 +23,8 @@ class CreateRentsTable extends Migration
 
             $table->timestamp('rentStarted_at')->default(Carbon::now());
             $table->timestamp('rentEnds_at')->default(Carbon::now()->addDay(1));
+            $table->timestamp('bicycleReturned_at')->nullable()->default(null);
+
             $table->boolean('is_closed')->nullable()->default('0');
 
             $table->timestamps();

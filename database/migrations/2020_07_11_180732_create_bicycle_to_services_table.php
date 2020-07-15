@@ -20,7 +20,7 @@ class CreateBicycleToServicesTable extends Migration
             //$table->unsignedBigInteger('user_id')->nullable();
             $table->string('name');
 
-            $table->string('description');
+            $table->text('description');
 
 
             // $table->timestamp('broughtIn_at')->nullable();
@@ -29,7 +29,7 @@ class CreateBicycleToServicesTable extends Migration
 
             // $table->unsignedInteger('workhours')->nullable();
 
-            $table->string('notes', 300)->nullable();
+            $table->text('notes', 300)->nullable();
 
             $table->timestamps();
 

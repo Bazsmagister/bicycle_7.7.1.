@@ -16,7 +16,7 @@
         <div>
 
             <input type="number" id="user_id" name="user_id" value="{{ old('user_id', $rent->user_id) }}">
-            <label for="ID">ID</label>
+            <label for="ID">User ID</label>
         </div>
 
         <div>
@@ -29,29 +29,45 @@
 
             <input type="date" id="rentStarted_at" name="rentStarted_at"
                 value="{{ old('rentStarted_at', $rent->rentStarted_at) }}">
-            <label for="rent started at">rent started at</label>
+            <label for="rent started at">Rent started at:</label>
         </div>
 
 
         <div>
             <input type="date" name="rentEnds_at" id="rentEnds_at"
                 value="{{ old('rentEnds_at', $rent->rentEnds_at) }}" />
-            {{-- <input type="text" id="price" name="price" placeholder="Price" pattern="[0-9.]+"
-                value="{{ old('price', $bicycle->price) }}"> --}}
-            <label for="Rent end">Rent end/<label>
+
+            <label for="Rent end">Rent end:<label>
+        </div>
+
+        <div>
+            <input type="date" name="bicycleReturned_at" id="bicycleReturned_at"
+                value="{{ old('bicycleReturned_at', $rent->bicycleReturned_at) }}" hidden />
+            <label for="Bicycle returned ">Bicycle Returned :<label>
         </div>
 
 
 
-        <input class="button btn-success" type="submit" value="Submit">
-    </form>
+        {{-- <div>
+            <input type="date" name="bicycleReturned_at" id="bicycleReturned_at"
+                value="{{ old('bicycleReturned_at', $rent->bicycleReturned_at) }}" />
+        <label for="Bicycle returned ">Bicycle Returned/<label>
+</div> --}}
+
+
+
+<input class="button btn-success" type="submit" value="Submit">
+
+<input class="button btn-success" type="submit" value="Bicycle is returned from rent now.">
+</form>
 <br>
 <hr>
-    <div>
+<div>
     <form action="{{ route('rents.destroy', $rent->id) }}" method="POST">
         @csrf
         @method('delete')
-        <button type="submit" class="btn btn-danger" onclick="return confirm('Do you really want to delete it?');">Delete</button>
+        <button type="submit" class="btn btn-danger"
+            onclick="return confirm('Do you really want to delete it?');">Delete</button>
     </form>
 </div>
 </div>
