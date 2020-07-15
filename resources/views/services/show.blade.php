@@ -19,6 +19,13 @@
 
     <p> Status: {{$service->status}} </p>
 
+    <div class="flexbox">
+        <div class="{{$service -> status ==='accepted' ? 'accepted' : 'boxes'}}" id="1">Accepted</div>
+        <div class="{{$service -> status ==='repairing' ? 'repairing' : 'boxes'}}" id="2">Repairing</div>
+        <div class="{{$service -> status ==='ready' ? 'ready' : 'boxes'}}" id="3">Ready</div>
+        <div class="{{$service -> status ==='taken' ? 'taken' : 'boxes'}}" id="4">Taken</div>
+    </div>
+
     {{-- <img src="{{$service->user->user_image}}" alt="image 0 should be here">
     <img src="/storage/users/image/{{$service->user->user_image}}" alt="image 1 should be here" width=50px height=50px>
     --}}

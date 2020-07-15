@@ -25,12 +25,26 @@
 @endrole
 
 <hr>
-
 <div class="container">
-    {{-- <h5>Autocomplete Search using Bootstrap Typeahead JS</h5> --}}
+    <form action="/bicyclesToRent/showmethebike" method="POST">
+        @csrf
+        <p>Choose the bicycle that you want to rent: </p>
+        <input {{--  id="typeahead" --}} class="typeahead form-control" type="text" name="name"
+            {{-- data-provide="typeahead"  --}} autocomplete="off" placeholder="Start typing..." required>
+
+        @error('name')
+        <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
+
+        <button class="btn btn-info btn-sm" type="submit">Show me the bike!</button>
+    </form>
+</div>
+<hr>
+
+{{-- <div class="container">
     <h5>Autocomplete search: </h5>
     <input id="autocomplete" class=" typeahead form-control" type="text" placeholder="Start typing...">
-</div>
+</div> --}}
 
 
 
@@ -80,8 +94,6 @@
         <img src="/home/bazs/code/bicycle_7.7.1/public/storage/bic.xcf" alt="a bicycle"> --}}
         {{-- <img src="/storage/bic.png" alt="a bicycle"> --}}
 
-
-
     </ul>
 </div>
 
@@ -101,7 +113,6 @@
                 <th scope="col">Rent price</th>
                 <th scope="col">Image</th>
 
-
             </tr>
         </thead>
         <tbody>
@@ -112,7 +123,6 @@
                 <td>{{ $bicycle->description}}</td>
                 <td>{{ $bicycle->rent_price }}</td>
                 <td><img src="/storage/{{ $bicycle->image }}" height="50" width="50"></td>
-
 
             </tr>
             @endforeach
@@ -231,8 +241,6 @@
     @endif --}}
 
 
-
-
 @endforeach
 @if($bicycles->count() == 0)
 <p>Sorry, we are out of stock, come back later :(</p>
@@ -243,18 +251,48 @@
 
 </div>
 
+{{-- <script>
+    var path = "{{ route('autocompleteBikeToRent') }}";
+// $('input.typeahead').typeahead({ //works with class
+$('#autocomplete').typeahead({ //works with id
+source: function (query, process) {
+return $.get(path, { query: query }, function (data) {
+return process(data);
+// return data;
+});
+}
+});
+
+</script> --}}
+
 <script>
     var path = "{{ route('autocompleteBikeToRent') }}";
-    // $('input.typeahead').typeahead({  //works with class
-    $('#autocomplete').typeahead({       //works with id
-        source:  function (query, process) {
-        return $.get(path, { query: query }, function (data) {
-                 return process(data);
-                //  return data;
-            });
-        }
-    });
+    var $input = $(".typeahead");
 
+        $('input.typeahead').typeahead({
+        /* hint: true,
+        highlight: true,
+        minLength: 1 */
+        source: function (query, process) {
+        return $.get(path, { query: query }, function (data) {
+        return process(data);
+        });
+        }
+        });
+        $input.change(function() {
+        var current = $input.typeahead("getActive");
+        if (current) {
+        // Some item from your model is active!
+        if (current.name == $input.val()) {
+        // This means the exact match is found. Use toLowerCase() if you want case insensitive match.
+        } else {
+        // This means it is only a partial match, you can either add a new item
+        // or take the active if you don't want new items
+        }
+        } else {
+        // Nothing is active so it is a new value (or maybe empty value)
+        }
+        });
 </script>
 
 

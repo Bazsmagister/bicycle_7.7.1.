@@ -53,6 +53,15 @@
         <div class="alert alert-danger">{{ $message }}</div>
         @enderror
         <br>
+
+        <br>
+        <label for="failure_description">Failure description:</label>
+        <input type="text" id="failure_description" name="failure_description" required>
+        @error('failure_description')
+        <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
+        <br>
+
         <label for="broughtIndate">Brought In (date and time):</label>
         <input type="date" id="broughtIndate" name="broughtIn_at">
         @error('broughtIn_at')

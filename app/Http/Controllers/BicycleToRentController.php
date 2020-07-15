@@ -24,14 +24,14 @@ class BicycleToRentController extends Controller
         return view('bicyclesToRent.index', compact('bicycles', 'bicyclesCount'));
     }
 
-     public function indexrentable()
+    public function indexrentable()
     {
         $bicycles = DB::table('bicycle_to_rents')
         ->where('is_availableToRent', 1)
         ->paginate(15);
 
 
-        return view('bicyclesToRent.rentable', compact('bicycles'));
+        return view('bicyclesToRent.indexrentable', compact('bicycles'));
     }
 
     /**
@@ -138,9 +138,14 @@ class BicycleToRentController extends Controller
      * @param  \App\BicycleToRent  $bicycleToRent
      * @return \Illuminate\Http\Response
      */
-    public function edit(BicycleToRent $bicycleToRent)
+    // public function edit(BicycleToRent $bicycleToRent)
+    // {
+    //     return view('bicyclesToRent.edit', compact('bicycleToRent'));
+    // }
+
+    public function edit($id)
     {
-        return view('bicyclesToRent.edit', compact('bicycleToRent'));
+        return view('bicyclesToRent.edit', ['bicycleToRent' => BicycleToRent::findOrFail($id)]);
     }
 
     /**
@@ -207,11 +212,11 @@ class BicycleToRentController extends Controller
      * @param  \App\BicycleToRent  $bicycleToRent
      * @return \Illuminate\Http\Response
      */
-    public function destroy(BicycleToRent $bicycleToRent)
+    public function destroy($bicycle)
     {
-        //$bicycle = Bicycle::findOrFail($bicycle);
-        $bicycleToRent->delete();
-        return redirect()->route('bicycles.index')
+        $bicycle = BicycleToRent::findOrFail($bicycle);
+        $bicycle->delete();
+        return redirect()->route('bicyclesToRent.index')
             ->with(
                 'message',
                 'Bike successfully deleted'
@@ -249,5 +254,16 @@ class BicycleToRentController extends Controller
 
         return view('rent_this_bicycle', ['bicycle' => BicycleToRent::findOrFail($id)]);
         // return view('bicycle_rent_form', ['bicycle' => Bicycle::findOrFail($id)]);
+    }
+
+    public function showmethebike()
+    {
+        $foundbikenameautocomp= request('name');
+        $bikeautocomp =  DB::table('bicycle_to_rents')->where('name', $foundbikenameautocomp)->first();
+        //$myidautocomp = $bikeautocomp->id;
+        $id = $bikeautocomp->id;
+
+
+        return view('bicyclesToRent.show', ['bicycleToRent' => BicycleToRent::findOrFail($id)]);
     }
 }

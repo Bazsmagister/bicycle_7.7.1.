@@ -223,6 +223,12 @@ Route::post('bicyclesToRent/findId', 'BicycleToRentController@findId');
 Route::post('bicyclesToSell/findId', 'BicycleToSellController@findId');
 
 
+Route::post('bicyclesToRent/showmethebike', 'BicycleToRentController@showmethebike')->name('showmethebike');
+
+Route::post('bicyclesToSell/showmethesellablebike', 'BicycleToSellController@showmethesellablebike')->name('showmethesellablebike');
+
+
+
 
 
 Route::get('indexDeletedAlso', 'UserController@indexDeletedAlso');

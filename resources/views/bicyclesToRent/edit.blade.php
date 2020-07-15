@@ -9,71 +9,43 @@
 
 </div>
 <div>
-    <form id='form' action="/bicycles/{{$bicycle->id}}" method="POST" enctype="multipart/form-data">
+    <form id='form' action="/bicyclesToRent/{{$bicycleToRent->id}}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <div>
 
             <input type="text" id="name" name="name" placeholder="Your biycle name.."
-                value="{{ old('name', $bicycle->name) }}">
+                value="{{ old('name', $bicycleToRent->name) }}">
             <label for="name">Name</label>
         </div>
 
 
         <div>
             <input type="number" name="price" id="price" placeholder="Price"
-                value="{{ old('price', $bicycle->price) }}" />
-            {{-- <input type="text" id="price" name="price" placeholder="Price" pattern="[0-9.]+"
-                value="{{ old('price', $bicycle->price) }}"> --}}
+                value="{{ old('price', $bicycleToRent->rent_price) }}" />
+
             <label for="Price">Price</label>
         </div>
 
         <div>
 
             <input type="text" rows="4" cols="50" id="description" name="description" placeholder="Description"
-                value="{{ old('description', $bicycle->description) }}">
+                value="{{ old('description', $bicycleToRent->description) }}">
             <label for="description">Description</label>
         </div>
 
 
-
-        <div>
-
-            <input type="checkbox" id="sellable" name="is_sellable"
-                value="{{old('is_sellable', $bicycle->is_sellable)}}">
-            <label for="is_sellable"> For Sell</label><br>
-        </div>
-
-        <div>
-
-            <input type="checkbox" id="rentable" name="is_rentable"
-                value="{{old('is_rentable', $bicycle->is_rentable)}}">
-            <label for="is_rentable"> For Rent</label><br>
-        </div>
-
-        <div>
-
-            <input type="checkbox" id="serviceable" name="is_serviceable"
-                value="{{old('is_serviceable', $bicycle->is_serviceable)}}">
-            <label for="is_serviceable"> For Service</label><br><br>
-        </div>
-
         <div>
             <label for="Upload photo">Photo: </label>
             <input type="file" id="image" name="image" accept="image/*">
-            <img src="/storage/{{$bicycle->image}}" alt="no image yet" height="100" width="120">
-            <img src="/storage/{{$bicycle->image}}" alt="no image yet">
+            <img src="/storage/{{$bicycleToRent->image}}" alt="no image yet" height="100" width="120">
+            <img src="/storage/{{$bicycleToRent->image}}" alt="no image yet">
 
         </div>
 
         <input class="button btn-success" type="submit" value="Submit">
     </form>
 
-    <!-- <div>
-        <label for="description">Description</label>
-        <textarea id='form' rows="4" cols="50" id="description" name="description" placeholder="Description"
-            value="{{ old('description', $bicycle->description) }}">
-    </div> -->
 
 </div>
 <hr>
@@ -94,7 +66,7 @@
 <hr>
 
 <div>
-    <form action="{{ route('bicycles.destroy', $bicycle->id) }}" method="POST">
+    <form action="{{ route('bicyclesToRent.destroy', $bicycleToRent->id) }}" method="POST">
         @csrf
         @method('delete')
         <button type="submit" class="btn btn-danger">Delete</button>

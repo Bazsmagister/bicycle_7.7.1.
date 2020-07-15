@@ -7,21 +7,21 @@
 
 <h3>All the bicycles to service / under service</h3>
 <hr>
-<div class=" container mid">
+<div class="">
     <table id="table_services" class="table table-striped table-bordered">
         <thead class="thead-dark">
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">user_id</th>
-                <th scope="col">bicycle_id</th>
-                <th scope="col">broughtIn_at</th>
-                <th scope="col">StartedToService_at</th>
-                <th scope="col">ReadyToTakeIt_at</th>
-                <th scope="col">Serviceman_id</th>
+                <th scope="col">User id</th>
+                <th scope="col">Bicycle id</th>
+                <th scope="col">Serviceman id</th>
+                <th scope="col">Failure description</th>
+                <th scope="col">Brought In at</th>
+                <th scope="col">Started To Service at</th>
+                <th scope="col">Ready To Take It_at</th>
+                <th scope="col">Taken at</th>
                 <th scope="col">Notes</th>
                 <th scope="col">Status</th>
-                <th scope="col">Is_active?</th>
-
             </tr>
         </thead>
         <tbody>
@@ -30,13 +30,14 @@
                 <td>{{ $service->id }}</td>
                 <td>{{ $service->user_id }}</td>
                 <td>{{ $service->bicycle_id}}</td>
+                <td>{{ $service->serviceman_id }}</td>
+                <td>{{ $service->failure_description}}</td>
                 <td>{{ $service->broughtIn_at}}</td>
                 <td>{{ $service->startedToService_at }}</td>
                 <td>{{ $service->readyToTakeIt_at }}</td>
-                <td>{{ $service->serviceman_id }}</td>
+                <td>{{ $service->taken_at }}</td>
                 <td>{{ $service->notes }}</td>
                 <td>{{ $service->status }}</td>
-                <td>{{ $service->isActive }}</td>
                 <td><a href="services/{{$service->id}}/edit " class="btn btn-info">Edit</a>
                     <a href="services/{{$service->id}} " class="btn btn-info">Show</a>
 
@@ -61,9 +62,11 @@
         <div>
             <li> Service unique number (ID): {{$service -> id }}</li>
             <li> Serviceman (ID): {{$service -> serviceman_id }}</li>
-            <li> Is Active: {{$service -> isActive }}</li>
+
+            <li> Failure description: {{$service ->failure_description }}</li>
+
         </div>
-        <br>
+
         <div>
             <li> Bicycle owner id: {{$service->user->id ?? '' }} </li>
             <li> Bicycle owner name: {{$service -> user -> name ?? '' }} </li>
@@ -73,11 +76,20 @@
         <img src="{{$service -> bicycle ->image}}" alt="interesting" width="182" height="109">
         {{-- <img src="{{$service -> bicycle ->image}}" alt="interesting" width height> --}}
         <br>
-        <hr>
+
         <li> Brought in :{{$service  -> broughtIn_at }} </li>
         <li> Started to service at : {{$service -> startedToService_at }} </li>
         <li>Ready to take it at :{{$service -> readyToTakeIt_at }} </li>
+        <li> Taken at :{{$service  ->taken_at }} </li>
+        {{-- <li> Is Active: {{$service ->isActive }}</li> --}}
+        <li> Status: {{$service ->status }}</li>
 
+        <div class="flexbox">
+            <div class="{{$service -> status ==='accepted' ? 'accepted' : 'boxes'}}" id="1">Accepted</div>
+            <div class="{{$service -> status ==='repairing' ? 'repairing' : 'boxes'}}" id="2">Repairing</div>
+            <div class="{{$service -> status ==='ready' ? 'ready' : 'boxes'}}" id="3">Ready</div>
+            <div class="{{$service -> status ==='taken' ? 'taken' : 'boxes'}}" id="4">Taken</div>
+        </div>
 
     </ul>
     <hr>

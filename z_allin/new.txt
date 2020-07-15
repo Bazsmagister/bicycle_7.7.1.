@@ -13,3 +13,7 @@
 In Ubuntu, there are two different php.ini's. One for CLI and one for the web server/php-fpm. Make sure it's enabled in both environment. When you do php -m, it's the CLI version you're checking but that doesn't mean it's enabled for the web server
 
 #! /usr/bin/python
+
+
+  {{-- <form action="/bicyclesToSell/{{ $bicycleToSell->id }}" method="POST"> --}}
+    {{-- <form action="{{ route('bicyclesToSell.destroy', ['id'=> $bicycleToSell->id]) }}" method="POST"> --}}

@@ -121,19 +121,21 @@ class BicycleToSellController extends Controller
     }
 
 
-
-
-
-
     /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\BicycleToSell  $bicycleToSell
      * @return \Illuminate\Http\Response
      */
-    public function edit(BicycleToSell $bicycleToSell)
+    // public function edit(BicycleToSell $bicycleToSell)
+    // {
+    //     dd($bicycleToSell);
+    //     return view('bicyclesToSell.edit', compact('bicycleToSell'));
+    // }
+
+    public function edit($id)
     {
-        return view('bicyclesToSell.edit', compact('bicycleToSell'));
+        return view('bicyclesToSell.edit', ['bicycleToSell' => BicycleToSell::findOrFail($id)]);
     }
 
     /**
@@ -200,11 +202,24 @@ class BicycleToSellController extends Controller
      * @param  \App\BicycleToSell  $bicycleToSell
      * @return \Illuminate\Http\Response
      */
-    public function destroy(BicycleToSell $bicycleToSell)
+
+    //  This didn't work
+    // public function destroy(BicycleToSell $bicycleToSell)
+    // {
+    //     //$bicycle = Bicycle::findOrFail($bicycle);
+    //     $bicycleToSell->delete();
+    //     return redirect()->route('bicyclesToSell.index')
+    //         ->with(
+    //             'message',
+    //             'Bike successfully deleted'
+    //         )->with('alert-class', 'alert-danger');
+    // }
+
+    public function destroy($bicycle)
     {
-        //$bicycle = Bicycle::findOrFail($bicycle);
-        $bicycleToSell->delete();
-        return redirect()->route('bicycles.index')
+        $bicycle = BicycleToSell::findOrFail($bicycle);
+        $bicycle->delete();
+        return redirect()->route('bicyclesToSell.index')
             ->with(
                 'message',
                 'Bike successfully deleted'
@@ -222,5 +237,16 @@ class BicycleToSellController extends Controller
                 ->get();
 
         return response()->json($data);
+    }
+
+    public function showmethesellablebike()
+    {
+        $foundbikenameautocomp= request('name');
+        $bikeautocomp =  DB::table('bicycle_to_sells')->where('name', $foundbikenameautocomp)->first();
+        //$myidautocomp = $bikeautocomp->id;
+        $id = $bikeautocomp->id;
+
+
+        return view('bicyclesToSell.show', ['bicycleToSell' => BicycleToSell::findOrFail($id)]);
     }
 }

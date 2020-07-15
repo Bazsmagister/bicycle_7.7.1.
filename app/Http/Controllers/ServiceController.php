@@ -52,11 +52,17 @@ class ServiceController extends Controller
         $this->validate($request, [
             'user_id'=>'required',
             'bicycle_id' =>'required|numeric',
+            'serviceman_id' => 'numeric',
+
+            'failure_description' =>'string',
+
             'broughtIn_at' =>'',
             'startedToServiceIt_at' => '',
             'readyToTakeIt_at' => '',
+            'taken_at' => '',
+
             'notes' => 'sometimes|string',
-            'serviceman_id' => 'numeric',
+
             'isActive' => 'numeric',
             'status' => 'string',
             ]);
@@ -66,18 +72,22 @@ class ServiceController extends Controller
         $serviceData = [
                 //'user_name' => $request->user_name,
                 'user_id' => $request->user_id,
-                'bicycle_id' => $request -> bicycle_id,
+                'bicycle_id' => $request ->bicycle_id,
+                'serviceman_id' => $request ->serviceman_id,
+                'failure_description' => $request ->failure_description,
                /*  'rentStarted_at' => Carbon::now(),
                 'rentEnds_at' => (Carbon::now()->addDay(1)), */
                 'broughtIn_at' => $request->broughtIn_at ?? Carbon::now(),
-                'startedToService_at' =>  $request->startedToService_at ?? Carbon::now(),
-                'readyToTakeIt_at' => $request->readyToTakeIt_at ?? Carbon::now()->addDay(2),
-                //'taken_at' => $request->taken_at ?? 'Still not taken yet',
+                // 'startedToService_at' =>  $request->startedToService_at ?? Carbon::now(),
+                'startedToService_at' =>  $request->startedToService_at ?? null,
+                // 'readyToTakeIt_at' => $request->readyToTakeIt_at ?? Carbon::now()->addDay(2),
+                'readyToTakeIt_at' => $request->readyToTakeIt_at ?? null,
+                'taken_at' => $request->taken_at ?? null,
                 'notes' => $request->notes ?? 'No notes yet, everything has worked fine',
                 //'isActive' => $request->isActive,
-                'status' => $request -> status,
-                'serviceman_id' => $request -> serviceman_id,
-                'isActive' => '1',
+                'status' => $request ->status,
+
+                //'isActive' => '1',
 
 
             ];
@@ -158,12 +168,18 @@ class ServiceController extends Controller
         $service->bicycle_id = $request->input('bicycle_id');
         $service->serviceman_id = $request->input('serviceman_id');
 
+        $service->failure_description = $request->input('failure_description');
+
         $service->broughtIn_at = $request->input('broughtIn_at');
         $service->startedToService_at = $request->input('startedToService_at');
         $service->readyToTakeIt_at = $request->input('readyToTakeIt_at');
         $service->taken_at = $request->input('taken_at');
-        $service->isActive = $request->input('isActive');
+
+        //$service->isActive = $request->input('isActive');
         $service->notes = $request->input('notes');
+
+        $service->status = $request->input('status');
+
 
         $service->save();
 

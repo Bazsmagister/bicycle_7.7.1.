@@ -26,22 +26,23 @@ $factory->define(Service::class, function (Faker $faker) {
 
         // 'isActive' => random_int(0, 1),
 
+        'failure_description' => $faker->sentence(),
+
         'broughtIn_at' =>        $random,
         'startedToService_at' => $random2,
         'readyToTakeIt_at' =>   $random3,
         'taken_at' =>          $faker->randomElement(["$random4", null]),
 
-        'isActive' => $faker->boolean(0),
 
         // 'broughtIn_at' => Carbon::yesterday(),
         // 'startedToService_at' => Carbon::now(),
         // 'readyToTakeIt_at' => Carbon::tomorrow(),
         // 'taken_at' => Carbon::now()->subDays(2),
 
-
         'notes' => $faker->sentence(),
         'status' => $faker->randomElement(['accepted', 'repairing', 'ready', 'taken']),
 
+        //'isActive' => $faker->boolean(0),
 
 
     ];

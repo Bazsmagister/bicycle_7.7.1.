@@ -72,8 +72,6 @@
         <button class='button btn-info' type="submit">Rent that bicycle</button>
 
 
-
-
     </form>
 
 

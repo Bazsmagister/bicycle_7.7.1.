@@ -39,6 +39,12 @@
         </div>
 
         <div>
+            <input type="text" id="failure_description" name="failure_description"
+                value="{{ old('failure_description', $service->failure_description) }}">
+            <label for="failure_description">Failure failure_description: {{ $service->failure_description  }}</label>
+        </div>
+
+        <div>
 
             <input type="date" id="broughtIn_at" name="broughtIn_at"
                 value="{{ old('broughtIn_at', $service->broughtIn_at) }}">
@@ -53,7 +59,6 @@
         </div>
 
         <div>
-
             <input type="date" id="readyToTakeIt_at" name="readyToTakeIt_at"
                 value="{{ old('readyToTakeIt_at', $service->readyToTakeIt_at) }}">
             <label for="readyToTakeIt_at">Ready to take it at: {{ $service->readyToTakeIt_at }}</label>
@@ -72,12 +77,21 @@
 
         <div>
 
-            <input type="radio" id="Active" name="isActive" value="1">
+            {{-- <input type="radio" id="Active" name="isActive" value="1">
             <label for="Active">active</label><br>
 
             <input type="radio" id="Not Active" name="isActive" value="0">
-            <label for="Not Active">not active</label><br>
+            <label for="Not Active">not active</label><br> --}}
         </div>
+
+        <p>need js to modify it:</p>
+        <div class="flexbox">
+            <div class="{{$service -> status ==='accepted' ? 'accepted' : 'boxes'}}" id="1">Accepted</div>
+            <div class="{{$service -> status ==='repairing' ? 'repairing' : 'boxes'}}" id="2">Repairing</div>
+            <div class="{{$service -> status ==='ready' ? 'ready' : 'boxes'}}" id="3">Ready</div>
+            <div class="{{$service -> status ==='taken' ? 'taken' : 'boxes'}}" id="4">Taken</div>
+        </div>
+
         <hr>
         <div>
             <input type="radio" id="accepted" name="status" value="accepted">

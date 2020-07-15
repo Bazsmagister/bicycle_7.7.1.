@@ -66,7 +66,7 @@
         @auth
 
         <div>
-            <a href="bicycles/{{$bicycle->id}}" class="btn btn-info">Show</a>
+            <a href="bicyclesToRent/{{$bicycle->id}}" class="btn btn-info">Show</a>
         </div>
 
         <br>
