@@ -27,6 +27,7 @@ class Service extends Model
         'startedToService_at' => 'datetime',
         'readyToTakeIt_at' => 'datetime',
         'taken_at' => 'datetime',
+
         'isActive' => 'boolean'
 
     ];
@@ -43,4 +44,49 @@ class Service extends Model
     {
         return $this->belongsTo('App\BicycleToService');
     }
+
+    // public function setActive()
+    // {
+    //     $this->isActive = true;
+    // }
+
+    // public function getActive()
+    // {
+    //     return $this->isActive;
+    // }
+
+
+    // public $status;
+
+    // public function setStatus($status)
+    // {
+    //     $this->status = $status;
+    // }
+
+    // public function getStatus()
+    // {
+    //     return $this->status;
+    // }
+
+
+
+    // /**
+    //  * Get the value of status
+    //  */
+    // public function getStatus()
+    // {
+    //     return $this->status;
+    // }
+
+    // /**
+    //  * Set the value of status
+    //  *
+    //  * @return  self
+    //  */
+    // public function setStatus($status)
+    // {
+    //     $this->status = $status;
+
+    //     return $this;
+    // }
 }

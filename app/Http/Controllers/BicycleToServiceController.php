@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Service;
 use App\BicycleToService;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -10,6 +11,10 @@ use Illuminate\Support\Facades\Session;
 
 class BicycleToServiceController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -233,24 +238,24 @@ class BicycleToServiceController extends Controller
         return view('services.myoldservices', compact('myoldservices'));
     }
 
-    public function myworkshop()
-    {
-        $id = auth()->user()->id;
-        //dd($id);
+    // public function myworkshop()
+    // {
+    //     $id = auth()->user()->id;
+    //     //dd($id);
 
-        //$bicycle = Bicycle::findOrFail($bicycle);
+    //     //$bicycle = Bicycle::findOrFail($bicycle);
 
-        $mybicyclesneedtorepair = DB::table('services')->
-       // select('*')->
-        where('serviceman_id', $id)
-        ->get();
+    //     $mybicyclesneedtorepair = DB::table('services')->
+    //    // select('*')->
+    //     where('serviceman_id', $id)
+    //     ->get();
 
-        $needtorepaircount = $mybicyclesneedtorepair->count();
-        //dd($needtorepaircount);
-        //dd($mybicyclesneedtorepair);
+    //     $needtorepaircount = $mybicyclesneedtorepair->count();
+    //     //dd($needtorepaircount);
+    //     //dd($mybicyclesneedtorepair);
 
-        return view('services.myworkshop', compact('mybicyclesneedtorepair', 'needtorepaircount'));
-    }
+    //     return view('services.myworkshop', compact('mybicyclesneedtorepair', 'needtorepaircount'));
+    // }
 
     // public function myworkshop()
     // {
@@ -269,4 +274,21 @@ class BicycleToServiceController extends Controller
 
     //     return view('services.myworkshop', compact('mybicyclesneedtorepair'));
     // }
+
+    public function myworkshop()
+    {
+        $id = auth()->user()->id;
+        //dd($id);
+
+        $mybicyclesneedtorepair = Service::with('user')->
+       // select('*')->
+        where('serviceman_id', $id)
+        ->get();
+
+        $needtorepaircount = $mybicyclesneedtorepair->count();
+        //dd($needtorepaircount);
+        //dd($mybicyclesneedtorepair);
+
+        return view('services.myworkshop', compact('mybicyclesneedtorepair', 'needtorepaircount'));
+    }
 }

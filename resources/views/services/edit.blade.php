@@ -92,6 +92,23 @@
             <div class="{{$service -> status ==='taken' ? 'taken' : 'boxes'}}" id="4">Taken</div>
         </div>
 
+        <div class="flexbox">
+            <button onclick="changeStatus()"
+                class="btn btn-info {{$service -> status ==='accepted' ? 'accepted' : 'boxes'}}">
+                <div class="{{$service -> status ==='accepted' ? 'accepted' : 'boxes'}}" id="1">Accepted</div>
+            </button>
+
+            <button class="{{$service -> status ==='repairing' ? 'repairing' : 'boxes'}}">
+                <div class="{{$service -> status ==='repairing' ? 'repairing' : 'boxes'}}" id="2">Repairing</div>
+            </button>
+            <button class="{{$service -> status ==='ready' ? 'ready' : 'boxes'}}">
+                <div class="{{$service -> status ==='ready' ? 'ready' : 'boxes'}}" id="3">Ready</div>
+            </button>
+            <button class="{{$service -> status ==='taken' ? 'taken' : 'boxes'}}">
+                <div class="{{$service -> status ==='taken' ? 'taken' : 'boxes'}}" id="4">Taken</div>
+            </button>
+        </div>
+
         <hr>
         <div>
             <input type="radio" id="accepted" name="status" value="accepted">
@@ -160,6 +177,11 @@
   }
 });
 
+
+
+function changeStatus(){
+    alert('status changed');
+}
 </script>
 
 @endsection
