@@ -167,6 +167,8 @@
                 <div class='admin'><a href="/mail">Mail(admin)</a></div>
 
                 <div class="admin"><a href="/mapWithKeys">UserNameDateMapWithKeys(admin)</a></div>
+                <div class="admin"><a href="/mkuser/5">Make 5 User(admin)</a></div>
+
                 @endrole
 
             </div>

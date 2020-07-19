@@ -354,3 +354,9 @@ Route::resource('bicyclesToService', 'BicycleToServiceController');
 Route::get('serviceguest', function () {
     return view('services.serviceguest');
 });
+
+
+//it works with (int) before $c:
+Route::get('/mkuser/{c}',function ($c){
+    return collect(factory(User::class,(int)$c)->create());
+});
