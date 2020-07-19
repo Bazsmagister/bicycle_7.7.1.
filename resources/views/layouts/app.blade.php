@@ -56,11 +56,11 @@
                     <div class="{{Request::path()==='rents/create' ? 'active' : ''}}"><a href="/rents/create">Create a
                             Rent(auth)</a></div>
                     <div class="{{Request::path()==='myserviceprogress' ? 'active' : ''}}"><a
-                            href="/myserviceprogress">MyServiceProgress(auth)</a>
+                            href="/myserviceprogress">My Service Progress(auth)</a>
                     </div>
 
-                    <div class="{{Request::path()==='myoldservices' ? 'active' : ''}}"><a
-                            href="/myoldservices">MyOldServices(auth)</a>
+                    <div class="{{Request::path()==='myoldservices' ? 'active' : ''}}"><a href="/myoldservices">My
+                            Old Services(auth)</a>
                     </div>
 
                     <div class="{{Request::path()==='myActiveRents' ? 'active' : ''}}"><a href="/myActiveRents">My

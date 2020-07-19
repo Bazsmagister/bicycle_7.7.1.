@@ -73,7 +73,7 @@
             <li> Bicycle owner phone: {{$service -> user -> phone ?? ''}} </li>
         </div>
         <li>Bicycle's Description : {{$service -> bicycle -> description }} </li>
-        <img src="{{$service -> bicycle ->image}}" alt="interesting" width="182" height="109">
+        <img src="{{$service -> bicycle ->image}}" alt="An image should be here" width="182" height="109">
         {{-- <img src="{{$service -> bicycle ->image}}" alt="interesting" width height> --}}
         <br>
 

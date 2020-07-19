@@ -9,7 +9,7 @@
 
 </div>
 <div class="container">
-    <form id='form' action="/services/{{$service->id}}" method="POST" enctype="multipart/form-data">
+    <form id='form' action="/services/{{$service->id}}" method="POST" {{-- enctype="multipart/form-data" --}}>
         @csrf
         @method('patch')
 

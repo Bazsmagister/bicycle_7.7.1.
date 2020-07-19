@@ -266,6 +266,8 @@ Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']
 
 Route::get('myserviceprogress', 'BicycleToServiceController@myserviceprogress');
 Route::get('myoldservices', 'BicycleToServiceController@myoldservices');
+Route::get('myworkshop', 'BicycleToServiceController@myworkshop');
+
 
 
 Route::get('rentabike', 'BicycleToRentController@rent');
