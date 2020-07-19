@@ -18,6 +18,37 @@
     <div class='boxes' id="4">Taken</div>
 </div> --}}
 
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                {{-- <th scope="col" width="50%">id</th> --}}
+                <th scope="col">id</th>
+                <th scope="col">status</th>
+                <th scope="col">broughtIn_at</th>
+                <th scope="col">startedToService_at</th>
+                <th scope="col">Ready to take it</th>
+                <th scope="col">Taken</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($mybicyclesneedtorepair as $service)
+
+            <tr>
+                <th scope="row">{{$service->id}}</th>
+                <td>{{$service->status}}</td>
+                <td>{{$service->broughtIn_at}}</td>
+                <td>{{$service->startedToService_at}}</td>
+                <td>{{$service->readyToTakeIt_at}}</td>
+                <td>{{$service->taken_at}}</td>
+
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+</div>
+
 @foreach ($mybicyclesneedtorepair as $service)
 <div class="container">
     <ul>
@@ -55,7 +86,11 @@
     <hr>
 </div>
 
+
+
 @endforeach
+
+
 
 @endauth
 
