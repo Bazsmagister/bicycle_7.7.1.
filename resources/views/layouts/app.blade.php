@@ -181,6 +181,7 @@
 
                 <div class="admin"><a href="/mapWithKeys">UserNameDateMapWithKeys(admin)</a></div>
                 <div class="admin"><a href="/mkuser/5">Make 5 User(admin)</a></div>
+                <div class="admin"><a href="sendemail">Sendemail</a></div>
 
                 @endrole
 
@@ -193,6 +194,14 @@
             @if(Session::has('message'))
             <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('message') }}</p>
             @endif
+
+            @if (session('message'))
+            <p class="alert {{ Session::get('alert-class', 'alert-info') }}">
+                {{ session('message') }}
+            </p>
+            @endif
+
+
 
             @yield('content')
             @yield('contentuser')

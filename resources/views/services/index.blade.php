@@ -21,7 +21,7 @@
                 <th scope="col">Ready To Take It_at ready</th>
                 <th scope="col">Taken at taken</th>
                 <th scope="col">Notes</th>
-                <th scope="col">Status</th>
+                {{--  <th scope="col">Status</th> --}}
             </tr>
         </thead>
         <tbody>
@@ -41,7 +41,7 @@
                 <td>{{ $service->readyToTakeIt_at }}</td>
                 <td>{{ $service->taken_at }}</td> --}}
                 <td>{{ $service->notes }}</td>
-                <td>{{ $service->status }}</td>
+                {{--    <td>{{ $service->status }}</td> --}}
                 <td><a href="services/{{$service->id}}/edit " class="btn btn-info">Edit</a>
                     <a href="services/{{$service->id}} " class="btn btn-info">Show</a>
 
@@ -81,12 +81,12 @@
         {{-- <img src="{{$service -> bicycle ->image}}" alt="interesting" width height> --}}
         <br>
 
-        <li> Brought in :{{$service  -> accpeted }} </li>
+        <li> Brought in :{{$service  -> accepted }} </li>
         <li> Started to service at : {{$service -> repairing }} </li>
         <li>Ready to take it at :{{$service -> ready }} </li>
         <li> Taken at :{{$service  ->taken }} </li>
         {{-- <li> Is Active: {{$service ->isActive }}</li> --}}
-        //<li> Status: {{$service ->status }}</li>
+        {{--    <li> Status: {{$service ->status }}</li> --}}
 
         <div class="flexbox">
             <div class="{{$service -> status ==='accepted' ? 'accepted' : 'boxes'}}" id="1">Accepted</div>

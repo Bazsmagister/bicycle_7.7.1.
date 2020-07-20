@@ -382,3 +382,13 @@ Route::get('serviceguest', function () {
 Route::get('/mkuser/{c}', function ($c) {
     return collect(factory(User::class, (int)$c)->create());
 });
+
+
+Route::get('/sendemail', function () {
+    Mail::raw('it works', function($message){
+        $message->to('info@hogyat.hu')->subject('Hello There');
+    });
+    return redirect()->back()->with('message', 'Email sent');
+
+    //MAIL_MAILER=log
+});
