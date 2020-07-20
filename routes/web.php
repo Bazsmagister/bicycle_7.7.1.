@@ -86,6 +86,18 @@ Route::get('/', function () {
 
     // dd($myRents);
 
+
+    // File handling example
+    // *****************
+    $handle = fopen("/home/bazs/code/bicycle_7.7.1/public/try.txt", "r");
+    dump($handle);
+    $responsejson = file_get_contents("/home/bazs/code/bicycle_7.7.1/public/try.txt");
+    dump($responsejson);
+    fclose($handle);
+    dump($handle); //Closed resource @8
+    //*******************
+
+
     echo(Inspiring::quote()), "\n";
 
     $result = shell_exec("python " . storage_path() . "/python/python.py 2>&1"); //this works
@@ -357,6 +369,6 @@ Route::get('serviceguest', function () {
 
 
 //it works with (int) before $c:
-Route::get('/mkuser/{c}',function ($c){
-    return collect(factory(User::class,(int)$c)->create());
+Route::get('/mkuser/{c}', function ($c) {
+    return collect(factory(User::class, (int)$c)->create());
 });
