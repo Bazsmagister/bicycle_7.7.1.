@@ -23,10 +23,16 @@ class Service extends Model
     protected $guarded = [];
 
     protected $casts = [
-        'broughIn_at' => 'datetime',
-        'startedToService_at' => 'datetime',
-        'readyToTakeIt_at' => 'datetime',
-        'taken_at' => 'datetime',
+
+        // 'broughIn_at' => 'datetime',
+        // 'startedToService_at' => 'datetime',
+        // 'readyToTakeIt_at' => 'datetime',
+        // 'taken_at' => 'datetime',
+
+        'accepted' => 'datetime',
+        'repairing' => 'datetime',
+        'ready' => 'datetime',
+        'taken' => 'datetime',
 
         'isActive' => 'boolean'
 

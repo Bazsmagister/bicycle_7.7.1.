@@ -110,7 +110,7 @@
         </div>
 
         <hr>
-        <div>
+        {{-- <div>
             <input type="radio" id="accepted" name="status" value="accepted">
             <label for="accepted">Accepted</label><br>
         </div>
@@ -124,6 +124,24 @@
         </div>
         <div>
             <input type="radio" id="taken" name="status" value="taken">
+            <label for="taken">taken</label><br>
+        </div> --}}
+
+
+        <div>
+            <input type="radio" id="accepted" name="accepted" value="{{ \Carbon\Carbon::now()}}">
+            <label for="accepted">Accepted</label><br>
+        </div>
+        <div>
+            <input type="radio" id="repairing" name="repairing" value="{{ \Carbon\Carbon::now()}}">
+            <label for="repairing">Repairing</label><br>
+        </div>
+        <div>
+            <input type="radio" id="ready" name="ready" value="{{ \Carbon\Carbon::now()}}">
+            <label for="ready">Ready</label><br>
+        </div>
+        <div>
+            <input type="radio" id="taken" name="taken" value="{{ \Carbon\Carbon::now()}}">
             <label for="taken">taken</label><br>
         </div>
 

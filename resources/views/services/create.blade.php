@@ -62,83 +62,90 @@
         @enderror
         <br>
 
-        <label for="broughtIndate">Brought In (date and time):</label>
+        {{-- <label for="broughtIndate">Brought In (date and time):</label>
         <input type="date" id="broughtIndate" name="broughtIn_at">
         @error('broughtIn_at')
-        <div class="alert alert-danger">{{ $message }}</div>
-        @enderror
+        <div class="alert alert-danger">{{ $message }}
+</div>
+@enderror --}}
 
-        <label for="servicestartdate">Service start (date and time):</label>
+<label for="accepted">Accepted (date and time):</label>
+<input type="date" id="accepted" name="accepted">
+@error('accepted')
+<div class="alert alert-danger">{{ $message }}</div>
+@enderror
+
+{{-- <label for="servicestartdate">Service start (date and time):</label>
         <input type="date" id="servicestartdate" name="startedToService_at">
         @error('startedToService_at')
         <div class="alert alert-danger">{{ $message }}</div>
-        @enderror
+@enderror --}}
 
-        <label for="readyToTakeIt">Ready to take it at(date and time):</label>
+{{-- <label for="readyToTakeIt">Ready to take it at(date and time):</label>
         <input type="date" id="readyToTakeIt" name="readyToTakeIt_at">
         @error('readyToTakeIt_at')
         <div class="alert alert-danger">{{ $message }}</div>
-        @enderror
+@enderror --}}
 
-        <br>
-        <label for="createtextarea">Notes:</label>
-        <br>
-        <textarea rows="4" cols="50" name="notes" form="servicecreateform" id=createtextarea
-            required>Write here...</textarea>
-        @error('notes')
-        <div class="alert alert-danger">{{ $message }}</div>
-        @enderror
+<br>
+<label for="createtextarea">Notes:</label>
+<br>
+<textarea rows="4" cols="50" name="notes" form="servicecreateform" id=createtextarea required>Write here...</textarea>
+@error('notes')
+<div class="alert alert-danger">{{ $message }}</div>
+@enderror
 
-        <br>
+<br>
 
-        {{-- <label for="status">Status:</label> --}}
-        <input type="text" id="status" name="status" value="accepted" hidden>
-        @error('status')
-        <div class="alert alert-danger">{{ $message }}</div>
-        @enderror
+{{-- <label for="status">Status:</label> --}}
 
-        <label for="serviceman_id">Serviceman_id: 1 or 2:</label>
-        <input type="number" id="serviceman_id" name="serviceman_id" min="1" max="2" step="1" value='1'>
-        @error('serviceman_id')
-        <div class="alert alert-danger">{{ $message }}</div>
-        @enderror
+{{-- <input type="text" id="status" name="status" value="accepted" hidden>
+@error('status')
+<div class="alert alert-danger">{{ $message }}</div>
+@enderror --}}
 
-        {{-- <label for="rentstarttime">Choose a time for rent start:</label> --}}
-        {{-- <input type="time" id="rentstarttime" name="rentstarttime" min="08:00" max="20:00" step="1" required> --}}
-        {{-- <input type="text" id="rentstarttime" name="rentstarttime" min="08:00" max="20:00" step="1" required> --}}
+<label for="serviceman_id">Serviceman_id: 1 or 2:</label>
+<input type="number" id="serviceman_id" name="serviceman_id" min="1" max="2" step="1" value='1'>
+@error('serviceman_id')
+<div class="alert alert-danger">{{ $message }}</div>
+@enderror
 
-        <br>
-        {{--  <input type="button" value="Rent start now" name="rentStarted_at" onclick="datetime()">
+{{-- <label for="rentstarttime">Choose a time for rent start:</label> --}}
+{{-- <input type="time" id="rentstarttime" name="rentstarttime" min="08:00" max="20:00" step="1" required> --}}
+{{-- <input type="text" id="rentstarttime" name="rentstarttime" min="08:00" max="20:00" step="1" required> --}}
+
+<br>
+{{--  <input type="button" value="Rent start now" name="rentStarted_at" onclick="datetime()">
         <p id="demo1">here comes the now timestamp</p>
         <p id="demo2">here comes the now timestamp</p>
         <p id="demo3">here comes the now timestamp</p> --}}
 
 
 
-        {{-- <input type="datetime-local" not supported in firefox> --}}
-        <br>
+{{-- <input type="datetime-local" not supported in firefox> --}}
+<br>
 
-        {{-- <label for="rentendtime">Choose an (Estimated) time for rent end:</label>
+{{-- <label for="rentendtime">Choose an (Estimated) time for rent end:</label>
         <input type="time" id="rentendtime" name="rentEnds_at" min="08:00" max="20:00"> --}}
 
-        <br>
-        <button class='button btn-info' type="submit">Start to service that bicycle</button>
+<br>
+<button class='button btn-info' type="submit">Start to service that bicycle</button>
 
-    </form>
-
-
-    {{-- @endif --}}
-    @endauth
-
-    {{-- @hasanyrole('super-admin') --}}
+</form>
 
 
-    <p>Test roles:</p>
-    @hasanyrole('super-admin|serviceman|salesman')
-    <p>has any role</p>
-    @else
-    <p>has not role</p>
-    @endhasanyrole
+{{-- @endif --}}
+@endauth
+
+{{-- @hasanyrole('super-admin') --}}
+
+
+<p>Test roles:</p>
+@hasanyrole('super-admin|serviceman|salesman')
+<p>has any role</p>
+@else
+<p>has not role</p>
+@endhasanyrole
 
 </div>
 

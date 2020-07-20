@@ -55,26 +55,16 @@
 
                     <div class="{{Request::path()==='rents/create' ? 'active' : ''}}"><a href="/rents/create">Create a
                             Rent(auth)</a></div>
-                    <div class="{{Request::path()==='myserviceprogress' ? 'active' : ''}}"><a
-                            href="/myserviceprogress">My Service Progress(auth)</a>
-                    </div>
 
-                    <div class="{{Request::path()==='myoldservices' ? 'active' : ''}}"><a href="/myoldservices">My
-                            Old Services(auth)</a>
-                    </div>
 
-                    <div class="{{Request::path()==='myActiveRents' ? 'active' : ''}}"><a href="/myActiveRents">My
-                            Active
-                            rent(s)(auth)</a></div>
-
-                    <div class="{{Request::path()==='myPreviousRents' ? 'active' : ''}}"><a href="/myPreviousRents">My
-                            previous
-                            rents(auth)</a></div>
+                    <div class="{{Request::path()==='file' ? 'active' : ''}}"><a href="/file">file (auth)</a></div>
 
                     @endauth
 
 
                 </div>
+
+
 
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -137,7 +127,27 @@
                 </div>
 
             </div>
-            <div class="flex-containeradmin">
+            <div class="flex-containerauth">
+                <div class="{{Request::path()==='myserviceprogress' ? 'active' : ''}}"><a href="/myserviceprogress">My
+                        Service
+                        Progress(auth)</a>
+                </div>
+
+                <div class="{{Request::path()==='myoldservices' ? 'active' : ''}}"><a href="/myoldservices">My
+                        Old Services(auth)</a>
+                </div>
+
+                <div class="{{Request::path()==='myActiveRents' ? 'active' : ''}}"><a href="/myActiveRents">My
+                        Active
+                        rent(s)(auth)</a></div>
+
+                <div class="{{Request::path()==='myPreviousRents' ? 'active' : ''}}"><a href="/myPreviousRents">My
+                        previous
+                        rents(auth)</a></div>
+
+            </div>
+
+            <div class="flex-containerauth">
 
                 @role('serviceman')
                 <div class="{{Request::path()==='services' ? 'active' : ''}}"><a
@@ -154,6 +164,9 @@
                 @endrole
 
             </div>
+
+
+
             <div class="flex-containeradmin">
 
                 @role('super-admin')

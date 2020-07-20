@@ -28,10 +28,16 @@ $factory->define(Service::class, function (Faker $faker) {
 
         'failure_description' => $faker->sentence(),
 
-        'broughtIn_at' =>        $random,
-        'startedToService_at' => $random2,
-        'readyToTakeIt_at' =>   $random3,
-        'taken_at' =>          $faker->randomElement(["$random4", null]),
+        // 'broughtIn_at' =>        $random,
+        // 'startedToService_at' => $random2,
+        // 'readyToTakeIt_at' =>   $random3,
+        // 'taken_at' =>          $faker->randomElement(["$random4", null]),
+
+
+        'accepted' =>        $random,
+        'repairing' => $random2,
+        'ready' =>   $random3,
+        'taken' =>          $faker->randomElement(["$random4", null]),
 
 
         // 'broughtIn_at' => Carbon::yesterday(),
@@ -40,7 +46,8 @@ $factory->define(Service::class, function (Faker $faker) {
         // 'taken_at' => Carbon::now()->subDays(2),
 
         'notes' => $faker->sentence(),
-        'status' => $faker->randomElement(['accepted', 'repairing', 'ready', 'taken']),
+
+        //'status' => $faker->randomElement(['accepted', 'repairing', 'ready', 'taken']),
 
         //'isActive' => $faker->boolean(0),
 

@@ -70,10 +70,7 @@ class RentController extends Controller
         ->withInput()
              ->with('message', 'Rent Nr.'. $rent->id. '  has been created'); */
 
-
-
         //ver2
-
         $user = User::find(Auth::id());
         //dd($user);
         if (!$user) {
@@ -118,7 +115,7 @@ class RentController extends Controller
         // auth()->user()->notify(new newRentMade(Rent::findOrFail($id)));
 
 
-        return redirect()->route('bicyclesToRent.myActiveRents')
+        return redirect()->route('myactiverents')
 
             ->withInput()
                  ->with('message', 'Rent Nr.'. $rent->id. '  has been created');

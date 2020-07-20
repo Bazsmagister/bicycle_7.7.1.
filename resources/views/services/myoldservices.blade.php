@@ -22,23 +22,29 @@
             <li> Service ID: {{$service -> id }}</li>
         </div>
 
-        <li> Brought in :{{$service -> broughtIn_at }} </li>
+        {{-- <li> Brought in :{{$service -> broughtIn_at }} </li>
         <li> Started to service at : {{$service -> startedToService_at }} </li>
         <li> Ready to take it home :{{$service -> readyToTakeIt_at }} </li>
-        <li> Taken at :{{$service -> taken_at }} </li>
+        <li> Taken at :{{$service -> taken_at }} </li> --}}
+
+        <li> Brought in :{{$service -> accepted }} </li>
+        <li> Started to service at : {{$service -> repairing }} </li>
+        <li> Ready to take it home :{{$service -> ready }} </li>
+        <li> Taken at :{{$service -> taken }} </li>
 
         <li> Notes : {{$service -> notes }} </li>
-        <li> Status : {{$service -> status }} </li>
+        {{-- <li> Status : {{$service -> status }} </li> --}}
 
-        <div class="flexbox">
-            <div class="{{$service -> status ==='accepted' ? 'accepted' : 'boxes'}}" id="1">Accepted</div>
-            <div class="{{$service -> status ==='repairing' ? 'repairing' : 'boxes'}}" id="2">Repairing</div>
-            <div class="{{$service -> status ==='ready' ? 'ready' : 'boxes'}}" id="3">Ready</div>
-            <div class="{{$service -> status ==='taken' ? 'taken' : 'boxes'}}" id="4">Taken</div>
-        </div>
+        {{-- <div class="flexbox">
+            <div class="{{$service -> status ==='accepted' ? 'accepted' : 'boxes'}}" id="1">Accepted
+</div>
+<div class="{{$service -> status ==='repairing' ? 'repairing' : 'boxes'}}" id="2">Repairing</div>
+<div class="{{$service -> status ==='ready' ? 'ready' : 'boxes'}}" id="3">Ready</div>
+<div class="{{$service -> status ==='taken' ? 'taken' : 'boxes'}}" id="4">Taken</div>
+</div> --}}
 
-    </ul>
-    <hr>
+</ul>
+<hr>
 </div>
 
 @endforeach

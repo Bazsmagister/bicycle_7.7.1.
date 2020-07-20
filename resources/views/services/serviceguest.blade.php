@@ -3,7 +3,7 @@
 @section('content')
 
 <h3>
-    We repair you bicycle!
+    We repair your bicycle!
 </h3>
 
 <div>

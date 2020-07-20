@@ -67,6 +67,26 @@ use Illuminate\Support\Facades\Storage;
  });
 
 
+Route::get('file', function () {
+    $file = public_path('try.txt');
+    dump($file);
+    $fp = fopen($file, "r");
+    dump($fp);
+    $responsejson = file_get_contents($file);
+    dump($responsejson);
+    fclose($fp);
+    dump($fp); //Closed resource @8
+
+    // File handling example
+    // *****************
+    // $handle = fopen("/home/bazs/code/bicycle_7.7.1/public/try.txt", "r");
+    // dump($handle);
+    // $responsejson = file_get_contents("/home/bazs/code/bicycle_7.7.1/public/try.txt");
+    // dump($responsejson);
+    // fclose($handle);
+    // dump($handle); //Closed resource @8
+    //*******************
+});
 
 Route::get('/', function () {
     //Storage::put('text.txt', 'hello');
@@ -86,16 +106,6 @@ Route::get('/', function () {
 
     // dd($myRents);
 
-
-    // File handling example
-    // *****************
-    $handle = fopen("/home/bazs/code/bicycle_7.7.1/public/try.txt", "r");
-    dump($handle);
-    $responsejson = file_get_contents("/home/bazs/code/bicycle_7.7.1/public/try.txt");
-    dump($responsejson);
-    fclose($handle);
-    dump($handle); //Closed resource @8
-    //*******************
 
 
     echo(Inspiring::quote()), "\n";
@@ -276,9 +286,9 @@ Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']
 //Route::resource('bicycles', 'BicycleController');
 
 
-Route::get('myserviceprogress', 'BicycleToServiceController@myserviceprogress');
-Route::get('myoldservices', 'BicycleToServiceController@myoldservices');
-Route::get('myworkshop', 'BicycleToServiceController@myworkshop');
+Route::get('myserviceprogress', 'ServiceController@myserviceprogress');
+Route::get('myoldservices', 'ServiceController@myoldservices');
+Route::get('myworkshop', 'ServiceController@myworkshop');
 
 
 
@@ -336,7 +346,7 @@ Route::put('update_picture/{id}', 'UserController@update_picture')->name('update
 Route::resource('rents', 'RentController');
 
 Route::get('/myPreviousRents', 'UserController@myPreviousRents');
-Route::get('/myActiveRents', 'UserController@myActiveRents');
+Route::get('/myActiveRents', 'UserController@myActiveRents')->name('myactiverents');
 
 
 

@@ -24,7 +24,7 @@
             <tr>
                 {{-- <th scope="col" width="50%">id</th> --}}
                 <th scope="col">id</th>
-                <th scope="col">status</th>
+
                 <th scope="col">broughtIn_at</th>
                 <th scope="col">startedToService_at</th>
                 <th scope="col">Ready to take it</th>
@@ -37,11 +37,15 @@
 
             <tr>
                 <th scope="row">{{$service->id}}</th>
-                <td>{{$service->status}}</td>
-                <td>{{$service->broughtIn_at}}</td>
+
+                {{-- <td>{{$service->broughtIn_at}}</td>
                 <td>{{$service->startedToService_at}}</td>
                 <td>{{$service->readyToTakeIt_at}}</td>
-                <td>{{$service->taken_at}}</td>
+                <td>{{$service->taken_at}}</td> --}}
+                <td>{{$service->accepted}}</td>
+                <td>{{$service->repairing}}</td>
+                <td>{{$service->ready}}</td>
+                <td>{{$service->taken}}</td>
 
             </tr>
             @endforeach
@@ -55,7 +59,7 @@
             <tr>
                 {{-- <th scope="col" width="50%">id</th> --}}
                 <th scope="col">id</th>
-                <th scope="col">status</th>
+
                 <th scope="col">broughtIn_at</th>
                 <th scope="col">startedToService_at</th>
                 <th scope="col">Ready to take it</th>
@@ -68,11 +72,16 @@
 
             <tr>
                 <th scope="row">{{$service->id}}</th>
-                <td>{{$service->status}}</td>
-                <td>{{$service->broughtIn_at}}</td>
+
+                {{-- <td>{{$service->broughtIn_at}}</td>
                 <td>{{$service->startedToService_at}}</td>
                 <td>{{$service->readyToTakeIt_at}}</td>
-                <td>{{$service->taken_at}}</td>
+                <td>{{$service->taken_at}}</td> --}}
+
+                <td>{{$service->accepted}}</td>
+                <td>{{$service->repairing}}</td>
+                <td>{{$service->ready}}</td>
+                <td>{{$service->taken}}</td>
 
             </tr>
             @endforeach
@@ -89,14 +98,19 @@
 
         <li> Owner's ID :{{$service->user_id }} </li>
         <li> Owner's name :{{$service->user->name }} </li>
-        <li> Serviceman ID :{{$service -> serviceman_id }} </li>
-        <li> Brought in :{{$service -> broughtIn_at }} </li>
+        <li> Serviceman ID :{{$service ->serviceman_id }} </li>
+        {{-- <li> Brought in :{{$service -> broughtIn_at }} </li>
         <li> Started to service at : {{$service -> startedToService_at }} </li>
         <li> Ready to take it home :{{$service -> readyToTakeIt_at }} </li>
-        <li> Taken at :{{$service -> taken_at }} </li>
+        <li> Taken at :{{$service -> taken_at }} </li> --}}
+
+        <li> Brought in :{{$service -> accepted }} </li>
+        <li> Started to service at : {{$service -> repairing }} </li>
+        <li> Ready to take it home :{{$service -> ready }} </li>
+        <li> Taken at :{{$service -> taken }} </li>
 
         <li> Notes : {{$service -> notes }} </li>
-        <li> Status : {{$service -> status }} </li>
+        {{-- <li> Status : {{$service -> status }} </li> --}}
 
         <div class="flexbox">
             <div class="{{$service -> status ==='accepted' ? 'accepted' : 'boxes'}}" id="1">Accepted</div>
@@ -105,23 +119,15 @@
             <div class="{{$service -> status ==='taken' ? 'taken' : 'boxes'}}" id="4">Taken</div>
         </div>
 
-
         <a href="services/{{$service->id}} " class="btn btn-info">Show</a>
 
-
-
         <a href="services/{{$service->id}}/edit " class="btn btn-warning">Edit</a>
-
 
     </ul>
     <hr>
 </div>
 
-
-
 @endforeach
-
-
 
 @endauth
 

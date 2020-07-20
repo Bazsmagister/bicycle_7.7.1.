@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Service;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Notifications\newServiceCreated;
 
 class ServiceController extends Controller
@@ -56,10 +57,15 @@ class ServiceController extends Controller
 
             'failure_description' =>'string',
 
-            'broughtIn_at' =>'',
-            'startedToServiceIt_at' => '',
-            'readyToTakeIt_at' => '',
-            'taken_at' => '',
+            // 'broughtIn_at' =>'',
+            // 'startedToServiceIt_at' => '',
+            // 'readyToTakeIt_at' => '',
+            // 'taken_at' => '',
+
+             'accpeted' =>'',
+            'repairing' => '',
+            'ready' => '',
+            'taken' => '',
 
             'notes' => 'sometimes|string',
 
@@ -77,15 +83,25 @@ class ServiceController extends Controller
                 'failure_description' => $request ->failure_description,
                /*  'rentStarted_at' => Carbon::now(),
                 'rentEnds_at' => (Carbon::now()->addDay(1)), */
-                'broughtIn_at' => $request->broughtIn_at ?? Carbon::now(),
+                // 'broughtIn_at' => $request->broughtIn_at ?? Carbon::now(),
+                // // 'startedToService_at' =>  $request->startedToService_at ?? Carbon::now(),
+                // 'startedToService_at' =>  $request->startedToService_at ?? null,
+                // // 'readyToTakeIt_at' => $request->readyToTakeIt_at ?? Carbon::now()->addDay(2),
+                // 'readyToTakeIt_at' => $request->readyToTakeIt_at ?? null,
+                // 'taken_at' => $request->taken_at ?? null,
+
+                'accepted' => $request->accepted ?? Carbon::now(),
                 // 'startedToService_at' =>  $request->startedToService_at ?? Carbon::now(),
-                'startedToService_at' =>  $request->startedToService_at ?? null,
+                'repairing' =>  $request->repairing ?? null,
                 // 'readyToTakeIt_at' => $request->readyToTakeIt_at ?? Carbon::now()->addDay(2),
-                'readyToTakeIt_at' => $request->readyToTakeIt_at ?? null,
-                'taken_at' => $request->taken_at ?? null,
+                'ready' => $request->ready ?? null,
+                'taken' => $request->taken ?? null,
+
+
                 'notes' => $request->notes ?? 'No notes yet, everything has worked fine',
+
                 //'isActive' => $request->isActive,
-                'status' => $request ->status,
+                //'status' => $request ->status,
 
                 //'isActive' => '1',
 
@@ -170,15 +186,21 @@ class ServiceController extends Controller
 
         $service->failure_description = $request->input('failure_description');
 
-        $service->broughtIn_at = $request->input('broughtIn_at');
-        $service->startedToService_at = $request->input('startedToService_at');
-        $service->readyToTakeIt_at = $request->input('readyToTakeIt_at');
-        $service->taken_at = $request->input('taken_at');
+        // $service->broughtIn_at = $request->input('broughtIn_at');
+        // $service->startedToService_at = $request->input('startedToService_at');
+        // $service->readyToTakeIt_at = $request->input('readyToTakeIt_at');
+        // $service->taken_at = $request->input('taken_at');
+
+        $service->accepted = $request->input('accepted');
+        $service->repairing = $request->input('repairing');
+        $service->ready = $request->input('ready');
+        $service->taken = $request->input('taken');
+
 
         //$service->isActive = $request->input('isActive');
         $service->notes = $request->input('notes');
 
-        $service->status = $request->input('status');
+        //$service->status = $request->input('status');
 
 
         $service->save();
@@ -208,5 +230,86 @@ class ServiceController extends Controller
                 'message',
                 'Service instant successfully deleted'
             )->with('alert-class', 'alert-danger');
+    }
+
+    public function myserviceprogress()
+    {
+        // $bicycles_in_service = DB::select('select * from bicycles where is_serviceable = ?', [1]);
+        // return view('bicycleservice', compact('bicycles_in_service'));
+
+        $user_id = auth()->user()->id;
+        //echo($user_id);
+
+        // $myBicycleServiceProgress = DB::select('select * from services where user_id = ?', [$user_id]);
+        // print_r($myBicycleServiceProgress);
+
+        // $myBicycleServiceProgress = DB::whereRaw('select * from services, user_id = $user_id');
+        // print_r($myBicycleServiceProgress);
+
+        // $myBicycleServiceProgress = DB::table('users')->leftJoin('services', 'users.id', '=', 'services.user_id')->get();
+        // print_r($myBicycleServiceProgress);
+        // dd($myBicycleServiceProgress);
+
+        $myBicycleServiceProgress = DB::table('services')
+                                    ->where('user_id', [$user_id])
+                                    ->where('taken', null)
+                                    ->get();
+
+        //print_r($myBicycleServiceProgress);
+        //dd($myBicycleServiceProgress);
+
+        // return view('bicycleservice', compact('bicycles_in_service'));
+        return view('services.myserviceprogress', compact('myBicycleServiceProgress'));
+    }
+
+    public function myoldservices()
+    {
+        // $bicycles_in_service = DB::select('select * from bicycles where is_serviceable = ?', [1]);
+        // return view('bicycleservice', compact('bicycles_in_service'));
+
+        $user_id = auth()->user()->id;
+        //echo($user_id);
+
+        // $myBicycleServiceProgress = DB::select('select * from services where user_id = ?', [$user_id]);
+        // print_r($myBicycleServiceProgress);
+
+        // $myBicycleServiceProgress = DB::whereRaw('select * from services, user_id = $user_id');
+        // print_r($myBicycleServiceProgress);
+
+        // $myBicycleServiceProgress = DB::table('users')->leftJoin('services', 'users.id', '=', 'services.user_id')->get();
+        // print_r($myBicycleServiceProgress);
+        // dd($myBicycleServiceProgress);
+
+        // $myoldservices = DB::table('services')
+        //                             ->where('user_id', [$user_id])
+        //                             ->whereNot('taken', '!=', null)
+        //                             ->get();
+        $myoldservices = Service::where('user_id', [$user_id])
+                                    ->where('taken', '<>', null)
+                                    ->get();
+
+
+        //print_r($myBicycleServiceProgress);
+        //dd($myBicycleServiceProgress);
+
+        // return view('bicycleservice', compact('bicycles_in_service'));
+        return view('services.myoldservices', compact('myoldservices'));
+    }
+
+    public function myworkshop()
+    {
+        $id = auth()->user()->id;
+        //dd($id);
+
+        $mybicyclesneedtorepair = Service::with('user')->
+       // select('*')->
+        where('serviceman_id', $id)
+        ->get();
+
+        $needtorepaircount = $mybicyclesneedtorepair->count();
+        //dd($needtorepaircount);
+        //dd($mybicyclesneedtorepair);
+
+        return view('services.myworkshop', compact('mybicyclesneedtorepair', 'needtorepaircount'));
     }
 }

@@ -149,6 +149,7 @@ class BicycleToServiceController extends Controller
         // Set bike name
         $bicycleToService->name = $request->input('name');
         $bicycleToService->description = $request->input('description');
+        //not needed:
         $bicycleToService->workhours = $request->input('workhours');
 
 
@@ -178,65 +179,7 @@ class BicycleToServiceController extends Controller
             )->with('alert-class', 'alert-danger');
     }
 
-    public function myserviceprogress()
-    {
-        // $bicycles_in_service = DB::select('select * from bicycles where is_serviceable = ?', [1]);
-        // return view('bicycleservice', compact('bicycles_in_service'));
 
-        $user_id = auth()->user()->id;
-        //echo($user_id);
-
-        // $myBicycleServiceProgress = DB::select('select * from services where user_id = ?', [$user_id]);
-        // print_r($myBicycleServiceProgress);
-
-        // $myBicycleServiceProgress = DB::whereRaw('select * from services, user_id = $user_id');
-        // print_r($myBicycleServiceProgress);
-
-        // $myBicycleServiceProgress = DB::table('users')->leftJoin('services', 'users.id', '=', 'services.user_id')->get();
-        // print_r($myBicycleServiceProgress);
-        // dd($myBicycleServiceProgress);
-
-        $myBicycleServiceProgress = DB::table('services')
-                                    ->where('user_id', [$user_id])
-                                    ->where('isActive', '1')
-                                    ->get();
-
-        //print_r($myBicycleServiceProgress);
-        //dd($myBicycleServiceProgress);
-
-        // return view('bicycleservice', compact('bicycles_in_service'));
-        return view('services.myserviceprogress', compact('myBicycleServiceProgress'));
-    }
-
-    public function myoldservices()
-    {
-        // $bicycles_in_service = DB::select('select * from bicycles where is_serviceable = ?', [1]);
-        // return view('bicycleservice', compact('bicycles_in_service'));
-
-        $user_id = auth()->user()->id;
-        //echo($user_id);
-
-        // $myBicycleServiceProgress = DB::select('select * from services where user_id = ?', [$user_id]);
-        // print_r($myBicycleServiceProgress);
-
-        // $myBicycleServiceProgress = DB::whereRaw('select * from services, user_id = $user_id');
-        // print_r($myBicycleServiceProgress);
-
-        // $myBicycleServiceProgress = DB::table('users')->leftJoin('services', 'users.id', '=', 'services.user_id')->get();
-        // print_r($myBicycleServiceProgress);
-        // dd($myBicycleServiceProgress);
-
-        $myoldservices = DB::table('services')
-                                    ->where('user_id', [$user_id])
-                                    ->where('isActive', '0')
-                                    ->get();
-
-        //print_r($myBicycleServiceProgress);
-        //dd($myBicycleServiceProgress);
-
-        // return view('bicycleservice', compact('bicycles_in_service'));
-        return view('services.myoldservices', compact('myoldservices'));
-    }
 
     // public function myworkshop()
     // {
@@ -275,20 +218,5 @@ class BicycleToServiceController extends Controller
     //     return view('services.myworkshop', compact('mybicyclesneedtorepair'));
     // }
 
-    public function myworkshop()
-    {
-        $id = auth()->user()->id;
-        //dd($id);
 
-        $mybicyclesneedtorepair = Service::with('user')->
-       // select('*')->
-        where('serviceman_id', $id)
-        ->get();
-
-        $needtorepaircount = $mybicyclesneedtorepair->count();
-        //dd($needtorepaircount);
-        //dd($mybicyclesneedtorepair);
-
-        return view('services.myworkshop', compact('mybicyclesneedtorepair', 'needtorepaircount'));
-    }
 }

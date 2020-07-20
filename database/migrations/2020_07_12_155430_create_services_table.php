@@ -27,14 +27,20 @@ class CreateServicesTable extends Migration
             // default(Carbon::now());
             // default(Carbon::tomorrow());
 
-            $table->timestamp('broughtIn_at')->nullable();
-            $table->timestamp('startedToService_at')->nullable();
-            $table->timestamp('readyToTakeIt_at')->nullable();
-            $table->timestamp('taken_at')->nullable();
+            // $table->timestamp('broughtIn_at')->nullable();
+            // $table->timestamp('startedToService_at')->nullable();
+            // $table->timestamp('readyToTakeIt_at')->nullable();
+            // $table->timestamp('taken_at')->nullable();
+
+            $table->timestamp('accepted')->nullable();
+            $table->timestamp('repairing')->nullable();
+            $table->timestamp('ready')->nullable();
+            $table->timestamp('taken')->nullable();
+
 
             $table->string('notes')->nullable();
 
-            $table->enum('status', ['accepted','repairing','ready','taken'])->nullable();
+            //$table->enum('status', ['accepted','repairing','ready','taken'])->nullable();
 
             //$table->boolean('isActive')->nullable();
 

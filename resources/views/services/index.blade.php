@@ -16,10 +16,10 @@
                 <th scope="col">Bicycle id</th>
                 <th scope="col">Serviceman id</th>
                 <th scope="col">Failure description</th>
-                <th scope="col">Brought In at</th>
-                <th scope="col">Started To Service at</th>
-                <th scope="col">Ready To Take It_at</th>
-                <th scope="col">Taken at</th>
+                <th scope="col">Brought In at / accepted</th>
+                <th scope="col">Started To Service at repairing</th>
+                <th scope="col">Ready To Take It_at ready</th>
+                <th scope="col">Taken at taken</th>
                 <th scope="col">Notes</th>
                 <th scope="col">Status</th>
             </tr>
@@ -32,10 +32,14 @@
                 <td>{{ $service->bicycle_id}}</td>
                 <td>{{ $service->serviceman_id }}</td>
                 <td>{{ $service->failure_description}}</td>
-                <td>{{ $service->broughtIn_at}}</td>
+                <td>{{ $service->accepted}}</td>
+                <td>{{ $service->repairing }}</td>
+                <td>{{ $service->ready }}</td>
+                <td>{{ $service->taken }}</td>
+                {{-- <td>{{ $service->broughtIn_at}}</td>
                 <td>{{ $service->startedToService_at }}</td>
                 <td>{{ $service->readyToTakeIt_at }}</td>
-                <td>{{ $service->taken_at }}</td>
+                <td>{{ $service->taken_at }}</td> --}}
                 <td>{{ $service->notes }}</td>
                 <td>{{ $service->status }}</td>
                 <td><a href="services/{{$service->id}}/edit " class="btn btn-info">Edit</a>
@@ -77,12 +81,12 @@
         {{-- <img src="{{$service -> bicycle ->image}}" alt="interesting" width height> --}}
         <br>
 
-        <li> Brought in :{{$service  -> broughtIn_at }} </li>
-        <li> Started to service at : {{$service -> startedToService_at }} </li>
-        <li>Ready to take it at :{{$service -> readyToTakeIt_at }} </li>
-        <li> Taken at :{{$service  ->taken_at }} </li>
+        <li> Brought in :{{$service  -> accpeted }} </li>
+        <li> Started to service at : {{$service -> repairing }} </li>
+        <li>Ready to take it at :{{$service -> ready }} </li>
+        <li> Taken at :{{$service  ->taken }} </li>
         {{-- <li> Is Active: {{$service ->isActive }}</li> --}}
-        <li> Status: {{$service ->status }}</li>
+        //<li> Status: {{$service ->status }}</li>
 
         <div class="flexbox">
             <div class="{{$service -> status ==='accepted' ? 'accepted' : 'boxes'}}" id="1">Accepted</div>

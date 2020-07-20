@@ -3,12 +3,22 @@
 @section('content')
 
 <div style="padding-left: 20px">
-    <p>Brought In :
+
+    {{-- <p>Brought In :
         {{$service->broughtIn_at}} </p>
     <p>Start to service:
         {{$service->startedToService_at}} </p>
     <p> Ready to take it at :
-        {{$service->readyToTakeIt_at}} </p>
+        {{$service->readyToTakeIt_at}} </p> --}}
+
+    <p>Brought In :
+        {{$service->accepted}} </p>
+    <p>Start to service:
+        {{$service->repairing}} </p>
+    <p> Ready to take it at :
+        {{$service->ready}} </p>
+    <p> Taken :
+        {{$service->taken}} </p>
 
     <p> The User who owns the bicycle/ Owner's name :
         {{$service->user->name}} </p>
@@ -17,13 +27,20 @@
 
     <p> Notes: {{$service->notes}} </p>
 
-    <p> Status: {{$service->status}} </p>
+    //<p> Status: {{$service->status}} </p>
 
     <div class="flexbox">
         <div class="{{$service -> status ==='accepted' ? 'accepted' : 'boxes'}}" id="1">Accepted</div>
         <div class="{{$service -> status ==='repairing' ? 'repairing' : 'boxes'}}" id="2">Repairing</div>
         <div class="{{$service -> status ==='ready' ? 'ready' : 'boxes'}}" id="3">Ready</div>
         <div class="{{$service -> status ==='taken' ? 'taken' : 'boxes'}}" id="4">Taken</div>
+    </div>
+
+    <div class="flexbox">
+        <div class="{{$service -> accepted !=null ? 'accepted' : 'boxes'}}" id="1">Accepted</div>
+        <div class="{{$service -> repairing !=null ? 'repairing' : 'boxes'}}" id="2">Repairing</div>
+        <div class="{{$service -> ready !=null ? 'ready' : 'boxes'}}" id="3">Ready</div>
+        <div class="{{$service -> taken !=null ? 'taken' : 'boxes'}}" id="4">Taken</div>
     </div>
 
     {{-- <img src="{{$service->user->user_image}}" alt="image 0 should be here">
