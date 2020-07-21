@@ -354,4 +354,10 @@ class UserController extends Controller
 
         return view('services.create', compact('myid', 'foundname'));
     }
+
+    //XMLHttp try
+    public function toggleCategory()
+    {
+        return "done";
+    }
 }

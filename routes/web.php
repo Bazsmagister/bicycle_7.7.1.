@@ -385,10 +385,13 @@ Route::get('/mkuser/{c}', function ($c) {
 
 
 Route::get('/sendemail', function () {
-    Mail::raw('it works', function($message){
+    Mail::raw('it works', function ($message) {
         $message->to('info@hogyat.hu')->subject('Hello There');
     });
     return redirect()->back()->with('message', 'Email sent');
 
     //MAIL_MAILER=log
 });
+
+//XHRHTTPrequest
+Route::post('{user}/togglecategory', 'UserController@toggleCategory')->name('toggleCategory');

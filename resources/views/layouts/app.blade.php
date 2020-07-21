@@ -166,7 +166,6 @@
             </div>
 
 
-
             <div class="flex-containeradmin">
 
                 @role('super-admin')
@@ -182,6 +181,7 @@
                 <div class="admin"><a href="/mapWithKeys">UserNameDateMapWithKeys(admin)</a></div>
                 <div class="admin"><a href="/mkuser/5">Make 5 User(admin)</a></div>
                 <div class="admin"><a href="sendemail">Sendemail</a></div>
+                <div class="admin"><a href="https://mailtrap.io/">Mailtrap</a></div>
 
                 @endrole
 
