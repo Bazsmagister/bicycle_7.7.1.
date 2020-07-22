@@ -394,4 +394,4 @@ Route::get('/sendemail', function () {
 });
 
 //XHRHTTPrequest
-Route::post('{user}/togglecategory', 'UserController@toggleCategory')->name('toggleCategory');
+Route::post('users/{user}/togglecategory', 'UserController@toggleCategory')->name('toggleCategory');

@@ -182,6 +182,7 @@
                 <div class="admin"><a href="/mkuser/5">Make 5 User(admin)</a></div>
                 <div class="admin"><a href="sendemail">Sendemail</a></div>
                 <div class="admin"><a href="https://mailtrap.io/">Mailtrap</a></div>
+                <div class="admin"><a href="users/5">XMLHttp example</a></div>
 
                 @endrole
 

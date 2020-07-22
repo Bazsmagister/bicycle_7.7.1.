@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Response;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class UserController extends Controller
@@ -358,6 +359,20 @@ class UserController extends Controller
     //XMLHttp try
     public function toggleCategory()
     {
-        return "done";
+        //dd($request);
+        //$categories = $request->input('categories');
+
+        $categories = request('categories');
+        // dump($categories);
+        echo($categories);
+
+        $resp = response()->json();
+        echo($resp);
+        dump($resp);
+        var_dump($resp);
+
+        // dd($resp);
+
+        //"done";
     }
 }
