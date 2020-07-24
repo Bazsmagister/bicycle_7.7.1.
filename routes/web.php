@@ -1,10 +1,13 @@
 
 <?php
 
+use App\Rent;
 use App\User;
 use App\Helpers;
 use App\Events\BicycleUpdated;
-use App\Http\Controllers\UserController;
+
+
+use App\Events\aRentHasBeenEnded;
 use App\Notifications\rentIsOver;
 use Illuminate\Foundation\Inspiring;
 use Illuminate\Support\Facades\Auth;
@@ -13,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 use Symfony\Component\Process\Process;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -76,9 +80,19 @@ Route::get('/', function () {
 // });
 
  Route::get('eventupdate', function () {
-     //BicycleUpdated::dispatch();
+     BicycleUpdated::dispatch();
      //same as
      event(new BicycleUpdated);
+     event(new aRentHasBeenEnded());
+     event(new aRentHasBeenEnded);
+
+     aRentHasBeenEnded::dispatch();
+     //event(new OrderShipped($order));
+
+
+     return view('welcome');
+
+     //check app\storage\logs\laravel.log
  });
 
 
@@ -133,6 +147,7 @@ Route::get('/', function () {
  });
 
  Route::get('helper', function () {
+     //dd('test');
      myCustomHelper();
  });
 
