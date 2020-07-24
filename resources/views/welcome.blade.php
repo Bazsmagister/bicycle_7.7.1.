@@ -185,9 +185,10 @@
         <div class="links">
             <a href="/bicyclesToSell">New bicycles</a>
             <a href="/bicyclesToRent">Rent-a-bicycle</a>
-            @auth
-            <a href="/serviceguest">Service</a>
-            @endauth
+
+            <a href="/serviceguest">Service (guest)</a>
+            <a href="{{ url('serviceguest')}}">Service (guest v2)</a>
+
         </div>
         <br>
         @guest

@@ -127,6 +127,7 @@
                 </div>
 
             </div>
+            @auth
             <div class="flex-containerauth">
                 <div class="{{Request::path()==='myserviceprogress' ? 'active' : ''}}"><a href="/myserviceprogress">My
                         Service
@@ -146,7 +147,9 @@
                         rents(auth)</a></div>
 
             </div>
+            @endauth
 
+            @auth
             <div class="flex-containerauth">
 
                 @role('serviceman')
@@ -164,8 +167,9 @@
                 @endrole
 
             </div>
+            @endauth
 
-
+            @auth
             <div class="flex-containeradmin">
 
                 @role('super-admin')
@@ -189,7 +193,7 @@
                 @endrole
 
             </div>
-
+            @endauth
         </nav>
 
         <main class="py-4">

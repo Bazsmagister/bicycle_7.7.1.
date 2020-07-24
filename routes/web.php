@@ -373,9 +373,19 @@ Route::get('indexrentable', 'BicycleToRentController@indexrentable');
 
 Route::resource('bicyclesToService', 'BicycleToServiceController');
 
-Route::get('serviceguest', function () {
-    return view('services.serviceguest');
-});
+//If your route only needs to return a view, you may use the Route::view method.
+//Like the redirect method, this method provides a simple shortcut so that you do not have to define a full route or controller.
+//The view method accepts a URI as its first argument and a view name as its second argument.
+//In addition, you may provide an array of data to pass to the view as an optional third argument:
+            //v1
+            Route::view('serviceguest', 'services.serviceguest');
+
+            //v2
+            // Route::get('serviceguest', function () {
+            //     return view('services.serviceguest');
+            // });
+            //in view:
+            //<a href="{{ url('serviceguest')}}">Service (guest v2)</a>
 
 
 //it works with (int) before $c:
