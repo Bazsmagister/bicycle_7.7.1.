@@ -25,31 +25,74 @@ use Illuminate\Support\Facades\Storage;
 |
 */
 
+//Login as an exclusive user:
+//Auth::loginUsingId(5);
+// auth()->loginUsingId(1);
+// auth()->loginUsingId(2);
+// auth()->loginUsingId(3);
+// auth()->loginUsingId(4);
+// auth()->loginUsingId(5);
+//auth()->loginUsingId(6);
 
-Route::get('/loginasauth', function () {
-    $user = User::find(5);
-    dump($user);
-    //Auth::logout();
+Route::get('/', function () {
+    //echo php_ini_loaded_file();
+    echo "\n";
 
-    Auth::login($user);
-    dump('login');
-    dump(auth()->user()->id);
+    Storage::put('text.txt', 'hello');
 
-    //it shows view, but it doesn't show anything else. Doesn't work!
-    return view('home');
+    echo(Inspiring::quote()), "\n";
 
-    //Doesn't work:
-    //return redirect()->route('myactiverents');
-    //return redirect()->back();
+    $result = shell_exec("python " . storage_path() . "/python/python.py 2>&1"); //this works
+    echo($result);
 
+    $result2 = shell_exec("python " . public_path() . "/storage/python/python.py 2>&1"); //this works too
+    echo($result2);
 
-    //auth()->loginUsingId(4);
+    //On Linux works,
+    //$command ='python C:/Users/Legion/code/bicycle_7.7.1/public/storage/python/python.py'; //need python
+    //$command ='python '. public_path() . "/storage/python/python.py"; //need python
+    //DD($command);
+    //$proc = Process::fromShellCommandline($command, null, [])->mustRun()->getOutput(); //getErrorOutput();
+    //echo $proc;
+
+    //On win 10  not works
+    /*     $process = new Process(['python ', 'C:/Users/Legion/code/bicycle_7.7.1/public/storage/python/python.py']);
+        //dd($process);
+        echo $process->mustRun()->getOutput();
+        var_dump($process->getOutput()); */
+    //echo $process->getOutput();
+
+    // dump(Inspiring::quote());
+    // echo(Inspiring::quote());
+    // var_dump(Inspiring::quote());
+    // print_r(Inspiring::quote());
+
+    return view('welcome');
 });
 
 
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+
+ Route::get('eventupdate', function () {
+     //BicycleUpdated::dispatch();
+     //same as
+     event(new BicycleUpdated);
+ });
+
+
+     Route::get('/randomnames', function () {
+         $names = collect(explode(',', 'michael, esther, peace, elvira'));
+         dump($names);
+         $names = explode(',', 'michael, esther, peace, elvira');
+         $names = collect($names);
+         dump($names);
+         $rand = $names->random();
+         dd($rand);
+     });
+
+
 
 //   DB::listen(function ($query) {
 //       var_dump($query->sql, $query->bindings);
@@ -194,63 +237,7 @@ Route::get('notifications', function () {
 });
 
 
-Route::get('/', function () {
-    echo php_ini_loaded_file();
-    echo "\n";
 
-    Storage::put('text.txt', 'hello');
-
-    echo(Inspiring::quote()), "\n";
-
-    $result = shell_exec("python " . storage_path() . "/python/python.py 2>&1"); //this works
-    echo($result);
-
-    $result2 = shell_exec("python " . public_path() . "/storage/python/python.py 2>&1"); //this works too
-    echo($result2);
-
-    //$command ="python ".public_path() . "/storage/python/python.py";
-    //$command ="python ".public_path() . "\storage\python\python.py";
-    //$command =public_path() . "\storage\python\python.py";
-
-    //On Linux works,
-    //$command ='python C:/Users/Legion/code/bicycle_7.7.1/public/storage/python/python.py'; //need python
-    //$command ='python '. public_path() . "/storage/python/python.py"; //need python
-    //DD($command);
-    //$proc = Process::fromShellCommandline($command, null, [])->mustRun()->getOutput(); //getErrorOutput();
-    //echo $proc;
-
-
-    //On win 10  not works
-    /*     $process = new Process(['python ', 'C:/Users/Legion/code/bicycle_7.7.1/public/storage/python/python.py']);
-        //dd($process);
-        echo $process->mustRun()->getOutput();
-        var_dump($process->getOutput()); */
-    //echo $process->getOutput();
-
-    // dump(Inspiring::quote());
-    // echo(Inspiring::quote());
-    // var_dump(Inspiring::quote());
-    // print_r(Inspiring::quote());
-
-
-
-    //$names = collect(explode(',', 'michael, esther, peace'));
-    /*  $names = explode(',', 'michael, esther, peace');
-     $names = collect($names);
-     //dd($names);
-     $rand = $names->random();
-     dd($rand); */
-    ////////////////////////
-
-
-
-    //BicycleUpdated::dispatch();
-
-    //same as
-    // event(new BicycleUpdated);
-
-    return view('welcome');
-});
 
 
 // Route::get('user/{id}', 'UserController@show');
@@ -427,3 +414,23 @@ Route::get('/sendemail', function () {
 
 //XHRHTTPrequest
 Route::post('users/{user}/togglecategory', 'UserController@toggleCategory')->name('toggleCategory');
+
+
+Route::get('/loginasauth', function () {
+    $user = User::find(5);
+    dump($user);
+    //Auth::logout();
+
+    Auth::login($user);
+    //auth()->loginUsingId(5);
+
+    dump('login');
+    dump(auth()->user()->id);
+
+    //it shows view, but it doesn't show anything else. Doesn't work!
+    return view('home');
+
+    //Doesn't work:
+    //return redirect()->route('myactiverents');
+    //return redirect()->back();
+});
