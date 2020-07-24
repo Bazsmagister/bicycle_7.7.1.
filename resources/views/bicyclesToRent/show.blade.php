@@ -12,6 +12,7 @@
     <p> Rent Price /24h :
         {{$bicycleToRent->rent_price}} Ft</p>
 
+    <p> Available : {{ $bicycleToRent->is_availableToRent}}</p>
     <p> Image :
         @role('super-admin')
         {{$bicycleToRent->image}}

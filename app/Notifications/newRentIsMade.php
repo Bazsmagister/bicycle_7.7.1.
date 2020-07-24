@@ -54,6 +54,8 @@ class newRentIsMade extends Notification
                     //->action('Notification Action', url('/'))
                     ->line('You rent expires at :')
 
+
+
                     ->line('Thank you for using our application! Enjoy your trip :)');
 
 

@@ -48,7 +48,8 @@
                     <div class="{{Request::path()==='bicyclesToRent' ? 'active' : ''}}"><a href="/bicyclesToRent">Our
                             bicycles to rent (all)</a></div>
 
-                    <div class="{{Request::path()==='indexrentable' ? 'active' : ''}}"><a href="/indexrentable">Our
+                    <div class="{{Request::path()==='indexavailabletorent' ? 'active' : ''}}"><a
+                            href="/indexavailabletorent">Available
                             bicycles to rent (just available)</a></div>
 
                     @auth
@@ -58,6 +59,9 @@
 
 
                     <div class="{{Request::path()==='file' ? 'active' : ''}}"><a href="/file">file (auth)</a></div>
+                    <div class="{{Request::path()==='notifications' ? 'active' : ''}}"><a
+                            href="/notifications">Notifications (auth)</a></div>
+
 
                     @endauth
 
@@ -182,13 +186,20 @@
                 <div class='admin'><a href="/services">Services(serviceman, admin)</a></div>
                 <div class="admin"><a href="/services/create">Create new service</a>
                 </div>
-                <div class='admin'><a href="/mail">Mail(admin)</a></div>
+                <div class='admin'><a href="/mailservice">Mail new Service created(admin)</a></div>
+                <div class='admin'><a href="/mailrent">Mail new Rent created(admin)</a></div>
 
                 <div class="admin"><a href="/mapWithKeys">UserNameDateMapWithKeys(admin)</a></div>
                 <div class="admin"><a href="/mkuser/5">Make 5 User(admin)</a></div>
-                <div class="admin"><a href="sendemail">Sendemail</a></div>
+                <div class="admin"><a href="sendemail">Sendemail Mail::raw to mailtrap</a></div>
                 <div class="admin"><a href="https://mailtrap.io/">Mailtrap</a></div>
                 <div class="admin"><a href="users/5">XMLHttp example</a></div>
+                <div class="admin"><a href="/log">Log</a></div>
+                <div class="admin"><a href="/helper">custom helper</a></div>
+                <div class="admin"><a href="/notifications">notifications</a></div>
+                <div class="admin"><a href="/dates">dates</a></div>
+                <div class="admin"><a href="/maxuser">maxuser</a></div>
+                <div class="admin"><a href="/loginasauth">loginasauth</a></div>
 
                 @endrole
 
@@ -210,20 +221,7 @@
             </p>
             @endif
 
-
-
             @yield('content')
-
-            {{--
-            @yield('contentuser')
-            @yield('contentindex')
-            @yield('contentsell')
-            @yield('contentrent')
-            @yield('contentservice')
-            @yield('bicycles_to_create')
-            @yield('bicycle_edit')
-            @yield('logged_in')
-            @yield('rents_edit') --}}
 
         </main>
 

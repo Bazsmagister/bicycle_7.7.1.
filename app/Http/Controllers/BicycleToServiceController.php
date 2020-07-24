@@ -178,45 +178,4 @@ class BicycleToServiceController extends Controller
                 'Bike successfully deleted'
             )->with('alert-class', 'alert-danger');
     }
-
-
-
-    // public function myworkshop()
-    // {
-    //     $id = auth()->user()->id;
-    //     //dd($id);
-
-    //     //$bicycle = Bicycle::findOrFail($bicycle);
-
-    //     $mybicyclesneedtorepair = DB::table('services')->
-    //    // select('*')->
-    //     where('serviceman_id', $id)
-    //     ->get();
-
-    //     $needtorepaircount = $mybicyclesneedtorepair->count();
-    //     //dd($needtorepaircount);
-    //     //dd($mybicyclesneedtorepair);
-
-    //     return view('services.myworkshop', compact('mybicyclesneedtorepair', 'needtorepaircount'));
-    // }
-
-    // public function myworkshop()
-    // {
-    //     $id = auth()->user()->id;
-    //     //dd($id);
-
-    //     //$bicycle = Bicycle::findOrFail($bicycle);
-
-    //     $mybicyclesneedtorepair0 = collect(DB::select('select * from services'));
-    //     //dd($mybicyclesneedtorepair);
-
-    //     // select('*')->
-    //     $mybicyclesneedtorepair =
-    //     $mybicyclesneedtorepair0  ->where('serviceman_id', $id);
-    //     //dd($mybicyclesneedtorepair);
-
-    //     return view('services.myworkshop', compact('mybicyclesneedtorepair'));
-    // }
-
-
 }

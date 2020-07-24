@@ -25,6 +25,28 @@ use Illuminate\Support\Facades\Storage;
 |
 */
 
+
+Route::get('/loginasauth', function () {
+    $user = User::find(5);
+    dump($user);
+    //Auth::logout();
+
+    Auth::login($user);
+    dump('login');
+    dump(auth()->user()->id);
+
+    //it shows view, but it doesn't show anything else. Doesn't work!
+    return view('home');
+
+    //Doesn't work:
+    //return redirect()->route('myactiverents');
+    //return redirect()->back();
+
+
+    //auth()->loginUsingId(4);
+});
+
+
 // Route::get('/', function () {
 //     return view('welcome');
 // });
@@ -51,20 +73,59 @@ use Illuminate\Support\Facades\Storage;
  });
 
  //it gives a view about the mail.
- Route::get('mail', function () {
-
-    //  $rent = App\Rent::latest()->first();
-     //  // $rent = App\Rent::find(30);
-     //  dd($rent);
-     //  return (new App\Notifications\newRentIsMade($rent))
-     //             ->toMail($rent->user);
-
-
+ Route::get('mailservice', function () {
      $service = App\Service::latest()->first();
-     dd($service);
+     dump($service);
+     //dd($service);
      return (new App\Notifications\newServiceCreated($service))
                 ->toMail($service->user);
  });
+
+ Route::get('mailrent', function () {
+     $rent = App\Rent::latest()->first();
+     // $rent = App\Rent::find(30);
+     dump($rent);
+     return (new App\Notifications\newRentIsMade($rent))
+                 ->toMail($rent->user);
+ });
+
+ Route::get('helper', function () {
+     myCustomHelper();
+ });
+
+  Route::get('maxuser', function () {
+      $maxValue = App\User::max('id');
+      dump($maxValue);
+      echo($maxValue);
+      var_dump($maxValue);
+      print_r($maxValue);
+  });
+
+
+ Route::get('dates', function () {
+     $now= date('Y-m-d');
+     $dateStart = date('Y-m-d', strtotime('-5 year'));
+     $dateEnd = date('Y-m-d');
+     dump($now, $dateStart, $dateEnd);
+
+     echo strtotime("now"), "\n";
+     echo strtotime("10 September 2000"), "\n";
+     echo strtotime("+1 day"), "\n";
+     echo strtotime("+1 week"), "\n";
+     echo strtotime("+1 week 2 days 4 hours 2 seconds"), "\n";
+     echo strtotime("next Thursday"), "\n";
+     echo strtotime("last Monday"), "\n";
+
+     echo date("jS F, Y", strtotime("11.12.10"));
+     // outputs 10th December, 2011
+
+     echo date("jS F, Y", strtotime("11/12/10"));
+     // outputs 12th November, 2010
+
+     echo date("jS F, Y", strtotime("11-12-10"));
+     // outputs 11th December, 2010
+ });
+
 
 
 Route::get('file', function () {
@@ -88,25 +149,56 @@ Route::get('file', function () {
     //*******************
 });
 
+Route::get('log ', function () {
+    $logfilename = 'cron_'. now()->format('Y_m_d') . '.txt';
+    dump($logfilename);
+    $fp = fopen($logfilename, "w") or die("Unable to open file!");
+    dump($fp);
+    $txt = "This need to be written in the file...\n";
+    fwrite($fp, $txt);
+    $txt='new text';
+    fwrite($fp, $txt);
+
+    $responsejson = file_get_contents($logfilename);
+    dump($responsejson);
+    fclose($fp);
+    dump($fp); //Closed resource @8
+});
+
+Route::get('notifications', function () {
+
+    // $user = App\User::find(1);
+    // dump($user);
+    // foreach ($user->notifications as $notification) {
+    //     echo $notification->type;
+    // }
+
+
+    $user = auth()->user();
+
+    foreach ($user->unreadNotifications as $notification) {
+        echo $notification ->type;
+        echo("\n");
+        echo $notification ->id;
+
+        echo $notification ->read_at;
+        //echo $notification->data;
+
+        dump($notification);
+        echo $notification ->created_at;
+        echo "Expires: ";
+        echo $notification->data['expires'];
+        echo $notification->data['link'];
+        echo $notification->data['data2'];
+    }
+});
+
+
 Route::get('/', function () {
-    //Storage::put('text.txt', 'hello');
+    echo php_ini_loaded_file();
+    echo "\n";
 
-    /*   auth()->loginUsingId(1);
-     $myRents =auth()->user()->rents;
-     //dd($myRents);
-     foreach ($myRents as $myRent) {
-         echo $myRent->rentStarted_at, "\n";
-         echo $myRent->created_at, "\n";
-         echo $myRent->bicycle_id;
-     } */
-
-    /*   echo $myRents->rentStarted_at;
-      echo $myRents->created_at;
-      echo $myRents->bicycle_id; */
-
-    // dd($myRents);
-
-
+    Storage::put('text.txt', 'hello');
 
     echo(Inspiring::quote()), "\n";
 
@@ -141,50 +233,6 @@ Route::get('/', function () {
     // print_r(Inspiring::quote());
 
 
-    /*    $logfilename = 'cron_'. now()->format('Y_m_d') . '.txt';
-       dump($logfilename); */
-
-
-
-    // $user = App\User::find(1);
-    // //dd($user);
-    // foreach ($user->notifications as $notification) {
-    //     echo $notification->type;
-    // }
-
-    //$user = App\User::find(1);
-    /*   $user = auth()->user();
-
-
-      foreach ($user->unreadNotifications as $notification) {
-          echo $notification ->type;
-          echo $notification ->id;
-
-          //echo $notification ->keytype;
-          //echo $notification['table'];
-
-          //dd($notification);
-          echo $notification ->created_at;
-          // echo $notification->data['expires'];
-          echo $notification->data['link'];
-          echo $notification->data['data2']; */
-
-
-    // echo $notification->data['data'] -> ['link'];
-    //}
-
-
-    //auth()->loginUsingId(1);
-
-
-    //echo php_ini_loaded_file();
-    // $now= date('Y-m-d');
-    // $dateStart = date('Y-m-d', strtotime('-5 year'));
-
-    // $dateEnd = date('Y-m-d');
-    // dump($now, $dateStart, $dateEnd);
-
-    // myCustomHelper();
 
     //$names = collect(explode(',', 'michael, esther, peace'));
     /*  $names = explode(',', 'michael, esther, peace');
@@ -193,25 +241,7 @@ Route::get('/', function () {
      $rand = $names->random();
      dd($rand); */
     ////////////////////////
-    // echo strtotime("now"), "\n";
-    // echo strtotime("10 September 2000"), "\n";
-    // echo strtotime("+1 day"), "\n";
-    // echo strtotime("+1 week"), "\n";
-    // echo strtotime("+1 week 2 days 4 hours 2 seconds"), "\n";
-    // echo strtotime("next Thursday"), "\n";
-    // echo strtotime("last Monday"), "\n";
 
-    // echo date("jS F, Y", strtotime("11.12.10"));
-    // // outputs 10th December, 2011
-
-    // echo date("jS F, Y", strtotime("11/12/10"));
-    // // outputs 12th November, 2010
-
-    // echo date("jS F, Y", strtotime("11-12-10"));
-    // // outputs 11th December, 2010
-
-    // $maxValue = App\User::max('id');
-    // dd($maxValue);
 
 
     //BicycleUpdated::dispatch();
@@ -251,8 +281,6 @@ Route::post('bicyclesToSell/showmethesellablebike', 'BicycleToSellController@sho
 
 
 
-
-
 Route::get('indexDeletedAlso', 'UserController@indexDeletedAlso');
 
  Route::get('OnlyDeletedUsers', 'UserController@onlyDeletedUsers');
@@ -272,18 +300,6 @@ Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']
     \UniSharp\LaravelFilemanager\Lfm::routes();
 });
 
-
-//Route::resource('users', 'UserController');
-
-
-//Route::get('service', 'BicycleController@service');
-
-
-// Route::get('newbikes', 'BicycleController@buy');
-// Route::get('newbikes', 'BicycleController@buy');
-
-
-//Route::resource('bicycles', 'BicycleController');
 
 
 Route::get('myserviceprogress', 'ServiceController@myserviceprogress');
@@ -349,7 +365,6 @@ Route::get('/myPreviousRents', 'UserController@myPreviousRents');
 Route::get('/myActiveRents', 'UserController@myActiveRents')->name('myactiverents');
 
 
-
 // Route::get('autocomplete', 'UserController@autocomplete')->name('autocomplete');
 // Route::get('autocompletebike', 'BicycleController@autocompletebike')->name('autocompletebike');
 
@@ -369,7 +384,9 @@ Route::resource('bicyclesToSell', 'BicycleToSellController');
 // Route::resource('bicycles_to_sell', 'BicycleToSellController');
 
 Route::resource('bicyclesToRent', 'BicycleToRentController');
-Route::get('indexrentable', 'BicycleToRentController@indexrentable');
+//Route::get('indexrentable', 'BicycleToRentController@indexrentable');
+Route::get('indexavailabletorent', 'BicycleToRentController@indexavailabletorent');
+
 
 Route::resource('bicyclesToService', 'BicycleToServiceController');
 
@@ -381,11 +398,16 @@ Route::resource('bicyclesToService', 'BicycleToServiceController');
             Route::view('serviceguest', 'services.serviceguest');
 
             //v2
-            // Route::get('serviceguest', function () {
-            //     return view('services.serviceguest');
-            // });
+            Route::get('serviceguest', function () {
+                return view('services.serviceguest');
+            });
             //in view:
             //<a href="{{ url('serviceguest')}}">Service (guest v2)</a>
+
+            //v3 with named route
+             Route::get('serviceguest', function () {
+                 return view('services.serviceguest');
+             })->name('serviceguest');
 
 
 //it works with (int) before $c:
