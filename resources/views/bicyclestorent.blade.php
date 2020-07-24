@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('contentrent')
+@section('content')
 
 <div class="id">
     @if (count($rentable_bicycles) == 0)

@@ -176,6 +176,8 @@
                 <div class='admin'><a href="/indexDeletedAlso">Users index Deleted Also(admin) |</a></div>
                 <div class='admin'><a href="/OnlyDeletedUsers">OnlyDeletedUsers |</a></div>
                 <div class='admin'><a href="/services">Services(serviceman, admin)</a></div>
+                <div class="admin"><a href="/services/create">Create new service</a>
+                </div>
                 <div class='admin'><a href="/mail">Mail(admin)</a></div>
 
                 <div class="admin"><a href="/mapWithKeys">UserNameDateMapWithKeys(admin)</a></div>
@@ -192,10 +194,12 @@
 
         <main class="py-4">
 
+            {{-- option 1 --}}
             @if(Session::has('message'))
             <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('message') }}</p>
             @endif
 
+            {{-- option 2 --}}
             @if (session('message'))
             <p class="alert {{ Session::get('alert-class', 'alert-info') }}">
                 {{ session('message') }}
@@ -205,6 +209,8 @@
 
 
             @yield('content')
+
+            {{--
             @yield('contentuser')
             @yield('contentindex')
             @yield('contentsell')
@@ -213,7 +219,7 @@
             @yield('bicycles_to_create')
             @yield('bicycle_edit')
             @yield('logged_in')
-            @yield('rents_edit')
+            @yield('rents_edit') --}}
 
         </main>
 

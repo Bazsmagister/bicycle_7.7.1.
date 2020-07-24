@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('contentindex')
+@section('content')
 <div class="text-center">
     {!! $bicycles->links() !!}
 </div>

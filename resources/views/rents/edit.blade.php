@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('rents_edit')
+@section('content')
 
 @auth
 <div>

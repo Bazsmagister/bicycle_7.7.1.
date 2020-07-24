@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('contentservice')
+@section('content')
 
 @auth
 

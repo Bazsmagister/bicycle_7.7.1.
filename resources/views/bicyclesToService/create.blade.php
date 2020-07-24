@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @include('errors._errors')
-@section('bicycles_to_create')
+@section('content')
 
 @auth
 <div>

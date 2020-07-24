@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('contentservice')
+@section('content')
 
 @hasanyrole('super-admin|serviceman|salesman')
 <p>has any role</p>
