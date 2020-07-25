@@ -8,6 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+
     {{-- in config/app.php --}}
     <title>{{ config('app.name', 'Bicycle_7.1.1') }}</title>
 
@@ -60,8 +61,10 @@
 
                     <div class="{{Request::path()==='file' ? 'active' : ''}}"><a href="/file">file (auth)</a></div>
                     <div class="{{Request::path()==='notifications' ? 'active' : ''}}"><a
-                            href="/notifications">Notifications (auth)</a></div>
+                            href="/notifications">Notifications(auth) </a></div>
 
+                    <div class="{{Request::path()==='eventupdate' ? 'active' : ''}}"><a href="/eventupdate">
+                            eventupdate</a></div>
 
                     @endauth
 
@@ -201,7 +204,7 @@
                 <div class="admin"><a href="/maxuser">maxuser</a></div>
                 <div class="admin"><a href="/loginasauth">loginasauth</a></div>
                 <div class="admin"><a href="/randomnames">randomnames</a></div>
-                <div class="admin"><a href="/eventupdate">eventupdate</a></div>
+
 
                 @endrole
 

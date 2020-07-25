@@ -80,17 +80,21 @@ Route::get('/', function () {
 // });
 
  Route::get('eventupdate', function () {
-     BicycleUpdated::dispatch();
-     //same as
-     event(new BicycleUpdated);
-     event(new aRentHasBeenEnded());
-     event(new aRentHasBeenEnded);
+     event(new aRentHasBeenEnded('your rent has been ended'));
 
-     aRentHasBeenEnded::dispatch();
+
+
+     //  BicycleUpdated::dispatch();
+     //  //same as
+     //  event(new BicycleUpdated);
+     //  event(new aRentHasBeenEnded());
+     //  event(new aRentHasBeenEnded);
+
+     //  aRentHasBeenEnded::dispatch();
      //event(new OrderShipped($order));
 
 
-     return view('welcome');
+     return view('event');
 
      //check app\storage\logs\laravel.log
  });

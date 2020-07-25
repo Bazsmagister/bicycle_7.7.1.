@@ -19,9 +19,16 @@ class aRentHasBeenEnded implements ShouldBroadcast
      *
      * @return void
      */
-    public function __construct()
+    // public function __construct()
+    // {
+    //     //
+    // }
+
+    public $message;
+
+    public function __construct($message)
     {
-        //
+        $this->message = $message;
     }
 
     /**
@@ -31,6 +38,16 @@ class aRentHasBeenEnded implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return new PrivateChannel('channel-name');
+        //return ['my-channel'];
+
+        return new Channel('my-channel');
+
+        //return new PrivateChannel('channel-name');
     }
+
+    // public function broadcastAs()
+    // {
+    //     //return 'my-event';
+    //     return 'aRentHasBeenEnded';
+    // }
 }
