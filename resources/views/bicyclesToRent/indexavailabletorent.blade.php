@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="id">
-    @if (count($rentable_bicycles) == 0)
+    @if (count($bicycles) == 0)
     <p>
         Sorry, we are out of stock, come back later
     </p>
@@ -18,7 +18,7 @@
 
     <hr>
     <p>
-        Rentable bicycles number : {{ count($rentable_bicycles) }}
+        Rentable bicycles number : {{ count($bicycles) }}
         {{-- Rentable bicycles number z: {{ count(array($rentable_bicycles)) }} --}}
     </p>
     <hr>
@@ -32,7 +32,7 @@
 {{-- {{ count(array($rentable_bicycles)) }} --}}
 
 
-@foreach ($rentable_bicycles as $bicycle)
+@foreach ($bicycles as $bicycle)
 <div class="container">
     {{-- {{ count($rentable_bicycles) }} --}}
 
@@ -56,8 +56,8 @@
         <li>{{$bicycle -> name }} </li>
         <li>{{$bicycle -> description }} </li>
         <li>{{$bicycle -> rent_price }} Ft/day </li>
-        <li>{{$bicycle -> is_rentable }} </li>
-        <li>{{$bicycle -> is_availableToRent }} </li>
+
+        <li>Available? : {{$bicycle -> is_availableToRent }} </li>
         <img src="{{$bicycle->image}}" alt="interesting" width="150" height="120">
 
         {{-- <img src="/storage/bic.png" alt="a bicycle png"> --}}
@@ -66,7 +66,7 @@
         @auth
 
         <div>
-            <a href="bicycles/{{$bicycle->id}}" class="btn btn-info">Show</a>
+            <a href="bicyclesToRent/{{$bicycle->id}}" class="btn btn-info">Show</a>
         </div>
 
         <br>
@@ -88,13 +88,14 @@
         @else
         <div>
             <button class='button btn-info' onclick="alert('Please login or register to rent this bicycle')">Rent
-                that bicycle</button>
+                that bicycle(alert)</button>
 
             <button class='button btn-info' onclick="swal('Please login or register to rent this bicycle')">Rent
-                that bicycle</button>
+                that bicycle(swal)</button>
 
-            Why doesn't work this when I don't use script tag?->
-            <button id='alertbutton' class='button btn-info' onclick="pleaseLogin()">Rent that bicycle</button>
+            Why doesn't work this, when I don't use script tag?->
+            <button id='alertbutton' class='button btn-info' onclick="pleaseLogin()">Rent that bicycle(both alert
+                type)</button>
 
             {{-- <button class='button btn-info' onClick="pleaseLogin()" disabled>Rent that bicycle</button> --}}
         </div>
@@ -115,17 +116,27 @@
 
 
 @endforeach
-@if($rentable_bicycles->count() == 0)
+@if($bicycles->count() == 0)
 <p>Sorry, we are out of stock, come back later :(</p>
 @else
 <p>Everything is fine, our business is booming!!!</p>
 @endif
 
-
 </div>
-@endsection
 
+<script>
+    var path = "{{ route('autocompleteBikeToRent') }}";
+    // $('input.typeahead').typeahead({  //works with class
+    $('#autocomplete').typeahead({       //works with id
+        source:  function (query, process) {
+        return $.get(path, { query: query }, function (data) {
+                 return process(data);
+                //  return data;
+            });
+        }
+    });
 
+</script>
 
 
 <script>
@@ -137,3 +148,5 @@
     alert("Please login or register to use this function");
     }
 </script>
+
+@endsection

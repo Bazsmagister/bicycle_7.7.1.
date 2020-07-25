@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('contentsell')
+@section('content')
 
 All the bicycles to sell.
 

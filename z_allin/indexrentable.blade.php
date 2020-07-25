@@ -88,13 +88,14 @@
         @else
         <div>
             <button class='button btn-info' onclick="alert('Please login or register to rent this bicycle')">Rent
-                that bicycle</button>
+                that bicycle(alert)</button>
 
             <button class='button btn-info' onclick="swal('Please login or register to rent this bicycle')">Rent
-                that bicycle</button>
+                that bicycle(swal)</button>
 
-            Why doesn't work this when I don't use script tag?->
-            <button id='alertbutton' class='button btn-info' onclick="pleaseLogin()">Rent that bicycle</button>
+            Why doesn't work this, when I don't use script tag?->
+            <button id='alertbutton' class='button btn-info' onclick="pleaseLogin()">Rent that bicycle(both alert
+                type)</button>
 
             {{-- <button class='button btn-info' onClick="pleaseLogin()" disabled>Rent that bicycle</button> --}}
         </div>

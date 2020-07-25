@@ -1,10 +1,13 @@
 
 <?php
 
+use App\Rent;
 use App\User;
 use App\Helpers;
 use App\Events\BicycleUpdated;
-use App\Http\Controllers\UserController;
+
+
+use App\Events\aRentHasBeenEnded;
 use App\Notifications\rentIsOver;
 use Illuminate\Foundation\Inspiring;
 use Illuminate\Support\Facades\Auth;
@@ -13,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 use Symfony\Component\Process\Process;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,9 +29,88 @@ use Illuminate\Support\Facades\Storage;
 |
 */
 
+//Login as an exclusive user:
+//Auth::loginUsingId(5);
+// auth()->loginUsingId(1);
+// auth()->loginUsingId(2);
+// auth()->loginUsingId(3);
+// auth()->loginUsingId(4);
+// auth()->loginUsingId(5);
+//auth()->loginUsingId(6);
+
+Route::get('/', function () {
+    //echo php_ini_loaded_file();
+    echo "\n";
+
+    Storage::put('text.txt', 'hello');
+
+    echo(Inspiring::quote()), "\n";
+
+    $result = shell_exec("python " . storage_path() . "/python/python.py 2>&1"); //this works
+    echo($result);
+
+    $result2 = shell_exec("python " . public_path() . "/storage/python/python.py 2>&1"); //this works too
+    echo($result2);
+
+    //On Linux works,
+    //$command ='python C:/Users/Legion/code/bicycle_7.7.1/public/storage/python/python.py'; //need python
+    //$command ='python '. public_path() . "/storage/python/python.py"; //need python
+    //DD($command);
+    //$proc = Process::fromShellCommandline($command, null, [])->mustRun()->getOutput(); //getErrorOutput();
+    //echo $proc;
+
+    //On win 10  not works
+    /*     $process = new Process(['python ', 'C:/Users/Legion/code/bicycle_7.7.1/public/storage/python/python.py']);
+        //dd($process);
+        echo $process->mustRun()->getOutput();
+        var_dump($process->getOutput()); */
+    //echo $process->getOutput();
+
+    // dump(Inspiring::quote());
+    // echo(Inspiring::quote());
+    // var_dump(Inspiring::quote());
+    // print_r(Inspiring::quote());
+
+    return view('welcome');
+});
+
+
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+
+ Route::get('eventupdate', function () {
+     event(new aRentHasBeenEnded('your rent has been ended'));
+
+
+
+     //  BicycleUpdated::dispatch();
+     //  //same as
+     //  event(new BicycleUpdated);
+     //  event(new aRentHasBeenEnded());
+     //  event(new aRentHasBeenEnded);
+
+     //  aRentHasBeenEnded::dispatch();
+     //event(new OrderShipped($order));
+
+
+     return view('event');
+
+     //check app\storage\logs\laravel.log
+ });
+
+
+     Route::get('/randomnames', function () {
+         $names = collect(explode(',', 'michael, esther, peace, elvira'));
+         dump($names);
+         $names = explode(',', 'michael, esther, peace, elvira');
+         $names = collect($names);
+         dump($names);
+         $rand = $names->random();
+         dd($rand);
+     });
+
+
 
 //   DB::listen(function ($query) {
 //       var_dump($query->sql, $query->bindings);
@@ -51,20 +134,60 @@ use Illuminate\Support\Facades\Storage;
  });
 
  //it gives a view about the mail.
- Route::get('mail', function () {
-
-    //  $rent = App\Rent::latest()->first();
-     //  // $rent = App\Rent::find(30);
-     //  dd($rent);
-     //  return (new App\Notifications\newRentIsMade($rent))
-     //             ->toMail($rent->user);
-
-
+ Route::get('mailservice', function () {
      $service = App\Service::latest()->first();
-     dd($service);
+     dump($service);
+     //dd($service);
      return (new App\Notifications\newServiceCreated($service))
                 ->toMail($service->user);
  });
+
+ Route::get('mailrent', function () {
+     $rent = App\Rent::latest()->first();
+     // $rent = App\Rent::find(30);
+     dump($rent);
+     return (new App\Notifications\newRentIsMade($rent))
+                 ->toMail($rent->user);
+ });
+
+ Route::get('helper', function () {
+     //dd('test');
+     myCustomHelper();
+ });
+
+  Route::get('maxuser', function () {
+      $maxValue = App\User::max('id');
+      dump($maxValue);
+      echo($maxValue);
+      var_dump($maxValue);
+      print_r($maxValue);
+  });
+
+
+ Route::get('dates', function () {
+     $now= date('Y-m-d');
+     $dateStart = date('Y-m-d', strtotime('-5 year'));
+     $dateEnd = date('Y-m-d');
+     dump($now, $dateStart, $dateEnd);
+
+     echo strtotime("now"), "\n";
+     echo strtotime("10 September 2000"), "\n";
+     echo strtotime("+1 day"), "\n";
+     echo strtotime("+1 week"), "\n";
+     echo strtotime("+1 week 2 days 4 hours 2 seconds"), "\n";
+     echo strtotime("next Thursday"), "\n";
+     echo strtotime("last Monday"), "\n";
+
+     echo date("jS F, Y", strtotime("11.12.10"));
+     // outputs 10th December, 2011
+
+     echo date("jS F, Y", strtotime("11/12/10"));
+     // outputs 12th November, 2010
+
+     echo date("jS F, Y", strtotime("11-12-10"));
+     // outputs 11th December, 2010
+ });
+
 
 
 Route::get('file', function () {
@@ -88,139 +211,52 @@ Route::get('file', function () {
     //*******************
 });
 
-Route::get('/', function () {
-    //Storage::put('text.txt', 'hello');
+Route::get('log ', function () {
+    $logfilename = 'cron_'. now()->format('Y_m_d') . '.txt';
+    dump($logfilename);
+    $fp = fopen($logfilename, "w") or die("Unable to open file!");
+    dump($fp);
+    $txt = "This need to be written in the file...\n";
+    fwrite($fp, $txt);
+    $txt='new text';
+    fwrite($fp, $txt);
 
-    /*   auth()->loginUsingId(1);
-     $myRents =auth()->user()->rents;
-     //dd($myRents);
-     foreach ($myRents as $myRent) {
-         echo $myRent->rentStarted_at, "\n";
-         echo $myRent->created_at, "\n";
-         echo $myRent->bicycle_id;
-     } */
+    $responsejson = file_get_contents($logfilename);
+    dump($responsejson);
+    fclose($fp);
+    dump($fp); //Closed resource @8
+});
 
-    /*   echo $myRents->rentStarted_at;
-      echo $myRents->created_at;
-      echo $myRents->bicycle_id; */
-
-    // dd($myRents);
-
-
-
-    echo(Inspiring::quote()), "\n";
-
-    $result = shell_exec("python " . storage_path() . "/python/python.py 2>&1"); //this works
-    echo($result);
-
-    $result2 = shell_exec("python " . public_path() . "/storage/python/python.py 2>&1"); //this works too
-    echo($result2);
-
-    //$command ="python ".public_path() . "/storage/python/python.py";
-    //$command ="python ".public_path() . "\storage\python\python.py";
-    //$command =public_path() . "\storage\python\python.py";
-
-    //On Linux works,
-    //$command ='python C:/Users/Legion/code/bicycle_7.7.1/public/storage/python/python.py'; //need python
-    //$command ='python '. public_path() . "/storage/python/python.py"; //need python
-    //DD($command);
-    //$proc = Process::fromShellCommandline($command, null, [])->mustRun()->getOutput(); //getErrorOutput();
-    //echo $proc;
-
-
-    //On win 10  not works
-    /*     $process = new Process(['python ', 'C:/Users/Legion/code/bicycle_7.7.1/public/storage/python/python.py']);
-        //dd($process);
-        echo $process->mustRun()->getOutput();
-        var_dump($process->getOutput()); */
-    //echo $process->getOutput();
-
-    // dump(Inspiring::quote());
-    // echo(Inspiring::quote());
-    // var_dump(Inspiring::quote());
-    // print_r(Inspiring::quote());
-
-
-    /*    $logfilename = 'cron_'. now()->format('Y_m_d') . '.txt';
-       dump($logfilename); */
-
-
+Route::get('notifications', function () {
 
     // $user = App\User::find(1);
-    // //dd($user);
+    // dump($user);
     // foreach ($user->notifications as $notification) {
     //     echo $notification->type;
     // }
 
-    //$user = App\User::find(1);
-    /*   $user = auth()->user();
 
+    $user = auth()->user();
 
-      foreach ($user->unreadNotifications as $notification) {
-          echo $notification ->type;
-          echo $notification ->id;
+    foreach ($user->unreadNotifications as $notification) {
+        echo $notification ->type;
+        echo("\n");
+        echo $notification ->id;
 
-          //echo $notification ->keytype;
-          //echo $notification['table'];
+        echo $notification ->read_at;
+        //echo $notification->data;
 
-          //dd($notification);
-          echo $notification ->created_at;
-          // echo $notification->data['expires'];
-          echo $notification->data['link'];
-          echo $notification->data['data2']; */
-
-
-    // echo $notification->data['data'] -> ['link'];
-    //}
-
-
-    //auth()->loginUsingId(1);
-
-
-    //echo php_ini_loaded_file();
-    // $now= date('Y-m-d');
-    // $dateStart = date('Y-m-d', strtotime('-5 year'));
-
-    // $dateEnd = date('Y-m-d');
-    // dump($now, $dateStart, $dateEnd);
-
-    // myCustomHelper();
-
-    //$names = collect(explode(',', 'michael, esther, peace'));
-    /*  $names = explode(',', 'michael, esther, peace');
-     $names = collect($names);
-     //dd($names);
-     $rand = $names->random();
-     dd($rand); */
-    ////////////////////////
-    // echo strtotime("now"), "\n";
-    // echo strtotime("10 September 2000"), "\n";
-    // echo strtotime("+1 day"), "\n";
-    // echo strtotime("+1 week"), "\n";
-    // echo strtotime("+1 week 2 days 4 hours 2 seconds"), "\n";
-    // echo strtotime("next Thursday"), "\n";
-    // echo strtotime("last Monday"), "\n";
-
-    // echo date("jS F, Y", strtotime("11.12.10"));
-    // // outputs 10th December, 2011
-
-    // echo date("jS F, Y", strtotime("11/12/10"));
-    // // outputs 12th November, 2010
-
-    // echo date("jS F, Y", strtotime("11-12-10"));
-    // // outputs 11th December, 2010
-
-    // $maxValue = App\User::max('id');
-    // dd($maxValue);
-
-
-    //BicycleUpdated::dispatch();
-
-    //same as
-    // event(new BicycleUpdated);
-
-    return view('welcome');
+        dump($notification);
+        echo $notification ->created_at;
+        echo "Expires: ";
+        echo $notification->data['expires'];
+        echo $notification->data['link'];
+        echo $notification->data['data2'];
+    }
 });
+
+
+
 
 
 // Route::get('user/{id}', 'UserController@show');
@@ -251,8 +287,6 @@ Route::post('bicyclesToSell/showmethesellablebike', 'BicycleToSellController@sho
 
 
 
-
-
 Route::get('indexDeletedAlso', 'UserController@indexDeletedAlso');
 
  Route::get('OnlyDeletedUsers', 'UserController@onlyDeletedUsers');
@@ -272,18 +306,6 @@ Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']
     \UniSharp\LaravelFilemanager\Lfm::routes();
 });
 
-
-//Route::resource('users', 'UserController');
-
-
-//Route::get('service', 'BicycleController@service');
-
-
-// Route::get('newbikes', 'BicycleController@buy');
-// Route::get('newbikes', 'BicycleController@buy');
-
-
-//Route::resource('bicycles', 'BicycleController');
 
 
 Route::get('myserviceprogress', 'ServiceController@myserviceprogress');
@@ -349,7 +371,6 @@ Route::get('/myPreviousRents', 'UserController@myPreviousRents');
 Route::get('/myActiveRents', 'UserController@myActiveRents')->name('myactiverents');
 
 
-
 // Route::get('autocomplete', 'UserController@autocomplete')->name('autocomplete');
 // Route::get('autocompletebike', 'BicycleController@autocompletebike')->name('autocompletebike');
 
@@ -369,13 +390,30 @@ Route::resource('bicyclesToSell', 'BicycleToSellController');
 // Route::resource('bicycles_to_sell', 'BicycleToSellController');
 
 Route::resource('bicyclesToRent', 'BicycleToRentController');
-Route::get('indexrentable', 'BicycleToRentController@indexrentable');
+//Route::get('indexrentable', 'BicycleToRentController@indexrentable');
+Route::get('indexavailabletorent', 'BicycleToRentController@indexavailabletorent');
+
 
 Route::resource('bicyclesToService', 'BicycleToServiceController');
 
-Route::get('serviceguest', function () {
-    return view('services.serviceguest');
-});
+//If your route only needs to return a view, you may use the Route::view method.
+//Like the redirect method, this method provides a simple shortcut so that you do not have to define a full route or controller.
+//The view method accepts a URI as its first argument and a view name as its second argument.
+//In addition, you may provide an array of data to pass to the view as an optional third argument:
+            //v1
+            Route::view('serviceguest', 'services.serviceguest');
+
+            //v2
+            Route::get('serviceguest', function () {
+                return view('services.serviceguest');
+            });
+            //in view:
+            //<a href="{{ url('serviceguest')}}">Service (guest v2)</a>
+
+            //v3 with named route
+             Route::get('serviceguest', function () {
+                 return view('services.serviceguest');
+             })->name('serviceguest');
 
 
 //it works with (int) before $c:
@@ -395,3 +433,23 @@ Route::get('/sendemail', function () {
 
 //XHRHTTPrequest
 Route::post('users/{user}/togglecategory', 'UserController@toggleCategory')->name('toggleCategory');
+
+
+Route::get('/loginasauth', function () {
+    $user = User::find(5);
+    dump($user);
+    //Auth::logout();
+
+    Auth::login($user);
+    //auth()->loginUsingId(5);
+
+    dump('login');
+    dump(auth()->user()->id);
+
+    //it shows view, but it doesn't show anything else. Doesn't work!
+    return view('home');
+
+    //Doesn't work:
+    //return redirect()->route('myactiverents');
+    //return redirect()->back();
+});

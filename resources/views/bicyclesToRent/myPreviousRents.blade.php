@@ -2,6 +2,7 @@
 
 @section ('content')
 
+<h3>My previous rent(s)</h3>
 <ul>
     @foreach ($myRents as $myRent)
 

@@ -8,6 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+
     {{-- in config/app.php --}}
     <title>{{ config('app.name', 'Bicycle_7.1.1') }}</title>
 
@@ -48,7 +49,8 @@
                     <div class="{{Request::path()==='bicyclesToRent' ? 'active' : ''}}"><a href="/bicyclesToRent">Our
                             bicycles to rent (all)</a></div>
 
-                    <div class="{{Request::path()==='indexrentable' ? 'active' : ''}}"><a href="/indexrentable">Our
+                    <div class="{{Request::path()==='indexavailabletorent' ? 'active' : ''}}"><a
+                            href="/indexavailabletorent">Available
                             bicycles to rent (just available)</a></div>
 
                     @auth
@@ -58,6 +60,11 @@
 
 
                     <div class="{{Request::path()==='file' ? 'active' : ''}}"><a href="/file">file (auth)</a></div>
+                    <div class="{{Request::path()==='notifications' ? 'active' : ''}}"><a
+                            href="/notifications">Notifications(auth) </a></div>
+
+                    <div class="{{Request::path()==='eventupdate' ? 'active' : ''}}"><a href="/eventupdate">
+                            eventupdate</a></div>
 
                     @endauth
 
@@ -127,6 +134,7 @@
                 </div>
 
             </div>
+            @auth
             <div class="flex-containerauth">
                 <div class="{{Request::path()==='myserviceprogress' ? 'active' : ''}}"><a href="/myserviceprogress">My
                         Service
@@ -146,7 +154,9 @@
                         rents(auth)</a></div>
 
             </div>
+            @endauth
 
+            @auth
             <div class="flex-containerauth">
 
                 @role('serviceman')
@@ -164,8 +174,9 @@
                 @endrole
 
             </div>
+            @endauth
 
-
+            @auth
             <div class="flex-containeradmin">
 
                 @role('super-admin')
@@ -176,44 +187,46 @@
                 <div class='admin'><a href="/indexDeletedAlso">Users index Deleted Also(admin) |</a></div>
                 <div class='admin'><a href="/OnlyDeletedUsers">OnlyDeletedUsers |</a></div>
                 <div class='admin'><a href="/services">Services(serviceman, admin)</a></div>
-                <div class='admin'><a href="/mail">Mail(admin)</a></div>
+                <div class="admin"><a href="/services/create">Create new service</a>
+                </div>
+                <div class='admin'><a href="/mailservice">Mail new Service created(admin)</a></div>
+                <div class='admin'><a href="/mailrent">Mail new Rent created(admin)</a></div>
 
                 <div class="admin"><a href="/mapWithKeys">UserNameDateMapWithKeys(admin)</a></div>
                 <div class="admin"><a href="/mkuser/5">Make 5 User(admin)</a></div>
-                <div class="admin"><a href="sendemail">Sendemail</a></div>
+                <div class="admin"><a href="sendemail">Sendemail Mail::raw to mailtrap</a></div>
                 <div class="admin"><a href="https://mailtrap.io/">Mailtrap</a></div>
                 <div class="admin"><a href="users/5">XMLHttp example</a></div>
+                <div class="admin"><a href="/log">Log</a></div>
+                <div class="admin"><a href="/helper">custom helper</a></div>
+                <div class="admin"><a href="/notifications">notifications</a></div>
+                <div class="admin"><a href="/dates">dates</a></div>
+                <div class="admin"><a href="/maxuser">maxuser</a></div>
+                <div class="admin"><a href="/loginasauth">loginasauth</a></div>
+                <div class="admin"><a href="/randomnames">randomnames</a></div>
+
 
                 @endrole
 
             </div>
-
+            @endauth
         </nav>
 
         <main class="py-4">
 
+            {{-- option 1 --}}
             @if(Session::has('message'))
             <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('message') }}</p>
             @endif
 
+            {{-- option 2 --}}
             @if (session('message'))
             <p class="alert {{ Session::get('alert-class', 'alert-info') }}">
                 {{ session('message') }}
             </p>
             @endif
 
-
-
             @yield('content')
-            @yield('contentuser')
-            @yield('contentindex')
-            @yield('contentsell')
-            @yield('contentrent')
-            @yield('contentservice')
-            @yield('bicycles_to_create')
-            @yield('bicycle_edit')
-            @yield('logged_in')
-            @yield('rents_edit')
 
         </main>
 

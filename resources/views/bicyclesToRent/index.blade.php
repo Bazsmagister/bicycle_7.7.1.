@@ -56,7 +56,7 @@
         <li>{{$bicycle -> name }} </li>
         <li>{{$bicycle -> description }} </li>
         <li>{{$bicycle -> rent_price }} Ft</li>
-        <li> Rentable? {{$bicycle -> is_availableToRent }} </li>
+        <li> Available? : {{$bicycle -> is_availableToRent }} </li>
         <img src="/storage/{{$bicycle->image}}" alt="no pic yet..." width="70" height="50">
 
         <img src="/storage/{{$bicycle->image}}" alt="a bicycle png" width="80" height="60">

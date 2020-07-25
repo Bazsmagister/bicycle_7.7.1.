@@ -60,7 +60,7 @@
             /* background-size: 1355px 940px; */
 
 
-            /* The position prop spec the type ofpositining meth u for an el (static, relative, absolute, fixed, or sticky). */
+            /* The position prop spec the type of positining meth u for an el (static, relative, absolute, fixed, or sticky). */
             position: relative;
 
             /* z-index: -1; */
@@ -185,9 +185,11 @@
         <div class="links">
             <a href="/bicyclesToSell">New bicycles</a>
             <a href="/bicyclesToRent">Rent-a-bicycle</a>
-            @auth
-            <a href="/serviceguest">Service</a>
-            @endauth
+
+            <a href="/serviceguest">Service (guest)</a>
+            <a href="{{ url('serviceguest')}}">Service (guest v2)</a>
+            <a href="{{ route('serviceguest') }}">Service (guest v3)</a>
+
         </div>
         <br>
         @guest
