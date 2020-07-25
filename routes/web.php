@@ -17,6 +17,9 @@ use Symfony\Component\Process\Process;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\UserController;
+use Illuminate\Filesystem\FilesystemManager;
+
+//use League\Flysystem\Filesystem;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,6 +51,17 @@ Route::get('stor', function () {
     Storage::makeDirectory('uploaded/release/'.$reference);
 
     $directory = "/images"; //public/storage/IMAGES
+
+    echo dirname($directory) . PHP_EOL;
+
+    print_r(dirname($directory) . PHP_EOL);
+
+    //\Log::info(Storage::dirname($directory));
+    //print_r(Storage::dirname($directory));
+
+    //$dirs = Storage::dirname($directory);
+    //dd($dirs);
+
 
     $files = Storage::files($directory);
     //var_dump($files);
