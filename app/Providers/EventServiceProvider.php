@@ -2,10 +2,12 @@
 
 namespace App\Providers;
 
+use App\Events\NewUser;
+use Illuminate\Support\Facades\Event;
 use Illuminate\Auth\Events\Registered;
+use App\Listeners\NewUserAdminNotification;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
-use Illuminate\Support\Facades\Event;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -20,11 +22,15 @@ class EventServiceProvider extends ServiceProvider
         'App\Listeners\EmailToRentUser',
     ],
 
-     'App\Events\BicycleUpdated ' => [
-        'App\Listeners\EmailToOwner',
-    ],
 
-    aRentHasBeenMade::class => [RentListener::class]
+
+    aRentHasBeenMade::class => [RentListener::class],
+
+     NewUser::class => [NewUserAdminNotification::class],
+
+    //   \App\Events\NewUser::class => [
+    //         \App\Listeners\NewUserAdminNotification::class,
+    //     ],
 
 
     // [Registered::class => [
@@ -46,8 +52,10 @@ class EventServiceProvider extends ServiceProvider
         //
     }
 
-    //this wasn't here: 
-    public function shouldDiscoverEvents(){
+
+    //this wasn't here:
+    public function shouldDiscoverEvents()
+    {
         return true;
     }
 }

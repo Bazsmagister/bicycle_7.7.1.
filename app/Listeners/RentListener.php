@@ -26,6 +26,8 @@ class RentListener
      */
     public function handle(aRentHasBeenMade $event)
     {
-        var_dump('check for new rents');
+
+        //var_dump('check for new rents');
+        dump('check for new rents');
     }
 }

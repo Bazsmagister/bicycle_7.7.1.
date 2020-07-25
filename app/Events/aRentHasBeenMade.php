@@ -2,13 +2,14 @@
 
 namespace App\Events;
 
+use App\Rent;
 use Illuminate\Broadcasting\Channel;
-use Illuminate\Broadcasting\InteractsWithSockets;
-use Illuminate\Broadcasting\PresenceChannel;
-use Illuminate\Broadcasting\PrivateChannel;
-use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
-use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Broadcasting\PrivateChannel;
+use Illuminate\Broadcasting\PresenceChannel;
+use Illuminate\Foundation\Events\Dispatchable;
+use Illuminate\Broadcasting\InteractsWithSockets;
+use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
 class aRentHasBeenMade
 {
@@ -23,6 +24,12 @@ class aRentHasBeenMade
     {
         //
     }
+
+    //    public function __construct(Rent $rent)
+    // {
+    //     //
+    //     $this->rent = $rent;
+    // }
 
     /**
      * Get the channels the event should broadcast on.

@@ -4,9 +4,9 @@
 use App\Rent;
 use App\User;
 use App\Helpers;
+use App\Events\NewUser;
 use App\Events\BicycleUpdated;
-
-
+use App\Events\aRentHasBeenMade;
 use App\Events\aRentHasBeenEnded;
 use App\Notifications\rentIsOver;
 use Illuminate\Foundation\Inspiring;
@@ -80,8 +80,13 @@ Route::get('/', function () {
 // });
 
  Route::get('eventupdate', function () {
+     event(new aRentHasBeenMade('new rent'));
+
      event(new aRentHasBeenEnded('your rent has been ended'));
 
+     event(new NewUser());
+
+     NewUser::dispatch();
 
 
      //  BicycleUpdated::dispatch();

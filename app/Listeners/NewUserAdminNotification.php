@@ -2,11 +2,11 @@
 
 namespace App\Listeners;
 
-use App\Events\BicycleUpdated;
+use App\Events\NewUser;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 
-class EmailToOwner
+class NewUserAdminNotification
 {
     /**
      * Create the event listener.
@@ -21,12 +21,12 @@ class EmailToOwner
     /**
      * Handle the event.
      *
-     * @param  BicycleUpdated  $event
+     * @param  NewUser  $event
      * @return void
      */
-    public function handle(BicycleUpdated $event)
+    public function handle(NewUser $event)
     {
         //
-        dd('test');
+        dump('new User created');
     }
 }

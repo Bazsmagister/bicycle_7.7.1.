@@ -27,6 +27,6 @@ class EmailToRentUser
     public function handle(aRentHasBeenEnded $event)
     {
         //
-        dd('test');
+        dump('a rent has been ended');
     }
 }
