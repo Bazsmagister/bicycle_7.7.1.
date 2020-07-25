@@ -137,7 +137,7 @@ Route::get('/', function () {
 
      event(new aRentHasBeenEnded('your rent has been ended'));
 
-     event(new NewUser());
+     //event(new NewUser());
 
      NewUser::dispatch();
 

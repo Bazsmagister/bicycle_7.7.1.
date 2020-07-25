@@ -11,7 +11,7 @@ use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
-class aRentHasBeenMade
+class aRentHasBeenMade implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
@@ -38,6 +38,7 @@ class aRentHasBeenMade
      */
     public function broadcastOn()
     {
-        return new PrivateChannel('channel-name');
+        //return new PrivateChannel('channel-name');
+        return new Channel('my-channel');
     }
 }
