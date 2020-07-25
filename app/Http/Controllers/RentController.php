@@ -9,6 +9,7 @@ use App\Bicycle;
 use Carbon\Carbon;
 use App\BicycleToRent;
 use Illuminate\Http\Request;
+use App\Events\aRentHasBeenMade;
 use App\Notifications\rentIsOver;
 use App\Notifications\newRentIsMade;
 use Illuminate\Support\Facades\Auth;
@@ -96,6 +97,8 @@ class RentController extends Controller
         $bicycle->is_availableToRent = 0;
         $bicycle->save();
 
+        aRentHasBeenMade::dispatch();
+        //aRentHasBeenMade::dispatchNow();  //Call to undefined method App\Events\aRentHasBeenMade::dispatchNow() 
 
         //$user= auth()->user();
 

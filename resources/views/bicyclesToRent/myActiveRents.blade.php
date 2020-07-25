@@ -4,8 +4,10 @@
 
 <h3>My active rent(s)</h3>
 
+
+@foreach ($myRents as $myRent)
 <ul>
-    @foreach ($myRents as $myRent)
+
 
 
     <li>
@@ -34,8 +36,9 @@
         <p>Rent closed? : {{$myRent->is_closed}} </p>
     </li>
     <hr>
-    @endforeach
+
 </ul>
+@endforeach
 
 
 @endsection

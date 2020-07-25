@@ -235,7 +235,8 @@
     <footer>
         <div class="footer">
             <div class="titlefooter">
-                <h1>Footer Title</h1>
+                <h5>Made by Bazsmagister <?php echo date("Y"); ?></h5>
+                <p></p>
             </div>
         </div>
     </footer>

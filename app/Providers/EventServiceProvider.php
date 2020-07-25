@@ -24,6 +24,8 @@ class EventServiceProvider extends ServiceProvider
         'App\Listeners\EmailToOwner',
     ],
 
+    aRentHasBeenMade::class => [RentListener::class]
+
 
     // [Registered::class => [
     //         SendEmailVerificationNotification::class,],
@@ -42,5 +44,10 @@ class EventServiceProvider extends ServiceProvider
         parent::boot();
 
         //
+    }
+
+    //this wasn't here: 
+    public function shouldDiscoverEvents(){
+        return true;
     }
 }
