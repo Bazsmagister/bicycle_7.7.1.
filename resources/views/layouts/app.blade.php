@@ -66,6 +66,9 @@
                     <div class="{{Request::path()==='eventupdate' ? 'active' : ''}}"><a href="/eventupdate">
                             eventupdate</a></div>
 
+                    <div class="{{Request::path()==='stor' ? 'active' : ''}}"><a href="/stor">
+                            stor</a></div>
+
                     @endauth
 
 
@@ -160,8 +163,8 @@
             <div class="flex-containerauth">
 
                 @role('serviceman')
-                <div class="{{Request::path()==='services' ? 'active' : ''}}"><a
-                        href="/services">Services(serviceman)</a></div>
+                <div class="{{Request::path()==='services' ? 'active' : ''}}"><a href="/services">All
+                        Services(serviceman)</a></div>
                 <div class="{{Request::path()==='myworkshop' ? 'active' : ''}}"><a
                         href="/myworkshop">Service/myWorkshop($serviceman)</a>
                 </div>
@@ -220,11 +223,11 @@
             @endif
 
             {{-- option 2 --}}
-            @if (session('message'))
+            {{-- @if (session('message'))
             <p class="alert {{ Session::get('alert-class', 'alert-info') }}">
-                {{ session('message') }}
+            {{ session('message') }}
             </p>
-            @endif
+            @endif --}}
 
             @yield('content')
 

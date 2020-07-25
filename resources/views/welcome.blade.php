@@ -191,6 +191,8 @@
             <a href="{{ route('serviceguest') }}">Service (guest v3)</a>
 
         </div>
+
+
         <br>
         @guest
         <li class="list-inline-item">
@@ -209,7 +211,9 @@
         <div class="links">
             <p>Please login or register to use the side!</p>
             <a href="https://laravel.com/docs">Laravel docs</a>
+
         </div>
+
 
 
         <div>
@@ -344,7 +348,6 @@
     </ul>
 
     </div> --}}
-
 
 
     <x-alert>

@@ -229,6 +229,23 @@ class BicycleToRentController extends Controller
 
                 ->where("name", "LIKE", "%{$request->input('query')}%")
 
+                // ->where('is_availableToRent', 1)
+
+                ->select('name')->distinct()//?
+
+                ->get();
+
+        return response()->json($data);
+    }
+
+    public function autocompleteBikeToRentAvailable(Request $request)
+    {
+        $data = BicycleToRent::select("name")
+
+                ->where("name", "LIKE", "%{$request->input('query')}%")
+
+                ->where('is_availableToRent', 1)
+
                 ->select('name')->distinct()//?
 
                 ->get();

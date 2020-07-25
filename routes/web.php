@@ -38,11 +38,50 @@ use App\Http\Controllers\UserController;
 // auth()->loginUsingId(5);
 //auth()->loginUsingId(6);
 
+Route::get('stor', function () {
+    $publicpath = public_path();
+    var_dump($publicpath); //"/home/bazs/code/bicycle_7.7.1/public"
+
+    $reference ='doggy';
+    Storage::put('text.txt', 'hello');
+    //Storage::makeDirectory(public_path('upload/release/'.$reference)); //not good! /home/bazs/code/bicycle_7.7.1/public/storage/home/bazs/code/bicycle_7.7.1/public/upload/release/doggy/
+    Storage::makeDirectory('uploaded/release/'.$reference);
+
+    $directory = "/images"; //public/storage/IMAGES
+
+    $files = Storage::files($directory);
+    //var_dump($files);
+    //dump($files);
+    //var_dump('***');
+
+    $filesall = Storage::allFiles($directory);
+    //var_dump($filesall);
+    //var_dump('***');
+    //echo("\n");
+
+
+    $directories = Storage::directories($directory);
+    //var_dump($directories);
+    //var_dump('***');
+
+
+
+    // Recursive...
+    $directoriesall = Storage::allDirectories($directory);
+    //var_dump($directoriesall);
+
+    //dump($directoriesall);
+
+    return view('stor', compact('files', 'filesall', 'directories', 'directoriesall'));
+});
+
 Route::get('/', function () {
     //echo php_ini_loaded_file();
     echo "\n";
 
-    Storage::put('text.txt', 'hello');
+    $publicpath = public_path();
+    var_dump($publicpath); //"/home/bazs/code/bicycle_7.7.1/public"
+
 
     echo(Inspiring::quote()), "\n";
 
@@ -382,6 +421,8 @@ Route::get('/myActiveRents', 'UserController@myActiveRents')->name('myactiverent
 Route::get('autocompleteUser', 'UserController@autocompleteUser')->name('autocompleteUser');
 Route::get('autocompleteBikeToSell', 'BicycleToSellController@autocompleteBikeToSell')->name('autocompleteBikeToSell');
 Route::get('autocompleteBikeToRent', 'BicycleToRentController@autocompleteBikeToRent')->name('autocompleteBikeToRent');
+Route::get('autocompleteBikeToRentAvailable', 'BicycleToRentController@autocompleteBikeToRentAvailable')->name('autocompleteBikeToRentAvailable');
+
 
 
 
