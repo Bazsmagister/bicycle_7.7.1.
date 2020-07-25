@@ -219,6 +219,14 @@
 
     </div>
 
+    <footer>
+        <div class="footer">
+            <div class="titlefooter">
+                <h1>Footer Title</h1>
+            </div>
+        </div>
+    </footer>
+
 </body>
 
 </html>

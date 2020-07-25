@@ -11004,6 +11004,8 @@ div > a {
 
 .admin {
   background-color: red;
+  /* font-family: fantasy;
+   color: red; */
 }
 
 .error {
@@ -11030,5 +11032,15 @@ div > a {
   background-color: gray;
   flex-grow: 1;
   color: white;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: lightgrey;
+  /*   color: white; */
+  text-align: center;
 }
 
