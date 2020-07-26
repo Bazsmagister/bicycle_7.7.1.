@@ -7,8 +7,12 @@
 
 </h3>
 
+
+{{-- <p>Rent user: id</p>
 <p id="event"></p>
-<p id="event2"></p>
+
+<p>Rent id:</p>
+<p id="event2"></p> --}}
 
 
 <script>

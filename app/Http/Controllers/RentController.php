@@ -11,6 +11,7 @@ use App\BicycleToRent;
 use Illuminate\Http\Request;
 use App\Events\aRentHasBeenMade;
 use App\Notifications\rentIsOver;
+use Illuminate\Support\Facades\DB;
 use App\Notifications\newRentIsMade;
 use Illuminate\Support\Facades\Auth;
 
@@ -41,9 +42,14 @@ class RentController extends Controller
      */
     public function create()
     {
+        $bicyclesavailable = DB::table('bicycle_to_rents')
+        ->where('is_availableToRent', 1)
+        ->get();
+        //->paginate(15);
+
         // $bicycle = Bicycle::findOrFail($id);
         // ['bicycle' => Bicycle::findOrFail($id)]);
-        return view('rents.create');
+        return view('rents.create', compact('bicyclesavailable'));
     }
 
     /**

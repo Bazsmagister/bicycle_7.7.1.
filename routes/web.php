@@ -157,15 +157,35 @@ Route::get('/', function () {
  });
 
 
-     Route::get('/randomnames', function () {
-         $names = collect(explode(',', 'michael, esther, peace, elvira'));
-         dump($names);
-         $names = explode(',', 'michael, esther, peace, elvira');
-         $names = collect($names);
-         dump($names);
-         $rand = $names->random();
-         dd($rand);
-     });
+    Route::get('/randomnames', function () {
+        $names = collect(explode(',', 'michael, esther, peace, elvira'));
+        dump($names);
+        $names = explode(',', 'michael, esther, peace, elvira');
+        $names = collect($names);
+        dump($names);
+        $rand = $names->random();
+        dd($rand);
+    });
+
+    Route::get('/pamfs', function () {
+        Artisan::call('migrate:fresh --seed');
+
+        // $users = App\User::all();
+
+        // $bar = $this->output->createProgressBar(count($users));
+
+        // $bar->start();
+
+        // foreach ($users as $user) {
+        //     $this->performTask($user);
+
+        //     $bar->advance();
+        // }
+
+        // $bar->finish();
+
+        return redirect('home');
+    });
 
 
 

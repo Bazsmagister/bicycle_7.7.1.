@@ -255,6 +255,10 @@ class BicycleToRentController extends Controller
 
     public function findId(Request $request)
     {
+        $bicyclesavailable = DB::table('bicycle_to_rents')
+        ->where('is_availableToRent', 1)
+        ->get();
+
         $foundbikename= request('name');
         $bike =  DB::table('bicycle_to_rents')->where('name', $foundbikename)->first();
         //dd($user);
@@ -262,7 +266,7 @@ class BicycleToRentController extends Controller
 
         //dd($myid);
 
-        return view('rents.create', compact('myid', 'foundbikename'));
+        return view('rents.create', compact('myid', 'foundbikename', 'bicyclesavailable'));
     }
 
     public function rent($id)

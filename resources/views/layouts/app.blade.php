@@ -69,6 +69,10 @@
                     <div class="{{Request::path()==='stor' ? 'active' : ''}}"><a href="/stor">
                             stor</a></div>
 
+                    <div class="{{Request::path()==='pamfs' ? 'active' : ''}}"><a href="/pamfs">
+                            pamfs (remove later)</a></div>
+
+
                     @endauth
 
 
@@ -207,6 +211,7 @@
                 <div class="admin"><a href="/maxuser">maxuser</a></div>
                 <div class="admin"><a href="/loginasauth">loginasauth</a></div>
                 <div class="admin"><a href="/randomnames">randomnames</a></div>
+                <div class="admin"><a href="/pamfs">pamfs</a></div>
 
 
                 @endrole

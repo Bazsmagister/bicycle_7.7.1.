@@ -4,9 +4,33 @@
 
 <div class="container">
 
-
     @auth
-    {{-- @if ($bicycle->is_rentable==1) --}}
+    <p>
+        Rentable bicycles number : {{ (count($bicyclesavailable)) ?? ''}}
+        {{-- Rentable bicycles number z: {{ count(array($rentable_bicycles)) }} --}}
+    </p>
+
+    @if (count($bicyclesavailable) == 0)
+    <p>
+        Sorry, we are out of stock, come back later
+    </p>
+
+    @else
+    <div>
+        All the bicycles you can choose to rent!
+        Everything is fine, our business is booming!
+        Here are the bicycles, you can choose of!
+    </div>
+
+
+    @foreach ($bicyclesavailable as $bicycle )
+    <ul>
+        <li>
+            {{ $bicycle->name }} with Description: {{ $bicycle->description }}
+        </li>
+    </ul>
+
+    @endforeach
 
     <form action="/bicyclesToRent/findId" method="POST">
         @csrf
@@ -74,7 +98,7 @@
 
     </form>
 
-
+    @endif
     {{-- @endif --}}
     @endauth
 

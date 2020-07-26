@@ -5,6 +5,13 @@
 <h3>My active rent(s)</h3>
 
 
+<p>Rent user: id</p>
+<p id="event"></p>
+
+<p>Rent id:</p>
+<p id="event2"></p>
+
+
 @foreach ($myRents as $myRent)
 <ul>
 
