@@ -19,6 +19,9 @@ const mix = require("laravel-mix");
 mix.js("resources/js/app.js", "public/js")
     .js("resources/js/my.js", "public/js")
     .sass("resources/sass/app.scss", "public/css");
+//;.sourceMaps();
+//added .sourceMaps()
+//https://stackoverflow.com/questions/49726204/source-map-error-request-failed-with-status-404-resource-url-http-mywebsite
 
 // mix.scripts(
 //     ["public/js/admin.js", "public/js/dashboard.js"],

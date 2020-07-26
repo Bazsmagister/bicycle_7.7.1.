@@ -53,15 +53,13 @@ Route::get('stor', function () {
     $directory = "/images"; //public/storage/IMAGES
 
     echo dirname($directory) . PHP_EOL;
-
     print_r(dirname($directory) . PHP_EOL);
 
+    //Storage::dirname doesn't work
     //\Log::info(Storage::dirname($directory));
     //print_r(Storage::dirname($directory));
-
     //$dirs = Storage::dirname($directory);
     //dd($dirs);
-
 
     $files = Storage::files($directory);
     //var_dump($files);
@@ -73,12 +71,9 @@ Route::get('stor', function () {
     //var_dump('***');
     //echo("\n");
 
-
     $directories = Storage::directories($directory);
     //var_dump($directories);
     //var_dump('***');
-
-
 
     // Recursive...
     $directoriesall = Storage::allDirectories($directory);
@@ -133,14 +128,19 @@ Route::get('/', function () {
 // });
 
  Route::get('eventupdate', function () {
-     event(new aRentHasBeenMade('new rent'));
-
      event(new aRentHasBeenEnded('your rent has been ended'));
 
-     //event(new NewUser());
+     //event(new NewUser('A new user has been created'));
 
-     NewUser::dispatch();
+     //new rent is made in RentController@store , I cant call it here somewhy.
+     //event(new aRentHasBeenMade(new Rent())); //404
+     //event(new aRentHasBeenMade());
 
+
+
+     //NewUser::dispatch();
+     //  NewUser::dispatch('a new user has been created');
+     // NewUser::dispatch(User $user);
 
      //  BicycleUpdated::dispatch();
      //  //same as
@@ -150,7 +150,6 @@ Route::get('/', function () {
 
      //  aRentHasBeenEnded::dispatch();
      //event(new OrderShipped($order));
-
 
      return view('event');
 
@@ -191,7 +190,13 @@ Route::get('/', function () {
      return view('UserNameDateMapWithKeys', compact('userCollectionsmap'));
  });
 
- //it gives a view about the mail.
+ //it gives a view about the mail. For this reason, Laravel allows you to return any mailable directly from a route Closure or controller.
+    // Route::get('mailable', function () {
+    //     $invoice = App\Invoice::find(1);
+
+    //     return new App\Mail\InvoicePaid($invoice);
+    // });
+
  Route::get('mailservice', function () {
      $service = App\Service::latest()->first();
      dump($service);

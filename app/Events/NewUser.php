@@ -25,9 +25,17 @@ class NewUser implements ShouldBroadcast
     //     $this->user = $user;
     // }
 
-    public function __construct()
+    // public function __construct()
+    // {
+    // }
+
+    public $message = 'a new user has been created';
+
+    public function __construct($message)
     {
+        $this->message = $message;
     }
+
 
     /**
      * Get the channels the event should broadcast on.

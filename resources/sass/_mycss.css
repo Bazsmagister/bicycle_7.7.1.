@@ -37,7 +37,7 @@ body {
     margin-right: auto;
 }
 
-.flex-container > div {
+.flex-container>div {
     text-align: center;
     font-size: 20px;
 }
@@ -63,7 +63,7 @@ nav {
     font-size: 10px;
 }
 
-div > a {
+div>a {
     padding-right: 10px;
 }
 
@@ -90,10 +90,7 @@ div > a {
     padding: 0.5rem;
 }
 
-.accepted,
-.ready,
-.taken,
-.repairing {
+.accepted, .ready, .taken, .repairing {
     background-color: gray;
     flex-grow: 1;
     color: white;
@@ -104,7 +101,7 @@ div > a {
     left: 0;
     bottom: 0;
     width: 100%;
-    background-color: lightgrey;
+    background-color: f7f8ff;
     /*   color: white; */
     text-align: center;
 }

@@ -55824,10 +55824,40 @@ window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__["default"]({
   //cluster: process.env.MIX_PUSHER_APP_CLUSTER,
   cluster: "eu",
   encrypted: true
-}); // var channel = Echo.channel("my-channel");
-// channel.listen("aRentHasBeenEnded", function(data) {
+}); // var channel = window.Echo.channel("my-channel");
+// channel.listen("aRentHasBeenMade", function(data) {
+//     alert(data);
 //     alert(JSON.stringify(data));
+//     alert(JSON.stringify(data.rent.id));
 // });
+//laracasts
+
+window.Echo.channel("my-channel").listen("aRentHasBeenMade", function (e) {
+  alert("This rent will end at " + e.rent.rentEnds_at + "Enjoy!");
+  console.log("a new rent Nr. " + e.rent.id + " has been made");
+  alert("a new rent Nr. " + e.rent.id + " has been made");
+  document.getElementById("event").innerHTML = e.rent.user_id;
+  document.getElementById("event2").innerHTML = e.rent.id; //console.log(e);
+  //alert(e);
+});
+window.Echo.channel("my-channel").listen("aRentHasBeenEnded", function (e) {
+  console.log("a rent has been ended");
+  alert("a  rent has been ended. really");
+  document.getElementById("event").innerHTML = e.rent.user_id;
+  document.getElementById("event2").innerHTML = e.rent.id;
+  document.getElementById("event").innerHTML = JSON.stringify(data); //console.log(e);
+  //alert(e);
+}); // window.Echo.channel("my-channel").listen("newUser", e => {
+//     console.log("a new user added");
+//     alert("a new user added");
+// });
+// window.Echo.channel("my-channel").listen("aRentHasBeenMade", e => {
+//     console.log("pippo");
+//     alert("pippo");
+// });
+// document.getElementById("event").innerHTML = JSON.stringify(data);
+// document.getElementById("event2").innerHTML = data;
+// document.getElementById("event2").innerHTML = e.rent.id;
 
 /***/ }),
 
@@ -55918,8 +55948,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Legion\code\bicycle_7.7.1\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Legion\code\bicycle_7.7.1\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/bazs/code/bicycle_7.7.1/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/bazs/code/bicycle_7.7.1/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

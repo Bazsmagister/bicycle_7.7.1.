@@ -237,10 +237,7 @@
 
     <footer>
         <div class="footer">
-            <div class="titlefooter">
-                <h5>Made by Bazsmagister <?php echo date("Y"); ?></h5>
-                <p></p>
-            </div>
+            <h6>Made by Bazsmagister <?php echo date("Y"); ?></h6>
         </div>
     </footer>
 

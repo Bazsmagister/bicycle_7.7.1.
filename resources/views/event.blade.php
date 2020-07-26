@@ -11,6 +11,12 @@
 <p id="event2"></p>
 
 
+<script>
+    // document.getElementById("event").innerHTML = e.rent.user_id;
+
+    // document.getElementById("event2").innerHTML = e.rent.id;
+
+</script>
 
 <script>
     // If you would like to listen for events on a private channel, use the private method instead. You may continue to chain
@@ -24,19 +30,19 @@
 
 
 
-    var channel = Echo.channel("my-channel");
-    channel.listen("aRentHasBeenEnded", function(data) {
-    alert(JSON.stringify(data));
-    document.getElementById('event').innerHTML = JSON.stringify(data);
-    document.getElementById('event2').innerHTML = (data);
-    });
+    // var channel = Echo.channel("my-channel");
+    // channel.listen("aRentHasBeenEnded", function(data) {
+    // alert(JSON.stringify(data));
+    // document.getElementById('event').innerHTML = JSON.stringify(data);
+    // document.getElementById('event2').innerHTML = (data);
+    // });
 
 
-    Echo.private(`App.User.${userId}`)
-    .notification((notification) => {
-    alert(notification.type);
-    console.log(notification.type);
-    });
+    // Echo.private(`App.User.${userId}`)
+    // .notification((notification) => {
+    // alert(notification.type);
+    // console.log(notification.type);
+    // });
 
 </script>
 

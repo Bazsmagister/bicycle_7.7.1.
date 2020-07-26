@@ -88,7 +88,7 @@
 </div>
 
 <script>
-    var path = "{{ route('autocompleteBikeToRent') }}";
+    var path = "{{ route('autocompleteBikeToRentAvailable') }}";
     var $input = $(".typeahead");
 
         $('input.typeahead').typeahead({

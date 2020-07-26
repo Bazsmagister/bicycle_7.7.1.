@@ -97,8 +97,11 @@ class RentController extends Controller
         $bicycle->is_availableToRent = 0;
         $bicycle->save();
 
-        aRentHasBeenMade::dispatch();
-        //aRentHasBeenMade::dispatchNow();  //Call to undefined method App\Events\aRentHasBeenMade::dispatchNow() 
+        event(new  aRentHasBeenMade($rent));
+        //or
+        //aRentHasBeenMade::dispatch($rent);
+
+        //aRentHasBeenMade::dispatchNow();  //Call to undefined method App\Events\aRentHasBeenMade::dispatchNow()
 
         //$user= auth()->user();
 

@@ -8,6 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+
     <title>Bicycle 7</title>
 
     <script src="{{ asset('js/app.js') }}"></script>
@@ -151,7 +152,7 @@
     </div> --}}
 
 
-    <div class="content">
+    <div id='app' class="content">
 
         <div>
             @if (Route::has('login'))
@@ -437,6 +438,7 @@
         }
 
     </script>
+    <script src="js/app.js"></script>
 
     {{-- @foreach(Auth::user()->unreadNotifications as $not)
     <li>

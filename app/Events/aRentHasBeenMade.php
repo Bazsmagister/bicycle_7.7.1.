@@ -15,21 +15,25 @@ class aRentHasBeenMade implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
+    //this need to be public
+    public $foo= "bar";
+
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct()
-    {
-        //
-    }
-
-    //    public function __construct(Rent $rent)
+    // public function __construct()
     // {
     //     //
-    //     $this->rent = $rent;
     // }
+
+    public $rent;
+    public function __construct(Rent $rent)
+    {
+        //
+        $this->rent = $rent;
+    }
 
     /**
      * Get the channels the event should broadcast on.
