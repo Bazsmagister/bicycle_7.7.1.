@@ -55842,10 +55842,10 @@ window.Echo.channel("my-channel").listen("aRentHasBeenMade", function (e) {
 });
 window.Echo.channel("my-channel").listen("aRentHasBeenEnded", function (e) {
   console.log("a rent has been ended");
-  alert("a  rent has been ended. really");
-  document.getElementById("event").innerHTML = e.rent.user_id;
-  document.getElementById("event2").innerHTML = e.rent.id;
-  document.getElementById("event").innerHTML = JSON.stringify(data); //console.log(e);
+  alert("a  rent has been ended. really"); // document.getElementById("event").innerHTML = e.rent.user_id;
+  // document.getElementById("event2").innerHTML = e.rent.id;
+  // document.getElementById("event").innerHTML = JSON.stringify(data);
+  //console.log(e);
   //alert(e);
 }); // window.Echo.channel("my-channel").listen("newUser", e => {
 //     console.log("a new user added");

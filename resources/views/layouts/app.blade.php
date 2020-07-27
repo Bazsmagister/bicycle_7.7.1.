@@ -61,16 +61,28 @@
 
                     <div class="{{Request::path()==='file' ? 'active' : ''}}"><a href="/file">file (auth)</a></div>
                     <div class="{{Request::path()==='notifications' ? 'active' : ''}}"><a
-                            href="/notifications">Notifications(auth) </a></div>
+                            href="/notifications">Notifications (auth) </a></div>
 
                     <div class="{{Request::path()==='eventupdate' ? 'active' : ''}}"><a href="/eventupdate">
-                            eventupdate</a></div>
+                            Event update</a></div>
 
                     <div class="{{Request::path()==='stor' ? 'active' : ''}}"><a href="/stor">
                             stor</a></div>
 
                     <div class="{{Request::path()==='pamfs' ? 'active' : ''}}"><a href="/pamfs">
                             pamfs (remove later)</a></div>
+
+                    <div class="{{Request::path()==='paclearall' ? 'active' : ''}}"><a href="/paclearall">
+                            paclearall (remove later)</a></div>
+
+                    <div class="{{Request::path()==='paCacheAll' ? 'active' : ''}}"><a href="/paCacheAll">
+                            paCacheAll (remove later)</a></div>
+
+                    <form action="logout" method="post">
+                        @csrf
+                        <button class='btn btn-warning btn-sm' type="submit">Logout</button>
+
+                    </form>
 
 
                     @endauth

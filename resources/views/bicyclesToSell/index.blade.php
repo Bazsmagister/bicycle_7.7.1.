@@ -72,8 +72,23 @@
         <div>
             <a href="bicyclesToSell/{{$bicycle->id}}" class="btn btn-info">Show</a>
             <a href="{{ route('bicyclesToSell.show', $bicycle->id) }}" class="btn btn-info">Show</a>
+            <a href="{{ route('bicyclesToSell.show', $bicycle->id) }}" class="btn btn-warning" title="Show">Show</a>
+
+            <button type="button" class="btn btn-danger" data-toggle="tooltip" title="{{ $bicycle-> description}}
+                Price :{{ $bicycle->price }}">
+                Description tooltip. Hover over me!</button>
+
+
+            <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Description
+                collapsible Push Me!</button>
+            <div id="demo" class="collapse">
+                {{ $bicycle -> description }}
+                Price :{{ $bicycle->price }}"
+            </div>
+
 
         </div>
+
 
 
         {{-- <img src="{{$bicycle->image}}"> --}}
@@ -129,7 +144,17 @@
             @endforeach
         </tbody>
     </table>
+
+    <div>
+        hello
+        <a href="{{ route('myactiverents', $bicycles) }}" class="btn btn-warning" title="My active rents"
+            {{-- title="@lang('Edit Paymentdetail')" --}} data-toggle="tooltip" data-placement="top">
+            <i class="fas fa-edit"></i>
+        </a>
+    </div>
 </div>
+
+
 
 {{-- <script>
     var path = "{{ route('autocompleteBikeToSell') }}";

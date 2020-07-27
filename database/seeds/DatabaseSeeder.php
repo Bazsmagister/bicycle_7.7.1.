@@ -17,8 +17,8 @@ class DatabaseSeeder extends Seeder
         $this->command->getOutput()->progressStart(10);
         for ($i = 0; $i < 10; $i++) {
             //sleep(1);
-            //sleep(0.4); //doesn't work
-            usleep(120000);
+            //sleep(0.4); //doesn't work, it works with 1 sec
+            usleep(120000); //0,12sec
 
             $this->command->getOutput()->progressAdvance();
         }

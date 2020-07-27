@@ -42,6 +42,16 @@ use Illuminate\Filesystem\FilesystemManager;
 //auth()->loginUsingId(6);
 
 Route::get('stor', function () {
+    $filePath = "/home/bazs/code/bicycle_7.7.1/public/storage/images/try.txt";
+    //$filePath = "/storage/images/try.txt"; // ile_get_contents(/storage/images/try.txt): failed to open stream: No such file or directory
+
+
+    $contents = file_get_contents($filePath);
+    dump($contents);
+
+    Log::debug('contents', ['contents'=>$contents]);
+    //[2020-07-27 20:08:50] local.DEBUG: contents {"contents":"kfjasdklfjalskdjflkajsdfa"}
+
     $publicpath = public_path();
     var_dump($publicpath); //"/home/bazs/code/bicycle_7.7.1/public"
 
@@ -184,8 +194,29 @@ Route::get('/', function () {
 
         // $bar->finish();
 
-        return redirect('home');
+        return 'php artisan migrate:fresh --seed, FINISHED';
+        //return redirect('home');
     });
+
+    Route::get('/paclearall', function () {
+        Artisan::call('config:clear');
+        Artisan::call('cache:clear');
+        Artisan::call('view:clear');
+        Artisan::call('route:clear');
+
+        return 'clear FINISHED';
+    });
+
+     Route::get('/paCacheAll', function () {
+         Artisan::call('config:cache');
+         Artisan::call('view:cache');
+
+         // Artisan::call('route:cache'); //Unable to prepare route [api/user] for serialization. Uses Closure.
+         //The error message is coming from the route:cache command, not sure why clearing the cache calls this automatically.
+         //The problem is a route which uses a Closure instead of a controller,
+         return 'cache FINISHED';
+     });
+
 
 
 
