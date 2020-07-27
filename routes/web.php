@@ -4,6 +4,7 @@
 use App\Rent;
 use App\User;
 use App\Helpers;
+use App\BicycleToSell;
 use App\Events\NewUser;
 use App\Events\BicycleUpdated;
 use App\Events\aRentHasBeenMade;
@@ -175,6 +176,11 @@ Route::get('/', function () {
         dump($names);
         $rand = $names->random();
         dd($rand);
+    });
+
+    Route::get('/carousel', function () {
+      $bicycles = BicycleToSell::all();
+      return view('carousel',compact('bicycles'));
     });
 
     Route::get('/pamfs', function () {
