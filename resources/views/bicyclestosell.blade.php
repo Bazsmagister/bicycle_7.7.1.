@@ -8,6 +8,7 @@ All the bicycles to sell.
 <hr>
 
 
+<hr>
 @foreach ($sellable_bicycles as $bicycle)
 <div class="container">
     <ul>

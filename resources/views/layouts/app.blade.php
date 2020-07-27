@@ -34,6 +34,20 @@
 
 </head>
 
+
+<header class="masthead" style="background-image: url(@yield('bg-img'))">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="site-heading">
+                    <h1 style="font-size: 40px; width: 100%">@yield('title')</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md  navbar-light bg-white shadow" {{-- --}}>

@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('bicycle_edit')
+@section('content')
 
 @auth
 <div>
