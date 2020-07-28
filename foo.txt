@@ -1,1 +1,3 @@
 Hello, world you fools.
+
+$bicycleToService = BicycleToService::findOrFail($id);

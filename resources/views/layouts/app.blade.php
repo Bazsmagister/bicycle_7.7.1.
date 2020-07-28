@@ -231,7 +231,7 @@
                 <div class="admin"><a href="/bicyclesToRent">All bicycle to rent(admin)</a></div>
                 <div class="admin"><a href="/indexavailabletorent">All bicycle to rent available(admin)</a></div>
                 <div class="admin"><a href="/bicyclesToSell">All bicycles to sell(admin)</a></div>
-                <div class="admin"><a href="/bicycleToService">All bicycles to service(admin)</a></div>
+                <div class="admin"><a href="/bicyclesToService">All bicycles to service(admin)</a></div>
                 <div class="admin"><a href="/rents">All rents(admin)</a></div>
                 <div class="admin"><a href="/services">All services(admin)</a></div>
                 <div class='admin'><a href="/users">All Users(admin) |</a></div>

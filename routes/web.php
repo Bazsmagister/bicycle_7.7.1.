@@ -179,8 +179,8 @@ Route::get('/', function () {
     });
 
     Route::get('/carousel', function () {
-      $bicycles = BicycleToSell::all();
-      return view('carousel',compact('bicycles'));
+        $bicycles = BicycleToSell::all();
+        return view('carousel', compact('bicycles'));
     });
 
     Route::get('/pamfs', function () {
@@ -498,6 +498,7 @@ Route::get('autocompleteUser', 'UserController@autocompleteUser')->name('autocom
 Route::get('autocompleteBikeToSell', 'BicycleToSellController@autocompleteBikeToSell')->name('autocompleteBikeToSell');
 Route::get('autocompleteBikeToRent', 'BicycleToRentController@autocompleteBikeToRent')->name('autocompleteBikeToRent');
 Route::get('autocompleteBikeToRentAvailable', 'BicycleToRentController@autocompleteBikeToRentAvailable')->name('autocompleteBikeToRentAvailable');
+Route::get('autocompleteBikeToService', 'BicycleToServiceController@autocompleteBikeToService')->name('autocompleteBikeToService');
 
 
 

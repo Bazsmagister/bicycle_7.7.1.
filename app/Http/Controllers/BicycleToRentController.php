@@ -23,6 +23,7 @@ class BicycleToRentController extends Controller
         $bicyclesAvailableCount = DB::table('bicycle_to_rents')
         ->where('is_availableToRent', 1)
         ->count();
+        //dd($bicyclesAvailableCount);
 
 
         $bicyclesCount = BicycleToRent::count();
@@ -83,16 +84,9 @@ class BicycleToRentController extends Controller
         // 'image' => request('image'),
         'image' => $request->file('image'),
 
-
         ]);
 
-
-
         // dd($bicycle);
-
-        // $request->session()->put('key', 'myvalue');
-        // $answer= $request->session()->get('key', 'default');
-        // dump($answer);
 
         $imageName = 'hello'.time().'.'.request()->image->getClientOriginalExtension();
         //dd($imageName);
@@ -104,7 +98,6 @@ class BicycleToRentController extends Controller
         $path =  $request->file('image')->storeAs('images', $imageName);
 
         //$bicycle->image = $request->file('image');
-
 
         //dd($path);
         //$bicycle['image']= $path;
@@ -172,7 +165,8 @@ class BicycleToRentController extends Controller
      * @param  \App\BicycleToRent  $bicycleToRent
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, BicycleToRent $bicycleToRent)
+
+    public function update(Request $request, $id)
     {
         $data= $request->all();
         // echo "<pre>";
@@ -190,10 +184,11 @@ class BicycleToRentController extends Controller
         // Get current bike
         //$bicycle = Bicycle::findOrFail($bicycle);
         // Set bike name
+        $bicycleToRent = BicycleToRent::findOrFail($id);
+
         $bicycleToRent->name = $request->input('name');
         $bicycleToRent->description = $request->input('description');
         $bicycleToRent->rent_price = $request->input('rent_price');
-
         $bicycleToRent->image = $request->file('image');
 
         //dd($bicycle);
@@ -221,7 +216,15 @@ class BicycleToRentController extends Controller
 
         // Return user back and show a flash message
         return redirect('bicyclesToRent')->with(['message' => 'Bicycle updated successfully.']);
+        //or:
+        return redirect()->route('bicyclesToRent.show', $bicycleToRent->id)->with(
+            'message',
+            'Bicycle, '. $bicycleToRent->name.' updated'
+        );
     }
+
+
+
 
     /**
      * Remove the specified resource from storage.

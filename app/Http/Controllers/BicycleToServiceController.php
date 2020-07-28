@@ -22,7 +22,9 @@ class BicycleToServiceController extends Controller
      */
     public function index()
     {
-        $bicycles = DB::table('bicycles')->paginate(15);
+        $bicycles = BicycleToService::all();
+
+        //$bicycles = DB::table('bicyclesToService')->paginate(15);
 
         return view('bicyclesToService.index', compact('bicycles'));
     }
@@ -106,9 +108,12 @@ class BicycleToServiceController extends Controller
      * @param  \App\BicycleToService  $bicycleToService
      * @return \Illuminate\Http\Response
      */
-    public function show(BicycleToService $bicycleToService)
+    public function show($id)
     {
-        return view('bicyclesToService.show', compact('$bicycleToService'));
+        $bicycleToService = BicycleToService::findOrFail($id);
+        return view('bicyclesToService.show', compact('bicycleToService'));
+
+        //return view('bicyclesToSell.show', ['bicycleToSell' => BicycleToSell::findOrFail($id)]);
     }
 
     /**
@@ -117,9 +122,11 @@ class BicycleToServiceController extends Controller
      * @param  \App\BicycleToService  $bicycleToService
      * @return \Illuminate\Http\Response
      */
-    public function edit(BicycleToService $bicycleToService)
+    public function edit($id)
     {
-        return view('bicyclesToService.edit', compact('bicycleToService'));
+        return view('bicyclesToService.edit', ['bicycleToService' => BicycleToService::findOrFail($id)]);
+
+        //return view('bicyclesToService.edit', compact('bicycleToService'));
     }
 
     /**
@@ -129,7 +136,7 @@ class BicycleToServiceController extends Controller
      * @param  \App\BicycleToService  $bicycleToService
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, BicycleToService $bicycleToService)
+    public function update(Request $request, $id)
     {
         $data= $request->all();
         // echo "<pre>";
@@ -140,17 +147,17 @@ class BicycleToServiceController extends Controller
         $request->validate([
             'name'              =>  'string',
             'description'  => 'string',
-            'workhours' => 'numeric',
+            // 'workhours' => 'numeric',
 
         ]);
 
         // Get current bike
-        //$bicycle = Bicycle::findOrFail($bicycle);
+        $bicycleToService = BicycleToService::findOrFail($id);
         // Set bike name
         $bicycleToService->name = $request->input('name');
         $bicycleToService->description = $request->input('description');
         //not needed:
-        $bicycleToService->workhours = $request->input('workhours');
+        // $bicycleToService->workhours = $request->input('workhours');
 
 
         // Persist user record to database
@@ -160,6 +167,11 @@ class BicycleToServiceController extends Controller
 
         // Return user back and show a flash message
         return redirect('bicyclesToService')->with(['message' => 'Bicycle updated successfully.']);
+        //or
+        return redirect()->route('bicyclesToService.show', $bicycleToService->id)->with(
+            'message',
+            'Bicycle, '. $bicycleToService->name.' updated'
+        );
     }
 
     /**
@@ -168,14 +180,31 @@ class BicycleToServiceController extends Controller
      * @param  \App\BicycleToService  $bicycleToService
      * @return \Illuminate\Http\Response
      */
-    public function destroy(BicycleToService $bicycleToService)
+    public function destroy($bicycle)
     {
         //$bicycle = Bicycle::findOrFail($bicycle);
-        $bicycleToService->delete();
-        return redirect()->route('bicycles.index')
+        $bicycle = BicycleToService::findOrFail($bicycle);
+
+        $bicycle->delete();
+        return redirect()->route('bicyclesToService.index')
             ->with(
                 'message',
                 'Bike successfully deleted'
             )->with('alert-class', 'alert-danger');
+    }
+
+    public function autocompleteBikeToService(Request $request)
+    {
+        $data = BicycleToService::select("name")
+
+                ->where("name", "LIKE", "%{$request->input('query')}%")
+
+                // ->where('is_availableToRent', 1)
+
+                ->select('name')->distinct()//?
+
+                ->get();
+
+        return response()->json($data);
     }
 }

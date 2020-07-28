@@ -24,19 +24,6 @@
         <label for="description">Description</label>
         <input type="text" id="description" name="description" placeholder="Description" required>
 
-        <label for="Price">Price</label>
-        <input type="number" name="price" id="price" placeholder="Price" value="1000" required />
-        {{-- <input type="text" id="price" name="price" placeholder="Price" pattern="[0-9.]+" required> --}}
-
-        @error('price')
-        <p class="error">{{$message}}</p>
-        @enderror
-
-
-        <div>
-            <label for="Upload photo">Photo(s)</label>
-            <input type="file" id="image" name="image" accept="image/*">
-        </div>
 
 
         <input type="checkbox" id="sellable" name="is_sellable" value="1">

@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+
+//use \app\Traits\UploadTrait;
+
+
 class BicycleToSellController extends Controller
 {
     /**
@@ -22,6 +27,15 @@ class BicycleToSellController extends Controller
 
 
         return view('bicyclesToSell.index', compact('bicycles', 'bicyclesCount'));
+    }
+
+    public function uploadOne(UploadedFile $uploadedFile, $folder = null, $disk = 'public', $filename = null)
+    {
+        $name = !is_null($filename) ? $filename : Str::random(6);
+
+        $file = $uploadedFile->storeAs($folder, $name.'.'.$uploadedFile->getClientOriginalExtension(), $disk);
+
+        return $file;
     }
 
     /**
@@ -146,7 +160,7 @@ class BicycleToSellController extends Controller
      * @param  \App\BicycleToSell  $bicycleToSell
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, BicycleToSell $bicycleToSell)
+    public function update(Request $request, $id)
     {
         $data= $request->all();
         // echo "<pre>";
@@ -163,7 +177,10 @@ class BicycleToSellController extends Controller
 
         // Get current bike
         //$bicycle = Bicycle::findOrFail($bicycle);
+
         // Set bike name
+        $bicycleToSell = BicycleToSell::findOrFail($id);
+
         $bicycleToSell->name = $request->input('name');
         $bicycleToSell->description = $request->input('description');
         $bicycleToSell->price = $request->input('price');
@@ -194,6 +211,11 @@ class BicycleToSellController extends Controller
 
 
         // Return user back and show a flash message
+        return redirect()->route('bicyclesToSell.show', $bicycleToSell->id)->with(
+            'message',
+            'Bicycle, '. $bicycleToSell->name.' updated'
+        );
+
         return redirect('bicyclesToSell')->with(['message' => 'Bicycle updated successfully.']);
     }
 
