@@ -156,6 +156,9 @@ class BicycleToRentController extends Controller
     public function edit($id)
     {
         return view('bicyclesToRent.edit', ['bicycleToRent' => BicycleToRent::findOrFail($id)]);
+
+        //$bicycleToRent => BicycleToRent::findOrFail($id);
+        //return view('bicyclesToRent.edit', compact('bicycleToRent'));
     }
 
     /**
@@ -248,8 +251,6 @@ class BicycleToRentController extends Controller
         $data = BicycleToRent::select("name")
 
                 ->where("name", "LIKE", "%{$request->input('query')}%")
-
-                // ->where('is_availableToRent', 1)
 
                 ->select('name')->distinct()//?
 

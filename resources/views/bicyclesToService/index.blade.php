@@ -11,25 +11,36 @@
 
 </div>
 <hr>
-<br>
 
 @role('super-admin')
 <div>
     <button class="button btn-warning">
-        <a href="/bicyclesToService/create"> Add a new Bicycle </a>
+        <a href="/bicyclesToService/create"> Add a new Bicycle to service </a>
     </button>
 </div>
 @endrole
 
 <hr>
 
-<div class="container">
-    {{-- <h5>Autocomplete Search using Bootstrap Typeahead JS</h5> --}}
+{{-- <div class="container">
     <h5>Autocomplete search: </h5>
     <input id="autocomplete" class=" typeahead form-control" type="text" placeholder="Start typing...">
+</div> --}}
+
+<div class="container">
+    <form action="/bicyclesToService/showmetheservicebike" method="POST">
+        @csrf
+        <p>Choose the bicycle that you want to service: </p>
+        <input class="typeahead form-control" type="text" name="name" autocomplete="off" placeholder="Start typing..."
+            required>
+
+        @error('name')
+        <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
+
+        <button class="btn btn-info btn-sm" type="submit">Show me the bike!</button>
+    </form>
 </div>
-
-
 
 @foreach ($bicycles as $bicycle)
 <div class="container">
@@ -82,8 +93,8 @@
 <script>
     var path = "{{ route('autocompleteBikeToService') }}";
     var $input = $(".typeahead");
-    // $('input.typeahead').typeahead({  //works with class
-    $('#autocomplete').typeahead({       //works with id
+     $('input.typeahead').typeahead({  //works with class
+    //$('#autocomplete').typeahead({       //works with id
         source:  function (query, process) {
         return $.get(path, { query: query }, function (data) {
                  return process(data);

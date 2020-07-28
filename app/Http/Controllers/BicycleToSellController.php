@@ -81,7 +81,7 @@ class BicycleToSellController extends Controller
 
         $imageName = 'hello'.time().'.'.request()->image->getClientOriginalExtension();
         //dd($imageName);
-        //die;
+
         //$path = request()->image->move(public_path('images'), $imageName);
         //$path =request()->image->move(storage_path('images'), $imageName);
 
@@ -151,6 +151,9 @@ class BicycleToSellController extends Controller
     public function edit($id)
     {
         return view('bicyclesToSell.edit', ['bicycleToSell' => BicycleToSell::findOrFail($id)]);
+
+        //$bicycleToSell => BicycleToSell::findOrFail($id);
+        //return view('bicyclesToSell.edit', compact('bicycleToSell'));
     }
 
     /**

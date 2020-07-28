@@ -126,6 +126,7 @@ class BicycleToServiceController extends Controller
     {
         return view('bicyclesToService.edit', ['bicycleToService' => BicycleToService::findOrFail($id)]);
 
+        //$bicycleToService => BicycleToService::findOrFail($id);
         //return view('bicyclesToService.edit', compact('bicycleToService'));
     }
 
@@ -206,5 +207,15 @@ class BicycleToServiceController extends Controller
                 ->get();
 
         return response()->json($data);
+    }
+
+    public function showmetheservicebike()
+    {
+        $foundbikenameautocomp= request('name');
+        $bikeautocomp =  DB::table('bicycle_to_services')->where('name', $foundbikenameautocomp)->first();
+        //$myidautocomp = $bikeautocomp->id;
+        $id = $bikeautocomp->id;
+
+        return view('bicyclesToService.show', ['bicycleToService' => BicycleToService::findOrFail($id)]);
     }
 }

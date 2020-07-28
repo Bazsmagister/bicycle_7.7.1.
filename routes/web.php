@@ -224,8 +224,6 @@ Route::get('/', function () {
      });
 
 
-
-
 //   DB::listen(function ($query) {
 //       var_dump($query->sql, $query->bindings);
 //   });
@@ -375,10 +373,6 @@ Route::get('notifications', function () {
     }
 });
 
-
-
-
-
 // Route::get('user/{id}', 'UserController@show');
 
 // When registering routes for single action controllers, you do not need to specify a method:
@@ -390,7 +384,6 @@ Route::get('notifications', function () {
 //     $user = $request->user(); //getting the current logged in user
 //     dd($user->hasRole('admin','editor')); // and so on
 // });
-
 
 //Route::get('service', 'BicycleController@service');
 
@@ -405,6 +398,7 @@ Route::post('bicyclesToRent/showmethebike', 'BicycleToRentController@showmethebi
 
 Route::post('bicyclesToSell/showmethesellablebike', 'BicycleToSellController@showmethesellablebike')->name('showmethesellablebike');
 
+Route::post('bicyclesToService/showmetheservicebike', 'BicycleToServiceController@showmetheservicebike')->name('showmetheservicebike');
 
 
 Route::get('indexDeletedAlso', 'UserController@indexDeletedAlso');
@@ -426,27 +420,19 @@ Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']
     \UniSharp\LaravelFilemanager\Lfm::routes();
 });
 
-
-
 Route::get('myserviceprogress', 'ServiceController@myserviceprogress');
 Route::get('myoldservices', 'ServiceController@myoldservices');
 Route::get('myworkshop', 'ServiceController@myworkshop');
 
 
-
 Route::get('rentabike', 'BicycleToRentController@rent');
-
-
 
 // When declaring a resource route, you may specify a subset of actions the controller should handle instead of the full set of default actions
 // Route::resource('bicycle', 'BicycleController')->except(['index', 'show']);
 
-
-
 Auth::routes();
 
 //Auth::routes(['verify' => true]);
-
 
 /*named route */
 Route::get('/home', 'HomeController@index')->name('home');
@@ -499,7 +485,6 @@ Route::get('autocompleteBikeToSell', 'BicycleToSellController@autocompleteBikeTo
 Route::get('autocompleteBikeToRent', 'BicycleToRentController@autocompleteBikeToRent')->name('autocompleteBikeToRent');
 Route::get('autocompleteBikeToRentAvailable', 'BicycleToRentController@autocompleteBikeToRentAvailable')->name('autocompleteBikeToRentAvailable');
 Route::get('autocompleteBikeToService', 'BicycleToServiceController@autocompleteBikeToService')->name('autocompleteBikeToService');
-
 
 
 
