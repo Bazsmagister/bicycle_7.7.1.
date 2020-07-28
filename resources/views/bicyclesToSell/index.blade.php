@@ -4,10 +4,15 @@
 <div class="text-center">
     {!! $bicycles->links() !!}
 </div>
-<div class=''>
+
+<div>
     <p>
-        All of our bicycles:
+        All of our bicycles to sell, you can buy.
+        We have {{$bicyclesCount}} bicycles to sell.
     </p>
+    {{-- <p style="background-color: red">
+        For admin : All of our bicycles.
+    </p> --}}
 </div>
 <hr>
 <br>

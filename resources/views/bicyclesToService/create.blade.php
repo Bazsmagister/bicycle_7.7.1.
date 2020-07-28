@@ -10,7 +10,7 @@
 
 </div>
 <div>
-    <form action="{{ route('bicycle.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('bicyclesToService.store') }}" method="POST" enctype="multipart/form-data">
         {{-- <form action="/bicycle" method="POST" enctype="multipart/form-data"> --}}
         @csrf
         <label for="name">Name</label>

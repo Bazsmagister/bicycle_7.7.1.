@@ -94,7 +94,7 @@ class BicycleToServiceController extends Controller
 
         Session::flash('message', 'Bicycle has written in DB');
 
-        return redirect('bicycle')->with('message', 'A new bic is uploaded to DB');
+        return redirect('bicyclesToService')->with('message', 'A new bicycle to service is uploaded to DB');
 
         // $input = $request->all();
         // $name = $request->input('name');
@@ -159,7 +159,7 @@ class BicycleToServiceController extends Controller
 
 
         // Return user back and show a flash message
-        return redirect('bicycles')->with(['message' => 'Bicycle updated successfully.']);
+        return redirect('bicyclesToService')->with(['message' => 'Bicycle updated successfully.']);
     }
 
     /**

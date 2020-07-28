@@ -1,9 +1,16 @@
 @extends('layouts.app')
 
 @section('bg-img', Storage::disk('local')->url($bicycleToRent->image))
+{{-- @endsection --}}
+
 @section('title', $bicycleToRent->name)
+{{-- @endsection --}}
 
 @section('content')
+
+{{--
+@section('bg-img', Storage::disk('local')->url($bicycleToRent->image))
+@section('title', $bicycleToRent->name) --}}
 
 
 <div style="padding-left: 20px">

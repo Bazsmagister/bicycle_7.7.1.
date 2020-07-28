@@ -17,10 +17,11 @@ class BicycleToSellController extends Controller
      */
     public function index()
     {
+        $bicyclesCount = BicycleToSell::count();
         $bicycles = DB::table('bicycle_to_sells')->paginate(15);
 
 
-        return view('bicyclesToSell.index', compact('bicycles'));
+        return view('bicyclesToSell.index', compact('bicycles', 'bicyclesCount'));
     }
 
     /**
@@ -93,7 +94,7 @@ class BicycleToSellController extends Controller
 
         Session::flash('message', 'Bicycle has written in DB');
 
-        return redirect('bicycle')->with('message', 'A new bic is uploaded to DB');
+        return redirect('bicyclesToSell')->with('message', 'A new bicycle to sell is uploaded to DB');
 
         // $input = $request->all();
         // $name = $request->input('name');
@@ -193,7 +194,7 @@ class BicycleToSellController extends Controller
 
 
         // Return user back and show a flash message
-        return redirect('bicycles')->with(['message' => 'Bicycle updated successfully.']);
+        return redirect('bicyclesToSell')->with(['message' => 'Bicycle updated successfully.']);
     }
 
     /**

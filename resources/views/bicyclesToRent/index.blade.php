@@ -8,6 +8,8 @@
     <p>
         All of our bicycles to rent.
         We have {{$bicyclesCount}} bicycles to rent.
+        <br>
+        Available {{$bicyclesAvailableCount}} bicycles to rent ATM.
     </p>
     {{-- <p style="background-color: red">
         For admin : All of our bicycles.

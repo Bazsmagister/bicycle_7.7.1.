@@ -35,9 +35,20 @@
 </head>
 
 
-<header class="masthead" style="background-image: url(@yield('bg-img'))">
-    <div class="overlay"></div>
-    <div class="container">
+<div class="container" style="background-image: url(@yield('bg-img'))">
+    <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="site-heading">
+                <h1 style="font-size: 40px; width: 100%">@yield('title')</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<body>
+
+    {{-- <div class="container" style="background-image: url(@yield('bg-img'))">
         <div class="row">
             <div class="col-lg-8 col-md-10 mx-auto">
                 <div class="site-heading">
@@ -45,10 +56,8 @@
                 </div>
             </div>
         </div>
-    </div>
-</header>
+    </div> --}}
 
-<body>
     <div id="app">
         <nav class="navbar navbar-expand-md  navbar-light bg-white shadow" {{-- --}}>
             <div class="container">
@@ -69,7 +78,8 @@
 
                     @auth
 
-                    <div class="{{Request::path()==='rents/create' ? 'active' : ''}}"><a href="/rents/create">Create a
+                    <div class="{{Request::path()==='rents/create' ? 'active' : ''}}"><a href="/rents/create">Create
+                            a
                             Rent(auth)</a></div>
 
 
@@ -134,7 +144,8 @@
                         @else
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>Current user:
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>Current
+                                user:
                                 @if (auth()->user()->image)
                                 {{-- <img src="{{ asset(auth()->user()->image) }}"
                                 style="width: 40px; height: 40px; border-radius: 50%;">
@@ -202,7 +213,8 @@
                         new
                         service($serviceman)</a>
                 </div>
-                <div class="{{Request::path()==='rents' ? 'active' : ''}}"><a href="/rents">All rents(serviceman)</a>
+                <div class="{{Request::path()==='rents' ? 'active' : ''}}"><a href="/rents">All
+                        rents(serviceman)</a>
                 </div>
                 @endrole
 
@@ -214,6 +226,12 @@
 
                 @role('super-admin')
                 {{-- <div class="admin"><a href="/bicycles">All bicycles(admin)</a></div> --}}
+
+                <div class="admin"><a href="/rents">All rents(admin)</a></div>
+                <div class="admin"><a href="/bicyclesToRent">All bicycle to rent(admin)</a></div>
+                <div class="admin"><a href="/indexavailabletorent">All bicycle to rent available(admin)</a></div>
+                <div class="admin"><a href="/bicyclesToSell">All bicycles to sell(admin)</a></div>
+                <div class="admin"><a href="/bicycleToService">All bicycles to service(admin)</a></div>
                 <div class="admin"><a href="/rents">All rents(admin)</a></div>
                 <div class="admin"><a href="/services">All services(admin)</a></div>
                 <div class='admin'><a href="/users">All Users(admin) |</a></div>

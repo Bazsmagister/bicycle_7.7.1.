@@ -7,6 +7,9 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+
+//use \app\Traits\UploadTrait;
 
 class BicycleToRentController extends Controller
 {
@@ -17,11 +20,16 @@ class BicycleToRentController extends Controller
      */
     public function index()
     {
+        $bicyclesAvailableCount = DB::table('bicycle_to_rents')
+        ->where('is_availableToRent', 1)
+        ->count();
+
+
         $bicyclesCount = BicycleToRent::count();
         $bicycles = DB::table('bicycle_to_rents')->paginate(15);
 
 
-        return view('bicyclesToRent.index', compact('bicycles', 'bicyclesCount'));
+        return view('bicyclesToRent.index', compact('bicycles', 'bicyclesCount', 'bicyclesAvailableCount'));
     }
 
     public function indexavailabletorent()
@@ -32,6 +40,15 @@ class BicycleToRentController extends Controller
 
 
         return view('bicyclesToRent.indexavailabletorent', compact('bicycles'));
+    }
+
+    public function uploadOne(UploadedFile $uploadedFile, $folder = null, $disk = 'public', $filename = null)
+    {
+        $name = !is_null($filename) ? $filename : Str::random(6);
+
+        $file = $uploadedFile->storeAs($folder, $name.'.'.$uploadedFile->getClientOriginalExtension(), $disk);
+
+        return $file;
     }
 
     /**
@@ -106,7 +123,7 @@ class BicycleToRentController extends Controller
 
         Session::flash('message', 'Bicycle has written in DB');
 
-        return redirect('bicycle')->with('message', 'A new bic is uploaded to DB');
+        return redirect('bicyclesToRent')->with('message', 'A new bic is uploaded to DB');
 
         // $input = $request->all();
         // $name = $request->input('name');
@@ -166,7 +183,7 @@ class BicycleToRentController extends Controller
         $request->validate([
             'name'              =>  'string',
             'description'  => 'string',
-            'price' => 'numeric',
+            'rent_price' => 'numeric',
             'image'     =>  'image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
 
@@ -175,7 +192,7 @@ class BicycleToRentController extends Controller
         // Set bike name
         $bicycleToRent->name = $request->input('name');
         $bicycleToRent->description = $request->input('description');
-        $bicycleToRent->price = $request->input('price');
+        $bicycleToRent->rent_price = $request->input('rent_price');
 
         $bicycleToRent->image = $request->file('image');
 
@@ -203,7 +220,7 @@ class BicycleToRentController extends Controller
 
 
         // Return user back and show a flash message
-        return redirect('bicycles')->with(['message' => 'Bicycle updated successfully.']);
+        return redirect('bicyclesToRent')->with(['message' => 'Bicycle updated successfully.']);
     }
 
     /**

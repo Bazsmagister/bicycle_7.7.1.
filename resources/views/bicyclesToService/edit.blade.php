@@ -9,7 +9,7 @@
 
 </div>
 <div>
-    <form id='form' action="/bicycles/{{$bicycle->id}}" method="POST" enctype="multipart/form-data">
+    <form id='form' action="/bicyclesToService/{{$bicycle->id}}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <div>
