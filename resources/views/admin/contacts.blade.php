@@ -198,7 +198,6 @@
             }).done(function(){
                 console.log('deleted');
                 getRecords();
-
             })
 
         })

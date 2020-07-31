@@ -569,3 +569,6 @@ Route::post('contacts/store', 'ContactController@postStore');
 Route::get('contacts/data', 'ContactController@getData');
 Route::post('contacts/update', 'ContactController@postUpdate');
 Route::post('contacts/delete', 'ContactController@postDelete');
+
+
+
