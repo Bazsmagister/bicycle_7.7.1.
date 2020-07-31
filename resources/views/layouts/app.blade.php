@@ -76,6 +76,8 @@
                             href="/indexavailabletorent">Available
                             bicycles to rent (just available)</a></div>
 
+                    {{-- ---------------------------------------------------------------- --}}
+
                     @auth
 
                     <div class="{{Request::path()==='rents/create' ? 'active' : ''}}"><a href="/rents/create">Create
@@ -101,6 +103,12 @@
 
                     <div class="{{Request::path()==='paCacheAll' ? 'active' : ''}}"><a href="/paCacheAll">
                             paCacheAll (remove later)</a></div>
+
+                    <div class="{{Request::path()==='contacts' ? 'active' : ''}}"><a href="/contacts">
+                            contacts</a></div>
+
+                    <div class="{{Request::path()==='contacts/data' ? 'active' : ''}}"><a href="/contacts/data">
+                            contacts data</a></div>
 
                     <form action="logout" method="post">
                         @csrf

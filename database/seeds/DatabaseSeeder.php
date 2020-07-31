@@ -41,6 +41,9 @@ class DatabaseSeeder extends Seeder
         //$this->call(BicycleUserSeeder::class);
         $this->call(ServiceSeeder::class);
 
+        $this->call(ContactSeeder::class);
+
+
 
         // foreach (\Illuminate\Support\Facades\Storage::files('app/database/seeds') as $filename) {
         //     $files = \Illuminate\Support\Facades\Storage::get($filename);
