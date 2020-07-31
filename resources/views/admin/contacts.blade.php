@@ -191,10 +191,14 @@
                 url: adminUrl + '/contacts/delete',
                 data:data,
                 dataType: 'JSON',
-                success: function () {
+             /*    success: function () {
                     console.log('deleted');
                     getRecords();
-                }
+                } */
+            }).done(function(){
+                console.log('deleted');
+                getRecords();
+
             })
 
         })

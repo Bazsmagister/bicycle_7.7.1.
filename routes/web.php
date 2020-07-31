@@ -567,5 +567,5 @@ Route::get('contacts', 'ContactController@getIndex');
 // Route::post('contacts', 'ContactController@postStore');  //orig.  this is not good. script is referring to contacts/store
 Route::post('contacts/store', 'ContactController@postStore');
 Route::get('contacts/data', 'ContactController@getData');
-Route::post('contact/update', 'ContactController@postUpdate');
-Route::post('contact/delete', 'ContactController@postDelete');
+Route::post('contacts/update', 'ContactController@postUpdate');
+Route::post('contacts/delete', 'ContactController@postDelete');
