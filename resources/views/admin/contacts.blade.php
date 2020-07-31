@@ -134,7 +134,7 @@
                 method: 'POST',
                 url: adminUrl + '/contacts/store',
                 data: getInputs(),
-                dataType: 'JSON',
+                // dataType: 'JSON',
                 success: function () {
                     console.log('inserted')
                     alert('inserted')
@@ -169,13 +169,13 @@
                 method: 'POST',
                 url: adminUrl + '/contacts/update',
                 data: getInputs(),
-                dataType: 'JSON',
-                success: function () {
-                    console.log('updated')
-                    reset()
-                    _modal.modal('hide')
-                    getRecords();
-                }
+                // dataType: 'JSON', //You don't seem to need JSON in that function anyways, so you can also take out the dataType: 'json' row.
+
+             }).done(function(){
+            console.log('updated');
+            reset()
+            _modal.modal('hide')
+            getRecords();
             })
         }
 
@@ -190,11 +190,11 @@
                 method: 'POST',
                 url: adminUrl + '/contacts/delete',
                 data:data,
-                dataType: 'JSON',
-             /*    success: function () {
-                    console.log('deleted');
-                    getRecords();
-                } */
+                // dataType: 'JSON', //You don't seem to need JSON in that function anyways, so you can also take out the dataType: 'json' row.
+                //  success: function () {
+                //     console.log('deleted');
+                //     getRecords();
+                // }
             }).done(function(){
                 console.log('deleted');
                 getRecords();
