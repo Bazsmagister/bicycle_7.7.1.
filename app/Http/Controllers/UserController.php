@@ -83,14 +83,29 @@ class UserController extends Controller
 
     public function show($id)
     {
-        return view('users.show', ['user' => User::findOrFail($id)]);
+        $user = User::findOrFail($id);
+
+        $user->increment('view_count');
+
+        echo($user->view_count);
+        echo('<br/>');
+        //$user->view_count += 1;
+        echo($user->view_count);
+
+
+        //$user->save();
+
+        // return view('users.show', ['user' => User::findOrFail($id)]);
+        return view('users.show', compact('user'));
     }
 
-    // public function show($id)
+    // public function show(User $user)
     // {
-    //     $user = User::findOrFail($id); //Find post of id = $id
+    //     //$user = User::findOrFail($id); //Find post of id = $id
 
-    //     return view('users.profile', compact('user'));
+    //     $user->increment('view_count');
+
+    //     return view('users.show', compact('user'));
     // }
 
     public function create()

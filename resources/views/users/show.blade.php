@@ -2,6 +2,7 @@
 
 @section('content')
 
+<H6>View Count : {{ $user->view_count }}</H6>
 
 <div style="padding-left: 20px">
     <p>Name :
