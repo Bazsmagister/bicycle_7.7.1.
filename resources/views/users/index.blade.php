@@ -86,6 +86,8 @@
 <button onclick="fetcher()">Fetch/GET OnlyDeletedUsers</button>
 <br>
 <button onclick="fetcher2()">Fetch/GET OnlyDeletedUsers 2</button>
+<br>
+<button onclick="evalize()">Eval serialize js github try doesn1t work ATM</button>
 
 
 <script>
@@ -130,6 +132,14 @@ return process(data);
 
     }
 
+
+</script>
+
+<script>
+    function evalize(){
+    eval('('+ serialize({"foo": /1" + console.log(1)/i, "bar": '"@__R-<UID>-0__@'}) + ')');
+
+        }
 </script>
 
 
