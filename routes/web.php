@@ -574,3 +574,18 @@ Route::post('contacts/delete', 'ContactController@postDelete');
 
 
 
+Route::get('sessionset', function () {
+    return view('sessionset');
+});
+
+Route::get('sessionget', function () {
+    //print_r($_SESSION);
+
+    //var_dump($_SESSION); //doesn't work
+    //Print_r($_SESSION);
+    return view('sessionget');
+});
+
+Route::get('sessiondestroy', function () {
+    return view('sessiondestroy');
+});

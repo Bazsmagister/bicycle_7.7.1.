@@ -265,6 +265,9 @@
                 <div class="admin"><a href="/randomnames">randomnames</a></div>
                 <div class="admin"><a href="/pamfs">pamfs</a></div>
                 <div class="admin"><a href="/carousel">carousel</a></div>
+                <div class="admin"><a href="/sessionset">sessionset</a></div>
+                <div class="admin"><a href="/sessionget">sessionget</a></div>
+                <div class="admin"><a href="/sessiondestroy">sessiondestroy</a></div>
 
 
 
