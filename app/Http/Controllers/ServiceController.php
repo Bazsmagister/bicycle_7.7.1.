@@ -62,7 +62,7 @@ class ServiceController extends Controller
             // 'readyToTakeIt_at' => '',
             // 'taken_at' => '',
 
-             'accpeted' =>'',
+             'accepted' =>'',
             'repairing' => '',
             'ready' => '',
             'taken' => '',

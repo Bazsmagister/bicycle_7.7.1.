@@ -11,7 +11,7 @@ git clone [this repo.git]:
 
 `php artisan key:generate`
 
-# user_email : password
+# [user emails] : [password] made by seeder.
 
 admin@admin.com : adminadmin
 servicesergey@service.com : serviceservice
@@ -24,23 +24,6 @@ sale@sale.com : salesale
 composer require laravel/ui
 answer:
 Using version ^2.0 for laravel/ui
-
-Caret Version Range (^)# (hiányjel in hungarian)
-A háztető vagy kalap (^) egy fordított V alakú graféma:
-
-The ^ operator behaves very similarly but it sticks closer to semantic versioning, and will always allow non-breaking updates. For example ^1.2.3 is equivalent to >=1.2.3 <2.0.0 as none of the releases until 2.0 should break backwards compatibility. For pre-1.0 versions it also acts with safety in mind and treats ^0.3 as >=0.3.0 <0.4.0.
-
-This is the recommended operator for maximum interoperability when writing library code.
-
-Example: ^1.2.3
-caret sign is:
-answer
-Creating the ^ symbol on a U.S. keyboard
-To create the caret symbol using a U.S. keyboard hold down the Shift key and press the six number key at the top of the keyboard.
-
-ASCII-ban és Unicode-ban a hivatalos neve circumflex accent (U+005E), amely csak az utóbbi funkcióját tükrözi. Tízes számrendszerben a karakter kódja: 94.
-
-Character Map. find : caret (in desciption also)
 
 shift+ctrl+6 = comment/uncomment html great!!!
 
