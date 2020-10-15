@@ -71,8 +71,9 @@
         {{-- <a href="{{route('bicycle.edit','$bicycle->id')}}"></a> --}}
         <div>
             <a href="bicyclesToSell/{{$bicycle->id}}" class="btn btn-info">Show</a>
-            <a href="{{ route('bicyclesToSell.show', $bicycle->id) }}" class="btn btn-info">Show</a>
-            <a href="{{ route('bicyclesToSell.show', $bicycle->id) }}" class="btn btn-warning" title="Show">Show</a>
+            {{-- <a href="{{ route('bicyclesToSell.show', $bicycle->id) }}" class="btn btn-info"></a> --}}
+            <a href="{{ route('bicyclesToSell.show', $bicycle->id) }}" class="btn btn-warning" title="Show">Show using
+                route(2params)</a>
 
             <button type="button" class="btn btn-danger" data-toggle="tooltip" title="{{ $bicycle-> description}}
                 Price :{{ $bicycle->price }}">
