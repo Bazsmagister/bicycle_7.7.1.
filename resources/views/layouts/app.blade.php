@@ -85,7 +85,8 @@
                             Rent(auth)</a></div>
 
 
-                    <div class="{{Request::path()==='file' ? 'active' : ''}}"><a href="/file">file (auth)</a></div>
+                    <div class="{{Request::path()==='file' ? 'active' : ''}}"><a href="/file">opens a file and read it
+                            (auth)</a></div>
                     <div class="{{Request::path()==='notifications' ? 'active' : ''}}"><a
                             href="/notifications">Notifications (auth) </a></div>
 

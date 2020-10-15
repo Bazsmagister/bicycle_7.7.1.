@@ -33,6 +33,14 @@ use Illuminate\Filesystem\FilesystemManager;
 |
 */
 
+
+//   DB::listen(function ($query) {
+//       var_dump($query->sql, $query->bindings);
+//   });
+
+ //auth()->loginUsingId(1);
+
+
 //Login as an exclusive user:
 //Auth::loginUsingId(5);
 // auth()->loginUsingId(1);
@@ -54,7 +62,7 @@ Route::get('stor', function () {
     //[2020-07-27 20:08:50] local.DEBUG: contents {"contents":"kfjasdklfjalskdjflkajsdfa"}
 
     $publicpath = public_path();
-    var_dump($publicpath); //"/home/bazs/code/bicycle_7.7.1/public"
+    //var_dump($publicpath); //"/home/bazs/code/bicycle_7.7.1/public"
 
     $reference ='doggy';
     Storage::put('text.txt', 'hello');
@@ -146,20 +154,6 @@ Route::get('/', function () {
       Route::get('/pamfs', function () {
           Artisan::call('migrate:fresh --seed');
 
-          // $users = App\User::all();
-
-          // $bar = $this->output->createProgressBar(count($users));
-
-          // $bar->start();
-
-          // foreach ($users as $user) {
-          //     $this->performTask($user);
-
-          //     $bar->advance();
-          // }
-
-          // $bar->finish();
-
           return 'php artisan migrate:fresh --seed, FINISHED';
           //return redirect('home');
       });
@@ -229,17 +223,6 @@ Route::get('/', function () {
     });
 
 
-
-
-
-
-
-
-//   DB::listen(function ($query) {
-//       var_dump($query->sql, $query->bindings);
-//   });
-
- //auth()->loginUsingId(1);
 
  Route::get('mapWithKeys', function () {
      $userCollections = User::all();
