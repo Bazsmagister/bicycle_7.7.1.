@@ -83,22 +83,21 @@
                     <div class="{{Request::path()==='rents/create' ? 'active' : ''}}"><a href="/rents/create">Create
                             a
                             Rent(auth)</a></div>
-                    (auth)</a>
+
+                    <div class="{{Request::path()==='notifications' ? 'active' : ''}}"><a href="/notifications">shows
+                            the curr user's Notifications(auth) </a></div>
+
+
+                    <div class="{{Request::path()==='pamfs' ? 'active' : ''}}"><a href="/pamfs">
+                            pamfs (remove later)</a></div>
+
+                    <div class="{{Request::path()==='paclearall' ? 'active' : ''}}"><a href="/paclearall">
+                            paclearall (remove later)</a></div>
+
+                    <div class="{{Request::path()==='paCacheAll' ? 'active' : ''}}"><a href="/paCacheAll">
+                            paCacheAll (remove later)</a></div>
+
                 </div>
-                <div class="{{Request::path()==='notifications' ? 'active' : ''}}"><a href="/notifications">shows
-                        the curr user's Notifications(auth) </a></div>
-
-
-                <div class="{{Request::path()==='pamfs' ? 'active' : ''}}"><a href="/pamfs">
-                        pamfs (remove later)</a></div>
-
-                <div class="{{Request::path()==='paclearall' ? 'active' : ''}}"><a href="/paclearall">
-                        paclearall (remove later)</a></div>
-
-                <div class="{{Request::path()==='paCacheAll' ? 'active' : ''}}"><a href="/paCacheAll">
-                        paCacheAll (remove later)</a></div>
-
-
                 <form action="logout" method="post">
                     @csrf
                     <button class='btn btn-warning btn-sm' type="submit">Logout</button>
