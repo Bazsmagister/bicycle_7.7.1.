@@ -364,9 +364,15 @@ Route::get('notifications', function () {
 
         dump($notification);
         echo $notification ->created_at;
+        echo("\n");
+
         echo "Expires: ";
         echo $notification->data['expires'];
+        echo("\n");
+
         echo $notification->data['link'];
+        echo("\n");
+
         echo $notification->data['data2'];
     }
 });
