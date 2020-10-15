@@ -178,10 +178,14 @@
                 {{-- <button>Come with me!</button> --}}
             </div>
         </div>
-        <img src="/storage/bic.png" alt="a bic png" sizes="" srcset="">
+
         <div class="title m-b-md">
-            Bicycle
+
         </div>
+        <small>
+            Bicycle (There is 2 ways to log in: normally in the right corner, and down below with modal )
+            A non authenticated user can only see the sellable bikes, and some phptps about our shop.
+        </small>
 
         <div class="links">
             <a href="/bicyclesToSell">New bicycles</a>
@@ -191,9 +195,7 @@
             {{-- all version works: --}}
             <a href="{{ url('serviceguest')}}">Service page using(url('serviceguest'))</a>
             <a href="{{ route('serviceguest') }}">Service page using(route('serviceguest))</a>
-
         </div>
-
 
         <br>
         @guest
@@ -215,8 +217,6 @@
             <a href="https://laravel.com/docs">Laravel docs</a>
 
         </div>
-
-
 
         <div>
             <div class="modal fade" id="signIn">
