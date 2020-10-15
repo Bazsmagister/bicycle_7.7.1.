@@ -96,7 +96,7 @@ Route::get('stor', function () {
 });
 
 Route::get('/', function () {
-    phpinfo();
+    //phpinfo();
 
     //echo php_ini_loaded_file();
     //echo "\n";
