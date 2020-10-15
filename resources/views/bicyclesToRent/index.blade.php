@@ -183,12 +183,12 @@
 
     <ul>
 
-        <li>{{$bicycle -> id }}</li>
-        <li>{{$bicycle -> name }} </li>
-        <li>{{$bicycle -> description }} </li>
-        <li>{{$bicycle -> rent_price }} Ft/day </li>
+        <li>ID: {{$bicycle -> id }}</li>
+        <li>Bicycle name: {{$bicycle -> name }} </li>
+        <li>Description: {{$bicycle -> description }} </li>
+        <li>Rent price: {{$bicycle -> rent_price }} Ft/day </li>
 
-        <li>{{$bicycle -> is_availableToRent }} </li>
+        <li>Available now?: {{$bicycle -> is_availableToRent }} </li>
         <img src="{{$bicycle->image}}" alt="interesting" width="150" height="120">
 
         {{-- <img src="/storage/bic.png" alt="a bicycle png"> --}}

@@ -51,10 +51,10 @@
 <div class="container">
     <ul>
 
-        <li>{{$bicycle -> id }}</li>
-        <li>{{$bicycle -> name }} </li>
-        <li>{{$bicycle -> description }} </li>
-        <li>{{$bicycle -> price }} Ft</li>
+        <li>ID: {{$bicycle -> id }}</li>
+        <li>Bicycle Name: {{$bicycle -> name }} </li>
+        <li>Description: {{$bicycle -> description }} </li>
+        <li>Price: {{$bicycle -> price }} Ft</li>
         <img src="/storage/{{$bicycle->image}}" alt="no pic yet..." width="70" height="50">
 
         <img src="/storage/{{$bicycle->image}}" alt="a bicycle png" width="80" height="60">
