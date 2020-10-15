@@ -317,10 +317,10 @@ Route::get('file', function () {
 
     //on shared hosting:
     $file = realpath('try.txt');
-    dump($file);
+    //dump($file);
 
     $fp = fopen($file, "r");
-    dump($fp);
+    //dump($fp);
     $responsejson = file_get_contents($file);
     dump($responsejson);
     fclose($fp);

@@ -89,67 +89,67 @@
 </div>
 
 @endforeach
-<div class="container mid>
-    {{-- <div class="text-center"> --}}
-    {!! $bicycles->links() !!}
-</div>
-
-<div class= " container mid">
-    <table id="table_bikes" class="table table-striped table-bordered">
-        <thead class="thead-dark">
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Name</th>
-                <th scope="col">Description</th>
-                <th scope="col">Price</th>
-                <th scope="col">Image</th>
-                <th scope="col">Created_at</th>
-
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($bicycles as $bicycle)
-            <tr>
-                <td>{{ $bicycle->id }}</td>
-                <td>{{ $bicycle->name }}</td>
-                <td>{{ $bicycle->description}}</td>
-                <td>{{ $bicycle->price }}</td>
-                <td><img src="/storage/{{ $bicycle->image }}" height="50" width="50"></td>
-                <td>{{ $bicycle->created_at }}</td>
-
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
-
-    <div>
-        hello
-        <a href="{{ route('myactiverents', $bicycles) }}" class="btn btn-warning" title="My active rents"
-            {{-- title="@lang('Edit Paymentdetail')" --}} data-toggle="tooltip" data-placement="top">
-            <i class="fas fa-edit"></i>
-        </a>
+<div class="container mid">
+    <div class="text-center">
+        {!! $bicycles->links() !!}
     </div>
-</div>
+
+    <div class="container mid">
+        <table id="table_bikes" class="table table-striped table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">Created_at</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($bicycles as $bicycle)
+                <tr>
+                    <td>{{ $bicycle->id }}</td>
+                    <td>{{ $bicycle->name }}</td>
+                    <td>{{ $bicycle->description}}</td>
+                    <td>{{ $bicycle->price }}</td>
+                    <td><img src="/storage/{{ $bicycle->image }}" height="50" width="50"></td>
+                    <td>{{ $bicycle->created_at }}</td>
+
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+
+        <div>
+            hello
+            <a href="{{ route('myactiverents', $bicycles) }}" class="btn btn-warning" title="My active rents"
+                {{-- title="@lang('Edit Paymentdetail')" --}} data-toggle="tooltip" data-placement="top">
+                <i class="fas fa-edit"></i>
+            </a>
+        </div>
+    </div>
 
 
 
-{{-- <script>
+    {{-- <script>
     var path = "{{ route('autocompleteBikeToSell') }}";
-// $('input.typeahead').typeahead({ //works with class
-$('#autocomplete').typeahead({ //works with id
-source: function (query, process) {
-return $.get(path, { query: query }, function (data) {
-return process(data);
-// return data;
-});
-}
-});
+    // $('input.typeahead').typeahead({ //works with class
+    $('#autocomplete').typeahead({ //works with id
+    source: function (query, process) {
+    return $.get(path, { query: query }, function (data) {
+    return process(data);
+    // return data;
+    });
+    }
+    });
 
-</script> --}}
+    </script> --}}
 
 
-<script>
-    var path = "{{ route('autocompleteBikeToSell') }}";
+    <script>
+        var path = "{{ route('autocompleteBikeToSell') }}";
     var $input = $(".typeahead");
 
         $('input.typeahead').typeahead({
@@ -176,5 +176,5 @@ return process(data);
         // Nothing is active so it is a new value (or maybe empty value)
         }
         });
-</script>
-@endsection
+    </script>
+    @endsection
