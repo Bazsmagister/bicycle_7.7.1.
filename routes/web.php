@@ -311,8 +311,14 @@ Route::get('/', function () {
 
 
 Route::get('file', function () {
-    $file = public_path('try.txt');
+    //laravel way works
+    //$file = public_path('try.txt');
+    //dump($file);
+
+    //on shared hosting:
+    $file = realpath('try.txt');
     dump($file);
+
     $fp = fopen($file, "r");
     dump($fp);
     $responsejson = file_get_contents($file);

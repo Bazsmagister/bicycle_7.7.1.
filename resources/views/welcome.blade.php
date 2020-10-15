@@ -211,11 +211,7 @@
             password: authuser
         </p>
         @guest
-        <p>
-            email: authuser@authuser.com
-            <br>
-            password: authuser
-        </p>
+
         <li class="list-inline-item">
             <button type="button" class="btn btn-primary btn-outline-light" data-toggle="modal" data-target="#signIn"
                 href="{{ route('login') }}">{{ __('Login') }}</button>
