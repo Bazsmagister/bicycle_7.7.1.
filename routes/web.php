@@ -99,19 +99,21 @@ Route::get('/', function () {
 
 
     //echo php_ini_loaded_file();
-    echo "\n";
+    //echo "\n";
 
-    $publicpath = public_path();
-    var_dump($publicpath); //"/home/bazs/code/bicycle_7.7.1/public"
+    //trying a helper function:
+    //$publicpath = public_path();
+    //var_dump($publicpath); //"/home/bazs/code/bicycle_7.7.1/public"
 
 
     echo(Inspiring::quote()), "\n";
 
-    $result = shell_exec("python " . storage_path() . "/python/python.py 2>&1"); //this works
-    echo($result);
+    //trying python:
+    //$result = shell_exec("python " . storage_path() . "/python/python.py 2>&1"); //this works
+    //echo($result);
 
-    $result2 = shell_exec("python " . public_path() . "/storage/python/python.py 2>&1"); //this works too
-    echo($result2);
+    //$result2 = shell_exec("python " . public_path() . "/storage/python/python.py 2>&1"); //this works too
+    //echo($result2);
 
     //On Linux works,
     //$command ='python C:/Users/Legion/code/bicycle_7.7.1/public/storage/python/python.py'; //need python
@@ -148,7 +150,6 @@ Route::get('/', function () {
      //new rent is made in RentController@store , I cant call it here somewhy.
      //event(new aRentHasBeenMade(new Rent())); //404
      //event(new aRentHasBeenMade());
-
 
 
      //NewUser::dispatch();
