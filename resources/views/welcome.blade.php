@@ -189,8 +189,8 @@
 
             <a href="/serviceguest">Service page for (guest)</a>
             {{-- all version works: --}}
-            <a href="{{ url('serviceguest')}}">Service page (guest v2) using (url('serviceguest'))</a>
-            <a href="{{ route('serviceguest') }}">Service page using route('serviceguest)</a>
+            <a href="{{ url('serviceguest')}}">Service page using(url('serviceguest'))</a>
+            <a href="{{ route('serviceguest') }}">Service page using(route('serviceguest))</a>
 
         </div>
 
@@ -348,56 +348,15 @@
 
     @endforeach
     </ul>
-
     </div> --}}
 
 
-    <x-alert>
+    {{-- Doesn't need this component here, I just tried out if it works: --}}
+    {{-- <x-alert>
         <strong>Whoops!</strong> x-alert component try
-    </x-alert>
+    </x-alert> --}}
 
     <script>
-        //doesn't work:
-        // function check_pass() {
-        //     if (document.getElementById('password').value ==
-        //             document.getElementById('confirm_password').value) {
-        //         document.getElementById('submit').disabled = false;
-        //     } else {
-        //         document.getElementById('submit').disabled = true;
-        //     }
-        // }
-
-
-       /*  var password = document.getElementById("password")
-        , confirm_password = document.getElementById("confirm_password");
-
-        function validatePassword(){
-        if(password.value != confirm_password.value) {
-            confirm_password.style.backgroundColor="red";
-            confirm_password.setCustomValidity("Passwords Don't Match");
-        }
-
-        } else {
-            confirm_password.setCustomValidity('');
-
-        }
-
-        password.onchange = validatePassword();
-        confirm_password.onkeyup = validatePassword(); */
-
-
-        // var check = function() {
-        // if (document.getElementById('password').value ==
-        //     document.getElementById('confirm_password').value) {
-        //     document.getElementById('message').style.color = 'green';
-        //     document.getElementById('message').innerHTML = 'matching';
-        // } else {
-        //     document.getElementById('message').style.color = 'red';
-        //     document.getElementById('message').innerHTML = 'not matching';
-        // }
-        // }
-
-
         function check() {
         if (document.getElementById('password').value ==
         document.getElementById('confirm_password').value) {
