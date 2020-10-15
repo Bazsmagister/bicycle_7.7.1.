@@ -97,14 +97,12 @@ Route::get('stor', function () {
 
 Route::get('/', function () {
 
-
     //echo php_ini_loaded_file();
     //echo "\n";
 
     //trying a helper function:
     //$publicpath = public_path();
     //var_dump($publicpath); //"/home/bazs/code/bicycle_7.7.1/public"
-
 
     echo(Inspiring::quote()), "\n";
 
