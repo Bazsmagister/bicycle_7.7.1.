@@ -187,9 +187,10 @@
             <a href="/bicyclesToSell">New bicycles</a>
             <a href="/bicyclesToRent">Rent-a-bicycle</a>
 
-            <a href="/serviceguest">Service (guest)</a>
-            <a href="{{ url('serviceguest')}}">Service (guest v2)</a>
-            <a href="{{ route('serviceguest') }}">Service (guest v3)</a>
+            <a href="/serviceguest">Service page for (guest)</a>
+            {{-- all version works: --}}
+            <a href="{{ url('serviceguest')}}">Service page (guest v2) using (url('serviceguest'))</a>
+            <a href="{{ route('serviceguest') }}">Service page using route('serviceguest)</a>
 
         </div>
 
