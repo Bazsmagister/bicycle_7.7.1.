@@ -184,7 +184,7 @@
         </div>
         <small>
             Bicycle (There is 2 ways to log in: normally in the right corner, and down below with modal )
-            A non authenticated user can only see the sellable bikes, and some phptps about our shop.
+            A non authenticated user can only see the sellable bikes, and some photos about our shop.
         </small>
 
         <div class="links">
@@ -199,6 +199,11 @@
 
         <br>
         @guest
+        <p>
+            email: authuser@authuser.com
+            <br>
+            password: authuser
+        </p>
         <li class="list-inline-item">
             <button type="button" class="btn btn-primary btn-outline-light" data-toggle="modal" data-target="#signIn"
                 href="{{ route('login') }}">{{ __('Login') }}</button>

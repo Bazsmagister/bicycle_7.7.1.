@@ -28,6 +28,8 @@ class RentListener
     {
 
         //var_dump('check for new rents');
-        dump('check for new rents');
+
+        //works:
+        //dump('check for new rents');
     }
 }
