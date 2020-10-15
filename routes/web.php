@@ -274,6 +274,7 @@ Route::get('/', function () {
      myCustomHelper();
  });
 
+
   Route::get('maxuser', function () {
       $maxValue = App\User::max('id');
       dump($maxValue);
