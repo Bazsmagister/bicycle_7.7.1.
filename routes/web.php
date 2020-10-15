@@ -96,15 +96,21 @@ Route::get('stor', function () {
 });
 
 Route::get('/', function () {
+    phpinfo();
 
     //echo php_ini_loaded_file();
     //echo "\n";
 
-    //trying a helper function:
+    //trying a helper function it shows public path:
     //$publicpath = public_path();
     //var_dump($publicpath); //"/home/bazs/code/bicycle_7.7.1/public"
 
     echo(Inspiring::quote()), "\n";
+    // dump(Inspiring::quote());
+    // echo(Inspiring::quote());
+    // var_dump(Inspiring::quote());
+    // print_r(Inspiring::quote());
+
 
     //trying python:
     //$result = shell_exec("python " . storage_path() . "/python/python.py 2>&1"); //this works
@@ -126,11 +132,6 @@ Route::get('/', function () {
         echo $process->mustRun()->getOutput();
         var_dump($process->getOutput()); */
     //echo $process->getOutput();
-
-    // dump(Inspiring::quote());
-    // echo(Inspiring::quote());
-    // var_dump(Inspiring::quote());
-    // print_r(Inspiring::quote());
 
     return view('welcome');
 });
