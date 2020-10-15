@@ -11,7 +11,10 @@
 </div>
 
 <div>pic</div>
+
+<img src="url('/service.jpg')" alt="">
+
 <div>pic</div>
-<div>pic</div>
+
 
 @endsection

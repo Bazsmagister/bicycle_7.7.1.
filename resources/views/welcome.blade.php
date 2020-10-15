@@ -198,6 +198,18 @@
         </div>
 
         <br>
+        <p> Admin login:
+            <br>
+            email: admin@admin.com
+            <br>
+            password: adminadmin
+        </p>
+        <p>Authenticated user login:
+            <br>
+            email: authuser@authuser.com
+            <br>
+            password: authuser
+        </p>
         @guest
         <p>
             email: authuser@authuser.com
