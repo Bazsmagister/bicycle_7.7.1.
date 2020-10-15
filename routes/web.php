@@ -140,6 +140,49 @@ Route::get('/', function () {
 //     return view('welcome');
 // });
 
+  Route::group(['middleware' => 'auth'], function () {
+      // User needs to be authenticated to enter here.
+      Route::get('/pamfs', function () {
+          Artisan::call('migrate:fresh --seed');
+
+          // $users = App\User::all();
+
+          // $bar = $this->output->createProgressBar(count($users));
+
+          // $bar->start();
+
+          // foreach ($users as $user) {
+          //     $this->performTask($user);
+
+          //     $bar->advance();
+          // }
+
+          // $bar->finish();
+
+          return 'php artisan migrate:fresh --seed, FINISHED';
+          //return redirect('home');
+      });
+
+      Route::get('/paclearall', function () {
+          Artisan::call('config:clear');
+          Artisan::call('cache:clear');
+          Artisan::call('view:clear');
+          Artisan::call('route:clear');
+
+          return 'clear FINISHED';
+      });
+
+      Route::get('/paCacheAll', function () {
+          Artisan::call('config:cache');
+          Artisan::call('view:cache');
+
+          // Artisan::call('route:cache'); //Unable to prepare route [api/user] for serialization. Uses Closure.
+          //The error message is coming from the route:cache command, not sure why clearing the cache calls this automatically.
+          //The problem is a route which uses a Closure instead of a controller,
+          return 'cache FINISHED';
+      });
+  });
+
  Route::get('eventupdate', function () {
      event(new aRentHasBeenEnded('your rent has been ended'));
 
@@ -184,45 +227,11 @@ Route::get('/', function () {
         return view('carousel', compact('bicycles'));
     });
 
-    Route::get('/pamfs', function () {
-        Artisan::call('migrate:fresh --seed');
 
-        // $users = App\User::all();
 
-        // $bar = $this->output->createProgressBar(count($users));
 
-        // $bar->start();
 
-        // foreach ($users as $user) {
-        //     $this->performTask($user);
 
-        //     $bar->advance();
-        // }
-
-        // $bar->finish();
-
-        return 'php artisan migrate:fresh --seed, FINISHED';
-        //return redirect('home');
-    });
-
-    Route::get('/paclearall', function () {
-        Artisan::call('config:clear');
-        Artisan::call('cache:clear');
-        Artisan::call('view:clear');
-        Artisan::call('route:clear');
-
-        return 'clear FINISHED';
-    });
-
-     Route::get('/paCacheAll', function () {
-         Artisan::call('config:cache');
-         Artisan::call('view:cache');
-
-         // Artisan::call('route:cache'); //Unable to prepare route [api/user] for serialization. Uses Closure.
-         //The error message is coming from the route:cache command, not sure why clearing the cache calls this automatically.
-         //The problem is a route which uses a Closure instead of a controller,
-         return 'cache FINISHED';
-     });
 
 
 //   DB::listen(function ($query) {
@@ -453,8 +462,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 //     //it works
 //     // dd($user->hasRole('admin', 'editor'));
 // });
-
-
 
 // Route::get('/roles', 'PermissionController@Permission');
 
