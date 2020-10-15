@@ -40,7 +40,6 @@ use Illuminate\Filesystem\FilesystemManager;
 
  //auth()->loginUsingId(1);
 
-
 //Login as an exclusive user:
 //Auth::loginUsingId(5);
 // auth()->loginUsingId(1);
@@ -118,7 +117,6 @@ Route::get('/', function () {
     // echo(Inspiring::quote());
     // var_dump(Inspiring::quote());
     // print_r(Inspiring::quote());
-
 
     //trying python:
     //$result = shell_exec("python " . storage_path() . "/python/python.py 2>&1"); //this works
@@ -353,7 +351,6 @@ Route::get('notifications', function () {
     // foreach ($user->notifications as $notification) {
     //     echo $notification->type;
     // }
-
 
     $user = auth()->user();
 

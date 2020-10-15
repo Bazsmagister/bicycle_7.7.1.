@@ -87,8 +87,8 @@
 
                     <div class="{{Request::path()==='file' ? 'active' : ''}}"><a href="/file">opens a file and read it
                             (auth)</a></div>
-                    <div class="{{Request::path()==='notifications' ? 'active' : ''}}"><a
-                            href="/notifications">Notifications (auth) </a></div>
+                    <div class="{{Request::path()==='notifications' ? 'active' : ''}}"><a href="/notifications">shows
+                            the curr user's Notifications(auth) </a></div>
 
                     <div class="{{Request::path()==='eventupdate' ? 'active' : ''}}"><a href="/eventupdate">
                             Event update</a></div>
