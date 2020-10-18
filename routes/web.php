@@ -49,6 +49,13 @@ use Illuminate\Filesystem\FilesystemManager;
 // auth()->loginUsingId(5);
 //auth()->loginUsingId(6);
 
+//when
+    $reqtimeinepoch=$_SERVER['REQUEST_TIME'];
+    $goodDate= date('r', $reqtimeinepoch);
+    $when = fopen(".when", "a+");
+    fwrite($when, $goodDate."\n");
+
+
 Route::get('stor', function () {
     $filePath = "/home/bazs/code/bicycle_7.7.1/public/storage/images/try.txt";
     //$filePath = "/storage/images/try.txt"; // ile_get_contents(/storage/images/try.txt): failed to open stream: No such file or directory
