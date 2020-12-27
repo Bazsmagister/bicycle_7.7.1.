@@ -298,6 +298,9 @@
 
     </div>
 
+
+
+
     <footer>
         <div class="footer">
             <h6>Made by Bazsmagister <?php echo date("Y"); ?></h6>

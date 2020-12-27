@@ -151,6 +151,17 @@
     @endif
     </div> --}}
 
+    {{-- <button class="btn btn-primary" @if(session()->has('name')) 'buy_now'
+        @else
+        data-toggle="modal" data-target="#signIn"
+        @endif>Buy Now<i class="ps-icon-next">P</i>
+    </button>
+
+    <button class="btn btn-primary">@if(session()->has('name')) 'buy_now'
+        @else
+        data-toggle="modal" data-target="#signIn"
+        @endif<i class="ps-icon-next">P</i>
+    </button> --}}
 
     <div id='app' class="content">
 
