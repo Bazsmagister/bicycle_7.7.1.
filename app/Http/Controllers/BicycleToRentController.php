@@ -6,6 +6,7 @@ use App\BicycleToRent;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
@@ -196,6 +197,46 @@ class BicycleToRentController extends Controller
 
         //dd($bicycle);
 
+        $orig = $bicycleToRent->getOriginal();
+        $orig2 = $bicycleToRent->getOriginal('name');
+        $dirty = $bicycleToRent->getDirty();
+        $dirty2 = $bicycleToRent->getDirty()['name'];
+        $isDirtyName = $bicycleToRent->isDirty('name');
+        $isDirtyPrice = $bicycleToRent->isDirty('price');
+        Log::info('$orig is'.json_encode($orig));
+        Log::info('$orig2 is'.json_encode($orig2));
+        Log::info('$dirty is'.json_encode($dirty));
+        Log::info('$dirty2 is'.$dirty2);
+        Log::info('$isDirtyName is '.json_encode($isDirtyName));
+        Log::info('$isDirtyPrice is '.json_encode($isDirtyPrice));
+
+
+        // if ($dirty != null) {
+        //     if (($orig->name == 'HotPink') && ($dirty->name == 'HotPink1')) {
+        //         dd('gotcha');
+        //     }
+        // }
+
+        $origName = $orig['name'];
+        Log::info('$origName is'.json_encode($origName));
+
+        Log::info('done');
+
+
+
+        //$dirtyName = $dirty['name'];
+        //Log::info('$dirtyName is'.json_encode($dirtyName));
+
+
+        // if (($origName == 'HotPink') && ($dirtyName == 'HotPink1')) {
+        //     dd('gotcha');
+        // }
+
+
+
+
+
+
 
         // Check if a profile image has been uploaded
         if ($request->has('image')) {
@@ -215,6 +256,16 @@ class BicycleToRentController extends Controller
         // Persist user record to database
         $bicycleToRent->save();
         //dd($bicycle);
+
+        // dump($bicycleToRent->getOriginal());
+        // dump($bicycleToRent->getDirty());
+        // $orig1 = $bicycleToRent->getOriginal();
+        // $dirty1 = $bicycleToRent->getDirty();
+        // Log::info('$orig1 is'.json_encode($orig1));
+        // Log::info('$dirty1 is'.json_encode($dirty1));
+
+        //dd($orig);
+
 
 
         // Return user back and show a flash message
