@@ -220,6 +220,7 @@ class BicycleToRentController extends Controller
         $origName = $orig['name'];
         Log::info('$origName is'.json_encode($origName));
 
+
         Log::info('done');
 
 
