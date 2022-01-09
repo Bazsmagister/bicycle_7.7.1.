@@ -16,9 +16,22 @@ const mix = require("laravel-mix");
 //     "public/css"
 // );
 
+// mix.js("resources/js/app.js", "public/js")
+//     .js("resources/js/my.js", "public/js")
+//     .sass("resources/sass/app.scss", "public/css");
+
+//How to fix the error "You may need an appropriate loader to handle this file type"
+//stackoverflow.com/questions/65607153/how-to-fix-the-error-you-may-need-an-appropriate-loader-to-handle-this-file-typ
+//https://laravel-mix.com/docs/6.0/upgrade
+
 mix.js("resources/js/app.js", "public/js")
     .js("resources/js/my.js", "public/js")
+    .vue()
     .sass("resources/sass/app.scss", "public/css");
+//.postCss("resources/css/app.css", "public/css", [
+//    //
+//]);
+
 //;.sourceMaps();
 //added .sourceMaps()
 //https://stackoverflow.com/questions/49726204/source-map-error-request-failed-with-status-404-resource-url-http-mywebsite
